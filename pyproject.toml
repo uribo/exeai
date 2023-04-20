@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "23-exeai"
+version = "0.1.0"
+description = "徳島大学 教養教育院・教養科目群・自然と技術 「AI総合演習」のためのPython環境"
+authors = ["Shinya Uryu <uryu.shinya@tokushima-u.ac.jp>"]
+readme = "README.md"
+packages = [{include = "23_exeai"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+qrcode = "^7.4.2"
+pillow = "^9.5.0"
+ipykernel = "^6.22.0"
+jupyter = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

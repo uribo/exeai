@@ -20,6 +20,7 @@ japanize-matplotlib = "^1.1.3"
 pyarrow = "^11.0.0"
 numba = "0.56.3"
 jupyterlab = "^3.6.3"
+palmerpenguins = "^0.1.4"
 
 
 [build-system]

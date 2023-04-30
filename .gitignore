@@ -5,5 +5,9 @@ keynote
 onedrive
 .Rproj.user
 .Rhistory
+*.key
 keynote.savedSearch
 .ipynb_checkpoints
+*.html
+*_files/
+/.luarc.json

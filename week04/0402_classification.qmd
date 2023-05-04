@@ -1,0 +1,184 @@
+---
+title: "ペンギンデータの分類に挑戦"
+format: html
+execute:
+  keep-ipynb: true
+jupyter:
+  jupytext:
+    formats: 'ipynb,qmd'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.14.5
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+[0401_penquins.ipynb](0401_penquins.ipynb)では、ペンギンデータを可視化し、データの特徴を把握しました。このデータを使って、ペンギンの種類を分類する機械学習モデルを構築しましょう。
+
+PythonのScikit-learnライブラリには機械学習モデルの構築から評価に必要な機能が含まれています。そのため今回はScikit-learnライブラリを使ってペンギンデータを分類する機械学習モデルを構築します。
+
+```{python}
+#| eval: true
+#| echo: false
+from IPython.display import display, Markdown
+```
+
+```{python}
+import seaborn as sns
+import pandas as pd
+
+# scikit-learnのライブラリ
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+```
+
+```{python}
+penguins = sns.load_dataset("penguins")
+```
+
+## scikit-learnを使った機械学習モデルの構築
+
+ペンギンデータをロジスティック回帰モデルによって分類します。
+
+### 前処理
+
+具体的には欠損値への対応とラベルエンコーディングを実行します。
+
+ロジスティック回帰など、いくつかの機械学習モデルは欠損値を含むデータを直接扱うことができません。そのため、欠損値を含む行を削除するか、欠損値を別の値に置き換える必要があります。今回はpandasの`dropna()`関数で欠損値を含む行を削除します。
+
+```{python}
+#| label: 前処理その1
+
+# 1/2 欠損値を含む行を削除
+penguins.dropna(inplace=True) # 元のデータフレームを書き換える場合、inplace=Trueを指定する
+
+# 欠損値を含む行を削除したデータフレームを新たに作成
+#penguins_mod = penguins.dropna()
+# 11行削除されていることを確認
+#penguins_mod.shape
+penguins.shape
+```
+
+続いてラベルエンコーディングを適用します。ラベルエンコーディングとは、カテゴリ変数を数値に変換する処理です。例えば、`species`列の値Adelie、Chinstrap、Gentooをそれぞれ0, 1, 2に変換します。機械学習モデルは数値データを扱うため、カテゴリ変数を数値に変換する必要があります。ペンギンデータの場合、`species`の他に`island`や`sex`列もカテゴリ変数なのでラベルエンコーディングを適用対象となります。ラベルエンコーディングはscikit-learnの`LabelEncoder`クラスを使って実行します。
+
+```{python}
+#| label: 前処理その2
+# 2/2 ラベルエンコーディング
+# LabelEncoderクラスのインスタンスを作成
+le = LabelEncoder()
+# 以下のコードの実行で、species列の値Adelie、Chinstrap、Gentooがそれぞれ0, 1, 2に変換される
+penguins["species"] = le.fit_transform(penguins["species"])
+# island列とsex列についても同様にラベルエンコーディングを実行
+penguins["island"] = le.fit_transform(penguins["island"])
+penguins["sex"] = le.fit_transform(penguins["sex"])
+
+
+# 前処理を行ったデータを表示
+penguins
+```
+
+| 元の値 | ラベルエンコーディング後の値 |
+| Adele | 0 |
+| Chinstrap | 1 |
+| Gentoo | 2 |
+
+```{python}
+penguins.value_counts("species")
+```
+
+### データ分割
+
+- 訓練データ: モデルの学習に用いるデータ。モデルはこのデータの特徴を学習し、テストデータに対する予測を行うためのパラメータを決定する。
+- テストデータ: モデルの予測精度を評価するためのデータ。モデルの学習には用いられない。
+
+```{python}
+# 目的変数をspecies列、説明変数をspecies列以外の列とする
+# X... 説明変数のみからなるデータフレーム
+# y... 目的変数のみからなるデータフレーム
+X = penguins.drop(columns="species")
+y = penguins["species"]
+
+# 訓練データとテストデータに分割
+# test_sizeでテストデータの割合を指定する。ここでは全体の20%をテストデータとする（80%を訓練データとする）
+# random_stateは乱数のシードを指定する引数。この値を変更すると結果が変わるので注意
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=20240508)
+```
+
+### モデルの構築
+
+sklearn.linear_modelモジュールのLogisticRegressionを使ってロジスティック回帰モデルを構築します。
+
+```{python}
+# ロジスティック回帰モデルを適用し、モデルを訓練
+lr = LogisticRegression()
+# 訓練データを使ってモデルを訓練
+lr.fit(X_train, y_train)
+```
+
+### モデルの予測
+
+構築したモデルに対して、テストデータを使って予測を行います。`lr.predict(X_test)`を実行すると、テストデータに対する予測結果が得られます。
+
+```{python}
+# テストデータを使って予測を行う
+y_pred = lr.predict(X_test)
+
+# 予測結果は配列で格納されている
+y_pred
+```
+
+## モデルの評価
+
+
+```{python}
+# 真の値であるy_testと予測値のy_predを比較して2つの値がどの程度一致しているかを確認する
+# y_testをデータフレームに変換
+y_test_df = pd.DataFrame(y_test)
+# y_predをデータフレームに変換
+y_pred_df = pd.DataFrame(y_pred, columns=['predicted'], index=y_test.index)
+
+# y_testとy_predのデータフレームを結合
+comparison_df = pd.concat([y_test_df, y_pred_df], axis=1)
+
+# speciesとpredictedが一致しているかどうかを確認
+comparison_df["correct"] = comparison_df["species"] == comparison_df["predicted"]
+
+# TrueとFalseの数をカウント
+comparison_df.groupby("correct").size().reset_index(name = "count")
+```
+
+```{python}
+#| echo: false
+predict_mismatch = comparison_df.groupby("correct").size().reset_index(name = "count")["count"][0]
+display(Markdown("""
+不一致の件数は {predict_mismatch}/{total_n}件.
+""".format(predict_mismatch = predict_mismatch, total_n = len(comparison_df))))
+```
+
+
+sklearn.metricsモジュールの関数を使ってモデルの評価を行います。
+
+`accuracy_score()`関数は、正解率を計算する関数です。正解率は、正しく予測できたデータの割合を表します。この値は先ほど確認した
+
+```{python}
+# モデルを評価
+print("Accuracy:", accuracy_score(y_test, y_pred))
+```
+
+種名ごとの精度を確認するために`classification_report()`関数を使います。
+
+```{python}
+print("Classification Report:\n", classification_report(y_test, y_pred))
+```
+
+### 混合行列
+
+```{python}
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+```

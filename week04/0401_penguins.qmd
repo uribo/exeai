@@ -1,0 +1,164 @@
+---
+title: "南極大陸に生育するペンギンの体長データ"
+format: html
+execute:
+  keep-ipynb: true
+jupyter:
+  jupytext:
+    formats: 'ipynb,qmd'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.14.5
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+今週は教師あり学習の例として、ペンギンの種類を分類する問題を扱います。機械学習モデルの構築を行う前に対象のデータについて理解を深めることは重要です。まずはデータの読み込みから可視化までの処理を通して、データの中身を確認していきましょう。
+
+必要なライブラリをインポートします。ここでは次のライブラリを使用します。
+
+- seaborn: データの可視化
+- matplotlib: データの可視化
+- pandas: データフレームへの操作
+
+```{python}
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+
+## ペンギンデータ
+
+機械学習による分類問題の例として、南極大陸に生育するペンギンの体長についての観測データを利用します。このデータを使ってペンギンの種類を分類するモデルを構築します。
+
+### データの読み込み
+
+ペンギンデータは`seaborn`ライブラリに含まれています。データを利用するには`load_dataset()`関数で読み込みます。
+
+```{python}
+# ペンギンデータの読み込み
+penguins = sns.load_dataset("penguins")
+
+# pandasのDataFrameとして格納されている
+# type(penguins)
+```
+
+### データの確認
+
+ペンギンデータの中身を確認します。データについて理解を深めるためのいくつかの処理を行ってみましょう。まずはデータフレームオブジェクトの属性の一つ、`shape`を使うと、行数と列数を確認できます。
+
+```{python}
+penguins.shape
+
+# 以下のコードの実行はエラーとなる
+# 理由はshapeがデータフレームの属性であるのに対して、
+# shape()はメソッド（関数）であるため
+# penguins.shepe()
+```
+
+以下の例では、いくつかのpandasのデータフレーム関数を使って、データの概要を確認しています。これらは関数として実行するため、末尾に括弧を付けています。
+
+```{python}
+# データフレームの概要
+# 各列（変数）の名前（Column）、欠損値の件数（Non-Null Count）、データ型(Dtype)を表示
+penguins.info()
+```
+
+いくつの変数に欠損値があるようです。欠損値の有無は機械学習モデルを実行する際に影響を及ぼす可能性があります。ここでは欠損値への処理を行いませんが、ペンギンデータに欠損値が含まれるということを覚えておきましょう。
+
+つづいて具体的なデータの中身を確認します。`head()`関数を使うと、データの先頭から引数で指定した行数を表示できます。`tail()`関数はデータの末尾から指定した行数を表示するのに利用します。
+
+```{python}
+# 先頭5行の表示
+penguins.head(5)
+
+# 末尾3行の表示
+# penguins.tail(3)
+```
+
+ここでペンギンデータの変数をまとめておきましょう。このデータには次の変数が含まれます。
+
+- `species`: ペンギンの種名。次の3種が含まれます。Adelie（アデリーペンギン）、Chinstrap（ヒゲペンギン）、Gentoo（ジェンツーペンギン）。
+- `island`: ペンギンが生息する島の名前。次の3つの島が含まれます。Biscoe、Dream、Torgersen。
+- `bill_length_mm`: くちばしの長さ（単位: mm）。
+- `bill_depth_mm`: くちばしの深さ（単位: mm）。くちばしの高さとも言えます。
+- `flipper_length_mm`: 翼の長さ（単位: mm）。ペンギンの場合はひれの長さとも言えます。
+- `body_mass_g`: 体重（単位: g）。
+- `sex`: 性別。Male（オス）、Female（メス）の2種類。
+
+分類対象として扱うペンギンの種名について、詳しく調べます。次のコードでそれぞれの種名のデータが何件含まれるかを確認します。
+
+```{python}
+print("ペンギンの種類: ", penguins["species"].unique())
+
+penguins.groupby("species").size().reset_index(name = "count")
+```
+
+- `Adelie` = "アデリーペンギン",
+- `Chinstrap` = "ヒゲペンギン",
+- `Gentoo` = "ジェンツーペンギン"
+
+### 統計量
+
+pandasの`describe()`関数を使うと、平均値や標準偏差、最小値・最大値といった複数の統計量を一度に確認できます。
+
+```{python}
+# ペンギンデータの統計量の表示
+penguins.describe()
+```
+
+`describe()`関数が対象とするのはデータフレームの数値データです。`species`や`island`のような文字列データは対象となりません。理由は文字列データは平均値（`mean`）や標準偏差（`std`）などの統計量に意味がないためです[^1]。しかし最頻値（`top`）や最頻値の出現回数（`freq`）は計算できます。`describe()`関数のデフォルトでは数値データのみが対象となりますが、引数で`include="all"`を指定することで文字列データも対象となります。
+
+[^1]: 文字列データは数値データとは異なるため、算術平均を計算することはできません。そのため、平均値や標準偏差などの統計量の出力は`NaN`(Not a Number)として表示されます。一方で数値データは文字列データとは異なり、最頻値を計算することはできません。そのため、最頻値の出力は`NaN`として表示されます。
+
+```{python}
+# 文字列の変数も含めた統計量の表示
+penguins.describe(include="all")
+```
+
+
+### データの可視化
+
+さらにデータへの理解を深めるために、グラフ上にペンギンデータを表現してみます。データ可視化によって、細かな傾向や全体的な特徴を発見することにつながる可能性があります。
+
+#### 散布図
+
+```{python}
+# seabornを使った散布図の作成
+sns.scatterplot(data=penguins,
+                x="bill_length_mm", 
+                y="bill_depth_mm", 
+                # 塗り分けの変数の指定
+                hue="species")
+plt.show()
+```
+
+複数の変数の組み合わせについて散布図を作成するには、seabornの`pairplot()`関数を利用します。
+
+```{python}
+sns.pairplot(penguins, hue="species")
+plt.show()
+```
+
+`pairplot()`関数はデータフレームの数値データの組み合わせについて散布図を作成します。`body_mass_g`と`body_mass_g`のように、自分自身との組み合わせについてはヒストグラムを描画します。`pairplot()`の出力のような変数の組み合わせに対応する散布図とヒストグラムなどをひとまとめにしたものを散布図行列と呼びます。
+
+#### 箱ひげ図
+
+ペンギンデータの数値変数の分布を箱ひげ図を用いて確認します。箱ひげ図はseabornの`boxplot()`関数を使って作成します。
+
+
+```{python}
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+sns.boxplot(x="species", y="bill_length_mm", data=penguins, ax=axes[0])
+sns.boxplot(x="species", y="bill_depth_mm", data=penguins, ax=axes[1])
+plt.show()
+```
+
+::: {.callout-note}
+同様に`flipper_length_mm`と`body_mass_g`についても箱ひげ図を作成しましょう。
+:::
+

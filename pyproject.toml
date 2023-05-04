@@ -21,6 +21,9 @@ numba = "0.56.3"
 notebook = "^6.5.4"
 jupyterlab = "^3.6.3"
 palmerpenguins = "^0.1.4"
+seaborn = "^0.12.2"
+scikit-learn = "^1.2.2"
+jupytext = "^1.14.5"
 
 
 

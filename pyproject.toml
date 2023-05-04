@@ -27,6 +27,8 @@ jupytext = "^1.14.5"
 jupyterlab-code-formatter = "^1.6.1"
 black = "^23.3.0"
 isort = "^5.12.0"
+nbdev = "^2.3.12"
+jupyterlab-quarto = "^0.1.45"
 
 
 

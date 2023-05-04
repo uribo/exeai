@@ -24,6 +24,9 @@ palmerpenguins = "^0.1.4"
 seaborn = "^0.12.2"
 scikit-learn = "^1.2.2"
 jupytext = "^1.14.5"
+jupyterlab-code-formatter = "^1.6.1"
+black = "^23.3.0"
+isort = "^5.12.0"
 
 
 

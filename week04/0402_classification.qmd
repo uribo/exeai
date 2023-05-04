@@ -1,5 +1,5 @@
 ---
-title: "ペンギンデータの分類に挑戦"
+title: ペンギンデータの分類に挑戦
 format: html
 execute:
   keep-ipynb: true
@@ -24,16 +24,16 @@ PythonのScikit-learnライブラリには機械学習モデルの構築から�
 ```{python}
 #| eval: true
 #| echo: false
-from IPython.display import display, Markdown
+from IPython.display import Markdown, display
 ```
 
 ```{python}
-import seaborn as sns
 import pandas as pd
+import seaborn as sns
 
 # scikit-learnのライブラリ
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 ```
@@ -56,12 +56,12 @@ penguins = sns.load_dataset("penguins")
 #| label: 前処理その1
 
 # 1/2 欠損値を含む行を削除
-penguins.dropna(inplace=True) # 元のデータフレームを書き換える場合、inplace=Trueを指定する
+penguins.dropna(inplace=True)  # 元のデータフレームを書き換える場合、inplace=Trueを指定する
 
 # 欠損値を含む行を削除したデータフレームを新たに作成
-#penguins_mod = penguins.dropna()
+# penguins_mod = penguins.dropna()
 # 11行削除されていることを確認
-#penguins_mod.shape
+# penguins_mod.shape
 penguins.shape
 ```
 
@@ -84,6 +84,7 @@ penguins
 ```
 
 | 元の値 | ラベルエンコーディング後の値 |
+|-------|-------------------------|
 | Adele | 0 |
 | Chinstrap | 1 |
 | Gentoo | 2 |
@@ -107,7 +108,9 @@ y = penguins["species"]
 # 訓練データとテストデータに分割
 # test_sizeでテストデータの割合を指定する。ここでは全体の20%をテストデータとする（80%を訓練データとする）
 # random_stateは乱数のシードを指定する引数。この値を変更すると結果が変わるので注意
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=20240508)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=20240508
+)
 ```
 
 ### モデルの構築
@@ -135,13 +138,12 @@ y_pred
 
 ## モデルの評価
 
-
 ```{python}
 # 真の値であるy_testと予測値のy_predを比較して2つの値がどの程度一致しているかを確認する
 # y_testをデータフレームに変換
 y_test_df = pd.DataFrame(y_test)
 # y_predをデータフレームに変換
-y_pred_df = pd.DataFrame(y_pred, columns=['predicted'], index=y_test.index)
+y_pred_df = pd.DataFrame(y_pred, columns=["predicted"], index=y_test.index)
 
 # y_testとy_predのデータフレームを結合
 comparison_df = pd.concat([y_test_df, y_pred_df], axis=1)
@@ -150,17 +152,24 @@ comparison_df = pd.concat([y_test_df, y_pred_df], axis=1)
 comparison_df["correct"] = comparison_df["species"] == comparison_df["predicted"]
 
 # TrueとFalseの数をカウント
-comparison_df.groupby("correct").size().reset_index(name = "count")
+comparison_df.groupby("correct").size().reset_index(name="count")
 ```
 
 ```{python}
 #| echo: false
-predict_mismatch = comparison_df.groupby("correct").size().reset_index(name = "count")["count"][0]
-display(Markdown("""
+predict_mismatch = (
+    comparison_df.groupby("correct").size().reset_index(name="count")["count"][0]
+)
+display(
+    Markdown(
+        """
 不一致の件数は {predict_mismatch}/{total_n}件.
-""".format(predict_mismatch = predict_mismatch, total_n = len(comparison_df))))
+""".format(
+            predict_mismatch=predict_mismatch, total_n=len(comparison_df)
+        )
+    )
+)
 ```
-
 
 sklearn.metricsモジュールの関数を使ってモデルの評価を行います。
 

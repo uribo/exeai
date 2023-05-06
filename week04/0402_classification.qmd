@@ -65,10 +65,7 @@ penguins = sns.load_dataset("penguins")
 # 1/2 欠損値を含む行を削除
 penguins.dropna(inplace=True)  # 元のデータフレームを書き換える場合、inplace=Trueを指定する
 
-# 欠損値を含む行を削除したデータフレームを新たに作成
-# penguins_mod = penguins.dropna()
 # 11行削除されていることを確認
-# penguins_mod.shape
 penguins.shape
 ```
 
@@ -87,6 +84,7 @@ penguins["sex"] = le.fit_transform(penguins["sex"])
 
 
 # 前処理を行ったデータを表示
+# ラベルエンコーディングが適用された3列に注目
 penguins
 ```
 
@@ -95,10 +93,6 @@ penguins
 | Adele | 0 |
 | Chinstrap | 1 |
 | Gentoo | 2 |
-
-```{python}
-penguins.value_counts("species")
-```
 
 ### データ分割
 
@@ -116,7 +110,7 @@ y = penguins["species"]
 # test_sizeでテストデータの割合を指定する。ここでは全体の20%をテストデータとする（80%を訓練データとする）
 # random_stateは乱数のシードを指定する引数。この値を変更すると結果が変わるので注意
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=20240508
+    X, y, test_size=0.2, random_state=20230508
 )
 ```
 
@@ -126,10 +120,12 @@ sklearn.linear_modelモジュールのLogisticRegressionを使ってロジステ
 
 ```{python}
 # ロジスティック回帰モデルを適用し、モデルを訓練
-lr = LogisticRegression()
+# max_iter引数でパラメータ探索のための試行回数を設定（デフォルトでは100）
+lr = LogisticRegression(max_iter = 1000)
 # 訓練データを使ってモデルを訓練
 lr.fit(X_train, y_train)
 ```
+
 
 ### モデルの予測
 
@@ -191,7 +187,7 @@ predict_match = (
 display(
     Markdown(
         """
-一致した件数は {predict_match}/{total_n}件です。
+一致した件数は {predict_match}/{total_n}件です。これは、モデルが正しく予測できたデータの割合が約98%であることを意味します。
 """.format(
             predict_match=predict_match, total_n=len(comparison_df)
         )
@@ -199,7 +195,7 @@ display(
 )
 ```
 
-これは、モデルの正解率が約95%であることを意味します。正解率は、正しく予測できたデータの割合を表します。
+
 
 scikit-learnには、モデルの評価を行うための様々な関数が用意されています。ここでは、sklearn.metricsモジュールの関数を使ってモデルの評価を行います。
 
@@ -250,3 +246,8 @@ plt.show()
 
 - 適合率: TP / (TP + FP)
 - 再現率: TP / (TP + FN)
+
+::: {.callout-note}
+- 数値変数の標準化、ラベルエンコーディングの代わりにダミー変数化を行ったデータでモデルの学習を行いましょう。
+
+:::

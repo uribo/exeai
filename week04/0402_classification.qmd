@@ -28,14 +28,21 @@ from IPython.display import Markdown, display
 ```
 
 ```{python}
+import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import seaborn as sns
 
 # scikit-learnのライブラリ
+from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.metrics import (
+    ConfusionMatrixDisplay,
+    accuracy_score,
+    classification_report,
+    confusion_matrix,
+)
 ```
 
 ```{python}
@@ -136,6 +143,27 @@ y_pred = lr.predict(X_test)
 y_pred
 ```
 
+ロジスティック回帰モデルでは、各クラス（ここではペンギンの種名）に属する確率を出力することもできます。構築したモデルのインスタンスと`predict_proba()`関数を実行すると、各データポイントに対するクラスの所属確率を配列として取得できます。
+
+```{python}
+# テストデータがどのクラスに属するかの確率を出力
+probabilities = lr.predict_proba(X_test)
+```
+
+ペンギンの種名は3つのクラスに分類されるので、`predict_proba()`関数の出力は3列の配列となります。各データポイントに対して、それぞれのクラスに属する確率が出力されています。このうち、最も確率が高いクラスが予測結果となります。
+
+```{python}
+# テストデータの一件目のデータポイントに対するクラス別の所属確率
+# 表示を見やすくするために、小数点以下4桁まで表示するように設定
+np.set_printoptions(suppress=True, formatter={"float": "{:.4f}".format})
+print(probabilities[0])
+```
+
+```{python}
+# 実際の予測結果
+y_pred[0]
+```
+
 ## モデルの評価
 
 ```{python}
@@ -157,23 +185,25 @@ comparison_df.groupby("correct").size().reset_index(name="count")
 
 ```{python}
 #| echo: false
-predict_mismatch = (
-    comparison_df.groupby("correct").size().reset_index(name="count")["count"][0]
+predict_match = (
+    comparison_df.groupby("correct").size().reset_index(name="count")["count"][1]
 )
 display(
     Markdown(
         """
-不一致の件数は {predict_mismatch}/{total_n}件.
+一致した件数は {predict_match}/{total_n}件です。
 """.format(
-            predict_mismatch=predict_mismatch, total_n=len(comparison_df)
+            predict_match=predict_match, total_n=len(comparison_df)
         )
     )
 )
 ```
 
-sklearn.metricsモジュールの関数を使ってモデルの評価を行います。
+これは、モデルの正解率が約95%であることを意味します。正解率は、正しく予測できたデータの割合を表します。
 
-`accuracy_score()`関数は、正解率を計算する関数です。正解率は、正しく予測できたデータの割合を表します。この値は先ほど確認した
+scikit-learnには、モデルの評価を行うための様々な関数が用意されています。ここでは、sklearn.metricsモジュールの関数を使ってモデルの評価を行います。
+
+`accuracy_score()`関数は、正解率を計算する関数です。正解率は、正しく予測できたデータの割合を表します。この値は先ほど確認した正解率と一致します。
 
 ```{python}
 # モデルを評価
@@ -186,8 +216,37 @@ print("Accuracy:", accuracy_score(y_test, y_pred))
 print("Classification Report:\n", classification_report(y_test, y_pred))
 ```
 
+各クラスごとに、
+precision、recall、f1-score、supportの4つの値が表示されます。それぞれの値の意味は以下の通りです。
+
+- precision: 適合率。正と予測したデータのうち、実際に正であるものの割合。
+- recall: 再現率。実際に正であるもののうち、正であると予測されたものの割合。
+- f1-score: 適合率と再現率の調和平均により得られた値。適合率と再現率のバランスを考慮した評価指標。この値が高いほど、適合率と再現率の両方が高いことを示す。
+- support: 分類されたデータ数。
+
 ### 混合行列
 
+最後に、分類モデルの性能評価に使われる混合行列を確認しましょう。混合行列は、モデルの予測結果と実際のクラスの関係を4つの要素に分類した行列です。以下の4つの要素に分類されます。
+
+- True Positive（TP）：正のクラスを正と予測し、実際に正である場合。
+- False Positive（FP）：正のクラスを正と予測したが、実際には負である場合。
+- True Negative（TN）：負のクラスを負と予測し、実際に負である場合。
+- False Negative（FN）：負のクラスを負と予測したが、実際には正である場合。
+
+scikit-learnでは、`confusion_matrix()`関数を使って混合行列を作成できます。ここではさらに、`ConfusionMatrixDisplay()`関数を使って混合行列を可視化する例を示します。
+
 ```{python}
-print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+cm = confusion_matrix(y_test, y_pred)
+
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=lr.classes_)
+
+disp.plot()
+plt.show()
 ```
+
+混合行列を見ることで、どのクラスが誤分類されやすいかを確認することができます。また、適合率や再現率の値がどのように計算されているかを理解することができます。
+
+具体的には以下のように計算されます。
+
+- 適合率: TP / (TP + FP)
+- 再現率: TP / (TP + FN)

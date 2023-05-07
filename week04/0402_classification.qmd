@@ -121,11 +121,10 @@ sklearn.linear_modelモジュールのLogisticRegressionを使ってロジステ
 ```{python}
 # ロジスティック回帰モデルを適用し、モデルを訓練
 # max_iter引数でパラメータ探索のための試行回数を設定（デフォルトでは100）
-lr = LogisticRegression(max_iter = 1000)
+lr = LogisticRegression(max_iter=1000)
 # 訓練データを使ってモデルを訓練
 lr.fit(X_train, y_train)
 ```
-
 
 ### モデルの予測
 
@@ -194,8 +193,6 @@ display(
     )
 )
 ```
-
-
 
 scikit-learnには、モデルの評価を行うための様々な関数が用意されています。ここでは、sklearn.metricsモジュールの関数を使ってモデルの評価を行います。
 

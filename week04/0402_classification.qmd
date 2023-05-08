@@ -17,7 +17,7 @@ jupyter:
     name: python3
 ---
 
-[0401_penquins.ipynb](0401_penquins.ipynb)では、ペンギンデータを可視化し、データの特徴を把握しました。このデータを使って、ペンギンの種類を分類する機械学習モデルを構築しましょう。
+[0401_penguins.ipynb](https://github.com/uribo/exeai/blob/main/week04/0401_penguins.ipynb)では、ペンギンデータを可視化し、データの特徴を把握しました。このデータを使って、ペンギンの種類を分類する機械学習モデルを構築しましょう。
 
 PythonのScikit-learnライブラリには機械学習モデルの構築から評価に必要な機能が含まれています。そのため今回はScikit-learnライブラリを使ってペンギンデータを分類する機械学習モデルを構築します。
 
@@ -90,7 +90,7 @@ penguins
 
 | 元の値 | ラベルエンコーディング後の値 |
 |-------|-------------------------|
-| Adele | 0 |
+| Adelie | 0 |
 | Chinstrap | 1 |
 | Gentoo | 2 |
 

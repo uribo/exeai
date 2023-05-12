@@ -1,0 +1,30 @@
+project:
+  type: book
+
+lang: ja
+
+book:
+  title: "AI総合演習"
+  author: "瓜生真也"
+  date: "2023/5/12"
+  chapters:
+    - index.qmd
+    - week01/guidance.qmd
+    - part: week02/index.qmd
+      chapters: 
+        - week02/0201_pandas.qmd
+        - week02/0202_matplotlib.qmd
+    - part: week03/index.qmd
+      chapters: 
+        - week03/03_mathematics.qmd
+    - part: week04/index.qmd
+      chapters: 
+        - week04/0401_penguins.qmd
+        - week04/0402_classification.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo

@@ -1,0 +1,19 @@
+# プログラミング入門
+
+スライド: [https://github.com/uribo/exeai/blob/main/slide/02_プログラミング入門.pdf](https://github.com/uribo/exeai/blob/main/slide/02_プログラミング入門.pdf)
+
+- プログラミング
+- Jupyter Project
+- Python
+- 依存性地獄とバージョン
+- AIによるプログラミング支援
+
+## この章の参考資料・URL
+
+- [@R300000001-I030570561-00]
+- [@R300000001-I031401828-00]
+- [@R300000001-I030372878-00]
+- [@isbn978-4-87311-778-2]
+- [@R300000001-I030584765-00]
+- https://docs.python.org/3/
+- https://www.python.jp/train/index.html

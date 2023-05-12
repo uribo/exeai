@@ -11,3 +11,6 @@ keynote.savedSearch
 *.html
 *_files/
 /.luarc.json
+*.pxd
+/.quarto/
+_book/

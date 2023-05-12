@@ -1,0 +1,53 @@
+---
+title: pandas基礎
+execute:
+  keep-ipynb: true
+jupyter:
+  jupytext:
+    formats: 'ipynb,qmd'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.14.5
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+
+pandasは、Pythonでさまざまなデータ分析を効率的に行うことができるライブラリです。ここではpandasの基本的な使い方を学びます。
+
+まずはpandasをインポートします。もしpandasがインストールされていない場合、`pip install pandas`でインストールしてください。
+
+
+```{python}
+# pandasの読み込み ... pdとして参照できるようにします
+import pandas as pd
+```
+
+```{python}
+# seies
+sr = pd.Series([1, 2, 3, 4, 5])
+sr
+```
+
+```{python}
+import numpy as np
+
+data = np.array(
+    [
+        [63.5, 100, 64, 110, 85],
+        [6, 3.5, 5.4, 6.5, 60],
+        ["レッサーパンダ", "ホオジロカンムリヅル", "コツメカワウソ", "カナダガン", "チンパンジー"],
+    ]
+).T
+```
+
+```{python}
+# data frame (df)
+df = pd.DataFrame(data, columns=["body_length_cm", "weight_kg", "name"])
+
+df
+```

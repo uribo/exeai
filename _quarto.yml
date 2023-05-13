@@ -7,6 +7,9 @@ book:
   title: "AI総合演習"
   author: "瓜生真也"
   date: "2023/5/12"
+  search: true
+  reader-mode: true
+  google-analytics: "G-57R1KWZ3ZJ"
   chapters:
     - index.qmd
     - week01/guidance.qmd
@@ -22,9 +25,27 @@ book:
         - week04/0401_penguins.qmd
         - week04/0402_classification.qmd
     - references.qmd
+  site-url: https://uribo.github.io/exeai/
+  repo-url: https://github.com/uribo/exeai
+  repo-branch: main
+  repo-actions: [edit, issue]
+  page-footer: 
+    background: light
+    left: "Copyright 2023, Shinya Uryu"
+    right: 
+      - icon: github
+        href: https://github.com/uribo
+      - icon: twitter 
+        href: https://twitter.com/u_ribo
 
 bibliography: references.bib
+ascii: false
 
 format:
   html:
-    theme: cosmo
+    theme: 
+      light: cosmo
+      dark: darkly
+    code-link: false
+    highlight-style: github
+

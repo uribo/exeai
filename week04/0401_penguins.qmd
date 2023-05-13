@@ -98,6 +98,14 @@ print("ペンギンの種類: ", penguins["species"].unique())
 penguins.groupby("species").size().reset_index(name="count")
 ```
 
+::: {layout-ncol=3}
+![アデリーペンギン](../img/Pygoscelis_adeliae_adelie.png)
+
+![ヒゲペンギン](../img/Pygoscelis_antarctica_chinstrap.png)
+
+![ジェンツーペンギン](../img/Pygoscelis_papua_gentoo.png)
+:::
+
 ### 統計量
 
 pandasの`describe()`関数を使うと、平均値や標準偏差、最小値・最大値といった複数の統計量を一度に確認できます。

@@ -1,6 +1,8 @@
 project:
   type: book
   output-dir: _book
+  resources: 
+    - "img/open_graph.png"
 
 lang: ja
 
@@ -13,7 +15,7 @@ book:
   google-analytics: "G-57R1KWZ3ZJ"
   twitter-card: 
     creator: "@u_ribo"
-    image: "/img/open_graph.png"
+    image: "img/open_graph.png"
   open-graph: true
 
   chapters:

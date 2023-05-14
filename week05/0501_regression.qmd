@@ -32,6 +32,12 @@ from IPython.display import Markdown, display
 利用するライブラリとデータを次のコードで読み込みます。
 
 ```{python}
+#| echo: fenced
+# japanize_matplotlibのインストール
+!pip install -qq japanize_matplotlib
+```
+
+```{python}
 import japanize_matplotlib  # matplotlibの日本語化
 import matplotlib.pyplot as plt  # 作図
 import numpy as np  # 数値計算、配列の操作

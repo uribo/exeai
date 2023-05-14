@@ -26,6 +26,12 @@ jupyter:
 Python標準ライブラリおよびJupyterHub環境（`hub-scipy-notebook`を想定）で導入済みのライブラリを使用します。ここで扱う数学的な処理は標準ライブラリの`math`と数値計算、多次元配列を扱うライブラリである`NumPy`です。どちらも同様の機能を提供します。
 
 ```{python}
+#| echo: fenced
+# japanize_matplotlibのインストール
+!pip install -qq japanize_matplotlib
+```
+
+```{python}
 # 利用するライブラリを読み込む
 # as で別名をつけることができる（長いライブラリ名を省略）
 import math # 数学演算のための標準ライブラリ

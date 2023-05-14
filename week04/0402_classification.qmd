@@ -35,14 +35,17 @@ import seaborn as sns
 
 # scikit-learnのライブラリ
 from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import LabelEncoder, StandardScaler
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import (
     ConfusionMatrixDisplay,
     accuracy_score,
     classification_report,
     confusion_matrix,
+    f1_score,
+    precision_score,
+    recall_score,
 )
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 ```
 
 ```{python}
@@ -217,7 +220,16 @@ precision、recall、f1-score、supportの4つの値が表示されます。そ�
 - f1-score: 適合率と再現率の調和平均により得られた値。適合率と再現率のバランスを考慮した評価指標。この値が高いほど、適合率と再現率の両方が高いことを示す。
 - support: 分類されたデータ数。
 
-ここで出力される評価指標については`accuracy_score()`関数のように個別の関数を使った算出も可能です。具体的にはprecisionは`precision_score()`、recallは`recall_score()`、f1-scoreは`f1_score()`関数を利用します。
+ここで出力される評価指標については`accuracy_score()`関数のように個別の関数を使った算出も可能です。具体的にはprecisionは`precision_score()`、recallは`recall_score()`、f1-scoreは`f1_score()`関数を利用して求めます。
+
+```{python}
+#| eval: false
+#| echo: true
+#| code-fold: false
+print("Precision:", precision_score(y_test, y_pred, average=None))
+print("Recall:", recall_score(y_test, y_pred, average=None))
+print("F1-Score:", f1_score(y_test, y_pred, average=None))
+```
 
 ### 混合行列
 
@@ -245,6 +257,28 @@ plt.show()
 
 - 適合率: TP / (TP + FP)
 - 再現率: TP / (TP + FN)
+
+今回構築したロジスティック回帰モデルでの適合率を計算してみましょう。ここでは、ペンギンデータの3種のラベルそれぞれの適合率を以下のように計算します。
+
+```{python}
+for i in range(3):  # ラベルは0, 1, 2の3種類
+    # True Positiveの数
+    TP = np.sum((y_pred == i) & (np.array(y_test) == i))
+
+    # False Positiveの数
+    FP = np.sum((y_pred == i) & (np.array(y_test) != i))
+
+    # Precisionの計算
+    precision = TP / (TP + FP)
+
+    print(f"Precision for label {i}: {precision}")
+```
+
+このラベルごとの適合率を平均した値が、モデルの適合率となります。`precision_score()`関数はデフォルトでラベルごとの適合率を計算しますが、`average`引数を指定することで、ラベルごとの適合率の平均値を求めることができます。
+
+```{python}
+print("Average Precision:", precision_score(y_test, y_pred, average="macro"))
+```
 
 ::: {.callout-note}
 - 数値変数の標準化、ラベルエンコーディングの代わりにダミー変数化を行ったデータでモデルの学習を行いましょう。

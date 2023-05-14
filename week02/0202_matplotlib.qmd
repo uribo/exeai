@@ -16,7 +16,12 @@ jupyter:
     name: python3
 ---
 
-
+```{python}
+#| echo: fenced
+# japanize_matplotlibとpolarsのインストール
+!pip install -qq japanize_matplotlib 
+!pip install -qq polars pyarrow
+```
 
 ```{python}
 # 利用するライブラリを読み込む
@@ -129,7 +134,6 @@ plt.show()
 ```
 
 #### 棒グラフの塗り分け
-
 
 ```{python}
 # グループごとに値を集計

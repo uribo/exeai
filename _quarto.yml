@@ -17,6 +17,7 @@ book:
     creator: "@u_ribo"
     image: "img/open_graph.png"
   open-graph: true
+  sharing: [twitter]
 
   chapters:
     - index.qmd

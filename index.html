@@ -73,6 +73,17 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </script>
 
 
+<meta property="og:title" content="AI総合演習">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://colab.research.google.com/assets/colab-badge.svg">
+<meta property="og:site-name" content="AI総合演習">
+<meta name="twitter:title" content="AI総合演習">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://uribo.github.io/exeai//img/open_graph.png">
+<meta name="twitter:creator" content="@u_ribo">
+<meta name="twitter:image-height" content="640">
+<meta name="twitter:image-width" content="1280">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating">
@@ -193,12 +204,58 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./week05/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">機械学習の手法</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week05/0501_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">線形回帰モデルによるペンギンの体重の予測</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week05/0502_svm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">サポートベクターマシン</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week05/0503_k-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">k平均法によるクラスタリング</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">参考資料・URL</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">付録</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix/jupyternotebook.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Jupyter Notebook</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -211,6 +268,8 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   <ul>
   <li><a href="#ようこそ" id="toc-ようこそ" class="nav-link active" data-scroll-target="#ようこそ">ようこそ</a>
   <ul class="collapse">
+  <li><a href="#演習プログラムの実行" id="toc-演習プログラムの実行" class="nav-link" data-scroll-target="#演習プログラムの実行">演習プログラムの実行</a></li>
+  <li><a href="#講義計画" id="toc-講義計画" class="nav-link" data-scroll-target="#講義計画">講義計画</a></li>
   <li><a href="#ライセンス" id="toc-ライセンス" class="nav-link" data-scroll-target="#ライセンス">ライセンス</a></li>
   </ul></li>
   </ul>
@@ -251,13 +310,26 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <section id="ようこそ" class="level1 unnumbered">
 <h1 class="unnumbered">ようこそ</h1>
 <p>この資料は徳島大学 教養教育院・教養科目群・自然と技術の「AI総合演習」（INTT1520JLAS01）についての補助教材です。講義で扱った内容について、<a href="https://quarto.org">Quarto</a>によるブック形式で提供しています。内容は、講義名のとおり、AI（人工知能）に含まれる機械学習、深層学習について、Pythonプログラミングによる演習形式で行います。</p>
+<section id="演習プログラムの実行" class="level2">
+<h2 class="anchored" data-anchor-id="演習プログラムの実行">演習プログラムの実行</h2>
+<p>自身のコンピュータ上に用意した、ローカルJupyter環境あるいはリモートJupyter環境での利用を想定します。</p>
+<p>リモート環境としてGoogle Colaboratoryが利用できます。プログラムの実行にはアカウント登録が必要です。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/uribo/exeai/blob/main/"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption class="figure-caption">Open In Colab</figcaption>
+</figure>
+</div>
+</section>
+<section id="講義計画" class="level2">
+<h2 class="anchored" data-anchor-id="講義計画">講義計画</h2>
 <p>講義の計画は以下の通りです。2023年5月12日現在、前期の講義が進行中であり、内容は順次追加されていきます。</p>
 <ol type="1">
 <li><a href="./week01/guidance.html">ガイダンス</a></li>
 <li><a href="./week02/index.html">プログラミング入門</a></li>
 <li><a href="./week03/index.html">機械学習の背景・数理</a></li>
 <li><a href="./week04/index.html">機械学習モデルの設計と評価</a></li>
-<li>機械学習の手法</li>
+<li><a href="./week05/index.html">機械学習の手法</a></li>
 <li>機械学習モデルの解釈・説明性</li>
 <li>演習1</li>
 <li>深層学習の基礎</li>
@@ -270,6 +342,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <li>課題解決型演習の発表と振り返り</li>
 </ol>
 <p>このページの元となるファイルは<a href="https://github.com/uribo/exeai">GitHubリポジトリ</a>でも公開しています。そこでは講義中に投影したスライド資料（一部、公開のために調整したものもあり）も含まれます。内容の誤りや誤字脱字、不明点や改善のためのコメント等はGitHub issuesあるいはpull requestを通して行うことが可能です。資料の品質向上のために協力いただけますと幸いです。</p>
+</section>
 <section id="ライセンス" class="level2">
 <h2 class="anchored" data-anchor-id="ライセンス">ライセンス</h2>
 <p>資料のうち、プログラム部分以外（文章や画像）は<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 改変禁止 4.0 国際 (CC BY-NC-ND 4.0)</a>、プログラム部分はMITライセンスに従い、利用できます。</p>

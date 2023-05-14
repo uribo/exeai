@@ -5,6 +5,16 @@ AI総合演習
 
 ナンバリング: INTT1520JLAS01
 
+講義中に投影した資料とその他の教材を提供しています。
+
+## 演習プログラムの実行
+
+自身のコンピュータ上に用意した、ローカルJupyter環境あるいはリモートJupyter環境での利用を想定します。
+
+リモート環境としてGoogle Colaboratoryが利用できます。プログラムの実行にはアカウント登録が必要です。
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/uribo/exeai/blob/main/)
+
 ## 授業計画と内容
 
 | 回 | 内容 | 資料 |

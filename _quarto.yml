@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: _book
 
 lang: ja
 
@@ -10,6 +11,11 @@ book:
   search: true
   reader-mode: true
   google-analytics: "G-57R1KWZ3ZJ"
+  twitter-card: 
+    creator: "@u_ribo"
+    image: "/img/open_graph.png"
+  open-graph: true
+
   chapters:
     - index.qmd
     - week01/guidance.qmd
@@ -24,7 +30,15 @@ book:
       chapters: 
         - week04/0401_penguins.qmd
         - week04/0402_classification.qmd
+    - part: week05/index.qmd
+      chapters: 
+        - week05/0501_regression.qmd
+        - week05/0502_svm.qmd
+        - week05/0503_k-means.qmd
     - references.qmd
+  appendices:
+    - appendix/jupyternotebook.qmd
+
   site-url: https://uribo.github.io/exeai/
   repo-url: https://github.com/uribo/exeai
   repo-branch: main

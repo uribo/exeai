@@ -14,3 +14,4 @@ keynote.savedSearch
 *.pxd
 /.quarto/
 _book/
+.virtual_documents

@@ -119,11 +119,10 @@ print(penguins["bill_depth_mm"].std())
 ```
 
 ```{python}
-#| label: ペンギンデータのbill_length_mmとbill_depth_mmのヒストグラム
-# ペンギンデータのbill_length_mmとbill_depth_mmのヒストグラムを作成
-fig, ax = plt.subplots(1, 2, figsize=(12, 4))
+#| label: ペンギンデータのbill_length_mmとbill_depth_mmのヒストグラムを作成
+fig, ax = plt.subplots(1, 2, figsize=(6.8, 3))
 sns.histplot(penguins, x="bill_length_mm", ax=ax[0], color="#284b67")
-sns.histplot(penguins, x="bill_length_mm", ax=ax[1], color="#284b67")
+sns.histplot(penguins, x="bill_depth_mm", ax=ax[1], color="#1a2127")
 plt.show()
 ```
 
@@ -165,10 +164,10 @@ print(penguins["bill_depth_mm"].std())
 
 ```{python}
 #| label: ペンギンデータのbill_length_mmとbill_depth_mmを標準化したヒストグラム
-#| echo: false
-fig, ax = plt.subplots(1, 2, figsize=(12, 4))
+#| code-fold: true
+fig, ax = plt.subplots(1, 2, figsize=(6.8, 3))
 sns.histplot(penguins, x="bill_length_mm", ax=ax[0], color="#284b67")
-sns.histplot(penguins, x="bill_length_mm", ax=ax[1], color="#284b67")
+sns.histplot(penguins, x="bill_depth_mm", ax=ax[1], color="#1a2127")
 plt.show()
 ```
 

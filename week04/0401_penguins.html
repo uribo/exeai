@@ -77,6 +77,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -532,29 +535,23 @@ memory usage: 18.9+ KB</code></pre>
 </div>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><img src="../img/Pygoscelis_adeliae_adelie.png" class="img-fluid figure-img"></p>
+<p><a href="../img/Pygoscelis_adeliae_adelie.png" class="lightbox" title="アデリーペンギン" data-gallery="quarto-lightbox-gallery-1"><img src="../img/Pygoscelis_adeliae_adelie.png" class="img-fluid figure-img"></a></p>
 <figcaption class="figure-caption">アデリーペンギン</figcaption>
 </figure>
 </div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><img src="../img/Pygoscelis_antarctica_chinstrap.png" class="img-fluid figure-img"></p>
+<p><a href="../img/Pygoscelis_antarctica_chinstrap.png" class="lightbox" title="ヒゲペンギン" data-gallery="quarto-lightbox-gallery-2"><img src="../img/Pygoscelis_antarctica_chinstrap.png" class="img-fluid figure-img"></a></p>
 <figcaption class="figure-caption">ヒゲペンギン</figcaption>
 </figure>
 </div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 33.3%;justify-content: center;">
 <figure class="figure">
-<p><img src="../img/Pygoscelis_papua_gentoo.png" class="img-fluid figure-img"></p>
+<p><a href="../img/Pygoscelis_papua_gentoo.png" class="lightbox" title="ジェンツーペンギン" data-gallery="quarto-lightbox-gallery-3"><img src="../img/Pygoscelis_papua_gentoo.png" class="img-fluid figure-img"></a></p>
 <figcaption class="figure-caption">ジェンツーペンギン</figcaption>
 </figure>
-</div>
 </div>
 </div>
 </div>
@@ -863,7 +860,11 @@ memory usage: 18.9+ KB</code></pre>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="0401_penguins_files/figure-html/cell-11-output-1.png" width="585" height="429"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="0401_penguins_files/figure-html/cell-11-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="0401_penguins_files/figure-html/cell-11-output-1.png" width="585" height="429" class="figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>複数の変数の組み合わせについて散布図を作成するには、seabornの<code>pairplot()</code>関数を利用します。</p>
@@ -871,7 +872,11 @@ memory usage: 18.9+ KB</code></pre>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sns.pairplot(penguins, hue<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="0401_penguins_files/figure-html/cell-12-output-1.png" width="1068" height="947"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="0401_penguins_files/figure-html/cell-12-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="0401_penguins_files/figure-html/cell-12-output-1.png" width="1068" height="947" class="figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>pairplot()</code>関数はデータフレームの数値データの組み合わせについて散布図を作成します。<code>body_mass_g</code>と<code>body_mass_g</code>のように、自分自身との組み合わせについてはヒストグラムを描画します。<code>pairplot()</code>の出力のような変数の組み合わせに対応する散布図とヒストグラムなどをひとまとめにしたものを散布図行列と呼びます。</p>
@@ -885,7 +890,11 @@ memory usage: 18.9+ KB</code></pre>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"bill_depth_mm"</span>, data<span class="op">=</span>penguins, ax<span class="op">=</span>axes[<span class="dv">1</span>])</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="0401_penguins_files/figure-html/cell-13-output-1.png" width="957" height="429"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="0401_penguins_files/figure-html/cell-13-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="0401_penguins_files/figure-html/cell-13-output-1.png" width="957" height="429" class="figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1302,6 +1311,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":true,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom"});</script>
 
 
 

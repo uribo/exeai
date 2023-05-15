@@ -77,6 +77,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -519,10 +522,18 @@ The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the valu
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>penguins, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, y<span class="op">=</span><span class="st">"bill_depth_mm"</span>, hue<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="0503_k-means_files/figure-html/cell-8-output-1.png" width="585" height="429"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="0503_k-means_files/figure-html/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="0503_k-means_files/figure-html/cell-8-output-1.png" width="585" height="429" class="figure-img"></a></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="0503_k-means_files/figure-html/cell-8-output-2.png" width="585" height="429"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="0503_k-means_files/figure-html/cell-8-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="0503_k-means_files/figure-html/cell-8-output-2.png" width="585" height="429" class="figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>不一致のデータを確認してみましょう。</p>
@@ -536,7 +547,11 @@ The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the valu
 <pre><code>&lt;Axes: xlabel='bill_length_mm', ylabel='bill_depth_mm'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="0503_k-means_files/figure-html/cell-9-output-2.png" width="585" height="429"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="0503_k-means_files/figure-html/cell-9-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="0503_k-means_files/figure-html/cell-9-output-2.png" width="585" height="429" class="figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -930,6 +945,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"loop":true,"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","selector":".lightbox"});</script>
 
 
 

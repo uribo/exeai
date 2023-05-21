@@ -2,66 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://uribo.github.io/exeai/index.html</loc>
-    <lastmod>2023-05-21T13:00:04.411Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.479Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/week01/guidance.html</loc>
-    <lastmod>2023-05-21T13:00:04.419Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.487Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/week02/index.html</loc>
-    <lastmod>2023-05-21T13:00:04.427Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.495Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/week02/0201_pandas.html</loc>
-    <lastmod>2023-05-21T13:00:04.435Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.507Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/week02/0202_matplotlib.html</loc>
-    <lastmod>2023-05-21T13:00:04.463Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.535Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/week03/index.html</loc>
-    <lastmod>2023-05-21T13:00:04.471Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.543Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/week03/03_mathematics.html</loc>
-    <lastmod>2023-05-21T13:00:04.507Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.575Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/week04/index.html</loc>
-    <lastmod>2023-05-21T13:00:04.511Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.583Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/week04/0401_penguins.html</loc>
-    <lastmod>2023-05-21T13:00:04.531Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.603Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/week04/0402_classification.html</loc>
-    <lastmod>2023-05-21T13:00:04.563Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.635Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/week05/index.html</loc>
-    <lastmod>2023-05-21T13:00:04.567Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.643Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/week05/0501_regression.html</loc>
-    <lastmod>2023-05-21T13:00:04.603Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.679Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/week05/0502_svm.html</loc>
-    <lastmod>2023-05-21T13:00:04.619Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.695Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/week05/0503_k-means.html</loc>
-    <lastmod>2023-05-21T13:00:04.631Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.711Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uribo.github.io/exeai/week06/0601_interpretable_model.html</loc>
+    <lastmod>2023-05-21T23:39:52.747Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uribo.github.io/exeai/week06/0602_patial_dependence.html</loc>
+    <lastmod>2023-05-21T23:39:52.759Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/references.html</loc>
-    <lastmod>2023-05-21T13:00:04.639Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.767Z</lastmod>
   </url>
   <url>
     <loc>https://uribo.github.io/exeai/appendix/jupyternotebook.html</loc>
-    <lastmod>2023-05-21T13:00:04.651Z</lastmod>
+    <lastmod>2023-05-21T23:39:52.779Z</lastmod>
   </url>
 </urlset>

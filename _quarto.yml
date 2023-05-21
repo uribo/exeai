@@ -41,6 +41,10 @@ book:
         - week05/0501_regression.qmd
         - week05/0502_svm.qmd
         - week05/0503_k-means.qmd
+    - part: week06/index.qmd
+      chapters: 
+        - week06/0601_interpretable_model.qmd
+        - week06/0602_patial_dependence.qmd
     - references.qmd
   appendices:
     - appendix/jupyternotebook.qmd

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,7 +96,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "追加の検索結果",
     "search-clear-button-title": "消去",
     "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "検索"
+    "search-submit-button-title": "検索",
+    "search-label": "サーチ"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-57R1KWZ3ZJ"></script>
@@ -141,7 +142,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week05/index.html">機械学習の手法</a></li><li class="breadcrumb-item"><a href="../week05/0502_svm.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">サポートベクターマシン</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -665,8 +666,8 @@ Name: count, dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 複数の評価指標（正解率、再現率）を用いる</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cross_validate(svm, X, y, cv<span class="op">=</span>skf, scoring<span class="op">=</span>[<span class="st">'accuracy'</span>, <span class="st">'recall_macro'</span>], return_train_score<span class="op">=</span><span class="va">True</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>{'fit_time': array([0.00267982, 0.00260592, 0.00261998, 0.00263882, 0.00265479]),
- 'score_time': array([0.00310683, 0.00297475, 0.00299549, 0.00301337, 0.00296068]),
+<pre><code>{'fit_time': array([0.00436878, 0.00421858, 0.00406528, 0.00465488, 0.00447226]),
+ 'score_time': array([0.00592041, 0.00549102, 0.00436831, 0.00505614, 0.00542164]),
  'test_accuracy': array([0.98507463, 1.        , 1.        , 0.98484848, 1.        ]),
  'train_accuracy': array([0.9924812 , 0.9924812 , 0.9924812 , 0.99250936, 0.99625468]),
  'test_recall_macro': array([0.97435897, 1.        , 1.        , 0.97619048, 1.        ]),
@@ -1070,7 +1071,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":true,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":true});</script>
 
 
 

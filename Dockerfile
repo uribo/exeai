@@ -1,8 +1,5 @@
 FROM python:3.10.11-slim-buster@sha256:db07f5bb942084a04995a26250c1294373de8b7ca2c2ed0fc31120cc73ed8618
 
-# install quarto dependencies
-
-
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     git \

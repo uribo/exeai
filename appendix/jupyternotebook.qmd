@@ -18,12 +18,30 @@ jupyter:
 
 ## ローカル実行
 
+自身のコンピュータ上にPython環境を整備して実行する方法です。リモート実行環境とは異なり、自身のコンピュータ上で動作できるため、気軽に実行できる反面、環境構築に知識と手間がかかります。
+
 ### Windows
 
+- anaconda
+- VSCode + WSL + Docker
+
 ### macOS
+
+- VSCode + Docker
 
 ## リモート実行環境
 
 ### Google Colaboratory (Colab)
 
+利用にはGoogleアカウントが必要
+
+無料でGPUを利用できる
+
 ### SageMaker Studio
+
+Amazon
+
+### Kaggle
+
+### Binder
+

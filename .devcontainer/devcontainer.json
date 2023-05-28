@@ -28,7 +28,8 @@
 				"usernamehw.errorlens",
 				"GitHub.copilot",
 				"quarto.quarto",
-				"sumneko.lua"
+				"sumneko.lua",
+				"GitHub.vscode-pull-request-github"
 			]
 		}
 	}

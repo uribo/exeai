@@ -19,13 +19,13 @@ AI総合演習
 
 | 回 | 内容 | 資料 |
 |----|:-----|:-----|
-| 1  | ガイダンス | [`slide/01_人工知能開発の歴史と背景.pdf`](slide/01_人工知能開発の歴史と背景.pdf) |
-| 2  | プログラミング入門 | [`slide/02_プログラミング入門.pdf`](slide/02_プログラミング入門.pdf), [`week02/matplotlib.ipynb`](week02/0202_matplotlib.ipynb) |
-| 3  | 機械学習の背景・数理 | [`slide/03_機械学習の数理背景.pdf`](slide/03_機械学習の数理背景.pdf), [`week03/03_mathematics.ipynb`](week03/03_mathematics.ipynb) |
-| 4  | 機械学習モデルの設計と評価 | [`slide/04_機械学習モデルの設計と評価.pdf`](slide/04_機械学習モデルの設計と評価.pdf), [`week04/0401_penguins.ipynb`](week04/0401_penguins.ipynb), [`week04/0402_classification.ipynb`](week04/0402_classification.ipynb) |
-| 5  | 機械学習の手法 | [slide/05_機械学習の手法.pdf](slide/05_機械学習の手法.pdf) |
-| 6  | 機械学習モデルの解釈・説明性 | |
-| 7  | 演習1 | |
+| 1  | ガイダンス | [`01_人工知能開発の歴史と背景.pdf`](slide/01_人工知能開発の歴史と背景.pdf) |
+| 2  | プログラミング入門 | [`02_プログラミング入門.pdf`](slide/02_プログラミング入門.pdf), [`matplotlib.ipynb`](week02/0202_matplotlib.ipynb) |
+| 3  | 機械学習の背景・数理 | [`03_機械学習の数理背景.pdf`](slide/03_機械学習の数理背景.pdf), [`03_mathematics.ipynb`](week03/03_mathematics.ipynb) |
+| 4  | 機械学習モデルの設計と評価 | [`04_機械学習モデルの設計と評価.pdf`](slide/04_機械学習モデルの設計と評価.pdf), [`0401_penguins.ipynb`](week04/0401_penguins.ipynb), [`0402_classification.ipynb`](week04/0402_classification.ipynb) |
+| 5  | 機械学習の手法 | [`05_機械学習の手法.pdf`](slide/05_機械学習の手法.pdf), [`0501_regression.ipynb`](week05/0501_regression.ipynb), [`0502_svm.ipynb`](week05/0502_svm.ipynb), [`0503_k-means.ipynb`](week05/0503_k-means.ipynb) |
+| 6  | 機械学習モデルの解釈・説明性 | [`0601_interpretable_model.ipynb`](week06/0601_interpretable_model.ipynb), [`0602_patial_dependence.ipynb`](week06/0602_patial_dependence.ipynb) |
+| 7  | 演習1 | [`07_exercise.ipynb`](week07/07_exercise.ipynb) |
 | 8  | 深層学習の基礎 | | 
 | 9  | 実社会での応用 | |
 | 10 | 深層生成モデル | |

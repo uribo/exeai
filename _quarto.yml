@@ -48,7 +48,6 @@ book:
     - part: week07/index.qmd
       chapters: 
         - week07/07_exercise.qmd
-        - week07/0702_exercise_exp.qmd
     - references.qmd
   appendices:
     - appendix/jupyternotebook.qmd

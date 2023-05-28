@@ -1,0 +1,5 @@
+# 演習1
+
+- [電気使用実績を予測するモデルの構築](07_exercise.qmd)
+- [AIを活用したツール](../appendix/ai_tools.qmd)
+- [Visual Studio Code](../appendix/vscode.qmd)

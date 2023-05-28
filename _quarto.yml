@@ -45,9 +45,16 @@ book:
       chapters: 
         - week06/0601_interpretable_model.qmd
         - week06/0602_patial_dependence.qmd
+    - part: week07/index.qmd
+      chapters: 
+        - week07/07_exercise.qmd
+        - week07/0702_exercise_exp.qmd
     - references.qmd
   appendices:
     - appendix/jupyternotebook.qmd
+    - appendix/ai_tools.qmd
+    - appendix/vscode.qmd
+    - appendix/docker.qmd
 
   site-url: https://uribo.github.io/exeai/
   repo-url: https://github.com/uribo/exeai

@@ -1,0 +1,41 @@
+---
+title: AIを活用したツール
+execute:
+  keep-ipynb: true
+jupyter:
+  jupytext:
+    formats: 'ipynb,qmd'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.14.5
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+AIを活用した技術は、日々めまぐるしく移り変わっています。次から次へと新しい技術が登場し、そのたびに新しいツールが提供されています。ここでは、その中から、特にデータサイエンス、機械学習、プログラミングの分野で活用できるツールを紹介します。
+
+## GitHub Copilot
+
+[GitHub Copilot](https://github.com/features/copilot/)は[GitHub](https://github.com)が提供する、AIを活用したプログラミング支援のツールです。利用にはGitHubのアカウントが必要で、試用期間が終わると有料になります。ただし、GitHubへの教育機関の登録を行った場合には無料で利用できます。
+
+GitHub Copilotはいくつかのテキストエディタ、開発環境のアプリケーション上で動作します。[Visual Studio Code](vscode.qmd)の拡張機能も提供されており、この資料の一部もGitHub Copilotの協力によって文章およびプログラムコードの記述が行われています。
+
+## ChatGPT
+
+2022年11月に[OpenAI](https://openai.com)によって公開された[ChatGPT](https://chat.openai.com/)は、ごくごく自然な「対話」によって文章生成からプログラミング、独学まで、さまざまな用途に応用可能なAIツール（チャットボット）です。
+
+利用には、メールアドレスによるアカウントの登録が必要です。メールアドレスの代わりに、Google、Microsoft、Appleのアカウントを利用することもできます。ただし、生年月日や電話番号といった個人情報の登録も必要になります。
+
+大規模言語モデルを用いたチャットボットには、他にGoogleによる[Bard](https://bard.google.com)やMicrosoftのBingなどがあります。
+
+## AIツール利用時の注意点
+
+AIツールを利用する際には、特に以下の点に注意してください。
+
+- AIによって生成された文章・プログラムは、必ずしも正しいとは限りません。間違った情報、古い情報、不適切な情報が含まれている可能性があります。そのため、AIの生成物を確認、修正する必要があります。
+- 個人情報や機密情報はAIツールに送信しないでください。AIツールは、利用者の入力した情報を学習することがあります。そのため、個人情報や機密情報がAIツールを介して漏洩する可能性があります。
+- 大学での講義、課題、卒業研究等では、AIツールを利用しないことが前提となっている場合があります。また、担当する教員によっては、AIツールの利用を禁止している場合があります。AIツールの利用を不正とみなす教員もいます。そのため、AIツールの利用については、必ず担当する教員に相談してください。

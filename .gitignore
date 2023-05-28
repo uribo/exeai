@@ -15,4 +15,3 @@ keynote.savedSearch
 /.quarto/
 _book/
 .virtual_documents
-week07/*.csv

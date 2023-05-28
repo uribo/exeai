@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI総合演習 - 機械学習モデルの設計と評価</title>
+<title>AI総合演習 - 11&nbsp; 電気使用実績を予測するモデルの構築</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,8 +64,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../week04/0401_penguins.html" rel="next">
-<link href="../week03/03_mathematics.html" rel="prev">
+<link href="../references.html" rel="next">
+<link href="../week07/index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,6 +77,9 @@ div.csl-indent {
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -93,12 +111,13 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="AI総合演習 - 機械学習モデルの設計と評価">
+<meta property="og:title" content="AI総合演習 - 11&nbsp; 電気使用実績を予測するモデルの構築">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://uribo.github.io/exeai/img/supervised_learning_workflow.jpeg">
 <meta property="og:site-name" content="AI総合演習">
-<meta name="twitter:title" content="AI総合演習 - 機械学習モデルの設計と評価">
+<meta name="twitter:title" content="AI総合演習 - 11&nbsp; 電気使用実績を予測するモデルの構築">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://uribo.github.io/exeai/week04/img/open_graph.png">
+<meta name="twitter:image" content="https://uribo.github.io/exeai/week07/img/open_graph.png">
 <meta name="twitter:creator" content="@u_ribo">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -113,7 +132,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week04/index.html">機械学習モデルの設計と評価</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week07/index.html">演習1</a></li><li class="breadcrumb-item"><a href="../week07/07_exercise.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">電気使用実績を予測するモデルの構築</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -202,7 +221,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../week04/index.html" class="sidebar-item-text sidebar-link active">
+            <a href="../week04/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習モデルの設計と評価</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -286,7 +305,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../week07/07_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../week07/07_exercise.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">電気使用実績を予測するモデルの構築</span></span></a>
   </div>
 </li>
@@ -343,16 +362,26 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
     <h2 id="toc-title">目次</h2>
    
   <ul>
-  <li><a href="#この章の参考資料url" id="toc-この章の参考資料url" class="nav-link active" data-scroll-target="#この章の参考資料url">この章の参考資料・URL</a></li>
+  <li><a href="#データの概要" id="toc-データの概要" class="nav-link active" data-scroll-target="#データの概要"><span class="header-section-number">11.1</span> データの概要</a></li>
+  <li><a href="#データの可視化" id="toc-データの可視化" class="nav-link" data-scroll-target="#データの可視化"><span class="header-section-number">11.2</span> データの可視化</a></li>
+  <li><a href="#評価指標" id="toc-評価指標" class="nav-link" data-scroll-target="#評価指標"><span class="header-section-number">11.3</span> 評価指標</a></li>
+  <li><a href="#ベースラインのモデル" id="toc-ベースラインのモデル" class="nav-link" data-scroll-target="#ベースラインのモデル"><span class="header-section-number">11.4</span> ベースラインのモデル</a>
+  <ul class="collapse">
+  <li><a href="#データ分割" id="toc-データ分割" class="nav-link" data-scroll-target="#データ分割"><span class="header-section-number">11.4.1</span> データ分割</a></li>
+  <li><a href="#前処理特徴量エンジニアリング" id="toc-前処理特徴量エンジニアリング" class="nav-link" data-scroll-target="#前処理特徴量エンジニアリング"><span class="header-section-number">11.4.2</span> 前処理・特徴量エンジニアリング</a></li>
+  <li><a href="#モデルの学習" id="toc-モデルの学習" class="nav-link" data-scroll-target="#モデルの学習"><span class="header-section-number">11.4.3</span> モデルの学習</a></li>
+  <li><a href="#モデルの評価" id="toc-モデルの評価" class="nav-link" data-scroll-target="#モデルの評価"><span class="header-section-number">11.4.4</span> モデルの評価</a></li>
+  </ul></li>
+  <li><a href="#モデルの改善例" id="toc-モデルの改善例" class="nav-link" data-scroll-target="#モデルの改善例"><span class="header-section-number">11.5</span> モデルの改善例</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/week04/index.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/week07/07_exercise.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">機械学習モデルの設計と評価</h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">電気使用実績を予測するモデルの構築</span></h1>
 </div>
 
 
@@ -367,57 +396,236 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 
 </header>
 
-<p>スライド: <a href="https://github.com/uribo/exeai/blob/main/slide/04_機械学習モデルの設計と評価.pdf">https://github.com/uribo/exeai/blob/main/slide/04_機械学習モデルの設計と評価.pdf</a></p>
+<p>これまでの講義内容および<a href="../appendix/ai_tools.html">AIツール</a>による補助を用いて、電気使用実績を予測するモデルを構築しましょう。</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> Path(<span class="st">"../"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="学習・テストデータのダウンロード">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+学習・テストデータのダウンロード
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://www.dropbox.com/scl/fo/14zehmndafnjtj6dkbqx3/h?dl=0&amp;rlkey=nl57udtfrxrcmb8hsjbk2tat8">Dropbox</a> からダウンロード</p>
+<p>パスワードは講義中に伝えます。</p>
+<p>ダウンロードしたファイルを所定のディレクトリに配置してください。</p>
+</div>
+</div>
+<section id="データの概要" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="データの概要"><span class="header-section-number">11.1</span> データの概要</h2>
+<p>2016年から2018年までの夏期（7月から9月の3ヶ月）における<a href="https://www.yonden.co.jp/nw/denkiyoho/index.html">四国エリアの使用状況</a>に加えて、気象庁（観測所: 高松）による気象データを収録しています。</p>
 <ul>
-<li>教師あり学習
+<li>datetime: 日本標準時での時刻。1時間ごとの記録が行われている。</li>
+<li>usage_GW : 使用状況の実績。単位はGW(ギガワット)。1GBは1000MW。元データでは万kWで記録。</li>
+<li>atmosphere_land_hPa: 現地気圧(hPa)</li>
+<li>precipitation_mm: 降水量（mm）</li>
+<li>temperature_dC: 気温（摂氏）</li>
+<li>humidity_pct: 湿度（%）</li>
+</ul>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_train <span class="op">=</span> pd.read_csv(p <span class="op">/</span> <span class="st">"week07/input/train.csv"</span>, parse_dates<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df_test <span class="op">=</span> pd.read_csv(p <span class="op">/</span> <span class="st">"week07/input/test.csv"</span>, parse_dates<span class="op">=</span><span class="va">False</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_train.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- knitr::kable(head(reticulate::py_to_r(df_train))) -->
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 9%">
+<col style="width: 21%">
+<col style="width: 18%">
+<col style="width: 15%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">datetime</th>
+<th style="text-align: right;">usage_GW</th>
+<th style="text-align: right;">atmosphere_land_hPa</th>
+<th style="text-align: right;">precipitation_mm</th>
+<th style="text-align: right;">temperature_dC</th>
+<th style="text-align: right;">humidity_pct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2016-06-30 15:00:00</td>
+<td style="text-align: right;">2.53</td>
+<td style="text-align: right;">1011.3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">23.1</td>
+<td style="text-align: right;">96</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2016-06-30 16:00:00</td>
+<td style="text-align: right;">2.52</td>
+<td style="text-align: right;">1011.1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">22.6</td>
+<td style="text-align: right;">95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2016-06-30 17:00:00</td>
+<td style="text-align: right;">2.66</td>
+<td style="text-align: right;">1011.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">22.1</td>
+<td style="text-align: right;">95</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2016-06-30 18:00:00</td>
+<td style="text-align: right;">2.86</td>
+<td style="text-align: right;">1011.7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">21.8</td>
+<td style="text-align: right;">96</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2016-06-30 19:00:00</td>
+<td style="text-align: right;">2.96</td>
+<td style="text-align: right;">1011.7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">22.0</td>
+<td style="text-align: right;">95</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2016-06-30 20:00:00</td>
+<td style="text-align: right;">2.90</td>
+<td style="text-align: right;">1011.9</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">22.0</td>
+<td style="text-align: right;">93</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="データの可視化" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="データの可視化"><span class="header-section-number">11.2</span> データの可視化</h2>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 時系列でのusage_GWの変化を確認</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_train[<span class="st">"datetime"</span>] <span class="op">=</span> pd.to_datetime(df_train[<span class="st">"datetime"</span>])</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># タイムゾーンを日本時間に変換</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df_train[<span class="st">"datetime"</span>] <span class="op">=</span> df_train[<span class="st">"datetime"</span>].dt.tz_convert(<span class="st">"Asia/Tokyo"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df_train[<span class="st">"year"</span>] <span class="op">=</span> df_train[<span class="st">"datetime"</span>].dt.year</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.FacetGrid(df_train, col<span class="op">=</span><span class="st">"year"</span>, sharex<span class="op">=</span><span class="va">False</span>, col_wrap<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 折れ線グラフを描画</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>g.<span class="bu">map</span>(sns.lineplot, <span class="st">"datetime"</span>, <span class="st">"usage_GW"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>これ以外にも、データへの理解を深めるための可視化を行ってみましょう。</p>
+</section>
+<section id="評価指標" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="評価指標"><span class="header-section-number">11.3</span> 評価指標</h2>
+<p>モデルの精度を評価するための指標として、二乗平均平方根誤差（RMSE）を用います。</p>
+<p>参考) <a href="../week05/0501_regression.html">線形回帰モデルによるペンギンの体重の予測</a></p>
+</section>
+<section id="ベースラインのモデル" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="ベースラインのモデル"><span class="header-section-number">11.4</span> ベースラインのモデル</h2>
+<p>教師あり機械学習モデルは一般的に次の手順で構築されます。</p>
+<p>参考）<a href="https://github.com/uribo/exeai/blob/main/slide/04_機械学習モデルの設計と評価.pdf">第四回スライド</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../img/supervised_learning_workflow.jpeg" class="lightbox" title="教師あり学習の流れ" data-gallery="quarto-lightbox-gallery-1"><img src="../img/supervised_learning_workflow.jpeg" class="img-fluid figure-img"></a></p>
+<figcaption class="figure-caption">教師あり学習の流れ</figcaption>
+</figure>
+</div>
 <ul>
-<li>教師あり学習の流れ</li>
-</ul></li>
-<li>データ分割
+<li>データ分割</li>
+<li>データの前処理・特徴量エンジニアリング</li>
+<li>モデルの学習</li>
+<li>モデルの性能評価</li>
+</ul>
+<p>ここでは機械学習モデルの構築例として、電気使用実績を予測するために気温と降水量を用いた重回帰モデルによるモデルを作成します。このモデルをベースラインとして、他のモデルと比較してみましょう。</p>
+<section id="データ分割" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="データ分割"><span class="header-section-number">11.4.1</span> データ分割</h3>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 欠損値のある行を削除</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_train_baseline <span class="op">=</span> df_train.dropna()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 説明変数と目的変数に分割</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df_train_baseline[[<span class="st">"temperature_dC"</span>, <span class="st">"precipitation_mm"</span>]]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df_train_baseline[<span class="st">"usage_GW"</span>]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 訓練データとテストデータに分割</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">20230529</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="前処理特徴量エンジニアリング" class="level3" data-number="11.4.2">
+<h3 data-number="11.4.2" class="anchored" data-anchor-id="前処理特徴量エンジニアリング"><span class="header-section-number">11.4.2</span> 前処理・特徴量エンジニアリング</h3>
+<p>ここでは数値変数の標準化（平均0、分散1への変換）を行います。</p>
+<p>Scikit-learnを用いた前処理とモデルの管理は<code>Pipeline</code>クラスを用いると便利です。</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 前処理とモデルのパイプラインを作成</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1/2 前処理を適用する変数と処理内容を指定</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>numeric_features <span class="op">=</span> [<span class="st">"temperature_dC"</span>, <span class="st">"precipitation_mm"</span>]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># パイプラインの作成。stepsには(名前, インスタンス)のタプルを指定する</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># standardScalerは平均0、分散1に変換するインスタンス</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>numeric_transformer <span class="op">=</span> Pipeline(steps<span class="op">=</span>[(<span class="st">"scaler"</span>, StandardScaler())])</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2/2 前処理として、数値変数の標準化を指定</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>preprocessor <span class="op">=</span> numeric_transformer</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="モデルの学習" class="level3" data-number="11.4.3">
+<h3 data-number="11.4.3" class="anchored" data-anchor-id="モデルの学習"><span class="header-section-number">11.4.3</span> モデルの学習</h3>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Pipeline(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    steps<span class="op">=</span>[(<span class="st">"preprocessor"</span>, preprocessor), (<span class="st">"regressor"</span>, LinearRegression())]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="モデルの評価" class="level3" data-number="11.4.4">
+<h3 data-number="11.4.4" class="anchored" data-anchor-id="モデルの評価"><span class="header-section-number">11.4.4</span> モデルの評価</h3>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># テストデータの予測値を計算</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># RMSEを計算</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> np.sqrt(mean_squared_error(y_test, y_pred))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"RMSE: </span><span class="sc">{</span>rmse<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="モデルの改善例" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="モデルの改善例"><span class="header-section-number">11.5</span> モデルの改善例</h2>
 <ul>
-<li>汎化性能</li>
-<li>ホールドアウト法</li>
+<li>変数の追加</li>
 <li>交差検証法</li>
-</ul></li>
-<li>特徴量エンジニアリング
+<li>モデルの変更
 <ul>
-<li>カテゴリ変数の数値化</li>
-<li>前処理の必要性</li>
+<li>正則化</li>
+<li>ランダムフォレスト</li>
+<li>XGBoost</li>
+<li>LightGBM</li>
 </ul></li>
-<li>ロジスティック回帰
-<ul>
-<li>シグモイド関数とロジット関数</li>
-</ul></li>
-<li>モデルの評価</li>
-</ul>
-<section id="この章の参考資料url" class="level2">
-<h2 class="anchored" data-anchor-id="この章の参考資料url">この章の参考資料・URL</h2>
-<ul>
-<li><span class="citation" data-cites="R300000001-I031881422-00">(<a href="../references.html#ref-R300000001-I031881422-00" role="doc-biblioref">岡野原大輔 2022</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I029976550-00">(<a href="../references.html#ref-R300000001-I029976550-00" role="doc-biblioref">門脇大輔 ほか 2019</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I030584765-00">(<a href="../references.html#ref-R300000001-I030584765-00" role="doc-biblioref">八谷大岳 2020</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I030701507-00">(<a href="../references.html#ref-R300000001-I030701507-00" role="doc-biblioref">Géron, 下田倫大, と 長尾高弘 2020</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I029512290-00">(<a href="../references.html#ref-R300000001-I029512290-00" role="doc-biblioref">Alice Zheng と ホクソエム 2019</a>)</span></li>
+<li>ハイパーパラメータの調整</li>
+<li>特徴量エンジニアリング… 特に電気使用に影響を与える日付や時間の情報を追加すると良いかもしれません。</li>
 </ul>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-R300000001-I029512290-00" class="csl-entry" role="listitem">
-Alice Zheng, Amanda Casari, と ホクソエム. 2019. <em>機械学習のための特徴量エンジニアリング : その原理とPythonによる実践</em>. 翻訳者： ホクソエム. オライリー・ジャパン. <a href="http://id.ndl.go.jp/bib/029512290">http://id.ndl.go.jp/bib/029512290</a>.
-</div>
-<div id="ref-R300000001-I030701507-00" class="csl-entry" role="listitem">
-Géron, Aurélien, 下田倫大, と 長尾高弘. 2020. <em>scikit-learn、Keras、TensorFlowによる実践機械学習</em>. 翻訳者： 下田倫大 と 長尾高弘. 第2版 版. オライリー・ジャパン. <a href="http://id.ndl.go.jp/bib/030701507">http://id.ndl.go.jp/bib/030701507</a>.
-</div>
-<div id="ref-R300000001-I030584765-00" class="csl-entry" role="listitem">
-八谷大岳. 2020. <em>ゼロからつくるPython機械学習プログラミング入門 = Introduction to Machine Learning from Scratch with Python</em>. 機械学習スタートアップシリーズ. 講談社. <a href="http://id.ndl.go.jp/bib/030584765">http://id.ndl.go.jp/bib/030584765</a>.
-</div>
-<div id="ref-R300000001-I031881422-00" class="csl-entry" role="listitem">
-岡野原大輔. 2022. <em>ディープラーニングを支える技術 : 「正解」を導くメカニズム〈技術基礎〉</em>. Tech×Books plus. 技術評論社. <a href="http://id.ndl.go.jp/bib/031881422">http://id.ndl.go.jp/bib/031881422</a>.
-</div>
-<div id="ref-R300000001-I029976550-00" class="csl-entry" role="listitem">
-門脇大輔, 阪田隆司, 保坂桂佑, と 平松雄司. 2019. <em>Kaggleで勝つデータ分析の技術</em>. 技術評論社. <a href="http://id.ndl.go.jp/bib/029976550">http://id.ndl.go.jp/bib/029976550</a>.
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -771,13 +979,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../week03/03_mathematics.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">機械学習で用いる数学の基礎</span></span>
+      <a href="../week07/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">演習1</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../week04/0401_penguins.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">南極大陸に生育するペンギンの体長データ</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../references.html" class="pagination-link">
+        <span class="nav-page-text">参考資料・URL</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -806,6 +1014,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":true});</script>
 
 
 

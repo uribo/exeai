@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI総合演習 - 機械学習モデルの設計と評価</title>
+<title>AI総合演習 - 付録 C — Visual Studio Code</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,8 +30,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../week04/0401_penguins.html" rel="next">
-<link href="../week03/03_mathematics.html" rel="prev">
+<link href="../appendix/docker.html" rel="next">
+<link href="../appendix/ai_tools.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,6 +43,9 @@ div.csl-indent {
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -93,12 +77,15 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="AI総合演習 - 機械学習モデルの設計と評価">
+<meta property="og:title" content="AI総合演習 - 付録 C — Visual Studio Code">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://uribo.github.io/exeai/img/vscode.png">
 <meta property="og:site-name" content="AI総合演習">
-<meta name="twitter:title" content="AI総合演習 - 機械学習モデルの設計と評価">
+<meta property="og:image:height" content="1528">
+<meta property="og:image:width" content="2880">
+<meta name="twitter:title" content="AI総合演習 - 付録 C — Visual Studio Code">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://uribo.github.io/exeai/week04/img/open_graph.png">
+<meta name="twitter:image" content="https://uribo.github.io/exeai/appendix/img/open_graph.png">
 <meta name="twitter:creator" content="@u_ribo">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -113,7 +100,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week04/index.html">機械学習モデルの設計と評価</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendix/jupyternotebook.html">付録</a></li><li class="breadcrumb-item"><a href="../appendix/vscode.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Visual Studio Code</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -202,7 +189,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../week04/index.html" class="sidebar-item-text sidebar-link active">
+            <a href="../week04/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習モデルの設計と評価</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -321,7 +308,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendix/vscode.html" class="sidebar-item-text sidebar-link">
+  <a href="../appendix/vscode.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Visual Studio Code</span></span></a>
   </div>
 </li>
@@ -343,16 +330,30 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
     <h2 id="toc-title">目次</h2>
    
   <ul>
-  <li><a href="#この章の参考資料url" id="toc-この章の参考資料url" class="nav-link active" data-scroll-target="#この章の参考資料url">この章の参考資料・URL</a></li>
+  <li><a href="#インストール" id="toc-インストール" class="nav-link active" data-scroll-target="#インストール"><span class="header-section-number">C.1</span> インストール</a></li>
+  <li><a href="#基本的な使い方" id="toc-基本的な使い方" class="nav-link" data-scroll-target="#基本的な使い方"><span class="header-section-number">C.2</span> 基本的な使い方</a>
+  <ul class="collapse">
+  <li><a href="#タイトルバー" id="toc-タイトルバー" class="nav-link" data-scroll-target="#タイトルバー"><span class="header-section-number">C.2.1</span> タイトルバー</a></li>
+  <li><a href="#メニューバー" id="toc-メニューバー" class="nav-link" data-scroll-target="#メニューバー"><span class="header-section-number">C.2.2</span> メニューバー</a></li>
+  <li><a href="#アクティビティバー" id="toc-アクティビティバー" class="nav-link" data-scroll-target="#アクティビティバー"><span class="header-section-number">C.2.3</span> アクティビティバー</a></li>
+  <li><a href="#サイドバー" id="toc-サイドバー" class="nav-link" data-scroll-target="#サイドバー"><span class="header-section-number">C.2.4</span> サイドバー</a></li>
+  <li><a href="#エディター" id="toc-エディター" class="nav-link" data-scroll-target="#エディター"><span class="header-section-number">C.2.5</span> エディター</a></li>
+  <li><a href="#ステータスバー" id="toc-ステータスバー" class="nav-link" data-scroll-target="#ステータスバー"><span class="header-section-number">C.2.6</span> ステータスバー</a></li>
+  </ul></li>
+  <li><a href="#拡張機能" id="toc-拡張機能" class="nav-link" data-scroll-target="#拡張機能"><span class="header-section-number">C.3</span> 拡張機能</a></li>
+  <li><a href="#ワークスペース" id="toc-ワークスペース" class="nav-link" data-scroll-target="#ワークスペース"><span class="header-section-number">C.4</span> ワークスペース</a></li>
+  <li><a href="#設定" id="toc-設定" class="nav-link" data-scroll-target="#設定"><span class="header-section-number">C.5</span> 設定</a></li>
+  <li><a href="#キーボードショートカット" id="toc-キーボードショートカット" class="nav-link" data-scroll-target="#キーボードショートカット"><span class="header-section-number">C.6</span> キーボードショートカット</a></li>
+  <li><a href="#vs-codeを利用したjupyter実行環境の構築" id="toc-vs-codeを利用したjupyter実行環境の構築" class="nav-link" data-scroll-target="#vs-codeを利用したjupyter実行環境の構築"><span class="header-section-number">C.7</span> VS Codeを利用したJupyter実行環境の構築</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/week04/index.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/appendix/vscode.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">機械学習モデルの設計と評価</h1>
+<h1 class="title">付録 C — Visual Studio Code</h1>
 </div>
 
 
@@ -367,57 +368,110 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 
 </header>
 
-<p>スライド: <a href="https://github.com/uribo/exeai/blob/main/slide/04_機械学習モデルの設計と評価.pdf">https://github.com/uribo/exeai/blob/main/slide/04_機械学習モデルの設計と評価.pdf</a></p>
+<p><a href="https://code.visualstudio.com/">Visual Studio Code (VS Code)</a> は、Microsoft社が開発したオープンソースのテキストエディタです。マルチプラットフォームで動作するため、Windows, Mac, Linux などのOSで利用できます。様々なプログラミング言語の開発、編集に対応し、拡張機能をインストールすることで、様々な機能を追加することができます。また、Jupyter Notebookで利用される<code>ipynb</code>ファイルを開いてプログラムの実行や編集ができるためにJupyter Notebookの代替としても利用できます。ここでは、VSCodeのインストール方法と基本的な使い方について説明します。</p>
+<section id="インストール" class="level2" data-number="C.1">
+<h2 data-number="C.1" class="anchored" data-anchor-id="インストール"><span class="header-section-number">C.1</span> インストール</h2>
+<p>VS Codeのインストールは、<a href="https://code.visualstudio.com/">公式サイト</a>からダウンロードしてインストールします。インストール方法はOSによって異なります。ここでは、Windowsの場合のインストール方法を説明します。</p>
+<ol type="1">
+<li><a href="https://code.visualstudio.com/">公式サイト</a>にアクセスして、<code>Download for Windows</code>をクリックします。</li>
+<li>ダウンロードしたインストーラを実行します。</li>
+<li>インストールが完了したら、<code>Launch</code>をクリックしてVS Codeを起動します。</li>
+</ol>
+</section>
+<section id="基本的な使い方" class="level2" data-number="C.2">
+<h2 data-number="C.2" class="anchored" data-anchor-id="基本的な使い方"><span class="header-section-number">C.2</span> 基本的な使い方</h2>
+<p>VS Codeの基本的な使い方について説明します。VS Codeは次のような画面になっています。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../img/vscode.png" class="lightbox" title="VS Codeの画面" data-gallery="quarto-lightbox-gallery-1"><img src="../img/vscode.png" class="img-fluid figure-img"></a></p>
+<figcaption class="figure-caption">VS Codeの画面</figcaption>
+</figure>
+</div>
+<p>VS Codeの画面は、以下のように分割されています。</p>
 <ul>
-<li>教師あり学習
-<ul>
-<li>教師あり学習の流れ</li>
-</ul></li>
-<li>データ分割
-<ul>
-<li>汎化性能</li>
-<li>ホールドアウト法</li>
-<li>交差検証法</li>
-</ul></li>
-<li>特徴量エンジニアリング
-<ul>
-<li>カテゴリ変数の数値化</li>
-<li>前処理の必要性</li>
-</ul></li>
-<li>ロジスティック回帰
-<ul>
-<li>シグモイド関数とロジット関数</li>
-</ul></li>
-<li>モデルの評価</li>
+<li>タイトルバー</li>
+<li>メニューバー</li>
+<li>アクティビティバー</li>
+<li>サイドバー</li>
+<li>エディター</li>
+<li>ステータスバー</li>
 </ul>
-<section id="この章の参考資料url" class="level2">
-<h2 class="anchored" data-anchor-id="この章の参考資料url">この章の参考資料・URL</h2>
+<p>これらの部分について説明します。いずれの部分も、表示・非表示を切り替えることができます。表示・非表示を切り替えるには、<code>表示</code>メニューから、表示・非表示を切り替えたい部分を選択します。また、レイアウトも自分の好みに合わせて変更することができます。</p>
+<section id="タイトルバー" class="level3" data-number="C.2.1">
+<h3 data-number="C.2.1" class="anchored" data-anchor-id="タイトルバー"><span class="header-section-number">C.2.1</span> タイトルバー</h3>
+<p>タイトルバーには、VS Codeのバージョンや拡張機能の更新情報などが表示されます。また、タイトルバーの右側には、最大化、最小化、閉じるボタンがあります。</p>
+</section>
+<section id="メニューバー" class="level3" data-number="C.2.2">
+<h3 data-number="C.2.2" class="anchored" data-anchor-id="メニューバー"><span class="header-section-number">C.2.2</span> メニューバー</h3>
+<p>メニューバーには、ファイル、編集、表示、移動、実行、ターミナル、ヘルプなどのメニューがあります。メニューをクリックすると、そのメニューに属するコマンドが表示されます。例えば新規ファイルを作成したい場合は、<code>ファイル</code>メニューの<code>新規ファイル</code>をクリックします。</p>
+<p>VS Codeでは、メニューの代わりにコマンドパレットを利用することもできます。コマンドパレットは、<code>表示</code>メニューの<code>コマンドパレット</code>をクリックすることで表示されます。コマンドパレットには、ファイルの作成や拡張機能のインストール、設定の変更などの豊富なコマンドがあります。コマンドパレットを利用すると、メニューを開くことなくコマンドを実行することが可能となります。</p>
+<p>VS Code上でターミナルを利用することも可能です。これにより、VS Code上でコマンドを実行したり、Pythonの対話型インタプリタを起動したりすることができます。ターミナルを利用するには、<code>表示</code>メニューの<code>ターミナル</code>をクリックします。新しいターミナルはエディター部分の下に表示されます。</p>
+</section>
+<section id="アクティビティバー" class="level3" data-number="C.2.3">
+<h3 data-number="C.2.3" class="anchored" data-anchor-id="アクティビティバー"><span class="header-section-number">C.2.3</span> アクティビティバー</h3>
+<p>アクティビティバーには、<code>エクスプローラー</code>、<code>検索</code>、<code>Git</code>、<code>拡張機能</code>などのアイコンがあります。アクティビティバーのアイコンをクリックすると、その機能がサイドバーに表示されます。</p>
+</section>
+<section id="サイドバー" class="level3" data-number="C.2.4">
+<h3 data-number="C.2.4" class="anchored" data-anchor-id="サイドバー"><span class="header-section-number">C.2.4</span> サイドバー</h3>
+<p>サイドバーはアクティビティバーで選択した機能に応じて表示される領域です。<code>エクスプローラー</code>を選択した場合は、ファイルやフォルダの構造を表示します。サイドバーにはプライマリサイドバーとセカンダリサイドバーの2種類があり、デフォルトではセカンダリサイドバーは非表示です。なおサイドバーの幅は、エディタ部分との境界をマウスでドラッグすることで調整可能です。</p>
+</section>
+<section id="エディター" class="level3" data-number="C.2.5">
+<h3 data-number="C.2.5" class="anchored" data-anchor-id="エディター"><span class="header-section-number">C.2.5</span> エディター</h3>
+<p>エディターは、ファイルの内容を表示する領域です。複数のファイルをタブによって個別に表示できます。また、エディターの分割も可能です。エディターの分割は、<code>表示</code>メニューの<code>エディターの分割</code>から行うことができます。</p>
+</section>
+<section id="ステータスバー" class="level3" data-number="C.2.6">
+<h3 data-number="C.2.6" class="anchored" data-anchor-id="ステータスバー"><span class="header-section-number">C.2.6</span> ステータスバー</h3>
+<p>画面下部のステータスバーには各種の情報が表示されます。編集中のファイルの文字コードや改行コード、行数、列数の他、拡張機能による追加情報が表示されます。</p>
+</section>
+</section>
+<section id="拡張機能" class="level2" data-number="C.3">
+<h2 data-number="C.3" class="anchored" data-anchor-id="拡張機能"><span class="header-section-number">C.3</span> 拡張機能</h2>
+<p>VS Codeはユーザーが必要に応じて拡張機能を追加することで、その使い勝手や機能を拡張できるようになっています。拡張機能は、アクティビティーバーの<code>拡張機能</code>アイコンをクリックすると表示される画面から、任意のものを選んでインストールできます。拡張機能パネルは、<code>表示</code>メニューの<code>拡張機能</code>を選択することでも表示することができます。</p>
+<p>拡張機能の種類は非常に多く、プログラミング言語のサポートやプロジェクト管理のためのものや、VS Codeのテーマを変更するものなどがあります。拡張機能は、<code>インストール</code>タブからインストールすることができます。インストールした拡張機能は、<code>インストール済み</code>タブから確認することができます。また、<code>有効</code>タブから拡張機能を有効化・無効化することができます。</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="おすすめの拡張機能">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+おすすめの拡張機能
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>データサイエンス、機械学習、プログラミング全般に役立つ、おすすめの拡張機能を紹介します。</p>
 <ul>
-<li><span class="citation" data-cites="R300000001-I031881422-00">(<a href="../references.html#ref-R300000001-I031881422-00" role="doc-biblioref">岡野原大輔 2022</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I029976550-00">(<a href="../references.html#ref-R300000001-I029976550-00" role="doc-biblioref">門脇大輔 ほか 2019</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I030584765-00">(<a href="../references.html#ref-R300000001-I030584765-00" role="doc-biblioref">八谷大岳 2020</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I030701507-00">(<a href="../references.html#ref-R300000001-I030701507-00" role="doc-biblioref">Géron, 下田倫大, と 長尾高弘 2020</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I029512290-00">(<a href="../references.html#ref-R300000001-I029512290-00" role="doc-biblioref">Alice Zheng と ホクソエム 2019</a>)</span></li>
+<li>Japanese Language Pack for Visual Studio Code</li>
+<li>Jupyter</li>
+<li>Python</li>
+<li>R</li>
+<li>Quarto</li>
+<li>Docker</li>
+<li>GitHub Copilot</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="ワークスペース" class="level2" data-number="C.4">
+<h2 data-number="C.4" class="anchored" data-anchor-id="ワークスペース"><span class="header-section-number">C.4</span> ワークスペース</h2>
+<p>VS Codeでは、ワークスペースという概念を利用します。ワークスペースとは、フォルダやファイルの集合を指します。ワークスペースを作成することで、複数のフォルダやファイルを一つのプロジェクトとして管理することができます。ワークスペースは、<code>ファイル</code>メニューの<code>ワークスペースを開く</code>から開くことができます。また、<code>ファイル</code>メニューの<code>ワークスペースを保存</code>からワークスペースを保存することができます。</p>
+</section>
+<section id="設定" class="level2" data-number="C.5">
+<h2 data-number="C.5" class="anchored" data-anchor-id="設定"><span class="header-section-number">C.5</span> 設定</h2>
+<p>ユーザー設定とワークスペース設定の2種類</p>
+</section>
+<section id="キーボードショートカット" class="level2" data-number="C.6">
+<h2 data-number="C.6" class="anchored" data-anchor-id="キーボードショートカット"><span class="header-section-number">C.6</span> キーボードショートカット</h2>
+<p>豊富なキーボードショートカット。jsonファイルでカスタマイズ可能。</p>
+</section>
+<section id="vs-codeを利用したjupyter実行環境の構築" class="level2" data-number="C.7">
+<h2 data-number="C.7" class="anchored" data-anchor-id="vs-codeを利用したjupyter実行環境の構築"><span class="header-section-number">C.7</span> VS Codeを利用したJupyter実行環境の構築</h2>
+<p>Windows向け。</p>
+<ul>
+<li><a href="https://qiita.com/KMNMKT/items/499c657ff3fa1c0f68e6">理系大学生は研究でもJupyterNotebook(Anaconda)ではなくVScodeを使おう+Python環境構築</a></li>
+<li><a href="https://qiita.com/KMNMKT/items/636e7ba1fbd383bc1413">理系大学生のためのPython環境のススメ</a></li>
 </ul>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-R300000001-I029512290-00" class="csl-entry" role="listitem">
-Alice Zheng, Amanda Casari, と ホクソエム. 2019. <em>機械学習のための特徴量エンジニアリング : その原理とPythonによる実践</em>. 翻訳者： ホクソエム. オライリー・ジャパン. <a href="http://id.ndl.go.jp/bib/029512290">http://id.ndl.go.jp/bib/029512290</a>.
-</div>
-<div id="ref-R300000001-I030701507-00" class="csl-entry" role="listitem">
-Géron, Aurélien, 下田倫大, と 長尾高弘. 2020. <em>scikit-learn、Keras、TensorFlowによる実践機械学習</em>. 翻訳者： 下田倫大 と 長尾高弘. 第2版 版. オライリー・ジャパン. <a href="http://id.ndl.go.jp/bib/030701507">http://id.ndl.go.jp/bib/030701507</a>.
-</div>
-<div id="ref-R300000001-I030584765-00" class="csl-entry" role="listitem">
-八谷大岳. 2020. <em>ゼロからつくるPython機械学習プログラミング入門 = Introduction to Machine Learning from Scratch with Python</em>. 機械学習スタートアップシリーズ. 講談社. <a href="http://id.ndl.go.jp/bib/030584765">http://id.ndl.go.jp/bib/030584765</a>.
-</div>
-<div id="ref-R300000001-I031881422-00" class="csl-entry" role="listitem">
-岡野原大輔. 2022. <em>ディープラーニングを支える技術 : 「正解」を導くメカニズム〈技術基礎〉</em>. Tech×Books plus. 技術評論社. <a href="http://id.ndl.go.jp/bib/031881422">http://id.ndl.go.jp/bib/031881422</a>.
-</div>
-<div id="ref-R300000001-I029976550-00" class="csl-entry" role="listitem">
-門脇大輔, 阪田隆司, 保坂桂佑, と 平松雄司. 2019. <em>Kaggleで勝つデータ分析の技術</em>. 技術評論社. <a href="http://id.ndl.go.jp/bib/029976550">http://id.ndl.go.jp/bib/029976550</a>.
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -771,13 +825,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../week03/03_mathematics.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">機械学習で用いる数学の基礎</span></span>
+      <a href="../appendix/ai_tools.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">AIを活用したツール</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../week04/0401_penguins.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">南極大陸に生育するペンギンの体長データ</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../appendix/docker.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Docker</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -806,6 +860,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":true,"descPosition":"bottom","openEffect":"zoom"});</script>
 
 
 

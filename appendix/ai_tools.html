@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI総合演習 - 機械学習モデルの設計と評価</title>
+<title>AI総合演習 - 付録 B — AIを活用したツール</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,8 +30,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../week04/0401_penguins.html" rel="next">
-<link href="../week03/03_mathematics.html" rel="prev">
+<link href="../appendix/vscode.html" rel="next">
+<link href="../appendix/jupyternotebook.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -93,12 +74,12 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="AI総合演習 - 機械学習モデルの設計と評価">
+<meta property="og:title" content="AI総合演習 - 付録 B — AIを活用したツール">
 <meta property="og:description" content="">
 <meta property="og:site-name" content="AI総合演習">
-<meta name="twitter:title" content="AI総合演習 - 機械学習モデルの設計と評価">
+<meta name="twitter:title" content="AI総合演習 - 付録 B — AIを活用したツール">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://uribo.github.io/exeai/week04/img/open_graph.png">
+<meta name="twitter:image" content="https://uribo.github.io/exeai/appendix/img/open_graph.png">
 <meta name="twitter:creator" content="@u_ribo">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -113,7 +94,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week04/index.html">機械学習モデルの設計と評価</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../appendix/jupyternotebook.html">付録</a></li><li class="breadcrumb-item"><a href="../appendix/ai_tools.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">AIを活用したツール</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -202,7 +183,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../week04/index.html" class="sidebar-item-text sidebar-link active">
+            <a href="../week04/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習モデルの設計と評価</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -315,7 +296,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendix/ai_tools.html" class="sidebar-item-text sidebar-link">
+  <a href="../appendix/ai_tools.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">AIを活用したツール</span></span></a>
   </div>
 </li>
@@ -343,16 +324,18 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
     <h2 id="toc-title">目次</h2>
    
   <ul>
-  <li><a href="#この章の参考資料url" id="toc-この章の参考資料url" class="nav-link active" data-scroll-target="#この章の参考資料url">この章の参考資料・URL</a></li>
+  <li><a href="#github-copilot" id="toc-github-copilot" class="nav-link active" data-scroll-target="#github-copilot"><span class="header-section-number">B.1</span> GitHub Copilot</a></li>
+  <li><a href="#chatgpt" id="toc-chatgpt" class="nav-link" data-scroll-target="#chatgpt"><span class="header-section-number">B.2</span> ChatGPT</a></li>
+  <li><a href="#aiツール利用時の注意点" id="toc-aiツール利用時の注意点" class="nav-link" data-scroll-target="#aiツール利用時の注意点"><span class="header-section-number">B.3</span> AIツール利用時の注意点</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/week04/index.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/appendix/ai_tools.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">機械学習モデルの設計と評価</h1>
+<h1 class="title">付録 B — AIを活用したツール</h1>
 </div>
 
 
@@ -367,57 +350,28 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 
 </header>
 
-<p>スライド: <a href="https://github.com/uribo/exeai/blob/main/slide/04_機械学習モデルの設計と評価.pdf">https://github.com/uribo/exeai/blob/main/slide/04_機械学習モデルの設計と評価.pdf</a></p>
+<p>AIを活用した技術は、日々めまぐるしく移り変わっています。次から次へと新しい技術が登場し、そのたびに新しいツールが提供されています。ここでは、その中から、特にデータサイエンス、機械学習、プログラミングの分野で活用できるツールを紹介します。</p>
+<section id="github-copilot" class="level2" data-number="B.1">
+<h2 data-number="B.1" class="anchored" data-anchor-id="github-copilot"><span class="header-section-number">B.1</span> GitHub Copilot</h2>
+<p><a href="https://github.com/features/copilot/">GitHub Copilot</a>は<a href="https://github.com">GitHub</a>が提供する、AIを活用したプログラミング支援のツールです。利用にはGitHubのアカウントが必要で、試用期間が終わると有料になります。ただし、GitHubへの教育機関の登録を行った場合には無料で利用できます。</p>
+<p>GitHub Copilotはいくつかのテキストエディタ、開発環境のアプリケーション上で動作します。<a href="../appendix/vscode.html">Visual Studio Code</a>の拡張機能も提供されており、この資料の一部もGitHub Copilotの協力によって文章およびプログラムコードの記述が行われています。</p>
+</section>
+<section id="chatgpt" class="level2" data-number="B.2">
+<h2 data-number="B.2" class="anchored" data-anchor-id="chatgpt"><span class="header-section-number">B.2</span> ChatGPT</h2>
+<p>2022年11月に<a href="https://openai.com">OpenAI</a>によって公開された<a href="https://chat.openai.com/">ChatGPT</a>は、ごくごく自然な「対話」によって文章生成からプログラミング、独学まで、さまざまな用途に応用可能なAIツール（チャットボット）です。</p>
+<p>利用には、メールアドレスによるアカウントの登録が必要です。メールアドレスの代わりに、Google、Microsoft、Appleのアカウントを利用することもできます。ただし、生年月日や電話番号といった個人情報の登録も必要になります。</p>
+<p>大規模言語モデルを用いたチャットボットには、他にGoogleによる<a href="https://bard.google.com">Bard</a>やMicrosoftのBingなどがあります。</p>
+</section>
+<section id="aiツール利用時の注意点" class="level2" data-number="B.3">
+<h2 data-number="B.3" class="anchored" data-anchor-id="aiツール利用時の注意点"><span class="header-section-number">B.3</span> AIツール利用時の注意点</h2>
+<p>AIツールを利用する際には、特に以下の点に注意してください。</p>
 <ul>
-<li>教師あり学習
-<ul>
-<li>教師あり学習の流れ</li>
-</ul></li>
-<li>データ分割
-<ul>
-<li>汎化性能</li>
-<li>ホールドアウト法</li>
-<li>交差検証法</li>
-</ul></li>
-<li>特徴量エンジニアリング
-<ul>
-<li>カテゴリ変数の数値化</li>
-<li>前処理の必要性</li>
-</ul></li>
-<li>ロジスティック回帰
-<ul>
-<li>シグモイド関数とロジット関数</li>
-</ul></li>
-<li>モデルの評価</li>
-</ul>
-<section id="この章の参考資料url" class="level2">
-<h2 class="anchored" data-anchor-id="この章の参考資料url">この章の参考資料・URL</h2>
-<ul>
-<li><span class="citation" data-cites="R300000001-I031881422-00">(<a href="../references.html#ref-R300000001-I031881422-00" role="doc-biblioref">岡野原大輔 2022</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I029976550-00">(<a href="../references.html#ref-R300000001-I029976550-00" role="doc-biblioref">門脇大輔 ほか 2019</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I030584765-00">(<a href="../references.html#ref-R300000001-I030584765-00" role="doc-biblioref">八谷大岳 2020</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I030701507-00">(<a href="../references.html#ref-R300000001-I030701507-00" role="doc-biblioref">Géron, 下田倫大, と 長尾高弘 2020</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I029512290-00">(<a href="../references.html#ref-R300000001-I029512290-00" role="doc-biblioref">Alice Zheng と ホクソエム 2019</a>)</span></li>
+<li>AIによって生成された文章・プログラムは、必ずしも正しいとは限りません。間違った情報、古い情報、不適切な情報が含まれている可能性があります。そのため、AIの生成物を確認、修正する必要があります。</li>
+<li>個人情報や機密情報はAIツールに送信しないでください。AIツールは、利用者の入力した情報を学習することがあります。そのため、個人情報や機密情報がAIツールを介して漏洩する可能性があります。</li>
+<li>大学での講義、課題、卒業研究等では、AIツールを利用しないことが前提となっている場合があります。また、担当する教員によっては、AIツールの利用を禁止している場合があります。AIツールの利用を不正とみなす教員もいます。そのため、AIツールの利用については、必ず担当する教員に相談してください。</li>
 </ul>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-R300000001-I029512290-00" class="csl-entry" role="listitem">
-Alice Zheng, Amanda Casari, と ホクソエム. 2019. <em>機械学習のための特徴量エンジニアリング : その原理とPythonによる実践</em>. 翻訳者： ホクソエム. オライリー・ジャパン. <a href="http://id.ndl.go.jp/bib/029512290">http://id.ndl.go.jp/bib/029512290</a>.
-</div>
-<div id="ref-R300000001-I030701507-00" class="csl-entry" role="listitem">
-Géron, Aurélien, 下田倫大, と 長尾高弘. 2020. <em>scikit-learn、Keras、TensorFlowによる実践機械学習</em>. 翻訳者： 下田倫大 と 長尾高弘. 第2版 版. オライリー・ジャパン. <a href="http://id.ndl.go.jp/bib/030701507">http://id.ndl.go.jp/bib/030701507</a>.
-</div>
-<div id="ref-R300000001-I030584765-00" class="csl-entry" role="listitem">
-八谷大岳. 2020. <em>ゼロからつくるPython機械学習プログラミング入門 = Introduction to Machine Learning from Scratch with Python</em>. 機械学習スタートアップシリーズ. 講談社. <a href="http://id.ndl.go.jp/bib/030584765">http://id.ndl.go.jp/bib/030584765</a>.
-</div>
-<div id="ref-R300000001-I031881422-00" class="csl-entry" role="listitem">
-岡野原大輔. 2022. <em>ディープラーニングを支える技術 : 「正解」を導くメカニズム〈技術基礎〉</em>. Tech×Books plus. 技術評論社. <a href="http://id.ndl.go.jp/bib/031881422">http://id.ndl.go.jp/bib/031881422</a>.
-</div>
-<div id="ref-R300000001-I029976550-00" class="csl-entry" role="listitem">
-門脇大輔, 阪田隆司, 保坂桂佑, と 平松雄司. 2019. <em>Kaggleで勝つデータ分析の技術</em>. 技術評論社. <a href="http://id.ndl.go.jp/bib/029976550">http://id.ndl.go.jp/bib/029976550</a>.
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -771,13 +725,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../week03/03_mathematics.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">機械学習で用いる数学の基礎</span></span>
+      <a href="../appendix/jupyternotebook.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Jupyter Notebook</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../week04/0401_penguins.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">南極大陸に生育するペンギンの体長データ</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../appendix/vscode.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Visual Studio Code</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

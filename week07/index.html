@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI総合演習 - 機械学習モデルの設計と評価</title>
+<title>AI総合演習 - 演習1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,8 +30,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../week04/0401_penguins.html" rel="next">
-<link href="../week03/03_mathematics.html" rel="prev">
+<link href="../week07/07_exercise.html" rel="next">
+<link href="../week06/0602_patial_dependence.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -93,12 +74,10 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="AI総合演習 - 機械学習モデルの設計と評価">
-<meta property="og:description" content="">
+<meta property="og:title" content="AI総合演習 - 演習1">
 <meta property="og:site-name" content="AI総合演習">
-<meta name="twitter:title" content="AI総合演習 - 機械学習モデルの設計と評価">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://uribo.github.io/exeai/week04/img/open_graph.png">
+<meta name="twitter:title" content="AI総合演習 - 演習1">
+<meta name="twitter:image" content="https://uribo.github.io/exeai/week07/img/open_graph.png">
 <meta name="twitter:creator" content="@u_ribo">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -113,7 +92,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week04/index.html">機械学習モデルの設計と評価</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week07/index.html">演習1</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -202,7 +181,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../week04/index.html" class="sidebar-item-text sidebar-link active">
+            <a href="../week04/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習モデルの設計と評価</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -277,7 +256,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../week07/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../week07/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">演習1</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -339,20 +318,14 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">目次</h2>
-   
-  <ul>
-  <li><a href="#この章の参考資料url" id="toc-この章の参考資料url" class="nav-link active" data-scroll-target="#この章の参考資料url">この章の参考資料・URL</a></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/week04/index.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">機械学習モデルの設計と評価</h1>
+<h1 class="title">演習1</h1>
 </div>
 
 
@@ -367,58 +340,13 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 
 </header>
 
-<p>スライド: <a href="https://github.com/uribo/exeai/blob/main/slide/04_機械学習モデルの設計と評価.pdf">https://github.com/uribo/exeai/blob/main/slide/04_機械学習モデルの設計と評価.pdf</a></p>
 <ul>
-<li>教師あり学習
-<ul>
-<li>教師あり学習の流れ</li>
-</ul></li>
-<li>データ分割
-<ul>
-<li>汎化性能</li>
-<li>ホールドアウト法</li>
-<li>交差検証法</li>
-</ul></li>
-<li>特徴量エンジニアリング
-<ul>
-<li>カテゴリ変数の数値化</li>
-<li>前処理の必要性</li>
-</ul></li>
-<li>ロジスティック回帰
-<ul>
-<li>シグモイド関数とロジット関数</li>
-</ul></li>
-<li>モデルの評価</li>
-</ul>
-<section id="この章の参考資料url" class="level2">
-<h2 class="anchored" data-anchor-id="この章の参考資料url">この章の参考資料・URL</h2>
-<ul>
-<li><span class="citation" data-cites="R300000001-I031881422-00">(<a href="../references.html#ref-R300000001-I031881422-00" role="doc-biblioref">岡野原大輔 2022</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I029976550-00">(<a href="../references.html#ref-R300000001-I029976550-00" role="doc-biblioref">門脇大輔 ほか 2019</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I030584765-00">(<a href="../references.html#ref-R300000001-I030584765-00" role="doc-biblioref">八谷大岳 2020</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I030701507-00">(<a href="../references.html#ref-R300000001-I030701507-00" role="doc-biblioref">Géron, 下田倫大, と 長尾高弘 2020</a>)</span></li>
-<li><span class="citation" data-cites="R300000001-I029512290-00">(<a href="../references.html#ref-R300000001-I029512290-00" role="doc-biblioref">Alice Zheng と ホクソエム 2019</a>)</span></li>
+<li><a href="../week07/07_exercise.html">電気使用実績を予測するモデルの構築</a></li>
+<li><a href="../appendix/ai_tools.html">AIを活用したツール</a></li>
+<li><a href="../appendix/vscode.html">Visual Studio Code</a></li>
 </ul>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-R300000001-I029512290-00" class="csl-entry" role="listitem">
-Alice Zheng, Amanda Casari, と ホクソエム. 2019. <em>機械学習のための特徴量エンジニアリング : その原理とPythonによる実践</em>. 翻訳者： ホクソエム. オライリー・ジャパン. <a href="http://id.ndl.go.jp/bib/029512290">http://id.ndl.go.jp/bib/029512290</a>.
-</div>
-<div id="ref-R300000001-I030701507-00" class="csl-entry" role="listitem">
-Géron, Aurélien, 下田倫大, と 長尾高弘. 2020. <em>scikit-learn、Keras、TensorFlowによる実践機械学習</em>. 翻訳者： 下田倫大 と 長尾高弘. 第2版 版. オライリー・ジャパン. <a href="http://id.ndl.go.jp/bib/030701507">http://id.ndl.go.jp/bib/030701507</a>.
-</div>
-<div id="ref-R300000001-I030584765-00" class="csl-entry" role="listitem">
-八谷大岳. 2020. <em>ゼロからつくるPython機械学習プログラミング入門 = Introduction to Machine Learning from Scratch with Python</em>. 機械学習スタートアップシリーズ. 講談社. <a href="http://id.ndl.go.jp/bib/030584765">http://id.ndl.go.jp/bib/030584765</a>.
-</div>
-<div id="ref-R300000001-I031881422-00" class="csl-entry" role="listitem">
-岡野原大輔. 2022. <em>ディープラーニングを支える技術 : 「正解」を導くメカニズム〈技術基礎〉</em>. Tech×Books plus. 技術評論社. <a href="http://id.ndl.go.jp/bib/031881422">http://id.ndl.go.jp/bib/031881422</a>.
-</div>
-<div id="ref-R300000001-I029976550-00" class="csl-entry" role="listitem">
-門脇大輔, 阪田隆司, 保坂桂佑, と 平松雄司. 2019. <em>Kaggleで勝つデータ分析の技術</em>. 技術評論社. <a href="http://id.ndl.go.jp/bib/029976550">http://id.ndl.go.jp/bib/029976550</a>.
-</div>
-</div>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -771,13 +699,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../week03/03_mathematics.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">機械学習で用いる数学の基礎</span></span>
+      <a href="../week06/0602_patial_dependence.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">PDP</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../week04/0401_penguins.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">南極大陸に生育するペンギンの体長データ</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../week07/07_exercise.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">電気使用実績を予測するモデルの構築</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -787,7 +715,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">Copyright 2023, Shinya Uryu</div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/week07/index.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

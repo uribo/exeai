@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.361">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>AI総合演習 - 12&nbsp; ニューラルネットワーク</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../references.html" rel="next">
+<link href="../week08/index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "一致なし",
+    "search-matching-documents-text": "一致した文書",
+    "search-copy-link-title": "検索へのリンクをコピー",
+    "search-hide-matches-text": "追加の検索結果を非表示",
+    "search-more-match-text": "追加の検索結果",
+    "search-more-matches-text": "追加の検索結果",
+    "search-clear-button-title": "消去",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "検索",
+    "search-label": "サーチ"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-57R1KWZ3ZJ"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta property="og:title" content="AI総合演習 - 12&nbsp; ニューラルネットワーク">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://uribo.github.io/exeai/week08/0801_neural_networks_files/figure-html/cell-7-output-1.png">
+<meta property="og:site-name" content="AI総合演習">
+<meta property="og:image:height" content="822">
+<meta property="og:image:width" content="1141">
+<meta name="twitter:title" content="AI総合演習 - 12&nbsp; ニューラルネットワーク">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://uribo.github.io/exeai/week08/img/open_graph.png">
+<meta name="twitter:creator" content="@u_ribo">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week08/index.html">深層学習の基礎</a></li><li class="breadcrumb-item"><a href="../week08/0801_neural_networks.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ニューラルネットワーク</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">AI総合演習</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/uribo/exeai" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/intent/tweet?url=|url|" title="Twitter" class="quarto-navigation-tool px-1" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="ダークモードの切り替え"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="サーチ"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ようこそ</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week01/guidance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ガイダンス</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">プログラミング入門</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week02/0201_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">pandas基礎</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week02/0202_matplotlib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データの可視化</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">機械学習の背景・数理</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week03/03_mathematics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">機械学習で用いる数学の基礎</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week04/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">機械学習モデルの設計と評価</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week04/0401_penguins.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">南極大陸に生育するペンギンの体長データ</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week04/0402_classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ペンギンデータの分類に挑戦</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week05/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">機械学習の手法</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week05/0501_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">線形回帰モデルによるペンギンの体重の予測</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week05/0502_svm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">サポートベクターマシン</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week05/0503_k-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">k平均法によるクラスタリング</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week06/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">機械学習モデルの解釈・説明性</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week06/0601_interpretable_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">回帰モデルの解釈</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week06/0602_patial_dependence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">PDP</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week07/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">演習1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week07/07_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">電気使用実績を予測するモデルの構築</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week08/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">深層学習の基礎</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week08/0801_neural_networks.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ニューラルネットワーク</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考資料・URL</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text">付録</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/jupyternotebook.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Jupyter Notebook</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/ai_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">AIを活用したツール</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Visual Studio Code</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Docker</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目次</h2>
+   
+  <ul>
+  <li><a href="#深層学習" id="toc-深層学習" class="nav-link active" data-scroll-target="#深層学習"><span class="header-section-number">12.1</span> 深層学習</a>
+  <ul class="collapse">
+  <li><a href="#機械学習との違い" id="toc-機械学習との違い" class="nav-link" data-scroll-target="#機械学習との違い"><span class="header-section-number">12.1.1</span> 機械学習との違い</a></li>
+  </ul></li>
+  <li><a href="#神経細胞のネットワーク" id="toc-神経細胞のネットワーク" class="nav-link" data-scroll-target="#神経細胞のネットワーク"><span class="header-section-number">12.2</span> 神経細胞のネットワーク</a></li>
+  <li><a href="#人工ニューロン" id="toc-人工ニューロン" class="nav-link" data-scroll-target="#人工ニューロン"><span class="header-section-number">12.3</span> 人工ニューロン</a>
+  <ul class="collapse">
+  <li><a href="#パーセプトロン" id="toc-パーセプトロン" class="nav-link" data-scroll-target="#パーセプトロン"><span class="header-section-number">12.3.1</span> パーセプトロン</a></li>
+  </ul></li>
+  <li><a href="#ニューラルネットワーク" id="toc-ニューラルネットワーク" class="nav-link" data-scroll-target="#ニューラルネットワーク"><span class="header-section-number">12.4</span> ニューラルネットワーク</a>
+  <ul class="collapse">
+  <li><a href="#ニューラルネットワークの構造" id="toc-ニューラルネットワークの構造" class="nav-link" data-scroll-target="#ニューラルネットワークの構造"><span class="header-section-number">12.4.1</span> ニューラルネットワークの構造</a></li>
+  <li><a href="#活性化関数" id="toc-活性化関数" class="nav-link" data-scroll-target="#活性化関数"><span class="header-section-number">12.4.2</span> 活性化関数</a></li>
+  <li><a href="#ニューラルネットワークの実装" id="toc-ニューラルネットワークの実装" class="nav-link" data-scroll-target="#ニューラルネットワークの実装"><span class="header-section-number">12.4.3</span> ニューラルネットワークの実装</a></li>
+  </ul></li>
+  <li><a href="#損失関数" id="toc-損失関数" class="nav-link" data-scroll-target="#損失関数"><span class="header-section-number">12.5</span> 損失関数</a></li>
+  <li><a href="#勾配降下法によるパラメータの学習" id="toc-勾配降下法によるパラメータの学習" class="nav-link" data-scroll-target="#勾配降下法によるパラメータの学習"><span class="header-section-number">12.6</span> 勾配降下法によるパラメータの学習</a>
+  <ul class="collapse">
+  <li><a href="#確率的勾配降下法" id="toc-確率的勾配降下法" class="nav-link" data-scroll-target="#確率的勾配降下法"><span class="header-section-number">12.6.1</span> 確率的勾配降下法</a></li>
+  <li><a href="#誤差逆伝播法" id="toc-誤差逆伝播法" class="nav-link" data-scroll-target="#誤差逆伝播法"><span class="header-section-number">12.6.2</span> 誤差逆伝播法</a></li>
+  </ul></li>
+  <li><a href="#畳み込みニューラルネットワーク" id="toc-畳み込みニューラルネットワーク" class="nav-link" data-scroll-target="#畳み込みニューラルネットワーク"><span class="header-section-number">12.7</span> 畳み込みニューラルネットワーク</a>
+  <ul class="collapse">
+  <li><a href="#畳み込み演算" id="toc-畳み込み演算" class="nav-link" data-scroll-target="#畳み込み演算"><span class="header-section-number">12.7.1</span> 畳み込み演算</a></li>
+  </ul></li>
+  <li><a href="#再帰型ニューラルネットワーク" id="toc-再帰型ニューラルネットワーク" class="nav-link" data-scroll-target="#再帰型ニューラルネットワーク"><span class="header-section-number">12.8</span> 再帰型ニューラルネットワーク</a>
+  <ul class="collapse">
+  <li><a href="#長短期記憶-lstm" id="toc-長短期記憶-lstm" class="nav-link" data-scroll-target="#長短期記憶-lstm"><span class="header-section-number">12.8.1</span> 長・短期記憶　(LSTM)</a></li>
+  <li><a href="#ゲート付き再帰ユニット-gru" id="toc-ゲート付き再帰ユニット-gru" class="nav-link" data-scroll-target="#ゲート付き再帰ユニット-gru"><span class="header-section-number">12.8.2</span> ゲート付き再帰ユニット　(GRU)</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/week08/0801_neural_networks.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ニューラルネットワーク</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="深層学習" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="深層学習"><span class="header-section-number">12.1</span> 深層学習</h2>
+<p>深層学習は人工ニューロンと呼ばれる、人の脳で行われている情報処理を模倣した情報処理モデルを多層に重ねたニューラルネットワークを用いて、データから重要な特徴量を抽出し、その特徴量を用いて分類や回帰を行う機械学習の手法です。</p>
+<p>深層学習は、画像認識や音声認識、自然言語処理などの分野で高い精度を出しており、近年では様々な分野で活用されています。人工知能の中でも、特に注目されている技術です。</p>
+<section id="機械学習との違い" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="機械学習との違い"><span class="header-section-number">12.1.1</span> 機械学習との違い</h3>
+<p>深層学習は機械学習の一種ですが、機械学習とはどのような違いがあるのでしょうか。機械学習と深層学習の特徴・その違いを整理すると、以下のようになります。</p>
+<section id="機械学習" class="level4" data-number="12.1.1.1">
+<h4 data-number="12.1.1.1" class="anchored" data-anchor-id="機械学習"><span class="header-section-number">12.1.1.1</span> 機械学習</h4>
+<ul>
+<li>データからパターンを見つけ出し、そのパターンを基に新しいデータに対する予測を行う。多くの場合、人間が手動で重要な情報（特徴量）を設定する必要がある。</li>
+<li>モデルの訓練時間は一般的に深層学習に比べて短い</li>
+</ul>
+</section>
+<section id="深層学習-1" class="level4" data-number="12.1.1.2">
+<h4 data-number="12.1.1.2" class="anchored" data-anchor-id="深層学習-1"><span class="header-section-number">12.1.1.2</span> 深層学習</h4>
+<ul>
+<li>機械学習の一手法。</li>
+<li>特徴量の抽出を人間が行うのではなく機械が行う。そのため手動での特徴量設定が不要となる。</li>
+<li>多層の人工ニューロンを使用する。各層のニューロンは、前の層のニューロンからの入力を受け取り、その入力に対して重み付けを行う。各ニューロンの出力は、そのニューロンへの入力と重み付けの積の総和を「活性化関数」に入力した値となる。→ <strong>柔軟な表現を可能にする</strong></li>
+<li>機械学習と比べ、モデルの訓練には多くのデータと長い時間が必要となる。</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="神経細胞のネットワーク" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="神経細胞のネットワーク"><span class="header-section-number">12.2</span> 神経細胞のネットワーク</h2>
+<p>深層学習で利用される人工ニューロンは、人間の脳の神経細胞を模倣したものです。人間の脳は、神経細胞と呼ばれる細胞が結びつき、神経細胞同士で電気信号を伝えるネットワークを形成しており、このネットワークを<strong>ニューラルネットワーク</strong>と呼びます。</p>
+<p>神経細胞のネットワークは、以下のような構造をしています。</p>
+<ul>
+<li>神経細胞体</li>
+<li>樹状突起</li>
+<li>軸索</li>
+</ul>
+<p>軸索末端と次のニューロンの樹状突起とが接触し、情報の伝達が行われます。この接触部位はシナプスと呼ばれます。また、電気信号の伝達を「発火」と呼びます。</p>
+<p>発火は、樹状突起からの入力が一定の値を超えたときに発生します。この一定の値を<ruby>閾値<rt>いきち、しきいち</rt></ruby>と呼びます。閾値を超えたときに発生する電気信号の強さは一定であり、発火の有無のみが伝達されます。</p>
+</section>
+<section id="人工ニューロン" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="人工ニューロン"><span class="header-section-number">12.3</span> 人工ニューロン</h2>
+<p>人工ニューロンは、ニューラルネットワークを構成する基本単位としての、モデル化された神経細胞です。1つ以上の入力を受け取り、それらの入力に対して重み付けを行い、その重み付けの総和を活性化関数に入力した値を出力する、という構造をしています。</p>
+<ul>
+<li>入力</li>
+<li>重み</li>
+<li>活性化関数</li>
+<li>出力</li>
+</ul>
+<section id="パーセプトロン" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="パーセプトロン"><span class="header-section-number">12.3.1</span> パーセプトロン</h3>
+<p>人工ニューロンの一種に「パーセプトロン」と呼ばれるものがあります。パーセプトロンの挙動を理解することで、人工ニューロンの基本的な動作の理解に役立ちます。</p>
+<p>パーセプトロンは、構造や学習の違いによって、単純パーセプトロンと多層パーセプトロンに分けられます。まずは単純パーセプトロンについて説明します。</p>
+<section id="単純パーセプトロン" class="level4" data-number="12.3.1.1">
+<h4 data-number="12.3.1.1" class="anchored" data-anchor-id="単純パーセプトロン"><span class="header-section-number">12.3.1.1</span> 単純パーセプトロン</h4>
+<p>単純パーセプトロンは、入力層と出力層の2つの層から構成されています。入力層は、入力を受け取る層です。出力層では、入力層からの入力と重みの積の総和が閾値を超えた場合に1を出力し、超えなかった場合に0を出力する、という動作をします。このような動作を行う関数を「ステップ関数」と呼びます。パーセプトロンでは、ステップ関数のように、入力に対して出力を決定する関数を活性化関数と呼びます。</p>
+<p>ステップ関数を活性化関数として用いた単純パーセプトロンは以下の式で表現されます。 <span class="math display">\[
+y = \begin{cases}
+0 &amp; (w_1x_1 + w_2x_2 \leq \theta) \\
+1 &amp; (w_1x_1 + w_2x_2 &gt; \theta)
+\end{cases}
+\]</span></p>
+<p>ここで <span class="math inline">\(x1\)</span> 、<span class="math inline">\(x2\)</span> は入力、 <span class="math inline">\(w1\)</span> 、<span class="math inline">\(w2\)</span> は各入力に対する重み（weight）、 <span class="math inline">\(\theta\)</span> は閾値です。ここでは入力の数が2つの場合を考えていますが、入力の数は任意の値にすることができます。また、入力の重要度を重みによって調整することができます。そのため重みは入力ごとに用意されています。 <span class="math inline">\(\theta\)</span> は、重みと入力の積の総和が閾値を超えた場合に1を出力するかどうかを決定するための値です。すなわち、 <span class="math inline">\(\theta\)</span> が大きいほど、重みと入力の積の総和が大きくないと1を出力しなくなります。</p>
+<p>1か0かという二値の出力を用いて、以下の論理演算を行うことができます。このような論理演算を行うパーセプトロンを「論理回路」と呼びます。</p>
+<ul>
+<li>AND: 2つの入力が1の場合に1を出力し、それ以外の場合に0を出力する。</li>
+<li>OR: 2つの入力のうち1つ以上が1の場合に1を出力し、それ以外の場合に0を出力する。</li>
+<li>NAND: 2つの入力が1の場合に0を出力し、それ以外の場合に1を出力する。ANDの逆の動作をする。</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x_1\)</span></th>
+<th><span class="math inline">\(x_2\)</span></th>
+<th>AND</th>
+<th>OR</th>
+<th>NAND</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>これらの論理演算は、パーセプトロンの重みと閾値を適切に設定することで実現できます。例えば、ANDの場合は、 <span class="math inline">\(w_1\)</span> 、 <span class="math inline">\(w_2\)</span> 、 <span class="math inline">\(\theta\)</span> をそれぞれ0.5、0.5、0.7とすると、上の表のような出力が得られます。</p>
+<p><span class="math display">\[
+y = \begin{cases}
+0 &amp; (0.5x_1 + 0.5x_2 \leq 0.7) \\
+1 &amp; (0.5x_1 + 0.5x_2 &gt; 0.7)
+\end{cases}
+\]</span></p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>(<span class="fl">0.5</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> x2 <span class="op">&lt;=</span> <span class="fl">0.7</span>) <span class="op">&amp;</span> (<span class="fl">0.5</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> x2 <span class="op">&gt;</span> <span class="fl">0.7</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>False</code></pre>
+</div>
+</div>
+<p>Pythonで上記のパーセプトロンを実装すると以下のようになります。</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> perceptron(x1, x2, theta <span class="op">=</span> <span class="fl">0.7</span>):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    w1, w2 <span class="op">=</span> <span class="fl">0.5</span>, <span class="fl">0.5</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> w1 <span class="op">*</span> x1 <span class="op">+</span> w2 <span class="op">*</span> x2</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> tmp <span class="op">&lt;=</span> theta:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> tmp <span class="op">&gt;</span> theta:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perceptron(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="co"># 0</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perceptron(<span class="dv">1</span>, <span class="dv">0</span>)) <span class="co"># 0</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perceptron(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="co"># 0</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perceptron(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="co"># 1</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+0
+0
+1</code></pre>
+</div>
+</div>
+<p>Pythonで実装したパーセプトロンは、「入力と重みの積の総和が閾値を超えた場合に1を出力し、超えなかった場合に0を出力する」、という動作をしています。閾値は関数の引数として与えていましたが、この値を変えることで、パーセプトロンの出力を変えることができます。これにより、パーセプトロンをORパーセプトロンとして機能させることができます。</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ORのパーセプトロン</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perceptron(<span class="dv">0</span>, <span class="dv">0</span>, theta <span class="op">=</span> <span class="fl">0.2</span>)) <span class="co"># 0</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perceptron(<span class="dv">1</span>, <span class="dv">0</span>, theta <span class="op">=</span> <span class="fl">0.2</span>)) <span class="co"># 1</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perceptron(<span class="dv">0</span>, <span class="dv">1</span>, theta <span class="op">=</span> <span class="fl">0.2</span>)) <span class="co"># 1</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perceptron(<span class="dv">1</span>, <span class="dv">1</span>, theta <span class="op">=</span> <span class="fl">0.2</span>)) <span class="co"># 1</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+1
+1</code></pre>
+</div>
+</div>
+<p>NANDのパーセプトロンは、ANDのパーセプトロンの重みと閾値を反転させることで実現できます。</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NANDのパーセプトロン</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> NAND_perceptron(x1, x2, theta <span class="op">=</span> <span class="op">-</span><span class="fl">0.7</span>):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 重みと閾値を反転</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    w1, w2 <span class="op">=</span> <span class="op">-</span><span class="fl">0.5</span>, <span class="op">-</span><span class="fl">0.5</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> w1 <span class="op">*</span> x1 <span class="op">+</span> w2 <span class="op">*</span> x2</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> tmp <span class="op">&lt;=</span> theta:</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> tmp <span class="op">&gt;</span> theta:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(NAND_perceptron(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="co"># 1</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(NAND_perceptron(<span class="dv">1</span>, <span class="dv">0</span>)) <span class="co"># 1</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(NAND_perceptron(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="co"># 1</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(NAND_perceptron(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="co"># 0</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+1
+1
+0</code></pre>
+</div>
+</div>
+<p>これまでのパーセプトロンの例では、閾値を関数の引数として与えていましたが、閾値をバイアスとして扱い、重みと入力の積の総和に含めることができます。</p>
+<p><span class="math display">\[
+y = \begin{cases}
+0 &amp; (b + w_1x_1 + w_2x_2 \leq 0) \\
+1 &amp; (b + w_1x_1 + w_2x_2 &gt; 0)
+\end{cases}
+\]</span></p>
+<p>ここで <span class="math inline">\(b\)</span> はバイアスです。この場合、閾値はバイアスの重みとなります。バイアスは、入力が0の場合に出力する値を決めるパラメータとして機能します。すなわちバイアスが大きいほど、入力が0の場合に出力する値は大きくなります。</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># バイアスを導入したANDのパーセプトロン</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> AND_perceptron(x1, x2, b <span class="op">=</span> <span class="op">-</span><span class="fl">0.7</span>):</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    w1, w2 <span class="op">=</span> <span class="fl">0.5</span>, <span class="fl">0.5</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># b はバイアス</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> b <span class="op">+</span> w1 <span class="op">*</span> x1 <span class="op">+</span> w2 <span class="op">*</span> x2</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> tmp <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> tmp <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(AND_perceptron(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="co"># 0</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(AND_perceptron(<span class="dv">1</span>, <span class="dv">0</span>)) <span class="co"># 0</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(AND_perceptron(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="co"># 0</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(AND_perceptron(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="co"># 1</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"バイアスの値を小さくする"</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co"># バイアスの値が小さいと発火しやすくなる</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(AND_perceptron(<span class="dv">0</span>, <span class="dv">0</span>, b <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span>)) <span class="co"># 0</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(AND_perceptron(<span class="dv">1</span>, <span class="dv">0</span>, b <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span>)) <span class="co"># 1</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(AND_perceptron(<span class="dv">0</span>, <span class="dv">1</span>, b <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span>)) <span class="co"># 1</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(AND_perceptron(<span class="dv">1</span>, <span class="dv">1</span>, b <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span>)) <span class="co"># 1</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co"># バイアスの値が大きいと発火しにくくなる</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"バイアスの値を大きくする"</span>)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(AND_perceptron(<span class="dv">0</span>, <span class="dv">0</span>, b <span class="op">=</span> <span class="op">-</span><span class="fl">20.0</span>))</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(AND_perceptron(<span class="dv">1</span>, <span class="dv">1</span>, b <span class="op">=</span> <span class="op">-</span><span class="fl">20.0</span>))</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+0
+0
+1
+バイアスの値を小さくする
+0
+1
+1
+1
+バイアスの値を大きくする
+0
+0</code></pre>
+</div>
+</div>
+<p>同様に、ORやNANDのパーセプトロンにもバイアスを導入することができます。</p>
+<p>パーセプトロンを用いることで、ANDやOR、NANDの論理回路を表現することができました。一方で、2つの入力が異なる場合に1を出力し、同じ場合に0を出力する論理回路であるXORは単純パーセプトロンでは表現できません。</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x_1\)</span></th>
+<th><span class="math inline">\(x_2\)</span></th>
+<th><span class="math inline">\(y\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>単純パーセプトロンがXORを表現できない理由は、単純パーセプトロンは線形分離可能な問題しか表現できないからです。線形分離可能な問題とは、2つのクラスを直線で分離できる問題のことです。XORは、2つのクラスを直線で分離するものではないため、単純パーセプトロンでは表現できない、ということになります。</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># XORの入出力と線形分離不可能なことを確認する</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># XORの入力</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>]])</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># XORの出力</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># データをプロットする</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c <span class="op">=</span> Y)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 直線の追加... これでは分離できない</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">0</span>])</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="0801_neural_networks_files/figure-html/cell-7-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="0801_neural_networks_files/figure-html/cell-7-output-1.png" width="571" height="411" class="figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>一方で、多層パーセプトロンを用いることで、XORを表現することができます。</p>
+<!-- 単純パーセプトロンの学習は、入力と正解ラベルの組み合わせを与えることで行います。学習の結果、パーセプトロンの重みが調整され、正解ラベルを出力するようになります。 -->
+</section>
+<section id="多層パーセプトロン" class="level4" data-number="12.3.1.2">
+<h4 data-number="12.3.1.2" class="anchored" data-anchor-id="多層パーセプトロン"><span class="header-section-number">12.3.1.2</span> 多層パーセプトロン</h4>
+<p>多層パーセプトロンは、複数のパーセプトロンを組み合わせることで表現することができます。これにより、単純パーセプトロンでは表現できない非線形な問題を表現することができます。</p>
+<p>バイアスを導入したANDパーセプトロンとORパーセプトロンを組み合わせることで、XORを表現することができます。これらの単純パーセプトロンを組み合わせて、XORを表現する多層パーセプトロンを作成してみましょう。</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANDパーセプトロン</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> AND_perceptron(x1, x2, b <span class="op">=</span> <span class="op">-</span><span class="fl">0.7</span>):</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    w1, w2 <span class="op">=</span> <span class="fl">0.5</span>, <span class="fl">0.5</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># b はバイアス</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> b <span class="op">+</span> w1 <span class="op">*</span> x1 <span class="op">+</span> w2 <span class="op">*</span> x2</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> tmp <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> tmp <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># ORパーセプトロン</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> OR_perceptron(x1, x2, b <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span>):</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    w1, w2 <span class="op">=</span> <span class="fl">0.5</span>, <span class="fl">0.5</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># b はバイアス</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> b <span class="op">+</span> w1 <span class="op">*</span> x1 <span class="op">+</span> w2 <span class="op">*</span> x2</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> tmp <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> tmp <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="co"># NANDパーセプトロン</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> NAND_perceptron(x1, x2, b <span class="op">=</span> <span class="fl">0.7</span>):</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    w1, w2 <span class="op">=</span> <span class="op">-</span><span class="fl">0.5</span>, <span class="op">-</span><span class="fl">0.5</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># b はバイアス</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> b <span class="op">+</span> w1 <span class="op">*</span> x1 <span class="op">+</span> w2 <span class="op">*</span> x2</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> tmp <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> tmp <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="co"># XORパーセプトロン</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="co"># XORはAND, OR, NANDを組み合わせて表現できる</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> XOR_perceptron(x1, x2):</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 第0層(入力層)... 2つの入力を受け取る最初の層</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    s1 <span class="op">=</span> NAND_perceptron(x1, x2)</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 第1層(中間層)... NANDパーセプトロンの出力を入力として受け取る</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>    s2 <span class="op">=</span> OR_perceptron(x1, x2)</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 第2層(出力層)... ORパーセプトロンとNANDパーセプトロンの出力を入力として受け取り、ANDパーセプトロンの出力を返す</span></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> AND_perceptron(s1, s2)</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a><span class="co"># XORパーセプトロンの出力</span></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x1, x2 <span class="kw">in</span> X:</span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x1, x2, XOR_perceptron(x1, x2))</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0 0 0
+1 0 1
+0 1 1
+1 1 0</code></pre>
+</div>
+</div>
+<p>上記の多重パーセプトロンは3種の単純パーセプトロンを組み合わせて表現しています。このように、多層パーセプトロンは複数のパーセプトロンを組み合わせて表現することができます。これにより、多層パーセプトロンは非線形な問題を表現することができます。言い換えると、層を重ねることで、柔軟な表現が可能になったということです。</p>
+</section>
+</section>
+</section>
+<section id="ニューラルネットワーク" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="ニューラルネットワーク"><span class="header-section-number">12.4</span> ニューラルネットワーク</h2>
+<p>多層パーセプトロンをベースに、ニューラルネットワークの概念を紹介します。ニューラルネットワークは多層パーセプトロンと同じく、複数のパーセプトロンを組み合わせて表現することができます。しかし、ニューラルネットワークでは、<strong>パーセプトロンの重みとバイアスを自動で調整する</strong>ことができます。これらのパラメータを調整することを「学習」と呼んでいます。</p>
+<section id="ニューラルネットワークの構造" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="ニューラルネットワークの構造"><span class="header-section-number">12.4.1</span> ニューラルネットワークの構造</h3>
+<p>ニューラルネットワークは、入力層、中間層、出力層の3つの層で構成されます。入力層は、外部からの入力を受け取る層です。中間層は、入力層からの入力を受け取り、出力層への入力を行う層です。出力層は、中間層からの入力を受け取り、外部への出力を行う層です。これは、多層パーセプトロンと同じ構造です。多層パーセプトロンと異なる点は、中間層が複数存在することです。このように、中間層が複数存在するニューラルネットワークは「層が深い」と表現され、<strong>ディープニューラルネットワーク</strong>と呼ばれる所以になっています。</p>
+<p>しかし、層の数を増やすだけでは、ニューラルネットワークの表現力は向上しません。ニューラルネットワークの表現力を向上させるには、活性化関数を工夫する必要があります。活性化関数には、ステップ関数以外にも、シグモイド関数やReLU関数などがあります。これらについて詳しく見ていきましょう。</p>
+</section>
+<section id="活性化関数" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="活性化関数"><span class="header-section-number">12.4.2</span> 活性化関数</h3>
+<p>「活性化」とは入力信号の総和がどのように発火するか（出力が1か0か）を決定することを指します。活性化関数はその名の通り、入力信号の総和がどのように活性化するかを決定する関数です。活性化関数には、ステップ関数、シグモイド関数、ReLU関数などがあります。</p>
+<ul>
+<li>ステップ関数: 入力信号の総和が閾値を超えたら発火する関数</li>
+<li>シグモイド関数: 入力信号の総和を0から1の間（連続的な実数）に収める関数</li>
+<li>正規化線形関数（ReLU関数）: 入力信号の総和が0を超えたら発火する関数。出力は0から無限大の間の値を取る。</li>
+<li>ソフトマックス関数: 入力信号の各要素を0から1の間の連続的な実数に変換し、その出力の総和が1になるように正規化する。これにより、出力は確率分布として解釈することが可能になる。</li>
+</ul>
+<p>入力と出力の関係をグラフで表すと、以下のようになります。</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ステップ関数</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step_function(x):</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(x <span class="op">&gt;</span> <span class="dv">0</span>, dtype<span class="op">=</span>np.<span class="bu">int</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># シグモイド関数</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(x):</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ReLU関数</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> relu(x):</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.maximum(<span class="dv">0</span>, x)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 入力値</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="fl">5.0</span>, <span class="fl">5.0</span>, <span class="fl">0.1</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ステップ関数の出力</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>y_step <span class="op">=</span> step_function(x)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co"># シグモイド関数の出力</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>y_sigmoid <span class="op">=</span> sigmoid(x)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co"># ReLU関数の出力</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>y_relu <span class="op">=</span> relu(x)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="co"># グラフの描画</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_step, label<span class="op">=</span><span class="st">'step'</span>)</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_sigmoid, label<span class="op">=</span><span class="st">'sigmoid'</span>)</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_relu, label<span class="op">=</span><span class="st">'ReLU'</span>)</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>)</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_2670/993146812.py:3: DeprecationWarning:
+
+`np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="0801_neural_networks_files/figure-html/cell-9-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="0801_neural_networks_files/figure-html/cell-9-output-2.png" width="571" height="411" class="figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>活性化関数の主な目的は、モデルに非線形性を導入し、より複雑な関数を近似する能力を提供することです。ニューラルネットワークでは、活性化関数として上記のシグモイド関数やReLU関数を用いることが多いです。ステップ関数は、ニューラルネットワークではあまり用いられません。</p>
+<p>ニューラルネットワークにおいて、各中間層のニューロンは、その入力に対して重みを適用し、バイアスを追加した後、活性化関数を適用します。活性化関数は出力層でも使用されることがありますが、その選択は解くべき問題に依存します。たとえば、二項分類問題ではシグモイド関数が、多クラス分類問題ではソフトマックス関数が出力層の活性化関数としてよく使用されます。</p>
+</section>
+<section id="ニューラルネットワークの実装" class="level3" data-number="12.4.3">
+<h3 data-number="12.4.3" class="anchored" data-anchor-id="ニューラルネットワークの実装"><span class="header-section-number">12.4.3</span> ニューラルネットワークの実装</h3>
+<p>ニューラルネットワークの実装は、多層パーセプトロンの実装とほぼ同じです。違いは、活性化関数をシグモイド関数やReLU関数に変更することです。また、中間層が複数存在することも違いの一つです。</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># シグモイド関数</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(x):</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 恒等関数... 入力をそのまま出力する関数</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> identity_function(x):</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3層ニューラルネットワーク</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 重みとバイアスを初期化する</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> init_network():</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    network <span class="op">=</span> {}</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W1'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>], [<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>]])</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b1'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>])</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W2'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.4</span>], [<span class="fl">0.2</span>, <span class="fl">0.5</span>], [<span class="fl">0.3</span>, <span class="fl">0.6</span>]])</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b2'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>])</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W3'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.3</span>], [<span class="fl">0.2</span>, <span class="fl">0.4</span>]])</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b3'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>])</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> network</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co">#　入力信号を出力へ変換する処理</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> forward(network, x):</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    W1, W2, W3 <span class="op">=</span> network[<span class="st">'W1'</span>], network[<span class="st">'W2'</span>], network[<span class="st">'W3'</span>]</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    b1, b2, b3 <span class="op">=</span> network[<span class="st">'b1'</span>], network[<span class="st">'b2'</span>], network[<span class="st">'b3'</span>]</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    a1 <span class="op">=</span> np.dot(x, W1) <span class="op">+</span> b1</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    z1 <span class="op">=</span> sigmoid(a1)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    a2 <span class="op">=</span> np.dot(z1, W2) <span class="op">+</span> b2</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    z2 <span class="op">=</span> sigmoid(a2)</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    a3 <span class="op">=</span> np.dot(z2, W3) <span class="op">+</span> b3</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 出力層の活性化関数は、恒等関数を用いる</span></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> identity_function(a3)</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>network <span class="op">=</span> init_network()</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">0.5</span>])</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> forward(network, x)</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y) <span class="co"># [0.31682708 0.69627909]</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.31682708 0.69627909]</code></pre>
+</div>
+</div>
+<p>扱う問題が回帰か分類かによって、出力層の活性化関数は変更します。回帰問題では、恒等関数を、分類問題では、ソフトマックス関数を用います。ソフトマックス関数は、出力層のニューロンの数だけの出力を持ち、その出力の総和が1になるように正規化します。そのため、ソフトマックス関数の出力を確率として解釈することができます。</p>
+</section>
+</section>
+<section id="損失関数" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="損失関数"><span class="header-section-number">12.5</span> 損失関数</h2>
+<p>ニューラルネットワークの学習において、最適な重み、バイアスのパラメータを探索するために、損失関数を用います。損失関数は、ニューラルネットワークの出力と正解ラベルの誤差を表します。損失関数には、二乗和誤差や交差エントロピー誤差などがあります。</p>
+<p>損失関数は言い換えるとモデルの予測値と正解値がどの程度近いかを示す指標です。この損失関数の値が小さいほど、モデルの予測値と正解値が近いことを意味します。そのため、損失関数の値が小さくなるように、重みやバイアスのパラメータを調整することがニューラルネットワークの学習の目的となります。</p>
+<p>それでは、どのようにしてパラメータを調整すればよいのでしょうか。パラメータを調整するためには、損失関数の勾配を求める必要があります。そのために勾配降下法という手法を用います。</p>
+</section>
+<section id="勾配降下法によるパラメータの学習" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="勾配降下法によるパラメータの学習"><span class="header-section-number">12.6</span> 勾配降下法によるパラメータの学習</h2>
+<p>勾配とは、ある地点における関数の傾きのことです。勾配が正の場合は、関数の値が増加していることを意味し、勾配が負の場合は、関数の値が減少していることを意味します。勾配が0の場合は、関数の値が極値に達していることを意味します。つまり、勾配が0となるように、勾配を小さくする方向にパラメータを調整することで、損失関数の値を小さくすることができます。これを繰り返すことで、損失関数の値を小さくすることができます。このような手法を勾配降下法と呼びます。</p>
+<p>損失関数の勾配を求めることで、損失関数の値が増加する方向を知ることができます。そのため、損失関数の値が減少する方向にパラメータを調整することができます。このように、損失関数の勾配を求めることで、パラメータを調整することができます。この勾配を求める方法を誤差逆伝播法と呼びます。</p>
+<section id="確率的勾配降下法" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="確率的勾配降下法"><span class="header-section-number">12.6.1</span> 確率的勾配降下法</h3>
+<p>勾配降下法は、全ての訓練データを用いて、勾配を求めます。しかし、訓練データが膨大な場合は、全ての訓練データを用いて勾配を求めることは現実的ではありません。そのため、訓練データの中からランダムに選んだ一部のデータ（ミニバッチと呼ばれる）を用いて、勾配を求める方法があります。この方法を確率的勾配降下法と呼びます。</p>
+</section>
+<section id="誤差逆伝播法" class="level3" data-number="12.6.2">
+<h3 data-number="12.6.2" class="anchored" data-anchor-id="誤差逆伝播法"><span class="header-section-number">12.6.2</span> 誤差逆伝播法</h3>
+<p>ニューラルネットワークでの重みパラメータに対する損失関数の勾配を効率的に求める方法を誤差逆伝播法と呼びます。誤差逆伝播法は、出力層から入力層の方向に、各層の重みパラメータに対する損失関数の勾配を求めます。これにより効率的に勾配を求めることができます。</p>
+<!-- ### 勾配消失問題 -->
+</section>
+</section>
+<section id="畳み込みニューラルネットワーク" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="畳み込みニューラルネットワーク"><span class="header-section-number">12.7</span> 畳み込みニューラルネットワーク</h2>
+<p>畳み込みニューラルネットワーク（Convolutional Neural Network: CNN）は、画像認識や音声認識などの分野で高い精度を出すニューラルネットワークの一種です。 畳み込み層とプーリング層から構成されます。畳み込み層は、画像の特徴を抽出する層です。プーリング層は、畳み込み層の出力を圧縮する層です。</p>
+<section id="畳み込み演算" class="level3" data-number="12.7.1">
+<h3 data-number="12.7.1" class="anchored" data-anchor-id="畳み込み演算"><span class="header-section-number">12.7.1</span> 畳み込み演算</h3>
+</section>
+</section>
+<section id="再帰型ニューラルネットワーク" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="再帰型ニューラルネットワーク"><span class="header-section-number">12.8</span> 再帰型ニューラルネットワーク</h2>
+<p>再帰型ニューラルネットワーク（recurrent neural network: RNN）は、系列的なデータを扱うことができるニューラルネットワークの一種です。例えば、文章や音声などのデータは、系列的なデータとして扱うことができます。そのため、RNNは機械翻訳や音声認識などの分野で高い精度を出すことができます。</p>
+<p>RNNは、長・短期記憶、ゲート付き再帰ユニットといった様々な構造を持つことができます。これらの構造を持つことで、RNNは時系列データの中に、重要な情報がどこにあるかを自動的に学習することができます。</p>
+<section id="長短期記憶-lstm" class="level3" data-number="12.8.1">
+<h3 data-number="12.8.1" class="anchored" data-anchor-id="長短期記憶-lstm"><span class="header-section-number">12.8.1</span> 長・短期記憶　(LSTM)</h3>
+</section>
+<section id="ゲート付き再帰ユニット-gru" class="level3" data-number="12.8.2">
+<h3 data-number="12.8.2" class="anchored" data-anchor-id="ゲート付き再帰ユニット-gru"><span class="header-section-number">12.8.2</span> ゲート付き再帰ユニット　(GRU)</h3>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "コピーしました");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "コピーしました");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../week08/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">深層学習の基礎</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../references.html" class="pagination-link">
+        <span class="nav-page-text">参考資料・URL</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Shinya Uryu</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/uribo">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/u_ribo">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":true});</script>
+
+
+
+</body></html>

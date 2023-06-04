@@ -318,6 +318,23 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week08/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">深層学習の基礎</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week08/0801_neural_networks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ニューラルネットワーク</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
@@ -326,13 +343,13 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
  <span class="menu-text">付録</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendix/jupyternotebook.html" class="sidebar-item-text sidebar-link">
@@ -701,8 +718,8 @@ Name: count, dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 複数の評価指標（正解率、再現率）を用いる</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cross_validate(svm, X, y, cv<span class="op">=</span>skf, scoring<span class="op">=</span>[<span class="st">'accuracy'</span>, <span class="st">'recall_macro'</span>], return_train_score<span class="op">=</span><span class="va">True</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>{'fit_time': array([0.00264931, 0.00261807, 0.00259566, 0.00258827, 0.00267601]),
- 'score_time': array([0.00388956, 0.00294638, 0.00296474, 0.00288391, 0.00294685]),
+<pre><code>{'fit_time': array([0.00363946, 0.00334644, 0.00446868, 0.00328898, 0.00323105]),
+ 'score_time': array([0.00453639, 0.00350142, 0.00459528, 0.0035212 , 0.00347066]),
  'test_accuracy': array([0.98507463, 1.        , 1.        , 0.98484848, 1.        ]),
  'train_accuracy': array([0.9924812 , 0.9924812 , 0.9924812 , 0.99250936, 0.99625468]),
  'test_recall_macro': array([0.97435897, 1.        , 1.        , 0.97619048, 1.        ]),
@@ -1106,7 +1123,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"loop":true,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});</script>
 
 
 

@@ -48,6 +48,9 @@ book:
     - part: week07/index.qmd
       chapters: 
         - week07/07_exercise.qmd
+    - part: week08/index.qmd
+      chapters: 
+        - week08/0801_neural_networks.qmd
     - references.qmd
   appendices:
     - appendix/jupyternotebook.qmd

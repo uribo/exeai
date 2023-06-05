@@ -26,7 +26,7 @@ AI総合演習
 | 5  | 機械学習の手法 | [`05_機械学習の手法.pdf`](slide/05_機械学習の手法.pdf), [`0501_regression.ipynb`](week05/0501_regression.ipynb), [`0502_svm.ipynb`](week05/0502_svm.ipynb), [`0503_k-means.ipynb`](week05/0503_k-means.ipynb) |
 | 6  | 機械学習モデルの解釈・説明性 | [`0601_interpretable_model.ipynb`](week06/0601_interpretable_model.ipynb), [`0602_patial_dependence.ipynb`](week06/0602_patial_dependence.ipynb) |
 | 7  | 演習1 | [`07_exercise.ipynb`](week07/07_exercise.ipynb) |
-| 8  | 深層学習の基礎 | | 
+| 8  | 深層学習の基礎 | [`0801_neural_networks.ipynb](week08/0801_neural_networks.ipynb) | 
 | 9  | 実社会での応用 | |
 | 10 | 深層生成モデル | |
 | 11 | 演習2 | |

@@ -398,20 +398,25 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   <li><a href="#活性化関数" id="toc-活性化関数" class="nav-link" data-scroll-target="#活性化関数"><span class="header-section-number">12.4.2</span> 活性化関数</a></li>
   <li><a href="#ニューラルネットワークの実装" id="toc-ニューラルネットワークの実装" class="nav-link" data-scroll-target="#ニューラルネットワークの実装"><span class="header-section-number">12.4.3</span> ニューラルネットワークの実装</a></li>
   </ul></li>
-  <li><a href="#損失関数" id="toc-損失関数" class="nav-link" data-scroll-target="#損失関数"><span class="header-section-number">12.5</span> 損失関数</a></li>
-  <li><a href="#勾配降下法によるパラメータの学習" id="toc-勾配降下法によるパラメータの学習" class="nav-link" data-scroll-target="#勾配降下法によるパラメータの学習"><span class="header-section-number">12.6</span> 勾配降下法によるパラメータの学習</a>
+  <li><a href="#学習の進め方を決めるハイパーパラメータ" id="toc-学習の進め方を決めるハイパーパラメータ" class="nav-link" data-scroll-target="#学習の進め方を決めるハイパーパラメータ"><span class="header-section-number">12.5</span> 学習の進め方を決めるハイパーパラメータ</a>
   <ul class="collapse">
-  <li><a href="#確率的勾配降下法" id="toc-確率的勾配降下法" class="nav-link" data-scroll-target="#確率的勾配降下法"><span class="header-section-number">12.6.1</span> 確率的勾配降下法</a></li>
-  <li><a href="#誤差逆伝播法" id="toc-誤差逆伝播法" class="nav-link" data-scroll-target="#誤差逆伝播法"><span class="header-section-number">12.6.2</span> 誤差逆伝播法</a></li>
+  <li><a href="#エポック" id="toc-エポック" class="nav-link" data-scroll-target="#エポック"><span class="header-section-number">12.5.1</span> エポック</a></li>
+  <li><a href="#バッチサイズ" id="toc-バッチサイズ" class="nav-link" data-scroll-target="#バッチサイズ"><span class="header-section-number">12.5.2</span> バッチサイズ</a></li>
+  <li><a href="#学習率" id="toc-学習率" class="nav-link" data-scroll-target="#学習率"><span class="header-section-number">12.5.3</span> 学習率</a></li>
+  <li><a href="#イテレーション" id="toc-イテレーション" class="nav-link" data-scroll-target="#イテレーション"><span class="header-section-number">12.5.4</span> イテレーション</a></li>
   </ul></li>
-  <li><a href="#畳み込みニューラルネットワーク" id="toc-畳み込みニューラルネットワーク" class="nav-link" data-scroll-target="#畳み込みニューラルネットワーク"><span class="header-section-number">12.7</span> 畳み込みニューラルネットワーク</a>
+  <li><a href="#最適化問題" id="toc-最適化問題" class="nav-link" data-scroll-target="#最適化問題"><span class="header-section-number">12.6</span> 最適化問題</a>
   <ul class="collapse">
-  <li><a href="#畳み込み演算" id="toc-畳み込み演算" class="nav-link" data-scroll-target="#畳み込み演算"><span class="header-section-number">12.7.1</span> 畳み込み演算</a></li>
+  <li><a href="#勾配降下法によるパラメータの学習" id="toc-勾配降下法によるパラメータの学習" class="nav-link" data-scroll-target="#勾配降下法によるパラメータの学習"><span class="header-section-number">12.6.1</span> 勾配降下法によるパラメータの学習</a></li>
+  <li><a href="#確率的勾配降下法" id="toc-確率的勾配降下法" class="nav-link" data-scroll-target="#確率的勾配降下法"><span class="header-section-number">12.6.2</span> 確率的勾配降下法</a></li>
+  <li><a href="#誤差逆伝播法" id="toc-誤差逆伝播法" class="nav-link" data-scroll-target="#誤差逆伝播法"><span class="header-section-number">12.6.3</span> 誤差逆伝播法</a></li>
+  <li><a href="#勾配消失問題" id="toc-勾配消失問題" class="nav-link" data-scroll-target="#勾配消失問題"><span class="header-section-number">12.6.4</span> 勾配消失問題</a></li>
   </ul></li>
-  <li><a href="#再帰型ニューラルネットワーク" id="toc-再帰型ニューラルネットワーク" class="nav-link" data-scroll-target="#再帰型ニューラルネットワーク"><span class="header-section-number">12.8</span> 再帰型ニューラルネットワーク</a>
+  <li><a href="#ディープニューラルネットワークのアーキテクチャ" id="toc-ディープニューラルネットワークのアーキテクチャ" class="nav-link" data-scroll-target="#ディープニューラルネットワークのアーキテクチャ"><span class="header-section-number">12.7</span> ディープニューラルネットワークのアーキテクチャ</a>
   <ul class="collapse">
-  <li><a href="#長短期記憶-lstm" id="toc-長短期記憶-lstm" class="nav-link" data-scroll-target="#長短期記憶-lstm"><span class="header-section-number">12.8.1</span> 長・短期記憶　(LSTM)</a></li>
-  <li><a href="#ゲート付き再帰ユニット-gru" id="toc-ゲート付き再帰ユニット-gru" class="nav-link" data-scroll-target="#ゲート付き再帰ユニット-gru"><span class="header-section-number">12.8.2</span> ゲート付き再帰ユニット　(GRU)</a></li>
+  <li><a href="#全結合層" id="toc-全結合層" class="nav-link" data-scroll-target="#全結合層"><span class="header-section-number">12.7.1</span> 全結合層</a></li>
+  <li><a href="#畳み込みニューラルネットワーク" id="toc-畳み込みニューラルネットワーク" class="nav-link" data-scroll-target="#畳み込みニューラルネットワーク"><span class="header-section-number">12.7.2</span> 畳み込みニューラルネットワーク</a></li>
+  <li><a href="#再帰型ニューラルネットワーク" id="toc-再帰型ニューラルネットワーク" class="nav-link" data-scroll-target="#再帰型ニューラルネットワーク"><span class="header-section-number">12.7.3</span> 再帰型ニューラルネットワーク</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/week08/0801_neural_networks.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></nav>
@@ -779,7 +784,10 @@ y = \begin{cases}
 <span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x1, x2 <span class="kw">in</span> X:</span>
 <span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x1, x2, XOR_perceptron(x1, x2))</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0 0 0
+<pre><code>0</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 0 0
 1 0 1
 0 1 1
 1 1 0</code></pre>
@@ -808,40 +816,40 @@ y = \begin{cases}
 </ul>
 <p>入力と出力の関係をグラフで表すと、以下のようになります。</p>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ステップ関数</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step_function(x):</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(x <span class="op">&gt;</span> <span class="dv">0</span>, dtype<span class="op">=</span>np.<span class="bu">int</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># シグモイド関数</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(x):</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ReLU関数</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> relu(x):</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.maximum(<span class="dv">0</span>, x)</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 入力値</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="fl">5.0</span>, <span class="fl">5.0</span>, <span class="fl">0.1</span>)</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ステップ関数の出力</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>y_step <span class="op">=</span> step_function(x)</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co"># シグモイド関数の出力</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>y_sigmoid <span class="op">=</span> sigmoid(x)</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co"># ReLU関数の出力</span></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>y_relu <span class="op">=</span> relu(x)</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="co"># グラフの描画</span></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_step, label<span class="op">=</span><span class="st">'step'</span>)</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_sigmoid, label<span class="op">=</span><span class="st">'sigmoid'</span>)</span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_relu, label<span class="op">=</span><span class="st">'ReLU'</span>)</span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>)</span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ステップ関数</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step_function(x):</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(x <span class="op">&gt;</span> <span class="dv">0</span>, dtype<span class="op">=</span>np.<span class="bu">int</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># シグモイド関数</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(x):</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ReLU関数</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> relu(x):</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.maximum(<span class="dv">0</span>, x)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 入力値</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="fl">5.0</span>, <span class="fl">5.0</span>, <span class="fl">0.1</span>)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ステップ関数の出力</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>y_step <span class="op">=</span> step_function(x)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="co"># シグモイド関数の出力</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>y_sigmoid <span class="op">=</span> sigmoid(x)</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="co"># ReLU関数の出力</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>y_relu <span class="op">=</span> relu(x)</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="co"># グラフの描画</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_step, label<span class="op">=</span><span class="st">'step'</span>)</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_sigmoid, label<span class="op">=</span><span class="st">'sigmoid'</span>)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_relu, label<span class="op">=</span><span class="st">'ReLU'</span>)</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2503/993146812.py:3: DeprecationWarning:
+<pre><code>/tmp/ipykernel_2494/993146812.py:3: DeprecationWarning:
 
 `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
@@ -862,46 +870,46 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <h3 data-number="12.4.3" class="anchored" data-anchor-id="ニューラルネットワークの実装"><span class="header-section-number">12.4.3</span> ニューラルネットワークの実装</h3>
 <p>ニューラルネットワークの実装は、多層パーセプトロンの実装とほぼ同じです。違いは、活性化関数をシグモイド関数やReLU関数に変更することです。また、中間層が複数存在することも違いの一つです。</p>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># シグモイド関数</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(x):</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 恒等関数... 入力をそのまま出力する関数</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> identity_function(x):</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3層ニューラルネットワーク</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 重みとバイアスを初期化する</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> init_network():</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    network <span class="op">=</span> {}</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W1'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>], [<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>]])</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b1'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>])</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W2'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.4</span>], [<span class="fl">0.2</span>, <span class="fl">0.5</span>], [<span class="fl">0.3</span>, <span class="fl">0.6</span>]])</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b2'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>])</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W3'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.3</span>], [<span class="fl">0.2</span>, <span class="fl">0.4</span>]])</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b3'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>])</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> network</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co">#　入力信号を出力へ変換する処理</span></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> forward(network, x):</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    W1, W2, W3 <span class="op">=</span> network[<span class="st">'W1'</span>], network[<span class="st">'W2'</span>], network[<span class="st">'W3'</span>]</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    b1, b2, b3 <span class="op">=</span> network[<span class="st">'b1'</span>], network[<span class="st">'b2'</span>], network[<span class="st">'b3'</span>]</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    a1 <span class="op">=</span> np.dot(x, W1) <span class="op">+</span> b1</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    z1 <span class="op">=</span> sigmoid(a1)</span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    a2 <span class="op">=</span> np.dot(z1, W2) <span class="op">+</span> b2</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    z2 <span class="op">=</span> sigmoid(a2)</span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    a3 <span class="op">=</span> np.dot(z2, W3) <span class="op">+</span> b3</span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 出力層の活性化関数は、恒等関数を用いる</span></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> identity_function(a3)</span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>network <span class="op">=</span> init_network()</span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">0.5</span>])</span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> forward(network, x)</span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y) <span class="co"># [0.31682708 0.69627909]</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># シグモイド関数</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(x):</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 恒等関数... 入力をそのまま出力する関数</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> identity_function(x):</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3層ニューラルネットワーク</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 重みとバイアスを初期化する</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> init_network():</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    network <span class="op">=</span> {}</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W1'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>], [<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>]])</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b1'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>])</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W2'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.4</span>], [<span class="fl">0.2</span>, <span class="fl">0.5</span>], [<span class="fl">0.3</span>, <span class="fl">0.6</span>]])</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b2'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>])</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W3'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.3</span>], [<span class="fl">0.2</span>, <span class="fl">0.4</span>]])</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b3'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>])</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> network</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co">#　入力信号を出力へ変換する処理</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> forward(network, x):</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    W1, W2, W3 <span class="op">=</span> network[<span class="st">'W1'</span>], network[<span class="st">'W2'</span>], network[<span class="st">'W3'</span>]</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    b1, b2, b3 <span class="op">=</span> network[<span class="st">'b1'</span>], network[<span class="st">'b2'</span>], network[<span class="st">'b3'</span>]</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>    a1 <span class="op">=</span> np.dot(x, W1) <span class="op">+</span> b1</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>    z1 <span class="op">=</span> sigmoid(a1)</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>    a2 <span class="op">=</span> np.dot(z1, W2) <span class="op">+</span> b2</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>    z2 <span class="op">=</span> sigmoid(a2)</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>    a3 <span class="op">=</span> np.dot(z2, W3) <span class="op">+</span> b3</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 出力層の活性化関数は、恒等関数を用いる</span></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> identity_function(a3)</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>network <span class="op">=</span> init_network()</span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">0.5</span>])</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> forward(network, x)</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y) <span class="co"># [0.31682708 0.69627909]</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[0.31682708 0.69627909]</code></pre>
 </div>
@@ -909,42 +917,81 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <p>扱う問題が回帰か分類かによって、出力層の活性化関数は変更します。回帰問題では、恒等関数を、分類問題では、ソフトマックス関数を用います。ソフトマックス関数は、出力層のニューロンの数だけの出力を持ち、その出力の総和が1になるように正規化します。そのため、ソフトマックス関数の出力を確率として解釈することができます。</p>
 </section>
 </section>
-<section id="損失関数" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="損失関数"><span class="header-section-number">12.5</span> 損失関数</h2>
-<p>ニューラルネットワークの学習において、最適な重み、バイアスのパラメータを探索するために、損失関数を用います。損失関数は、ニューラルネットワークの出力と正解ラベルの誤差を表します。損失関数には、二乗和誤差や交差エントロピー誤差などがあります。</p>
-<p>損失関数は言い換えるとモデルの予測値と正解値がどの程度近いかを示す指標です。この損失関数の値が小さいほど、モデルの予測値と正解値が近いことを意味します。そのため、損失関数の値が小さくなるように、重みやバイアスのパラメータを調整することがニューラルネットワークの学習の目的となります。</p>
-<p>それでは、どのようにしてパラメータを調整すればよいのでしょうか。パラメータを調整するためには、損失関数の勾配を求める必要があります。そのために勾配降下法という手法を用います。</p>
+<section id="学習の進め方を決めるハイパーパラメータ" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="学習の進め方を決めるハイパーパラメータ"><span class="header-section-number">12.5</span> 学習の進め方を決めるハイパーパラメータ</h2>
+<p>ニューラルネットワークの学習では、ハイパーパラメータと呼ばれるパラメータが存在します。これは重みやバイアスのように、学習の過程で調整されるパラメータではなく、あらかじめ設定の必要なパラメータです。ハイパーパラメータには、エポック数、バッチサイズ、学習率などがあります。</p>
+<p>ハイパーパラメータは以下に示すように、ニューラルネットワークの学習の進め方を決定する要因となります。そのため、ハイパーパラメータの値を適切に設定することは、ニューラルネットワークの学習を成功させるために重要です。</p>
+<section id="エポック" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="エポック"><span class="header-section-number">12.5.1</span> エポック</h3>
+<p>ニューラルネットワークの学習では、訓練データを複数回繰り返し用いて学習を行います。このとき、訓練データをすべて用いて1回学習を行うことを1エポックと呼びます。例えば1万件の訓練データに対してバッチサイズを100とした場合、すべての訓練データを用いて学習するには100回の繰り返しが必要です。このとき、100回の繰り返しが1エポックとなります。</p>
+<p>モデルが訓練データに対して学習した回数をエポック数と呼びます。エポック数が大きいほど、モデルは訓練データに対してより多く学習することになります。エポックの数は、学習の反復回数を制御するためのハイパーパラメータとなります。そのためエポック数が小さいと、学習が十分に進まず、モデルの性能が低くなります。一方、エポック数が大きすぎると過学習しやすくなります。</p>
 </section>
-<section id="勾配降下法によるパラメータの学習" class="level2" data-number="12.6">
-<h2 data-number="12.6" class="anchored" data-anchor-id="勾配降下法によるパラメータの学習"><span class="header-section-number">12.6</span> 勾配降下法によるパラメータの学習</h2>
-<p>勾配とは、ある地点における関数の傾きのことです。勾配が正の場合は、関数の値が増加していることを意味し、勾配が負の場合は、関数の値が減少していることを意味します。勾配が0の場合は、関数の値が極値に達していることを意味します。つまり、勾配が0となるように、勾配を小さくする方向にパラメータを調整することで、損失関数の値を小さくすることができます。これを繰り返すことで、損失関数の値を小さくすることができます。このような手法を勾配降下法と呼びます。</p>
-<p>損失関数の勾配を求めることで、損失関数の値が増加する方向を知ることができます。そのため、損失関数の値が減少する方向にパラメータを調整することができます。このように、損失関数の勾配を求めることで、パラメータを調整することができます。この勾配を求める方法を誤差逆伝播法と呼びます。</p>
-<section id="確率的勾配降下法" class="level3" data-number="12.6.1">
-<h3 data-number="12.6.1" class="anchored" data-anchor-id="確率的勾配降下法"><span class="header-section-number">12.6.1</span> 確率的勾配降下法</h3>
-<p>勾配降下法は、全ての訓練データを用いて、勾配を求めます。しかし、訓練データが膨大な場合は、全ての訓練データを用いて勾配を求めることは現実的ではありません。そのため、訓練データの中からランダムに選んだ一部のデータ（ミニバッチと呼ばれる）を用いて、勾配を求める方法があります。この方法を確率的勾配降下法と呼びます。</p>
+<section id="バッチサイズ" class="level3" data-number="12.5.2">
+<h3 data-number="12.5.2" class="anchored" data-anchor-id="バッチサイズ"><span class="header-section-number">12.5.2</span> バッチサイズ</h3>
+<p>ニューラルネットワークの学習、すなわちパラメータの更新は通常、訓練データ全体を一度に処理するのではなく、小さな「ミニバッチ」に分割して行われます。ミニバッチは訓練データセットからランダムに選ばれた一部のデータの集まりで、ミニバッチの大きさをバッチサイズと呼びます。このようなミニバッチを用いた学習を「ミニバッチ学習」と呼びます。</p>
+<p>バッチサイズを大きく取る場合、1つのミニバッチを使った学習は、訓練データ全体を使った学習に近くなります。そのため、バッチサイズを大きく取ると、ミニバッチ学習の効率が良くなります。一方で学習時間が長くなり、メモリの使用量も増えます。</p>
 </section>
-<section id="誤差逆伝播法" class="level3" data-number="12.6.2">
-<h3 data-number="12.6.2" class="anchored" data-anchor-id="誤差逆伝播法"><span class="header-section-number">12.6.2</span> 誤差逆伝播法</h3>
-<p>ニューラルネットワークでの重みパラメータに対する損失関数の勾配を効率的に求める方法を誤差逆伝播法と呼びます。誤差逆伝播法は、出力層から入力層の方向に、各層の重みパラメータに対する損失関数の勾配を求めます。これにより効率的に勾配を求めることができます。</p>
-<!-- ### 勾配消失問題 -->
+<section id="学習率" class="level3" data-number="12.5.3">
+<h3 data-number="12.5.3" class="anchored" data-anchor-id="学習率"><span class="header-section-number">12.5.3</span> 学習率</h3>
+<p>学習率とは、パラメータの更新量を決定するハイパーパラメータです。通常、0より大きく1以下の実数であり、その値は実験や経験に基づいて決定されます。</p>
+<p>学習率が大きい場合は、大きくパラメータを更新することができます。学習率が大きい場合は、最適なパラメータを早く見つけることができますが、最適なパラメータの探索が不安定になり、最適なパラメータを見過ごしてしまう可能性があります。このことを「発散」と呼びます。一方、学習率が小さすぎると、パラメータの更新が非常にゆっくりとしか進まず、適切なパラメータを見つけるのに必要な計算時間が非常に長くなるか、または最適な解に全く到達しない可能性があります。</p>
 </section>
-</section>
-<section id="畳み込みニューラルネットワーク" class="level2" data-number="12.7">
-<h2 data-number="12.7" class="anchored" data-anchor-id="畳み込みニューラルネットワーク"><span class="header-section-number">12.7</span> 畳み込みニューラルネットワーク</h2>
-<p>畳み込みニューラルネットワーク（Convolutional Neural Network: CNN）は、画像認識や音声認識などの分野で高い精度を出すニューラルネットワークの一種です。 畳み込み層とプーリング層から構成されます。畳み込み層は、画像の特徴を抽出する層です。プーリング層は、畳み込み層の出力を圧縮する層です。</p>
-<section id="畳み込み演算" class="level3" data-number="12.7.1">
-<h3 data-number="12.7.1" class="anchored" data-anchor-id="畳み込み演算"><span class="header-section-number">12.7.1</span> 畳み込み演算</h3>
+<section id="イテレーション" class="level3" data-number="12.5.4">
+<h3 data-number="12.5.4" class="anchored" data-anchor-id="イテレーション"><span class="header-section-number">12.5.4</span> イテレーション</h3>
+<p>イテレーションとは、パラメータの更新を行う回数を表します。イテレーションは、エポック数、バッチサイズ、学習率から計算することができます。たとえば、エポック数が10、バッチサイズが100、学習率が0.01の場合、イテレーション数は10,000となります。</p>
 </section>
 </section>
-<section id="再帰型ニューラルネットワーク" class="level2" data-number="12.8">
-<h2 data-number="12.8" class="anchored" data-anchor-id="再帰型ニューラルネットワーク"><span class="header-section-number">12.8</span> 再帰型ニューラルネットワーク</h2>
-<p>再帰型ニューラルネットワーク（recurrent neural network: RNN）は、系列的なデータを扱うことができるニューラルネットワークの一種です。例えば、文章や音声などのデータは、系列的なデータとして扱うことができます。そのため、RNNは機械翻訳や音声認識などの分野で高い精度を出すことができます。</p>
+<section id="最適化問題" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="最適化問題"><span class="header-section-number">12.6</span> 最適化問題</h2>
+<p>最適化問題は、ある関数の最小値または最大値を見つける問題です。この関数は通常「目的関数」または「損失関数」と呼ばれます。最適化問題では、目的関数の最小値または最大値を求めるために、パラメータを調整します。このパラメータの調整を「最適化」と呼びます。また具体的な最適化の手法を「最適化アルゴリズム」と呼びます。</p>
+<p>たとえば、線形回帰モデルでは、最適化アルゴリズムとして最小二乗法を用いて、モデルのパラメータ（傾きと切片）を調整します。最小二乗法は損失関数として平均二乗誤差を用います。これはモデルの予測値と真の値との間の誤差を表します。この損失関数を最小化するようにモデルのパラメータを調整することで、モデルの予測値と真の値との誤差を小さくすることができます。</p>
+<p>最小二乗法は線形回帰問題の解法として広く知られていますが、線形代数の手法を用いた一度の計算が必要となり、パラメータの数が増えると計算量が膨大になり現実的でなくなる可能性があります。そのためニューラルネットワークでは一般的に、勾配降下法という最適化アルゴリズムを用いて、パラメータを調整します。</p>
+<section id="勾配降下法によるパラメータの学習" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="勾配降下法によるパラメータの学習"><span class="header-section-number">12.6.1</span> 勾配降下法によるパラメータの学習</h3>
+<p>勾配とは、ある地点における関数の傾きのことです。勾配が正の場合は、関数の値が増加していることを意味し、勾配が負の場合は、関数の値が減少していることを意味します。勾配が0の場合は、関数の値が極値に達していることを意味します。つまり、勾配が0となるように、勾配を小さくする方向にパラメータを調整することで、損失関数の値を小さくすることができます。これを繰り返すことで、損失関数の値を小さくすることができます。このような手法を勾配降下法と呼びます。この方法は損失関数の勾配（つまり、パラメータを微小量変化させたときの損失関数の変化量）を計算し、その勾配が示す方向にパラメータを少しずつ更新していくものです。</p>
+</section>
+<section id="確率的勾配降下法" class="level3" data-number="12.6.2">
+<h3 data-number="12.6.2" class="anchored" data-anchor-id="確率的勾配降下法"><span class="header-section-number">12.6.2</span> 確率的勾配降下法</h3>
+<p>勾配降下法では全ての訓練データを用いて、勾配を求めます。そのため、学習の順番（訓練データの与えられ方）によっては、最適なパラメータを得ることができない場合があります。また、訓練データが膨大な場合は、全ての訓練データを用いて勾配を求めることは現実的ではありません。そのため、訓練データの中からランダムに選んだ一部のデータ（ミニバッチと呼ばれる）を用いて、勾配を求める方法があります。この方法を確率的勾配降下法と呼びます。</p>
+<p>確率的勾配降下法では、一部のデータを用いて勾配計算を行うため、計算コストを削減することができます。また、ランダムに選ばれたデータを用いて勾配計算を行うため、最適なパラメータを得ることができない可能性があります。しかし、ランダムに選ばれたデータを用いて勾配計算を行うことで、局所的な最適解（局所解）に陥ることを防ぐことができます。また、確率的勾配降下法では複数のミニバッチを利用しますが、これらのミニバッチを並列して計算することで、計算コストを削減することができます。これにはGPUを用いることで、高速に並列計算を行うことが期待されます。</p>
+<p>勾配降下法は山下り（あるいは山登り）に例えられます。山の斜面を下るとき、最も急な斜面を下る方向に進むと、最も早く山を下ることができます。現在地から最も急な斜面を下る方向に進むことができるだけ進み、再び最も急な斜面を下る方向に進みます。これを繰り返すことで、最も急な斜面を下る方向に進むことができます。確率的勾配降下法では、進む方向にランダム性があるため、最も急な斜面を下る方向に進むことができない可能性があります。そのため、ジグザグとした動きで山を下ることになります。</p>
+</section>
+<section id="誤差逆伝播法" class="level3" data-number="12.6.3">
+<h3 data-number="12.6.3" class="anchored" data-anchor-id="誤差逆伝播法"><span class="header-section-number">12.6.3</span> 誤差逆伝播法</h3>
+<p>ニューラルネットワークでの重みパラメータに対する損失関数の勾配を効率的に求める方法を誤差逆伝播法（バックプロパゲーション）と呼びます。誤差逆伝播法により、パラメータ数が非常に多いモデルでも、各パラメータに対する損失関数の勾配を効率的に計算することが可能となります。</p>
+<p>誤差逆伝播法は次のような手順で行われます。まず、現在の重みとバイアスを元に入力データから出力を行い、損失関数の勾配を求める過程を「順伝播」と表現します。誤差逆伝播法はその名の通り、出力層から入力層へ向かって逆向きに「誤差」を伝播します。つまり、出力層から入力層へ向かって、各層の重みとバイアスの勾配を偏微分を用いて求めることができます。ここで得られた勾配を用いて、重みとバイアスのパラメータを更新します。具体的には、パラメータをその勾配方向に小さなステップ移動させて、損失関数の値を少しずつ減らしていきます。</p>
+</section>
+<section id="勾配消失問題" class="level3" data-number="12.6.4">
+<h3 data-number="12.6.4" class="anchored" data-anchor-id="勾配消失問題"><span class="header-section-number">12.6.4</span> 勾配消失問題</h3>
+<p>誤差逆伝播法では、出力層から入力層へ向かって誤差を伝播させます。そのため、誤差逆伝播法では、出力層に近い層の重みパラメータの勾配が正しく計算されることが期待されます。一方、出力層から遠い層の重みパラメータの勾配は、誤差逆伝播法では正しく計算されない可能性があります。具体的には勾配が非常に小さくなり、0になってしまうことがあります。そのため、重みパラメータが更新されず、学習が進まなくなることがあります。これを勾配消失問題と呼びます。</p>
+<p>勾配消失問題は特に、活性化関数にシグモイド関数を用いる場合に発生します。シグモイド関数は、層を重ねるごとに勾配が小さくなり、0に近づいていきます。そのため、層を重ねることで、勾配が消失してしまうことがあります。そこで、層を重ねても勾配が消失しにくい活性化関数として、ReLU関数やその派生であるLeaky ReLU関数が用いられます。また、重みの初期値を適切に設定する、学習率を小さくすることで、勾配消失問題を回避することができます。</p>
+</section>
+</section>
+<section id="ディープニューラルネットワークのアーキテクチャ" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="ディープニューラルネットワークのアーキテクチャ"><span class="header-section-number">12.7</span> ディープニューラルネットワークのアーキテクチャ</h2>
+<p>ディープニューラルネットワークは、多層パーセプトロンをベースに、様々な構造を持つことができます。これらの構造を持つことで、ディープニューラルネットワークは、画像認識や自然言語処理などの分野で高い精度を出すことができます。ここでは、ディープニューラルネットワークの構造について紹介します。</p>
+<section id="全結合層" class="level3" data-number="12.7.1">
+<h3 data-number="12.7.1" class="anchored" data-anchor-id="全結合層"><span class="header-section-number">12.7.1</span> 全結合層</h3>
+<p>全結合層は、ニューラルネットワークの中で最も基本的な層です。全結合層は、前の層のすべてのニューロンが次の層のすべてのニューロンと結合しています。そのため、全結合層は、前の層のすべてのニューロンからの入力を受け取り、次の層のすべてのニューロンへ出力します。全結合層は、入力層と出力層の間に複数の中間層を持つことができます。</p>
+</section>
+<section id="畳み込みニューラルネットワーク" class="level3" data-number="12.7.2">
+<h3 data-number="12.7.2" class="anchored" data-anchor-id="畳み込みニューラルネットワーク"><span class="header-section-number">12.7.2</span> 畳み込みニューラルネットワーク</h3>
+<p>畳み込みニューラルネットワーク（Convolutional Neural Network: CNN）は、画像認識の分野で高い精度を出すニューラルネットワークの一種です。画像の特徴を抽出する畳み込み層とプーリング層から構成されます。</p>
+<ul>
+<li>畳み込み層: 画像の特徴を抽出する層。入力データに対してフィルター演算を行い、その出力を次の層へ出力する。</li>
+<li>プーリング層: 畳み込み層の出力を圧縮する層。入力データの一部に対して、最大値や平均値を計算し、その出力を次の層へ出力する。</li>
+</ul>
+<p>フィルター演算あるいは畳み込み演算とは、入力データの一部に対してフィルターと呼ばれる小さな行列を適用し、フィルターと入力データの対応する要素の積和を計算する演算です。フィルターは、入力データよりも小さく、入力データの一部に対して適用されます。そのため、フィルター演算の出力は、入力データの一部に対応します。フィルター演算の出力を「特徴マップ」と呼びます。畳み込み層では、複数のフィルターを用いることができます。このとき、畳み込み層の出力は、複数の特徴マップから構成されます。</p>
+<p>畳み込みニューラルネットワークを用いた画像認識では、畳み込み層とプーリング層を複数組み合わせて、画像の特徴を抽出します。その後、全結合層を用いて、抽出した特徴を元に画像の分類を行います。</p>
+</section>
+<section id="再帰型ニューラルネットワーク" class="level3" data-number="12.7.3">
+<h3 data-number="12.7.3" class="anchored" data-anchor-id="再帰型ニューラルネットワーク"><span class="header-section-number">12.7.3</span> 再帰型ニューラルネットワーク</h3>
+<p>再帰型ニューラルネットワーク（recurrent neural network: RNN）は、系列的なデータを扱うことができるニューラルネットワークの一種です。例えば、文章や音声などのデータは、系列的なデータとして扱うことができます。これらのデータの特徴は、そのデータの中に、重要な情報がどこにあるかが明確に定まっていないことです。また、与えられるデータの長さも一定ではありません。そのため、系列的なデータを扱うには、そのデータの中に、重要な情報がどこにあるかを自動的に学習する必要があります。RNNは、系列的なデータの中に、重要な情報がどこにあるかを自動的に学習することができます。</p>
 <p>RNNは、長・短期記憶、ゲート付き再帰ユニットといった様々な構造を持つことができます。これらの構造を持つことで、RNNは時系列データの中に、重要な情報がどこにあるかを自動的に学習することができます。</p>
-<section id="長短期記憶-lstm" class="level3" data-number="12.8.1">
-<h3 data-number="12.8.1" class="anchored" data-anchor-id="長短期記憶-lstm"><span class="header-section-number">12.8.1</span> 長・短期記憶　(LSTM)</h3>
-</section>
-<section id="ゲート付き再帰ユニット-gru" class="level3" data-number="12.8.2">
-<h3 data-number="12.8.2" class="anchored" data-anchor-id="ゲート付き再帰ユニット-gru"><span class="header-section-number">12.8.2</span> ゲート付き再帰ユニット　(GRU)</h3>
+<ul>
+<li>長・短期記憶　(LSTM):</li>
+<li>ゲート付き再帰ユニット　(GRU):</li>
+</ul>
 
 
 </section>
@@ -1336,7 +1383,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true,"openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"loop":true,"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});</script>
 
 
 

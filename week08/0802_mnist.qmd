@@ -1,0 +1,183 @@
+---
+title: ニューラルネットワークによる手書き文字の分類
+execute:
+  keep-ipynb: true
+  eval: false
+  echo: true
+jupyter:
+  jupytext:
+    formats: 'ipynb,qmd'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.14.5
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+機械学習ライブラリのTensorFlowを使って、ニューラルネットワークの構築と学習を行い、手書き文字の分類を行う手続きを説明します。
+
+## MNIST
+
+手書きによる文字（数字）の画像データセット
+
+- 28x28ピクセルのグレースケール画像
+- 0から9までの数字の画像
+- 60,000枚の訓練用画像と10,000枚のテスト用画像
+
+## TensorFlow
+
+TensorFlowは、Googleが開発したオープンソースの機械学習ライブラリです。TensorFlow独自の低レベルAPIを使って、ニューラルネットワークを自由に設計可能なのが特徴です。
+
+しかし、ニューラルネットワークの構造の設計は、初心者にとってはハードルが高いです。そこで、TensorFlowの高レベルAPIであるKerasを使うことで、TensorFlowの機能を簡単に利用することができます。KerasとはTensorFlowの他にTheano、CNTKなどの上で動作する深層学習フレームワークの一種です。TesorFlow上でKerasの高レベルAPIを利用するには、具体的にはtf.kerasを用います。
+
+### ライブラリのインポート
+
+```{python}
+import tensorflow as tf
+```
+
+### データの読み込み
+
+datasetsモジュールの`mnist.load_data()`関数を使ってMNISTデータセットを読み込みます。
+
+```{python}
+mnist = tf.keras.datasets.mnist
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+```
+
+### データの確認
+
+X_trainは訓練用の画像データ、y_trainは学習用のラベルデータとなっています。shepe属性を使ってデータの形状を確認しましょう。
+
+```{python}
+# 訓練データの件数と画像サイズの確認
+print(x_train.shape)
+
+# テストデータの件数と画像サイズの確認
+print(x_test.shape)
+```
+
+```{python}
+# 訓練データの件数とラベルの確認
+print(y_train.shape)
+```
+
+画像データは28x28ピクセルのグレースケール画像です。画像データは0から255までの整数値で表されています。訓練データに格納された画像データを表示してみましょう。
+
+```{python}
+x_train[0]
+```
+
+「画像」として表示するためには、matplotlibモジュールの`imshow()`関数を使います。
+
+```{python}
+import matplotlib.pyplot as plt
+
+plt.imshow(x_train[0], cmap='gray')
+plt.show()
+```
+
+この数字が何を表しているのかは、`y_train`に格納されているラベルを確認することでわかります。
+
+```{python}
+y_train[0]
+```
+
+グレースケールで表された画像データは、0から255までの整数値で表されています。ニューラルネットワークの入力として扱うためには、各ピクセルの値を0から1の範囲にスケーリングして正規化しておくと都合が良いです。画像データを正規化するには、255で割るだけです。
+
+```{python}
+x_train = x_train / 255.0
+x_test = x_test / 255.0
+```
+
+```{python}
+# 正規化した画像データの確認
+x_train[0]
+```
+
+ラベルをワンホットエンコーディングしておきます。これにより、出力層の10個のノードのうち、正解ラベルに対応するノードの値が1、それ以外のノードの値が0となります。
+
+ラベルをワンホットエンコーディングを行うことで、クラス分類問題の出力層において、各クラスの確率を表現しやすくなります。また、損失関数や評価指標の計算にも利用されます。
+
+```{python}
+# ワンホットエンコーディング
+y_train = tf.keras.utils.to_categorical(y_train, 10)
+y_test = tf.keras.utils.to_categorical(y_test, 10)
+```
+
+```{python}
+# 最初の画像は5であるため、6番目のノードの値が1となっている（ラベルは0からはじまる）
+y_train[0]
+```
+
+### モデルの構築
+
+それでは、ニューラルネットワークのモデルを構築していきましょう。今回は、入力層に784個のノード（28×28ピクセルを入力）、出力層に10個のノードを持つニューラルネットワークを構築します。入力層には、28x28ピクセルの画像データを1次元のベクトルに変換して入力します。出力層の10個のノードは、それぞれ0から9までの数字を表します。出力層の10個のノードのうち、最も値が大きいノードがニューラルネットワークの予測結果となります。
+
+- 28x28の画像データを1次元のベクトルに変換
+- 10個のノードを持つ出力層に入力
+- 活性化関数にソフトマックス関数を指定することで、出力を確率として解釈できるように変換する。
+
+```{python}
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Flatten(input_shape=(28, 28)),
+    # 活性化関数にはソフトマックス関数を指定
+    tf.keras.layers.Dense(10, activation='softmax')
+])
+```
+
+モデルの構築が完了したら、`compile()`メソッドを使ってモデルをコンパイルします。`compile()`メソッドの引数には、最適化アルゴリズム、損失関数、評価指標を指定します。
+
+### ハイパーパラメータの設定
+
+ハイパーパラメータとは、モデルの学習において、人が設定するパラメータのことです。ハイパーパラメータの設定によって、モデルの学習結果が大きく変わることがあります。ハイパーパラメータの設定には、経験則に基づいたものが多くあります。ハイパーパラメータの設定には、試行錯誤が必要です。
+
+- `optimizer`：最適化アルゴリズム。学習率を調整するアルゴリズムを指定します。確率的勾配降下法（SGD）を指定する場合は、`optimizer='sgd'`と指定します。確率的勾配降下法のほかにも、自動的に学習率を調整するAdam、Adagrad、RMSpropなどのアルゴリズムを指定することができます。
+- `loss`：損失関数
+- `metrics`：評価指標
+- `batch_size`：バッチサイズ
+- `epochs`：エポック数
+- `learning_rate`： 学習率
+
+```{python}
+model.compile(
+    # 学習率を指定
+    optimizer=tf.keras.optimizers.SGD(learning_rate=0.1),
+    # 損失関数の指定
+    loss='categorical_crossentropy',
+    # 評価指標の指定
+    metrics=['accuracy']
+)
+```
+
+5エポックで学習を行います。これは、訓練データを5回繰り返し学習させることを意味します。
+
+```{python}
+model.fit(x_train, y_train, epochs=5)
+```
+
+テストデータを使って、モデルの評価を行います。ここで計算される損失関数はcomplie()メソッドで指定した損失関数（クロスエントロピー損失関数）です。
+
+```{python}
+model.evaluate(x_test, y_test, verbose=2)
+```
+
+predict()メソッドを使って、テストデータの予測結果を確認します。この予測結果は、各ラベルに対する確率を表しています。もっとも確率の高いラベルが予測結果となります。
+
+```{python}
+# テストデータの最初の画像の予測結果
+model.predict(x_test[:1])
+
+# 最も確率の高いラベル
+import numpy as np
+print(np.argmax(model.predict(x_test[:1]), axis=-1))
+```
+
+```{python}
+# テストデータの最初の画像の正解ラベル
+y_test[:1]
+```

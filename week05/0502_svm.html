@@ -637,7 +637,7 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 <p><span class="math inline">\(k\)</span> 分割交差検証は、データを <span class="math inline">\(k\)</span> 個のグループに分割し、<span class="math inline">\(k\)</span> 回の学習と評価を行う方法です。<span class="math inline">\(k\)</span> 回の学習のうち、<span class="math inline">\(k-1\)</span> 個のグループを訓練データとして用い、残りの1つのグループをテストデータとして用います。このようにして得られた <span class="math inline">\(k\)</span> 回の評価の平均値を、モデルの評価値とします。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../img/k-fold_cross_validation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="K分割交差検証法"><img src="../img/k-fold_cross_validation.png" class="img-fluid figure-img"></a></p>
+<p><a href="../img/k-fold_cross_validation.png" class="lightbox" title="K分割交差検証法" data-gallery="quarto-lightbox-gallery-1"><img src="../img/k-fold_cross_validation.png" class="img-fluid figure-img"></a></p>
 <figcaption class="figure-caption">K分割交差検証法</figcaption>
 </figure>
 </div>
@@ -724,8 +724,8 @@ Name: count, dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 複数の評価指標（正解率、再現率）を用いる</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cross_validate(svm, X, y, cv<span class="op">=</span>skf, scoring<span class="op">=</span>[<span class="st">'accuracy'</span>, <span class="st">'recall_macro'</span>], return_train_score<span class="op">=</span><span class="va">True</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>{'fit_time': array([0.00346828, 0.00328684, 0.00321412, 0.00326872, 0.00319195]),
- 'score_time': array([0.00370383, 0.00349903, 0.00352097, 0.00350237, 0.00346828]),
+<pre><code>{'fit_time': array([0.00333714, 0.00274968, 0.00273085, 0.00272918, 0.00277615]),
+ 'score_time': array([0.00329709, 0.00304866, 0.00306296, 0.00307155, 0.00305438]),
  'test_accuracy': array([0.98507463, 1.        , 1.        , 0.98484848, 1.        ]),
  'train_accuracy': array([0.9924812 , 0.9924812 , 0.9924812 , 0.99250936, 0.99625468]),
  'test_recall_macro': array([0.97435897, 1.        , 1.        , 0.97619048, 1.        ]),
@@ -1129,7 +1129,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":true,"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom"});</script>
 
 
 

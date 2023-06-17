@@ -55,6 +55,9 @@ book:
     - part: week09/index.qmd
       chapters: 
         - week09/09_application.qmd
+    - part: week10/index.qmd
+      chapters: 
+        - week10/10_generative_model.qmd
     - references.qmd
   appendices:
     - appendix/jupyternotebook.qmd

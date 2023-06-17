@@ -52,6 +52,9 @@ book:
       chapters: 
         - week08/0801_neural_networks.qmd
         - week08/0802_mnist.qmd
+    - part: week09/index.qmd
+      chapters: 
+        - week09/09_application.qmd
     - references.qmd
   appendices:
     - appendix/jupyternotebook.qmd

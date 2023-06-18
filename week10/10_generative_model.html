@@ -384,10 +384,10 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
    
   <ul>
   <li><a href="#識別モデルと生成モデル" id="toc-識別モデルと生成モデル" class="nav-link active" data-scroll-target="#識別モデルと生成モデル"><span class="header-section-number">15.1</span> 識別モデルと生成モデル</a></li>
-  <li><a href="#表現学習" id="toc-表現学習" class="nav-link" data-scroll-target="#表現学習"><span class="header-section-number">15.2</span> 表現学習</a></li>
-  <li><a href="#テンソル" id="toc-テンソル" class="nav-link" data-scroll-target="#テンソル"><span class="header-section-number">15.3</span> テンソル</a></li>
-  <li><a href="#変分自己符号化器変分オートエンコーダ" id="toc-変分自己符号化器変分オートエンコーダ" class="nav-link" data-scroll-target="#変分自己符号化器変分オートエンコーダ"><span class="header-section-number">15.4</span> 変分自己符号化器（変分オートエンコーダ）</a></li>
-  <li><a href="#深層生成モデル" id="toc-深層生成モデル" class="nav-link" data-scroll-target="#深層生成モデル"><span class="header-section-number">15.5</span> 深層生成モデル</a></li>
+  <li><a href="#敵対的生成ネットワーク" id="toc-敵対的生成ネットワーク" class="nav-link" data-scroll-target="#敵対的生成ネットワーク"><span class="header-section-number">15.2</span> 敵対的生成ネットワーク</a></li>
+  <li><a href="#表現学習" id="toc-表現学習" class="nav-link" data-scroll-target="#表現学習"><span class="header-section-number">15.3</span> 表現学習</a></li>
+  <li><a href="#テンソル" id="toc-テンソル" class="nav-link" data-scroll-target="#テンソル"><span class="header-section-number">15.4</span> テンソル</a></li>
+  <li><a href="#変分自己符号化器変分オートエンコーダ" id="toc-変分自己符号化器変分オートエンコーダ" class="nav-link" data-scroll-target="#変分自己符号化器変分オートエンコーダ"><span class="header-section-number">15.5</span> 変分自己符号化器（変分オートエンコーダ）</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/week10/10_generative_model.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></nav>
     </div>
@@ -426,38 +426,45 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </div>
 <section id="識別モデルと生成モデル" class="level2" data-number="15.1">
 <h2 data-number="15.1" class="anchored" data-anchor-id="識別モデルと生成モデル"><span class="header-section-number">15.1</span> 識別モデルと生成モデル</h2>
-<p>生成モデルとは何かを理解するために、まずは識別モデルとの違いを考えてみましょう。識別モデルは、ロジスティック回帰やサポートベクターマシンのように機械学習の中でも最もよく使われるモデルの一つです。識別モデルは、入力データが与えられたときにそのデータがどのクラスに属するかを判定するモデルです。言い換えれば、入力データ <span class="math inline">\(x\)</span> が与えられたときに、そのデータがクラス <span class="math inline">\(y\)</span> に属する確率 <span class="math inline">\(p(y|x)\)</span> を求めるモデルです。</p>
+<p>機械学習の手法の分類方法として、教師あり学習と教師なし学習を紹介してきました。一方、出力の種類に着目すると、識別モデルと生成モデルに分類することもできます。識別モデルは、ロジスティック回帰やサポートベクターマシンのように機械学習の中でも最もよく使われるモデルの一つです。</p>
+<p>識別モデルの多くは、教師あり学習の一種として扱われます。具体的には、訓練データに正解ラベルが付いている学習を行うことで、入力データから正解ラベルを予測することができます。入力データ <span class="math inline">\(x\)</span> が与えられたときに、そのデータがクラス <span class="math inline">\(y\)</span> に属する確率 <span class="math inline">\(p(y|x)\)</span> を求めるモデルが識別モデルです。</p>
 <p><span class="math inline">\(p(y|x)\)</span> のような関係を条件付き確率と呼びます。条件付き確率は、ある事象が起こったときに、別の事象が起こる確率を表すものです。ペンギンの種を表現する特徴量が与えられたときに、そのペンギンが特定のペンギンの種である確率を求めることができます。</p>
-<p>一方、生成モデルは、与えられたデータから新しいデータを生成するモデルです。生成モデルは、既存のデータの特徴やパターンを学習し、それを元に新たなデータを生成する能力を持ちます。少し難しい言い方をすれば、生成モデルは入力データを与えたときに、そのデータが<em>どのような分布から生成されたのかを推定するモデル</em>です。</p>
-<p>これらは密度推定問題を解くためのモデルです。</p>
-<p>生成モデルは、識別モデルとは異なり、入力データから新たなデータを生成することができます。例えば、入力データが犬の画像だった場合、生成モデルはその犬の画像と似たような犬の画像を生成できます。</p>
-<p>生成モデルは、入力データの分布を学習することで、その分布に基づく新たなデータの生成を可能にします。</p>
-<p>似たような、生成モデルの代表的な手法の一つは、敵対的生成ネットワーク（GAN）です。GANは、2つのネットワークで構成されています。一方のネットワークは「生成器」と呼ばれ、ランダムノイズなどの入力から新しいデータを生成します。もう一方のネットワークは「識別器」と呼ばれ、生成されたデータと本物のデータを識別する役割を持ちます。この2つのネットワークが互いに競い合いながら学習を進めることで、高品質な新しいデータを生成することが可能となります。</p>
-<p>生成モデルは、画像生成や文章生成などのタスクに広く応用されています。例えば、GANを用いて画像生成を行う場合、生成器はランダムノイズからリアルな画像を生成し、識別器は生成された画像が本物かどうかを判別します。このような学習過程を通じて、生成器はより本物に近い画像を生成する能力を獲得します。</p>
-<p>生成モデルは、既存のデータの分布を理解し、新たなデータの創造やサンプリングを行うため、データの拡張やクリエイティブな応用に有用です。生成モデルの進歩は、AIによる芸術作品や仮想現実の創造、自然言語処理などの領域で革新的な成果を生み出しています。</p>
-<p>より広く研究されている識別モデルを補完するものです。</p>
-<p>入力データからクラスを判定するという点では、生成モデルも識別モデルと変わりません。一方、生成モデルは識別モデルとは異なり、入力データから新たなデータを生成することができます。例えば、入力データが犬の画像だった場合、生成モデルはその犬の画像と似たような犬の画像を生成できます。似たような、</p>
-<p>生成モデルは、入力データの分布を学習することで、その分布に基づいて新たなデータを生成することができるのです。</p>
-<p>生成モデルは確率モデルの一種であり、入力データの分布を学習することで、その分布に基づいて新たなデータの生成を可能にします。確率モデルから新たなデータを生成することは、機械学習の分野ではサンプリングと呼ばれます。生成モデルは、サンプリングを行うことで、新たなデータを生成することができます。</p>
-<p>生成モデルの過程を紹介します。まず、訓練データから確率分布を学習します。ランダムノイズを入力として、学習した確率分布に基づいて新たなデータを生成します。生成されたデータは、訓練データと同じ確率分布に従っているため、訓練データと同じようなデータが生成されます。</p>
-<p>識別モデルの多くは、教師あり学習の一種として扱われます。具体的には、訓練データに正解ラベルが付いている学習を行うことで、入力データから正解ラベルを予測することができます。</p>
-<p>これに対して、生成モデルは通常、教師なし学習の一種として扱われます。教師なし学習とは、訓練データに正解ラベルが付いていない学習のことです。つまり生成モデルでは、どのようなラベルが付けられているかは気にしないで、入力データの分布を学習します。</p>
-<p>その観測が現れる確率を推定しようとする。</p>
+<p>一方、生成モデルは、与えられたデータから新しいデータを生成するモデルです。生成モデルは、既存のデータの特徴やパターンを学習し、それを元に新たなデータを生成する能力を持ちます。少し難しい言い方をすれば、生成モデルは入力データを与えたときに、そのデータが<em>どのような分布から生成されたのかを推定する確率モデル</em>です。これらは密度推定問題を解くためのモデルです。</p>
 <p>入力 <span class="math inline">\(x\)</span> が観測される確率 <span class="math inline">\(p(x)\)</span> を求めることを密度推定と呼びます。生成モデルは、密度推定を行うことで、入力データの分布を学習します。</p>
+<p>確率モデルから新たなデータを生成することは、機械学習の分野ではサンプリングと呼ばれます。生成モデルは、サンプリングを行うことで、新たなデータを生成することができます。</p>
+<p>生成モデルを用いると、例えば、入力データが犬の画像だった場合、生成モデルはその犬の画像と似たような犬の画像を生成できます。似たような、というのは、生成モデルが完璧に同じ画像を生成することはほぼないためです。生成モデルは、入力データの分布を学習することで、その分布に基づいて新たなデータを生成することができるのです。</p>
+<p>生成モデルの学習から新たなデータの生成までの過程は次のようになります。まず、訓練データから、そのデータの分布を表す確率分布を学習します。次にランダムノイズを入力として、学習した確率分布に基づく新たなデータを生成します。生成されたデータは、訓練データと同じ確率分布に従っているため、訓練データと同じようなデータが生成されることになります。</p>
+<p>生成モデルはその特性から、画像や文章を使った創作活動に適しています。生成モデルを用いることで、白黒の画像をカラー画像に変換することができます。また、ある作家の文章のスタイルを学習し、そのスタイルに基づいて新たな文章を生成することができます。CNNやRNNを用いた深層生成モデルの進歩は、AIによる芸術作品の創造、自然言語処理などの領域で革新的な成果を生み出しています。</p>
 </section>
-<section id="表現学習" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="表現学習"><span class="header-section-number">15.2</span> 表現学習</h2>
+<section id="敵対的生成ネットワーク" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="敵対的生成ネットワーク"><span class="header-section-number">15.2</span> 敵対的生成ネットワーク</h2>
+<p>深層生成モデルの代表的な手法の一つは、敵対的生成ネットワーク（Generative Adversarial Networks: GAN）です。GANは、生成器と分類器の2つのネットワークで構成されています。生成器ではランダムノイズなどの入力から新しいデータを生成します。もう一方のネットワークである識別器は、生成されたデータと本物のデータを識別する役割を持ちます。このとき、扱うデータが画像であればCNN、文章であればRNNというように、データの種類に応じたネットワークを用います。この2つのネットワークを競わせながら学習を進めることで、高品質な新しいデータを生成することが可能となります。</p>
+<p>GANの学習手順は次のようになります。まず、生成器はランダムノイズなどの入力からサンプルを生成します。生成されたサンプルと本物のサンプルを識別器に入力し、それが本物かどうかを判別します。このとき、生成器は識別器を騙すように学習を進めます。一方、識別器は生成器が生成した画像を本物と判別できるように学習を進めます。学習は、識別器が本物と生成器によるサンプルを区別できなくなるまで繰り返されます。</p>
+<p>つまり、生成器と識別器は互いに競争する形で学習を進めます。生成器は本物のデータに近いサンプルを生成し、識別器を欺く能力を高めることを目指します。一方、識別器は生成器が生成した偽物と本物のデータを正しく識別できるように学習を行います。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ヒント
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Tensorflow公式によるGANのデモ: https://www.tensorflow.org/tutorials/generative/dcgan?hl=ja</p>
+</div>
+</div>
+</section>
+<section id="表現学習" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="表現学習"><span class="header-section-number">15.3</span> 表現学習</h2>
 <p>表現学習</p>
 </section>
-<section id="テンソル" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="テンソル"><span class="header-section-number">15.3</span> テンソル</h2>
+<section id="テンソル" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="テンソル"><span class="header-section-number">15.4</span> テンソル</h2>
 <p>カラー画像は4つの次元を持つテンソルで表現されます。3つの次元は画像の高さ、幅、色のチャンネル数を表します。4つ目の次元は画像の枚数を表します。</p>
 </section>
-<section id="変分自己符号化器変分オートエンコーダ" class="level2" data-number="15.4">
-<h2 data-number="15.4" class="anchored" data-anchor-id="変分自己符号化器変分オートエンコーダ"><span class="header-section-number">15.4</span> 変分自己符号化器（変分オートエンコーダ）</h2>
-</section>
-<section id="深層生成モデル" class="level2" data-number="15.5">
-<h2 data-number="15.5" class="anchored" data-anchor-id="深層生成モデル"><span class="header-section-number">15.5</span> 深層生成モデル</h2>
+<section id="変分自己符号化器変分オートエンコーダ" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="変分自己符号化器変分オートエンコーダ"><span class="header-section-number">15.5</span> 変分自己符号化器（変分オートエンコーダ）</h2>
 
 
 </section>

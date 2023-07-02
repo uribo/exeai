@@ -1,0 +1,46 @@
+---
+title: 課題解決型演習
+execute:
+  keep-ipynb: true
+  eval: false
+  echo: true
+jupyter:
+  jupytext:
+    formats: 'ipynb,qmd'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.14.5
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+## 課題テーマ
+
+選択した課題テーマ以外を削除あるいはコメントアウト（行頭に `#` をつける）し、選択課題だけを残すようにしてください。
+
+（この文章が書かれているテキストセルをJupyter上でダブルクリックすると編集可能になります）
+
+```
+1. 回帰・分類の機械学習モデル
+2. 画像を扱う深層学習モデル
+3. 自然言語を扱う深層学習モデル
+```
+
+### 課題の概要
+
+課題テーマについて、取り組んだ内容を簡潔に記載してください。
+
+例）CNNを用いた[くずし字データセット（KMNIST）](http://codh.rois.ac.jp/kmnist/)の分類モデルの構築
+
+### 課題の内容
+
+取り組んだ内容の詳細を記載してください。
+Pythonコードのほか、コードの内容を説明するコメントを加えておくと処理内容を見直しやすいので便利です。
+
+形式自由。
+このファイル以外に提出物がある場合、それらについての内容と提出先について記載してください。
+

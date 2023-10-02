@@ -28,7 +28,7 @@ pd.set_option("display.max_columns", None)
 penguins = sns.load_dataset("penguins")
 penguins.dropna(inplace=True)
 
-# 
+# ここのseed指定忘れ...
 penguins_small = penguins.groupby("species").apply(lambda x: x.sample(frac=0.3))
 penguins_small.reset_index(drop=True, inplace=True)
 
@@ -47,7 +47,6 @@ train_out = train_out[penguins.columns]
 ```
 
 ```{python}
-#| eval: false
 train_out.to_csv("train.csv", index=False)
 ```
 
@@ -93,7 +92,6 @@ test_out = correct_df[penguins.drop(columns=["species"]).columns]
 ```
 
 ```{python}
-#| eval: false
 test_out.to_csv("test.csv", index=False)
 ```
 

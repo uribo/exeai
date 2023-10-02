@@ -420,3 +420,7 @@ plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], color="#fc5
 
 plt.show()
 ```
+
+### 最小二乗法
+
+

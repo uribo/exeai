@@ -1,6 +1,8 @@
 # ガイダンス {.unnumbered}
 
-スライド: [https://github.com/uribo/exeai/blob/main/slide/01_人工知能開発の歴史と背景.pdf](https://github.com/uribo/exeai/blob/main/slide/01_人工知能開発の歴史と背景.pdf)
+スライド（下向きにスクロールしてください）
+
+{{< pdf ../slide/01_人工知能開発の歴史と背景.pdf width=100% height=380 >}}
 
 - 人工知能とは
     - 人工知能の歴史

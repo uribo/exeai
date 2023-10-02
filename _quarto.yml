@@ -3,6 +3,7 @@ project:
   output-dir: _book
   resources: 
     - "img/open_graph.png"
+    - "slide/"
 
 lang: ja
 filters: 

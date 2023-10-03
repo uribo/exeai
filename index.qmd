@@ -6,13 +6,15 @@
 
 自身のコンピュータ上に用意した、ローカルJupyter環境あるいはリモートJupyter環境での利用を想定します。
 
-リモート環境としてGoogle Colaboratoryが利用できます。プログラムの実行にはアカウント登録が必要です。
+リモート環境として[Google Colaboratory (Colab)](https://colab.research.google.com)が利用できます。**プログラムの実行にはGoogleのアカウント登録が必要**です。Colabについては[付録](appendix/jupyternotebook.qmd#google-colaboratory-colab)をご覧ください。
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/uribo/exeai/blob/main/)
 
+上記のボタンをクリックするとColabが開きます。
+
 ## 講義計画
 
-講義の計画は以下の通りです。2023年6月12日現在、前期の講義が進行中であり、内容は順次追加されていきます。
+講義の計画は以下の通りです。2023年10月2日現在、後期の講義が進行中であり、内容は順次追加されていきます。
 
 1. [ガイダンス](week01/guidance.qmd)
 2. [プログラミング入門](week02/index.qmd)

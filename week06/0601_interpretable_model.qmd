@@ -1,8 +1,8 @@
 ---
 title: 回帰モデルの解釈
-format: html
 execute:
   keep-ipynb: true
+  warning: false
 jupyter:
   jupytext:
     formats: 'ipynb,qmd'

@@ -4,6 +4,7 @@ execute:
   keep-ipynb: true
   eval: false
   echo: true
+  warning: false
 jupyter:
   jupytext:
     formats: 'ipynb,qmd'

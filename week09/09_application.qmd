@@ -2,6 +2,7 @@
 title: 実社会での応用
 execute:
   keep-ipynb: true
+  warning: false
 jupyter:
   jupytext:
     formats: 'ipynb,qmd'

@@ -1,6 +1,5 @@
 ---
 title: "ペンギンデータの分類に挑戦"
-format: html
 jupyter: python3
 execute: 
   echo: false

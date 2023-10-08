@@ -1,8 +1,8 @@
 ---
 title: ペンギンデータの分類に挑戦
-format: html
 execute:
   keep-ipynb: true
+  warning: false
 jupyter:
   jupytext:
     formats: 'ipynb,qmd'

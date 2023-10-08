@@ -1,0 +1,81 @@
+---
+title: 四国電力送配電
+execute:
+  keep-ipynb: true
+  eval: false
+  echo: true
+  warning: false
+jupyter:
+  jupytext:
+    formats: 'ipynb,qmd'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.14.5
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+
+https://www.yonden.co.jp/nw/index.html
+
+[でんき予報（電力使用状況）](https://www.yonden.co.jp/nw/denkiyoho/index.html)
+
+```{python}
+# ウェブスクレイピングのライブラリ
+# hrefからファイルをダウンロード
+import urllib.request as req
+
+import pandas as pd
+import requests
+from bs4 import BeautifulSoup
+```
+
+```{python}
+# ウェブサイトからHTMLを取得
+url = "https://www.yonden.co.jp/nw/denkiyoho/download.html"
+response = requests.get(url)
+html = response.text
+```
+
+```{python}
+# BeautifulSoupオブジェクトを作成
+soup = BeautifulSoup(html, "html.parser")
+
+# CSSセレクタを使用して要素を抽出
+elements = soup.select("#contents > dl > dd > a")
+```
+
+```{python}
+# csvファイルのパスをデータフレームに格納
+df = pd.DataFrame(data={"href": [element.attrs["href"] for element in elements]})
+
+# 年の列を生成
+df["year"] = df["href"].str.extract(r"(\d{4})")
+
+df["href"] = "https://www.yonden.co.jp/nw/denkiyoho/" + df["href"]
+
+df
+```
+
+```{python}
+# 繰り返し処理
+for i in range(len(df)):
+    req.urlretrieve(df["href"][i], df["year"][i] + ".csv")
+```
+
+```{python}
+# 結合先のリストを用意する
+frames = []
+
+# 2016年から2023年までのCSVファイルを読み込む
+for year in range(2016, 2023):
+    df = pd.read_csv(f"{year}.csv", skiprows=1, encoding="shift_jis")
+    frames.append(df)
+
+# pandas.concatを使用して縦方向にデータフレームを結合
+df_all = pd.concat(frames)
+```

@@ -885,17 +885,10 @@ y = \begin{cases}
 <span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>)</span>
 <span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2594/993146812.py:3: DeprecationWarning:
-
-`np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
-Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
-</code></pre>
-</div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="0801_neural_networks_files/figure-html/cell-9-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="0801_neural_networks_files/figure-html/cell-9-output-2.png" width="571" height="411" class="figure-img"></a></p>
+<p><a href="0801_neural_networks_files/figure-html/cell-9-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="0801_neural_networks_files/figure-html/cell-9-output-1.png" width="571" height="411" class="figure-img"></a></p>
 </figure>
 </div>
 </div>
@@ -907,46 +900,46 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <h3 data-number="12.4.3" class="anchored" data-anchor-id="ニューラルネットワークの実装"><span class="header-section-number">12.4.3</span> ニューラルネットワークの実装</h3>
 <p>ニューラルネットワークの実装は、多層パーセプトロンの実装とほぼ同じです。違いは、活性化関数をシグモイド関数やReLU関数に変更することです。また、中間層が複数存在することも違いの一つです。</p>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># シグモイド関数</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(x):</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 恒等関数... 入力をそのまま出力する関数</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> identity_function(x):</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3層ニューラルネットワーク</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 重みとバイアスを初期化する</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> init_network():</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    network <span class="op">=</span> {}</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W1'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>], [<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>]])</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b1'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>])</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W2'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.4</span>], [<span class="fl">0.2</span>, <span class="fl">0.5</span>], [<span class="fl">0.3</span>, <span class="fl">0.6</span>]])</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b2'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>])</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W3'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.3</span>], [<span class="fl">0.2</span>, <span class="fl">0.4</span>]])</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b3'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>])</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> network</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co">#　入力信号を出力へ変換する処理</span></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> forward(network, x):</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    W1, W2, W3 <span class="op">=</span> network[<span class="st">'W1'</span>], network[<span class="st">'W2'</span>], network[<span class="st">'W3'</span>]</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    b1, b2, b3 <span class="op">=</span> network[<span class="st">'b1'</span>], network[<span class="st">'b2'</span>], network[<span class="st">'b3'</span>]</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    a1 <span class="op">=</span> np.dot(x, W1) <span class="op">+</span> b1</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    z1 <span class="op">=</span> sigmoid(a1)</span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    a2 <span class="op">=</span> np.dot(z1, W2) <span class="op">+</span> b2</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    z2 <span class="op">=</span> sigmoid(a2)</span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    a3 <span class="op">=</span> np.dot(z2, W3) <span class="op">+</span> b3</span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 出力層の活性化関数は、恒等関数を用いる</span></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> identity_function(a3)</span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>network <span class="op">=</span> init_network()</span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">0.5</span>])</span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> forward(network, x)</span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y) <span class="co"># [0.31682708 0.69627909]</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># シグモイド関数</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(x):</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 恒等関数... 入力をそのまま出力する関数</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> identity_function(x):</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3層ニューラルネットワーク</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 重みとバイアスを初期化する</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> init_network():</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    network <span class="op">=</span> {}</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W1'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>], [<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>]])</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b1'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>])</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W2'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.4</span>], [<span class="fl">0.2</span>, <span class="fl">0.5</span>], [<span class="fl">0.3</span>, <span class="fl">0.6</span>]])</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b2'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>])</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'W3'</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.3</span>], [<span class="fl">0.2</span>, <span class="fl">0.4</span>]])</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    network[<span class="st">'b3'</span>] <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">0.2</span>])</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> network</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="co">#　入力信号を出力へ変換する処理</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> forward(network, x):</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    W1, W2, W3 <span class="op">=</span> network[<span class="st">'W1'</span>], network[<span class="st">'W2'</span>], network[<span class="st">'W3'</span>]</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    b1, b2, b3 <span class="op">=</span> network[<span class="st">'b1'</span>], network[<span class="st">'b2'</span>], network[<span class="st">'b3'</span>]</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    a1 <span class="op">=</span> np.dot(x, W1) <span class="op">+</span> b1</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    z1 <span class="op">=</span> sigmoid(a1)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    a2 <span class="op">=</span> np.dot(z1, W2) <span class="op">+</span> b2</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    z2 <span class="op">=</span> sigmoid(a2)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    a3 <span class="op">=</span> np.dot(z2, W3) <span class="op">+</span> b3</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 出力層の活性化関数は、恒等関数を用いる</span></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> identity_function(a3)</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>network <span class="op">=</span> init_network()</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">0.5</span>])</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> forward(network, x)</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y) <span class="co"># [0.31682708 0.69627909]</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[0.31682708 0.69627909]</code></pre>
 </div>
@@ -1434,7 +1427,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":true,"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":true,"descPosition":"bottom","openEffect":"zoom"});</script>
 
 
 

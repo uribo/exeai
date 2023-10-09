@@ -43,6 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -76,6 +79,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 
 <meta property="og:title" content="AI総合演習 - 付録 A — Jupyter Notebook">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://uribo.github.io/exeai/img/colab.png">
 <meta property="og:site-name" content="AI総合演習">
 <meta name="twitter:title" content="AI総合演習 - 付録 A — Jupyter Notebook">
 <meta name="twitter:description" content="">
@@ -393,6 +397,11 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   <li><a href="#kaggle" id="toc-kaggle" class="nav-link" data-scroll-target="#kaggle"><span class="header-section-number">A.2.3</span> Kaggle</a></li>
   <li><a href="#binder" id="toc-binder" class="nav-link" data-scroll-target="#binder"><span class="header-section-number">A.2.4</span> Binder</a></li>
   </ul></li>
+  <li><a href="#基本操作" id="toc-基本操作" class="nav-link" data-scroll-target="#基本操作"><span class="header-section-number">A.3</span> 基本操作</a>
+  <ul class="collapse">
+  <li><a href="#コードセルとテキストセル" id="toc-コードセルとテキストセル" class="nav-link" data-scroll-target="#コードセルとテキストセル"><span class="header-section-number">A.3.1</span> コードセルとテキストセル</a></li>
+  </ul></li>
+  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab"><span class="header-section-number">A.4</span> Jupyter Lab</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/appendix/jupyternotebook.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></nav>
     </div>
@@ -442,6 +451,14 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <section id="google-colaboratory-colab" class="level3" data-number="A.2.1">
 <h3 data-number="A.2.1" class="anchored" data-anchor-id="google-colaboratory-colab"><span class="header-section-number">A.2.1</span> Google Colaboratory (Colab)</h3>
 <p><a href="https://colab.research.google.com">Colab</a>はGoogleが提供するJupyter Notebookのリモート実行環境です。Googleアカウントがあれば無料で利用できます。制限付きではありますが、GPUを利用することもできます。また、有料のプランを契約することで、高性能なGPU、TPUを利用することも可能です。</p>
+<p>Colabのウェブサイトを開き、Googleアカウントでログインを行うと、以下のような画面が表示されます。この画面では、Colabの利用例を紹介したノートブックや、自身のGoogleドライブに保存されているノートブックを開くことができます。また、ノートブックをアップロードしてColabで編集したり、GitHubリポジトリと紐付けてノートブックを開いたりすることもできます。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../img/colab.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Google Colaboratoryにログインした状態。さまざまな方法でノートブックを開くことができる。"><img src="../img/colab.png" class="img-fluid figure-img"></a></p>
+<figcaption class="figure-caption">Google Colaboratoryにログインした状態。さまざまな方法でノートブックを開くことができる。</figcaption>
+</figure>
+</div>
+<p><code>ノートブックを新規作成</code>ボタンを押すと、新しいノートブックを作成することができます。Colabで作成されるノートブックは、ログインしたGoogleアカウントに結びつけられ、Googleドライブ上の<code>Colab Notebooks</code>フォルダに保存されます。</p>
 </section>
 <section id="sagemaker-studio" class="level3" data-number="A.2.2">
 <h3 data-number="A.2.2" class="anchored" data-anchor-id="sagemaker-studio"><span class="header-section-number">A.2.2</span> SageMaker Studio</h3>
@@ -452,9 +469,26 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </section>
 <section id="binder" class="level3" data-number="A.2.4">
 <h3 data-number="A.2.4" class="anchored" data-anchor-id="binder"><span class="header-section-number">A.2.4</span> Binder</h3>
-
-
 </section>
+</section>
+<section id="基本操作" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="基本操作"><span class="header-section-number">A.3</span> 基本操作</h2>
+<section id="コードセルとテキストセル" class="level3" data-number="A.3.1">
+<h3 data-number="A.3.1" class="anchored" data-anchor-id="コードセルとテキストセル"><span class="header-section-number">A.3.1</span> コードセルとテキストセル</h3>
+<p>Jupyterでは、コードセルとテキストセルの2種類のセルを利用します。コードセルにはプログラムを記述し、テキストセルには文章を記述します。テキストセルでは、マークダウン記法を使った文字装飾やリンク・画像の埋め込みなどが可能です。また、コードセルに記述したプログラムは、セルごとに実行することができます。これらのセルを組み合わせることで、プログラムとその実行結果、さらに文章や画像などを含めたドキュメントを作成できます。</p>
+<p>セルに記述されたプログラムや文章の装飾を実行するには、左側に表示されている再生ボタンを押すか、<code>Shift + Enter</code>を押します。このとき、コードセルの場合は<code>[ ]</code>の中に<code>*</code>が表示されます。<code>*</code>が表示されている間は、プログラムが実行中であることを示します。<code>*</code>が<code>1</code>などの数値に変わると、そのセルの実行が完了したことを意味します。この番号は、ノートブック全体でのセルの実行順序を表しています。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../img/colab2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="../img/colab2.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Jupyterでは、セルの実行順序に注意が必要です。Jupyterでは、セルを実行した順序に従って、変数の値や関数の定義などが記憶されます。そのため、ノートブックの上部にあるセルでも実行をし忘れていると、下部のセルの実行でエラーが発生することがあります。また、セルを実行する順序を間違えると、意図しない結果になることがあります。</p>
+</section>
+</section>
+<section id="jupyter-lab" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="jupyter-lab"><span class="header-section-number">A.4</span> Jupyter Lab</h2>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -843,6 +877,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":true});</script>
 
 
 

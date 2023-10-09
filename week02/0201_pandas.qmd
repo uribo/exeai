@@ -20,13 +20,24 @@ jupyter:
 
 pandasは、Pythonでさまざまなデータ分析を効率的に行うことができるライブラリです。ここではpandasの基本的な使い方を学びます。
 
-まずはpandasをインポートします。もしpandasがインストールされていない場合、`pip install pandas`でインストールしてください。
+まずはpandasを始め、必要なライブラリをインポートします。もしこれらのパッケージがインストールされていない場合、`pip install <パッケージ名>`でインストールしてください。
 
+::: {.callout-info}
+
+Google Colaboratoryでは、pandasおよびnumpyはデフォルトでインストールされています。
+そのためインストールの必要はありません。
+
+:::
 
 ```{python}
-# pandasの読み込み ... pdとして参照できるようにします
+# pandasの読み込み
+# pandasパッケージが提供する機能を pd.* という形で参照できるようにします
+# pdはpandasの慣例的な別名です
 import pandas as pd
+import numpy as np
 ```
+
+se
 
 ```{python}
 # seies
@@ -35,8 +46,6 @@ sr
 ```
 
 ```{python}
-import numpy as np
-
 data = np.array(
     [
         [63.5, 100, 64, 110, 85],
@@ -47,8 +56,5 @@ data = np.array(
 ```
 
 ```{python}
-# data frame (df)
-df = pd.DataFrame(data, columns=["body_length_cm", "weight_kg", "name"])
-
-df
+df = pd.read_csv("https://raw.githubusercontent.com/uribo/tokupon_ds/main/data-raw/tokushima_zoo_animals22.csv")
 ```

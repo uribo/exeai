@@ -755,14 +755,14 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k + \epsilon
 <td>-242.48505</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">6</td>
-<td>sex_Female</td>
-<td>-193.61213</td>
-</tr>
-<tr class="odd">
 <td data-quarto-table-cell-role="th">7</td>
 <td>sex_Male</td>
 <td>193.61213</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>sex_Female</td>
+<td>-193.61213</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
@@ -924,17 +924,17 @@ flipper_length_mm 172.0 から 231.0</code></pre>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
 <td>flipper_length_mm</td>
-<td>221.29551</td>
+<td>225.00000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
 <td>bill_depth_mm</td>
-<td>134.46109</td>
+<td>129.00000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
 <td>bill_length_mm</td>
-<td>103.11298</td>
+<td>100.00000</td>
 </tr>
 </tbody>
 </table>
@@ -969,7 +969,7 @@ flipper_length_mm 172.0 から 231.0</code></pre>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 決定係数を計算</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>pipe.score(penguins.drop(columns<span class="op">=</span><span class="st">"body_mass_g"</span>), penguins[<span class="st">"body_mass_g"</span>])</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
-<pre><code>0.8745268098179141</code></pre>
+<pre><code>0.8749519486826922</code></pre>
 </div>
 </div>
 <p>この値は説明変数の標準化を行ったあとでのモデルの決定係数ですが、実は説明変数の標準化を行わない場合でも同じ値になります。これは、重回帰モデルの決定係数は、説明変数の標準化を行っても行わなくても同じ値になるためです。つまり、モデルの精度には標準化の有無は影響を与えません。</p>
@@ -1364,7 +1364,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":true,"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom"});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true});</script>
 
 
 

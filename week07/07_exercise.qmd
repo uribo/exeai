@@ -39,9 +39,7 @@ p = Path("../")
 
 ::: {.callout-note title="学習・テストデータのダウンロード"}
 
-[Dropbox](https://www.dropbox.com/scl/fo/14zehmndafnjtj6dkbqx3/h?dl=0&rlkey=nl57udtfrxrcmb8hsjbk2tat8) からダウンロード
-
-パスワードは講義中に伝えます。
+[Dropbox](https://www.dropbox.com/scl/fo/9g0r19yj4sctix0gs6edn/h?rlkey=zd0hj6ho2q6nzrdf3ppkh880f&dl=0) からダウンロード
 
 ダウンロードしたファイルを所定のディレクトリに配置してください。
 

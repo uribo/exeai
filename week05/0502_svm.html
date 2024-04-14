@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -86,7 +86,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "一致なし",
     "search-matching-documents-text": "一致した文書",
@@ -95,6 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "追加の検索結果",
     "search-more-matches-text": "追加の検索結果",
     "search-clear-button-title": "消去",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "取消",
     "search-submit-button-title": "検索",
     "search-label": "サーチ"
@@ -110,18 +117,42 @@ gtag('js', new Date());
 gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <meta property="og:title" content="AI総合演習 - 7&nbsp; サポートベクターマシン">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://uribo.github.io/exeai/img/k-fold_cross_validation.png">
-<meta property="og:site-name" content="AI総合演習">
-<meta property="og:image:height" content="1069">
-<meta property="og:image:width" content="2359">
+<meta property="og:site_name" content="AI総合演習">
 <meta name="twitter:title" content="AI総合演習 - 7&nbsp; サポートベクターマシン">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://uribo.github.io/exeai/week05/img/open_graph.png">
@@ -131,17 +162,16 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 
 <body class="nav-sidebar floating">
 
-
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week05/index.html">機械学習の手法</a></li><li class="breadcrumb-item"><a href="../week05/0502_svm.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">サポートベクターマシン</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week05/index.html">機械学習の手法</a></li><li class="breadcrumb-item"><a href="../week05/0502_svm.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">サポートベクターマシン</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -151,13 +181,13 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">AI総合演習</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/uribo/exeai" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="https://twitter.com/intent/tweet?url=|url|" rel="" title="Twitter" class="quarto-navigation-tool px-1" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/uribo/exeai" title="ソースコード" class="quarto-navigation-tool px-1" aria-label="ソースコード"><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/intent/tweet?url=|url|" title="Twitter" class="quarto-navigation-tool px-1" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="ダークモードの切り替え"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
   <div class="quarto-reader-toggle-btn">
@@ -419,7 +449,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -438,12 +468,12 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   <li><a href="#モデルの学習と評価" id="toc-モデルの学習と評価" class="nav-link" data-scroll-target="#モデルの学習と評価"><span class="header-section-number">7.3.3</span> モデルの学習と評価</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/week05/0502_svm.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/uribo/exeai/edit/main/week05/0502_svm.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/uribo/exeai/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week05/index.html">機械学習の手法</a></li><li class="breadcrumb-item"><a href="../week05/0502_svm.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">サポートベクターマシン</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">サポートベクターマシン</span></h1>
 </div>
@@ -458,7 +488,9 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
+
 
 <p>機械学習において、与えられたデータセットを正確に分類するための適切な決定境界を見つけることが重要です。決定境界とは、分類問題において、異なるクラスを分けるために描かれる境界線や面のことを指します。適切な決定境界を見つけ出すことによって、教師ありの学習モデルは未知の新たなデータに対しても正確な分類を行う能力を獲得します。</p>
 <p>サポートベクターマシン（Support Vector Machines: SVM）は、適切な決定境界を見つけるための手法を提供します。サポートベクターマシンによる境界線の探求は、境界線から最も近いデータ点（サポートベクターと呼ばれる）からの距離（マージンと呼ばれる）が最大になるように行われます。マージンの最大化の結果、分類されるデータどうしの距離が最も離れるように境界線が決定されます。また新たなデータが境界の近くに位置する場合でも、適切な分類が可能になります。</p>
@@ -500,14 +532,14 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 <h2 data-number="7.3" class="anchored" data-anchor-id="scikit-learnでのサポートベクターマシンの実装"><span class="header-section-number">7.3</span> Scikit-learnでのサポートベクターマシンの実装</h2>
 <p>Scikit-learnでは、SVCクラスを用いてサポートベクターマシンを実装することができます。SVCクラスは、さきに述べたように、線形分離可能なデータに対してはロジスティック回帰モデルと同様に機能します。また、RBFなどのカーネル関数を指定することで、非線形な境界線を描くことも可能です。</p>
 <p>ここではロジスティック回帰モデルと同様に、ペンギンのデータセットを用いて、ペンギンの種名を分類するモデルをサポートベクターマシンで実装してみましょう。</p>
-<div class="cell" data-execution_count="2">
+<div id="43ea2880" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> StratifiedKFold, cross_validate, cross_val_score</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder, StandardScaler</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, classification_report</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="3">
+<div id="5e0d33eb" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># データの読み込み</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -515,7 +547,7 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 <section id="前処理特徴量エンジニアリング" class="level3" data-number="7.3.1">
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="前処理特徴量エンジニアリング"><span class="header-section-number">7.3.1</span> 前処理・特徴量エンジニアリング</h3>
 <p>前処理・特徴量エンジニアリングの工程を関数化しておきます。</p>
-<div class="cell" data-execution_count="4">
+<div id="a5529262" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> penguins_svm_preprocess(data):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder, StandardScaler</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -541,11 +573,12 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> data_processed</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>定義した関数にペンギンデータを適用します。</p>
-<div class="cell" data-execution_count="5">
+<div id="dad33c10" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>penguins_mod <span class="op">=</span> penguins_svm_preprocess(penguins)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>penguins_mod.head(n <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
+<div>
 <div>
 
 
@@ -599,12 +632,14 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="6">
+</div>
+<div id="04d124d3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"mean"</span>: penguins_mod.mean(),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"standard_deviation"</span>: penguins_mod.std(),</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
+<div>
 <div>
 
 
@@ -658,11 +693,12 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="データ分割" class="level3" data-number="7.3.2">
 <h3 data-number="7.3.2" class="anchored" data-anchor-id="データ分割"><span class="header-section-number">7.3.2</span> データ分割</h3>
 <p>続いて、モデルで予測したい目的変数と、モデルの学習に用いる説明変数を分離します。</p>
-<div class="cell" data-execution_count="7">
+<div id="e6175278" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 説明変数と目的変数の分離</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> penguins_mod.drop(columns<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> penguins_mod[<span class="st">"species"</span>]</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -671,19 +707,19 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 <p><span class="math inline">\(k\)</span> 分割交差検証は、データを <span class="math inline">\(k\)</span> 個のグループに分割し、<span class="math inline">\(k\)</span> 回の学習と評価を行う方法です。<span class="math inline">\(k\)</span> 回の学習のうち、<span class="math inline">\(k-1\)</span> 個のグループを訓練データとして用い、残りの1つのグループをテストデータとして用います。このようにして得られた <span class="math inline">\(k\)</span> 回の評価の平均値を、モデルの評価値とします。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../img/k-fold_cross_validation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="K分割交差検証法"><img src="../img/k-fold_cross_validation.png" class="img-fluid figure-img"></a></p>
-<figcaption class="figure-caption">K分割交差検証法</figcaption>
+<p><a href="../img/k-fold_cross_validation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="K分割交差検証法"><img src="../img/k-fold_cross_validation.png" class="img-fluid figure-img" alt="K分割交差検証法"></a></p>
+<figcaption>K分割交差検証法</figcaption>
 </figure>
 </div>
 <p>データに偏りがある場合、単純にデータをランダムに分割すると、各グループのデータに偏りが生じてしまう可能性があります。交差検証法の過程においても、分割後の訓練データとテストデータの間でデータの偏りが生じてしまうと、モデルが過学習を起こす心配があります。そのため、各グループのデータの割合が同じになるように分割する層化抽出法を利用します。層化抽出法では、データを分割する際に、各クラスの割合が同じになるように分割します。</p>
 <p>今回のデータでは、目的変数のクラスの割合が同じになるようにデータを分割する必要があります。そのため、層化 <span class="math inline">\(K\)</span> 分割交差検証を行うために、<code>sklearn.model_selection</code>モジュールの<code>StratifiedKFold</code>を用いたデータ分割を行います。</p>
-<div class="cell" data-execution_count="8">
+<div id="5520e882" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 交差検証法の例: 層化 k 分割交差検証法</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n_splitで分割数（ホールド数）を指定</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># shuffleでデータをシャッフルするか指定（元のデータの並び順を保持する場合はFalse）</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>skf <span class="op">=</span> StratifiedKFold(n_splits<span class="op">=</span><span class="dv">5</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">20230515</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="9">
+<div id="2af6dc31" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 各ホールドにおけるテストデータの種名の割合を確認</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> train_index, test_index <span class="kw">in</span> skf.split(X, y):</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(y.iloc[test_index].value_counts() <span class="op">/</span> <span class="bu">len</span>(y.iloc[test_index]))</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -726,13 +762,13 @@ Name: count, dtype: float64</code></pre>
 <li>kernel… カーネル関数の種類。デフォルトで利用されるRBFカーネル(<code>rbf</code>)のほか、線形カーネル(<code>linear</code>)、多項式カーネル(<code>poly</code>)などがある。</li>
 <li>gamma… カーネル関数のパラメータ。RBFカーネルのみ使用。カーネルの幅を調整する。</li>
 </ul>
-<div class="cell" data-execution_count="10">
+<div id="fe1f2eee" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># サポートベクターマシンモデルの構築</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># カーネル関数はRBFカーネルを使用（デフォルト）</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>svm <span class="op">=</span> SVC(kernel <span class="op">=</span> <span class="st">'rbf'</span>, gamma<span class="op">=</span><span class="st">'scale'</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>交差検証法を用いてモデルの評価を行うための関数として<code>cross_val_score()</code>が利用できます。この関数は、モデルとデータを引数として受け取り、交差検証法による評価値を返します。評価指標にはデフォルトではモデルの精度（accuracy）が用いられますが、<code>scoring</code>引数を用いて、他の評価指標を用いることもできます。</p>
-<div class="cell" data-execution_count="11">
+<div id="d2fb4c5f" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> cross_val_score(svm, X, y, cv<span class="op">=</span>skf)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 各ホールドにおける正解率を平均</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average score: "</span>, scores.mean())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -740,12 +776,12 @@ Name: count, dtype: float64</code></pre>
 <pre><code>Average score:  0.9939846223428311</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="12">
-<div class="cell-output cell-output-display">
+<div id="342093b2" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display cell-output-markdown">
 <p>この出力は、各ホールドにおける評価値の平均値を表しています。今回のモデルでは、平均で約0.994の正解率が得られました。</p>
 </div>
 </div>
-<div class="cell" data-execution_count="13">
+<div id="230fdaf1" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 再現率 (recall)を評価指標として用いる</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> cross_val_score(svm, X, y, cv<span class="op">=</span>skf, scoring<span class="op">=</span><span class="st">'recall_macro'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average score: "</span>, scores.mean())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -754,12 +790,12 @@ Name: count, dtype: float64</code></pre>
 </div>
 </div>
 <p><code>cross_validate()</code>関数を用いると、複数の評価指標を同時に用いることができます。この関数は<code>cross_val_score()</code>関数と同じく、モデルとデータを引数として与えると、交差検証法による評価値を返却します。一方で<code>scoring</code>引数に複数の評価指標を指定でき、同時に複数の評価指標を比較可能です。加えて、<code>return_train_score</code>引数を<code>True</code>にすることで、テストデータのほかに訓練データに対する評価値も得ることができます。</p>
-<div class="cell" data-execution_count="14">
+<div id="52448fc4" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 複数の評価指標（正解率、再現率）を用いる</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cross_validate(svm, X, y, cv<span class="op">=</span>skf, scoring<span class="op">=</span>[<span class="st">'accuracy'</span>, <span class="st">'recall_macro'</span>], return_train_score<span class="op">=</span><span class="va">True</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>{'fit_time': array([0.0030818 , 0.00213146, 0.00212646, 0.0021441 , 0.00221491]),
- 'score_time': array([0.0037787 , 0.00286913, 0.00293589, 0.00287795, 0.00288773]),
+<pre><code>{'fit_time': array([0.00304222, 0.00218201, 0.00217628, 0.00222802, 0.0022049 ]),
+ 'score_time': array([0.00405073, 0.00289559, 0.00308299, 0.0028913 , 0.00285363]),
  'test_accuracy': array([0.98507463, 1.        , 1.        , 0.98484848, 1.        ]),
  'train_accuracy': array([0.9924812 , 0.9924812 , 0.9924812 , 0.99250936, 0.99625468]),
  'test_recall_macro': array([0.97435897, 1.        , 1.        , 0.97619048, 1.        ]),
@@ -768,6 +804,9 @@ Name: count, dtype: float64</code></pre>
 </div>
 
 
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">K分割交差検証法</span>
+</div>
 </section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
@@ -819,6 +858,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -887,13 +953,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -972,10 +1040,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/uribo\.github\.io\/exeai\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -985,8 +1070,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -998,7 +1092,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1042,6 +1259,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1067,6 +1285,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1128,12 +1372,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../week05/0501_regression.html" class="pagination-link">
+      <a href="../week05/0501_regression.html" class="pagination-link" aria-label="線形回帰モデルによるペンギンの体重の予測">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">線形回帰モデルによるペンギンの体重の予測</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../week05/0503_k-means.html" class="pagination-link">
+      <a href="../week05/0503_k-means.html" class="pagination-link" aria-label="k平均法によるクラスタリング">
         <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">k平均法によるクラスタリング</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1141,10 +1385,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Copyright 2023, Shinya Uryu</div>   
+    <div class="nav-footer-left">
+<p>Copyright 2023, Shinya Uryu</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/uribo/exeai/edit/main/week05/0502_svm.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/uribo/exeai/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
@@ -1163,7 +1409,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":true,"descPosition":"bottom","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
+
 
 
 

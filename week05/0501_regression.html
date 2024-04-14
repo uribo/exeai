@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -86,7 +86,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "一致なし",
     "search-matching-documents-text": "一致した文書",
@@ -95,6 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "追加の検索結果",
     "search-more-matches-text": "追加の検索結果",
     "search-clear-button-title": "消去",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "取消",
     "search-submit-button-title": "検索",
     "search-label": "サーチ"
@@ -110,18 +117,42 @@ gtag('js', new Date());
 gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <meta property="og:title" content="AI総合演習 - 6&nbsp; 線形回帰モデルによるペンギンの体重の予測">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://uribo.github.io/exeai/week05/0501_regression_files/figure-html/bill_length_mmbill_depth_mm-output-1.png">
-<meta property="og:site-name" content="AI総合演習">
-<meta property="og:image:height" content="561">
-<meta property="og:image:width" content="1138">
+<meta property="og:site_name" content="AI総合演習">
 <meta name="twitter:title" content="AI総合演習 - 6&nbsp; 線形回帰モデルによるペンギンの体重の予測">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://uribo.github.io/exeai/week05/img/open_graph.png">
@@ -131,17 +162,16 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 
 <body class="nav-sidebar floating">
 
-
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week05/index.html">機械学習の手法</a></li><li class="breadcrumb-item"><a href="../week05/0501_regression.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">線形回帰モデルによるペンギンの体重の予測</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week05/index.html">機械学習の手法</a></li><li class="breadcrumb-item"><a href="../week05/0501_regression.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">線形回帰モデルによるペンギンの体重の予測</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -151,13 +181,13 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">AI総合演習</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/uribo/exeai" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="https://twitter.com/intent/tweet?url=|url|" rel="" title="Twitter" class="quarto-navigation-tool px-1" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/uribo/exeai" title="ソースコード" class="quarto-navigation-tool px-1" aria-label="ソースコード"><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/intent/tweet?url=|url|" title="Twitter" class="quarto-navigation-tool px-1" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="ダークモードの切り替え"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
   <div class="quarto-reader-toggle-btn">
@@ -419,7 +449,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -439,12 +469,12 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   <li><a href="#最小二乗法" id="toc-最小二乗法" class="nav-link" data-scroll-target="#最小二乗法"><span class="header-section-number">6.5.1</span> 最小二乗法</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/uribo/exeai/edit/main/week05/0501_regression.qmd" class="toc-action">編集</a></p><p><a href="https://github.com/uribo/exeai/issues/new" class="toc-action">問題を報告</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/uribo/exeai/edit/main/week05/0501_regression.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/uribo/exeai/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week05/index.html">機械学習の手法</a></li><li class="breadcrumb-item"><a href="../week05/0501_regression.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">線形回帰モデルによるペンギンの体重の予測</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">線形回帰モデルによるペンギンの体重の予測</span></h1>
 </div>
@@ -459,25 +489,27 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
+
 
 <p>教師あり学習の例として回帰問題を取り上げます。回帰問題とは、入力変数から連続値の出力変数を予測する問題です。例えば、住宅の広さや築年数などの情報から住宅の価格を予測する問題は回帰問題として扱われます。</p>
 <p>ここでは、回帰問題の代表的なモデルである線形回帰モデルについて説明します。線形回帰モデルは、入力変数と目的変数の間の線形関係をモデル化する統計的手法です。</p>
 <p>線形回帰モデルなどの機械学習モデルの構築に必要なライブラリはScikit-learnに含まれています。ここではScikit-learnのいくつかの機能を利用して、ペンギンの体重を予測する線形回帰モデルを構築します。</p>
 <p>利用するライブラリとデータを次のコードで読み込みます。</p>
-<div class="cell" data-execution_count="2">
+<div id="e731c29e" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># japanize_matplotlibのインストール</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>qq japanize_matplotlib</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in"># japanize_matplotlibのインストール</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">!pip install -qq japanize_matplotlib</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="3">
+<div id="c1109bd4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> japanize_matplotlib  <span class="co"># matplotlibの日本語化</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt  <span class="co"># 作図</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  <span class="co"># 数値計算、配列の操作</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd  <span class="co"># データフレームの操作</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="4">
+<div id="b4e244c5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 以下は機械学習モデル（線形回帰モデル）の構築と性能評価に用いるモジュール</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
@@ -491,10 +523,11 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>先頭行を表示します。</p>
-<div class="cell" data-execution_count="6">
+<div id="9263f397" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># データの確認</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>penguins.head()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
+<div>
 <div>
 
 
@@ -568,7 +601,8 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+</div>
+<div id="0b8f3236" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 列（変数）ごとの欠損値の数</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>penguins.isnull().<span class="bu">sum</span>()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -588,7 +622,7 @@ dtype: int64</code></pre>
 <section id="欠損値の削除" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="欠損値の削除"><span class="header-section-number">6.1.1</span> 欠損値の削除</h3>
 <p>ここでは欠損値の削除で、モデルに与えるデータを用意します。欠損値の削除は、pandasの<code>dropna()</code>メソッドを用いて行います。</p>
-<div class="cell" data-execution_count="8">
+<div id="d6d2f34d" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 前処理: 欠損値の削除</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>penguins.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># データの確認。欠損値の削除によっていくつかの行が削除される</span></span>
@@ -602,7 +636,7 @@ dtype: int64</code></pre>
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="ラベルエンコーディングと標準化"><span class="header-section-number">6.1.2</span> ラベルエンコーディングと標準化</h3>
 <p>次にペンギンデータの変数に対する操作、特徴量エンジニアリングを行います。ここではラベルエンコーディングと標準化を行うことにしましょう。どちらの操作も、特徴量エンジニアリングの工程では変数の変換に分類されます。</p>
 <p>ラベルエンコーディングは、カテゴリ変数を数値に変換する操作です。<a href="../week04/0402_classification.html">ロジスティック回帰モデル</a>を扱った際にも適用しました。</p>
-<div class="cell" data-execution_count="9">
+<div id="a30ff2ff" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 特徴量エンジニアリング: ラベルエンコーディングとスケーリング</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -612,7 +646,7 @@ dtype: int64</code></pre>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>penguins[<span class="st">"sex"</span>] <span class="op">=</span> le.fit_transform(penguins[<span class="st">"sex"</span>])</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>標準化（スケーリング）は、変数の値を平均値0、標準偏差1に変換する操作です。標準化を行うことで、変数間のスケール（単位）を揃えることができます。例えば、ペンギンデータの体の部位は<code>mm</code>で記録されますが、くちばしの長さ<code>bill_length_mm</code>はくちばしの太さ<code>bill_depth_mm</code>よりも大きい値を取ります。また、体重は<code>g</code>で記録されます。このように単位が異なる変数をそのまま利用すると、値が大きな変数の影響が大きくなってしまいます。このような問題を解決するために、標準化を行います。</p>
-<div class="cell" data-execution_count="10">
+<div id="bfdfa5b2" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ペンギンデータのbill_length_mmについて平均値と標準偏差を求める</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_length_mm"</span>].mean())</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_length_mm"</span>].std())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -621,7 +655,7 @@ dtype: int64</code></pre>
 5.468668342647559</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="11">
+<div id="fac06c17" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bill_depth_mmについても平均値と標準偏差を求める</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_depth_mm"</span>].mean())</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_depth_mm"</span>].std())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -630,19 +664,21 @@ dtype: int64</code></pre>
 1.9692354633199007</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="12">
+<div id="cell-ペンギンデータのbill_length_mmとbill_depth_mmのヒストグラムを作成" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="fl">6.8</span>, <span class="dv">3</span>))</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(penguins, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, ax<span class="op">=</span>ax[<span class="dv">0</span>], color<span class="op">=</span><span class="st">"#284b67"</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(penguins, x<span class="op">=</span><span class="st">"bill_depth_mm"</span>, ax<span class="op">=</span>ax[<span class="dv">1</span>], color<span class="op">=</span><span class="st">"#1a2127"</span>)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="bill_length_mmとbill_depth_mmのヒストグラムを作成">
-<p><a href="0501_regression_files/figure-html/bill_length_mmbill_depth_mm-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="0501_regression_files/figure-html/bill_length_mmbill_depth_mm-output-1.png" width="569" height="281"></a></p>
+<div>
+<figure class="figure">
+<p><a href="0501_regression_files/figure-html/bill_length_mmbill_depth_mm-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="0501_regression_files/figure-html/bill_length_mmbill_depth_mm-output-1.png" id="bill_length_mmとbill_depth_mmのヒストグラムを作成" width="569" height="281" class="figure-img"></a></p>
+</figure>
 </div>
 </div>
 </div>
 <p>scikit-learnでの標準化は、<code>StandardScaler</code>クラスを利用します。<code>StandardScaler</code>は、平均値と標準偏差を計算し、それらの値を利用して変数の値を変換します。標準化を行うことで、変数の値が平均値を中心に分布するようになります。</p>
-<div class="cell" data-execution_count="13">
+<div id="6fe53c73" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># データの標準化</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># StandardScalerのインスタンスを用意</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
@@ -654,9 +690,10 @@ dtype: int64</code></pre>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>ラベルエンコーディング、標準化を適用したデータを確認しましょう。</p>
-<div class="cell" data-execution_count="14">
+<div id="64a49d14" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>penguins.head(n<span class="op">=</span><span class="dv">3</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
+<div>
 <div>
 
 
@@ -710,8 +747,9 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>平均値0、標準偏差1に変換されていることが確認できます。</p>
-<div class="cell" data-execution_count="15">
+<div id="98e29624" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ペンギンデータのbill_length_mmについて平均値と標準偏差を求める</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_length_mm"</span>].mean())</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_length_mm"</span>].std())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -720,7 +758,7 @@ dtype: int64</code></pre>
 1.0015048917468008</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="16">
+<div id="9a38b6ea" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bill_depth_mmについても平均値と標準偏差を求める</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_depth_mm"</span>].mean())</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_depth_mm"</span>].std())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -730,8 +768,8 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>標準化は変数の値を操作しますが、変数の分布は変化しません。そのため、標準化を行う前後でヒストグラムを比較すると、分布の形に違いがないことがわかります。</p>
-<div class="cell" data-execution_count="17">
-<details>
+<div id="cell-ペンギンデータのbill_length_mmとbill_depth_mmを標準化したヒストグラム" class="cell" data-execution_count="17">
+<details class="code-fold">
 <summary>コード</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="fl">6.8</span>, <span class="dv">3</span>))</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(penguins, x<span class="op">=</span><span class="st">"bill_length_mm"</span>, ax<span class="op">=</span>ax[<span class="dv">0</span>], color<span class="op">=</span><span class="st">"#284b67"</span>)</span>
@@ -739,8 +777,10 @@ dtype: int64</code></pre>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="bill_length_mmとbill_depth_mmを標準化したヒストグラム">
-<p><a href="0501_regression_files/figure-html/bill_length_mmbill_depth_mm-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="0501_regression_files/figure-html/bill_length_mmbill_depth_mm-output-1.png" width="569" height="281"></a></p>
+<div>
+<figure class="figure">
+<p><a href="0501_regression_files/figure-html/bill_length_mmbill_depth_mm-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="0501_regression_files/figure-html/bill_length_mmbill_depth_mm-output-1.png" id="bill_length_mmとbill_depth_mmを標準化したヒストグラム" width="569" height="281" class="figure-img"></a></p>
+</figure>
 </div>
 </div>
 </div>
@@ -751,7 +791,7 @@ dtype: int64</code></pre>
 <h2 data-number="6.2" class="anchored" data-anchor-id="関数化による工程の整理"><span class="header-section-number">6.2</span> 関数化による工程の整理</h2>
 <p>ここまでのデータの前処理・特徴量エンジニアリングの操作を整理してみましょう。具体的には一連のコードを関数として定義します。関数を作成することで、同じ処理を何度も繰り返す必要がなくなる利点があります。また、処理の流れの整理にも役立ちます。</p>
 <p>関数の定義は、以下のように<code>def</code>構文を利用します。<code>def</code>のあとに関数名を指定します。関数名は、任意の名前を付けることができますが、関数の処理内容がわかりやすい名前を付けるようにしましょう。ここではペンギンデータの前処理までを実行する関数として<code>penguins_preprocess()</code>という名前を付けます。</p>
-<div class="cell" data-execution_count="18">
+<div id="4fcd407e" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 関数定義の例</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> penguins_preprocess(data):</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 処理内容の記述</span></span>
@@ -759,7 +799,7 @@ dtype: int64</code></pre>
 </div>
 <p>関数名の後には、括弧の中で引数を指定します。引数は、関数の実行に必要な情報を渡すためのものです。ここでは入力データを指定するために<code>data</code>という引数を指定しています。関数の処理内容は、コロンのあとにインデントを利用して記述します。関数の処理が終わったら、<code>return</code>構文を利用して関数が返却する値（戻り値）を指定します。</p>
 <p>具体的なペンギンデータへの前処理・特徴量エンジニアリングの操作を関数化したものが以下になります。</p>
-<div class="cell" data-execution_count="19">
+<div id="15372a8d" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> penguins_preprocess(data):</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder, StandardScaler</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -785,7 +825,7 @@ dtype: int64</code></pre>
 <span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data_processed</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>定義した関数は<code>penguins_preprocess()</code>として機能します。もう一度、ペンギンデータを読み込み、<code>penguins_preprocess()</code>関数による前処理・特徴量エンジニアリングを実行してみましょう。</p>
-<div class="cell" data-execution_count="20">
+<div id="168dad15" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ペンギンデータの読み込み</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -793,9 +833,10 @@ dtype: int64</code></pre>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>penguins_baked <span class="op">=</span> penguins_preprocess(penguins)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>結果を確認します。関数で定義したラベルエンコーディング、標準化の処理が実行されていることがわかります。関数を利用することで複数の処理を一度に実行できるようになりました。</p>
-<div class="cell" data-execution_count="21">
+<div id="57bf0e92" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>penguins_baked.head(n<span class="op">=</span><span class="dv">3</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
+<div>
 <div>
 
 
@@ -849,11 +890,12 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="データの分割" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="データの分割"><span class="header-section-number">6.3</span> データの分割</h2>
 <p>モデルの学習の前に、予測の対象となる変数（目的変数）とそれ以外の変数（説明変数）に分割します。今回、目的変数は<code>body_mass_g</code>、説明変数は<code>body_mass_g</code>以外の変数となります。</p>
-<div class="cell" data-execution_count="22">
+<div id="2996799d" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 説明変数と目的変数の設定</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Xとしてbody_mass_g以外の変数を、yとしてbody_mass_gを設定</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> penguins_baked.drop(columns<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
@@ -863,11 +905,11 @@ dtype: int64</code></pre>
 <p>scikit-learnの<code>train_test_split()</code>関数を使用してデータ分割をします。引数により、テスト用データを20%（学習用データを80%）、<code>species</code>変数による層化抽出を行うように指定します。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../img/hold-out.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="ホールドアウト法"><img src="../img/hold-out.png" class="img-fluid figure-img"></a></p>
-<figcaption class="figure-caption">ホールドアウト法</figcaption>
+<p><a href="../img/hold-out.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="ホールドアウト法"><img src="../img/hold-out.png" class="img-fluid figure-img" alt="ホールドアウト法"></a></p>
+<figcaption>ホールドアウト法</figcaption>
 </figure>
 </div>
-<div class="cell" data-execution_count="23">
+<div id="492b43fb" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># データ分割</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># test_size=0.2でテストデータの割合を20%に指定</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># random_stateは乱数のシードを指定。これにより、実行するたびに同じデータ分割を行うことができる</span></span>
@@ -876,7 +918,7 @@ dtype: int64</code></pre>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">20230515</span>, stratify<span class="op">=</span>X[<span class="st">"species"</span>]</span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="24">
+<div id="229de1fa" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>penguins_baked.groupby(<span class="st">"species"</span>).size()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>species
@@ -886,7 +928,7 @@ dtype: int64</code></pre>
 dtype: int64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="25">
+<div id="eb3f422a" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>X_train.groupby(<span class="st">"species"</span>).size()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>species
@@ -896,7 +938,7 @@ dtype: int64</code></pre>
 dtype: int64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="26">
+<div id="2e7b7a0f" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>X_test.groupby(<span class="st">"species"</span>).size()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>species
@@ -910,7 +952,7 @@ dtype: int64</code></pre>
 <section id="モデルの学習と予測" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="モデルの学習と予測"><span class="header-section-number">6.4</span> モデルの学習と予測</h2>
 <p>Scikit-learnでの線形回帰モデルの構築は<code>sklearn.linear_model</code>モジュールの<code>LinearRegression</code>クラスで行います。</p>
-<div class="cell" data-execution_count="27">
+<div id="cell-モデルの学習" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># インスタンスの生成</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fitメソッドでモデルの学習を実行</span></span>
@@ -920,7 +962,7 @@ dtype: int64</code></pre>
 <style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div>
 </div>
 </div>
-<div class="cell" data-execution_count="28">
+<div id="cell-予測" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># predictメソッドで予測を実行</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 訓練データとテストデータをそれぞれを引数に指定し、予測値を得る</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>y_pred_train <span class="op">=</span> lr.predict(X_train)</span>
@@ -984,7 +1026,7 @@ RSS = \sum_{i=1}^{n} (y_{i} - \hat{y}_{i})^2
 <p>一方、<span class="math inline">\(TSS\)</span> は予測値の代わりに実際の値の平均値 <span class="math inline">\(\bar{y}\)</span> を用います。モデルの予測値は関係なく、実際の値が全体の平均値からどの程度離れているかを示す指標となります。言い換えるとデータの全体的なバラつきを表すと考えることができます。</p>
 <p>決定係数に話しを戻しましょう。決定係数は <span class="math inline">\(1-\frac{RSS}{TSS}\)</span> で求められます。残差平方和（予測のズレ）が全平方和（データ全体のバラつき）に対してどれだけ小さいかを示す指標となります。これによりモデルの予測が実際のデータにどれだけ当てはまるかを評価することができます。</p>
 <p>これらの指標は、scikit-learnのsklearn.metricsモジュールに含まれる<code>mean_squared_error()</code>関数と<code>r2_score()</code>関数を用いて計算することができます。</p>
-<div class="cell" data-execution_count="30">
+<div id="cell-モデルの評価" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RMSEを求める</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># squared=Falseを指定することで、RMSEを計算することができる（デフォルトはMSE）</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>train_rmse <span class="op">=</span> np.sqrt(mean_squared_error(y_train, y_pred_train, squared<span class="op">=</span><span class="va">False</span>))</span>
@@ -995,7 +1037,7 @@ RSS = \sum_{i=1}^{n} (y_{i} - \hat{y}_{i})^2
 <span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>test_r2 <span class="op">=</span> r2_score(y_test, y_pred_test)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>出力を表形式にして見やすくします。</p>
-<div class="cell" data-execution_count="31">
+<div id="74d284fd" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>{</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"データの種類"</span>: [<span class="st">"訓練データ"</span>, <span class="st">"テストデータ"</span>],</span>
@@ -1004,6 +1046,7 @@ RSS = \sum_{i=1}^{n} (y_{i} - \hat{y}_{i})^2
 <span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
+<div>
 <div>
 
 
@@ -1035,18 +1078,19 @@ RSS = \sum_{i=1}^{n} (y_{i} - \hat{y}_{i})^2
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="32">
-<div class="cell-output cell-output-display">
+</div>
+<div id="d0b57eaf" class="cell" data-execution_count="32">
+<div class="cell-output cell-output-display cell-output-markdown">
 <p>訓練データ、テストデータのRMSEはそれぞれ 17.934、18.564で、その差は0.63です。2つのデータセットの間での差はわずかで、訓練データとテストデータの両方でモデルの精度が同等であることを示しています。</p>
 </div>
 </div>
 <p>RMSEが訓練データとテストデータの両方で値が大きくなっている場合、モデルが訓練データに対して過学習していることを示しています。逆に、訓練データでのRMSEがテストデータのRMSEよりも極端に大きい場合、それはモデルが未学習である可能性を示します。</p>
-<div class="cell" data-execution_count="33">
-<div class="cell-output cell-output-display">
+<div id="81e5ae54" class="cell" data-execution_count="33">
+<div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(R^2\)</span>についても見てみましょう。訓練データ、テストデータそれぞれの値は0.846と0.78となりました。これはモデルが訓練データの分散の約0.846%を説明できているということを示します。同様にテストデータに対しても0.78%を説明することになります。</p>
 </div>
 </div>
-<div class="cell" data-execution_count="34">
+<div id="7f88a597" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 実測値と予測値をプロット</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(y_test, y_pred_test, color<span class="op">=</span><span class="st">"#284b67"</span>)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"実際の値"</span>)</span>
@@ -1058,7 +1102,7 @@ RSS = \sum_{i=1}^{n} (y_{i} - \hat{y}_{i})^2
 <span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure">
 <p><a href="0501_regression_files/figure-html/cell-35-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="0501_regression_files/figure-html/cell-35-output-1.png" width="601" height="428" class="figure-img"></a></p>
 </figure>
@@ -1069,6 +1113,9 @@ RSS = \sum_{i=1}^{n} (y_{i} - \hat{y}_{i})^2
 <h3 data-number="6.5.1" class="anchored" data-anchor-id="最小二乗法"><span class="header-section-number">6.5.1</span> 最小二乗法</h3>
 
 
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-3">ホールドアウト法</span>
+</div>
 </section>
 </section>
 
@@ -1114,6 +1161,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1182,13 +1256,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1267,10 +1343,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/uribo\.github\.io\/exeai\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1280,8 +1373,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1293,7 +1395,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1337,6 +1562,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1362,6 +1588,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1423,12 +1675,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../week05/index.html" class="pagination-link">
+      <a href="../week05/index.html" class="pagination-link" aria-label="機械学習の手法">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">機械学習の手法</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../week05/0502_svm.html" class="pagination-link">
+      <a href="../week05/0502_svm.html" class="pagination-link" aria-label="サポートベクターマシン">
         <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">サポートベクターマシン</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1436,10 +1688,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Copyright 2023, Shinya Uryu</div>   
+    <div class="nav-footer-left">
+<p>Copyright 2023, Shinya Uryu</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/uribo/exeai/edit/main/week05/0501_regression.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/uribo/exeai/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
@@ -1458,7 +1712,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","loop":true,"closeEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
+
 
 
 

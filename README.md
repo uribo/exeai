@@ -1,7 +1,7 @@
 AI総合演習
 =========
 
-2023年度後期開講「AI総合演習」
+2024年度前期開講「AI総合演習」
 
 ナンバリング: INTT1520JLAS01
 
@@ -9,13 +9,14 @@ AI総合演習
 
 ## 演習プログラムの実行
 
-自身のコンピュータ上に用意した、ローカルJupyter環境あるいはリモートJupyter環境での利用を想定します。
-
 リモート環境としてGoogle Colaboratoryが利用できます。プログラムの実行にはアカウント登録が必要です。
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/uribo/exeai/blob/main/)
 
 ## 授業計画と内容
+
+> [!WARNING:注意]  
+> 以下の資料は前年度のものです。順次、今年度のものに更新されます。
 
 | 回 | 内容 | 資料 |
 |----|:-----|:-----|

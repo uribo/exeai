@@ -465,7 +465,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 
 <p><a href="../week04/0401_penguins.html">前節</a>では、ペンギンデータを可視化し、データの特徴を把握しました。このデータを使って、ペンギンの種類を分類する機械学習モデルを構築しましょう。</p>
 <p>PythonのScikit-learnライブラリには機械学習モデルの構築から評価に必要な機能が含まれています。そのため今回はScikit-learnライブラリを使ってペンギンデータを分類する機械学習モデルを構築します。</p>
-<div id="70e2ae67" class="cell" data-execution_count="2">
+<div id="f0a2c542" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -485,7 +485,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder, StandardScaler</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="096e7f8d" class="cell" data-execution_count="3">
+<div id="29e2441c" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="scikit-learnを使った機械学習モデルの構築" class="level2" data-number="5.1">
@@ -686,7 +686,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <li>訓練データ: モデルの学習に用いるデータ。モデルはこのデータの特徴を学習し、テストデータに対する予測を行うためのパラメータを決定する。</li>
 <li>テストデータ: モデルの予測精度を評価するためのデータ。モデルの学習には用いられない。</li>
 </ul>
-<div id="e7cebb44" class="cell" data-execution_count="6">
+<div id="b0c1c257" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 目的変数をspecies列、説明変数をspecies列以外の列とする</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># X... 説明変数のみからなるデータフレーム</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># y... 目的変数のみからなるデータフレーム</span></span>
@@ -704,7 +704,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <section id="モデルの構築" class="level3" data-number="5.1.3">
 <h3 data-number="5.1.3" class="anchored" data-anchor-id="モデルの構築"><span class="header-section-number">5.1.3</span> モデルの構築</h3>
 <p>sklearn.linear_modelモジュールのLogisticRegressionを使ってロジスティック回帰モデルを構築します。</p>
-<div id="eef9405b" class="cell" data-execution_count="7">
+<div id="ed444f67" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ロジスティック回帰モデルを適用し、モデルを訓練</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># max_iter引数でパラメータ探索のための試行回数を設定（デフォルトでは100）</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
@@ -718,7 +718,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <section id="モデルの予測" class="level3" data-number="5.1.4">
 <h3 data-number="5.1.4" class="anchored" data-anchor-id="モデルの予測"><span class="header-section-number">5.1.4</span> モデルの予測</h3>
 <p>構築したモデルに対して、テストデータを使って予測を行います。<code>lr.predict(X_test)</code>を実行すると、テストデータに対する予測結果が得られます。</p>
-<div id="20ef527e" class="cell" data-execution_count="8">
+<div id="998def4b" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># テストデータを使って予測を行う</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> lr.predict(X_test)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -732,12 +732,12 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </div>
 </div>
 <p>ロジスティック回帰モデルでは、各クラス（ここではペンギンの種名）に属する確率を出力することもできます。構築したモデルのインスタンスと<code>predict_proba()</code>関数を実行すると、各データポイントに対するクラスの所属確率を配列として取得できます。</p>
-<div id="0a8fe19d" class="cell" data-execution_count="9">
+<div id="517c7de5" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># テストデータがどのクラスに属するかの確率を出力</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> lr.predict_proba(X_test)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>ペンギンの種名は3つのクラスに分類されるので、<code>predict_proba()</code>関数の出力は3列の配列となります。各データポイントに対して、それぞれのクラスに属する確率が出力されています。このうち、最も確率が高いクラスが予測結果となります。</p>
-<div id="0d9b2379" class="cell" data-execution_count="10">
+<div id="a0e24e15" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># テストデータの一件目のデータポイントに対するクラス別の所属確率</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 表示を見やすくするために、小数点以下4桁まで表示するように設定</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(suppress<span class="op">=</span><span class="va">True</span>, formatter<span class="op">=</span>{<span class="st">"float"</span>: <span class="st">"</span><span class="sc">{:.4f}</span><span class="st">"</span>.<span class="bu">format</span>})</span>
@@ -746,7 +746,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <pre><code>[0.0010 0.9986 0.0004]</code></pre>
 </div>
 </div>
-<div id="e9d2b305" class="cell" data-execution_count="11">
+<div id="5f00e17a" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 実際の予測結果</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>y_pred[<span class="dv">0</span>]</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -757,7 +757,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </section>
 <section id="モデルの評価" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="モデルの評価"><span class="header-section-number">5.2</span> モデルの評価</h2>
-<div id="b9d1675a" class="cell" data-execution_count="12">
+<div id="d3962006" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 真の値であるy_testと予測値のy_predを比較して2つの値がどの程度一致しているかを確認する</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># y_testをデータフレームに変換</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>y_test_df <span class="op">=</span> pd.DataFrame(y_test)</span>
@@ -803,14 +803,14 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<div id="3fb48433" class="cell" data-execution_count="13">
+<div id="5f3d0132" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>一致した件数は 66/67件です。これは、モデルが正しく予測できたデータの割合が約98%であることを意味します。</p>
 </div>
 </div>
 <p>scikit-learnには、モデルの評価を行うための様々な関数が用意されています。ここでは、sklearn.metricsモジュールの関数を使ってモデルの評価を行います。</p>
 <p><code>accuracy_score()</code>関数は、正解率を計算する関数です。正解率は、正しく予測できたデータの割合を表します。この値は先ほど確認した正解率と一致します。</p>
-<div id="5dceccf3" class="cell" data-execution_count="14">
+<div id="664a885a" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># モデルを評価</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, y_pred))</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -818,7 +818,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </div>
 </div>
 <p>種名ごとの精度を確認するために<code>classification_report()</code>関数を使います。</p>
-<div id="bc234610" class="cell" data-execution_count="15">
+<div id="010a2a68" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Classification Report:</span><span class="ch">\n</span><span class="st">"</span>, classification_report(y_test, y_pred))</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Classification Report:
@@ -842,7 +842,7 @@ weighted avg       0.99      0.99      0.99        67
 <li>support: 分類されたデータ数。</li>
 </ul>
 <p>ここで出力される評価指標については<code>accuracy_score()</code>関数のように個別の関数を使った算出も可能です。具体的にはprecisionは<code>precision_score()</code>、recallは<code>recall_score()</code>、f1-scoreは<code>f1_score()</code>関数を利用して求めます。</p>
-<div id="2e7892f4" class="cell" data-execution_count="16">
+<div id="46cda902" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Precision:"</span>, precision_score(y_test, y_pred, average<span class="op">=</span><span class="va">None</span>))</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Recall:"</span>, recall_score(y_test, y_pred, average<span class="op">=</span><span class="va">None</span>))</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"F1-Score:"</span>, f1_score(y_test, y_pred, average<span class="op">=</span><span class="va">None</span>))</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -857,7 +857,7 @@ weighted avg       0.99      0.99      0.99        67
 <li>False Negative（FN）：負のクラスを負と予測したが、実際には正である場合。</li>
 </ul>
 <p>scikit-learnでは、<code>confusion_matrix()</code>関数を使って混合行列を作成できます。ここではさらに、<code>ConfusionMatrixDisplay()</code>関数を使って混合行列を可視化する例を示します。</p>
-<div id="dd01c9a1" class="cell" data-execution_count="17">
+<div id="49d2bbcc" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>disp <span class="op">=</span> ConfusionMatrixDisplay(confusion_matrix<span class="op">=</span>cm, display_labels<span class="op">=</span>lr.classes_)</span>
@@ -879,7 +879,7 @@ weighted avg       0.99      0.99      0.99        67
 <li>再現率: TP / (TP + FN)</li>
 </ul>
 <p>今回構築したロジスティック回帰モデルでの適合率を計算してみましょう。ここでは、ペンギンデータの3種のラベルそれぞれの適合率を以下のように計算します。</p>
-<div id="8e55e78b" class="cell" data-execution_count="18">
+<div id="b1dfe00b" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):  <span class="co"># ラベルは0, 1, 2の3種類</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># True Positiveの数</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    TP <span class="op">=</span> np.<span class="bu">sum</span>((y_pred <span class="op">==</span> i) <span class="op">&amp;</span> (np.array(y_test) <span class="op">==</span> i))</span>
@@ -898,7 +898,7 @@ Precision for label 2: 1.0</code></pre>
 </div>
 </div>
 <p>このラベルごとの適合率を平均した値が、モデルの適合率となります。<code>precision_score()</code>関数はデフォルトでラベルごとの適合率を計算しますが、<code>average</code>引数を指定することで、ラベルごとの適合率の平均値を求めることができます。</p>
-<div id="ca2dd8a3" class="cell" data-execution_count="19">
+<div id="df991bee" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average Precision:"</span>, precision_score(y_test, y_pred, average<span class="op">=</span><span class="st">"macro"</span>))</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Average Precision: 0.9777777777777779</code></pre>
@@ -1517,7 +1517,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

@@ -500,14 +500,14 @@ window.Quarto = {
 <p>しかし、ニューラルネットワークの構造の設計は、初心者にとってはハードルが高いです。そこで、TensorFlowの高レベルAPIであるKerasを使うことで、TensorFlowの機能を簡単に利用することができます。KerasとはTensorFlowの他にTheano、CNTKなどの上で動作する深層学習フレームワークの一種です。TensorFlow上でKerasの高レベルAPIを利用するには、具体的にはtf.kerasを用います。</p>
 <section id="ライブラリのインポート" class="level3" data-number="13.2.1">
 <h3 data-number="13.2.1" class="anchored" data-anchor-id="ライブラリのインポート"><span class="header-section-number">13.2.1</span> ライブラリのインポート</h3>
-<div id="2b608ffe" class="cell" data-execution_count="1">
+<div id="6196b51e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="データの読み込み" class="level3" data-number="13.2.2">
 <h3 data-number="13.2.2" class="anchored" data-anchor-id="データの読み込み"><span class="header-section-number">13.2.2</span> データの読み込み</h3>
 <p>datasetsモジュールの<code>mnist.load_data()</code>関数を使ってMNISTデータセットを読み込みます。</p>
-<div id="8caf4e1e" class="cell" data-execution_count="2">
+<div id="da118140" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mnist <span class="op">=</span> tf.keras.datasets.mnist</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>(x_train, y_train), (x_test, y_test) <span class="op">=</span> mnist.load_data()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -515,49 +515,49 @@ window.Quarto = {
 <section id="データの確認" class="level3" data-number="13.2.3">
 <h3 data-number="13.2.3" class="anchored" data-anchor-id="データの確認"><span class="header-section-number">13.2.3</span> データの確認</h3>
 <p>X_trainは訓練用の画像データ、y_trainは学習用のラベルデータとなっています。shepe属性を使ってデータの形状を確認しましょう。</p>
-<div id="bec159ff" class="cell" data-execution_count="3">
+<div id="8462cf27" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 訓練データの件数と画像サイズの確認</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x_train.shape)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># テストデータの件数と画像サイズの確認</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x_test.shape)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="0cb194d0" class="cell" data-execution_count="4">
+<div id="a378cc07" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 訓練データの件数とラベルの確認</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_train.shape)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>画像データは28 <span class="math inline">\(\times\)</span> 28ピクセルのグレースケール画像です。画像データは0から255までの整数値で表されています。訓練データに格納された画像データを表示してみましょう。</p>
-<div id="4b707059" class="cell" data-execution_count="5">
+<div id="1ddd69d2" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x_train[<span class="dv">0</span>]</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>「画像」として表示するためには、matplotlibモジュールの<code>imshow()</code>関数を使います。</p>
-<div id="3eb8483e" class="cell" data-execution_count="6">
+<div id="e428ebd1" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(x_train[<span class="dv">0</span>], cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>この数字が何を表しているのかは、<code>y_train</code>に格納されているラベルを確認することでわかります。</p>
-<div id="244af1b7" class="cell" data-execution_count="7">
+<div id="6a99999f" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y_train[<span class="dv">0</span>]</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>グレースケールで表された画像データは、0から255までの整数値で表されています。ニューラルネットワークの入力として扱うためには、各ピクセルの値を0から1の範囲にスケーリングして正規化しておくと都合が良いです。画像データを正規化するには、255で割るだけです。</p>
-<div id="220de92d" class="cell" data-execution_count="8">
+<div id="f85071e5" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x_train <span class="op">=</span> x_train <span class="op">/</span> <span class="fl">255.0</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> x_test <span class="op">/</span> <span class="fl">255.0</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="57d2f4c7" class="cell" data-execution_count="9">
+<div id="b66b62d9" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 正規化した画像データの確認</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x_train[<span class="dv">0</span>]</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>ラベルをワンホットエンコーディングしておきます。これにより、出力層の10個のノードのうち、正解ラベルに対応するノードの値が1、それ以外のノードの値が0となります。</p>
 <p>ラベルをワンホットエンコーディングを行うことで、クラス分類問題の出力層において、各クラスの確率を表現しやすくなります。また、損失関数や評価指標の計算にも利用されます。</p>
-<div id="f947b531" class="cell" data-execution_count="10">
+<div id="80d13cae" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ワンホットエンコーディング</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> tf.keras.utils.to_categorical(y_train, <span class="dv">10</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> tf.keras.utils.to_categorical(y_test, <span class="dv">10</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="98194e43" class="cell" data-execution_count="11">
+<div id="eb0918b7" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 最初の画像は5であるため、6番目のノードの値が1となっている（ラベルは0からはじまる）</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y_train[<span class="dv">0</span>]</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -570,7 +570,7 @@ window.Quarto = {
 <li>10個のノードを持つ出力層に入力</li>
 <li>活性化関数にソフトマックス関数を指定することで、出力を確率として解釈できるように変換する。</li>
 </ul>
-<div id="c562c29c" class="cell" data-execution_count="12">
+<div id="30120329" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> tf.keras.models.Sequential([</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 入力層には784個(28*28の画像サイズに対応)のノードを持つ</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 28*28の画像データを1次元のベクトルに変換して入力</span></span>
@@ -583,7 +583,7 @@ window.Quarto = {
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>])</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>モデルのアーキテクチャを確認してみましょう。モデルが扱う層の数や、各層のノード数、パラメータ数などを確認することができます。</p>
-<div id="b7956c3b" class="cell" data-execution_count="13">
+<div id="b3263255" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -599,7 +599,7 @@ window.Quarto = {
 <li><code>learning_rate</code>： 学習率</li>
 </ul>
 <p>モデルの構築が完了したら、<code>compile()</code>メソッドを使ってモデルをコンパイルします。<code>compile()</code>メソッドの引数には、最適化アルゴリズム、損失関数、評価指標を指定します。</p>
-<div id="561bfbe5" class="cell" data-execution_count="14">
+<div id="74d106b1" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 学習率を指定</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    optimizer<span class="op">=</span>tf.keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.1</span>),</span>
@@ -610,15 +610,15 @@ window.Quarto = {
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>5エポックで学習を行います。これは、訓練データを5回繰り返し学習させることを意味します。</p>
-<div id="ce0755cb" class="cell" data-execution_count="15">
+<div id="9ad53164" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>model.fit(x_train, y_train, epochs<span class="op">=</span><span class="dv">5</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>テストデータを使って、モデルの評価を行います。ここで計算される損失関数はcomplie()メソッドで指定した損失関数（クロスエントロピー損失関数）です。</p>
-<div id="04f718b7" class="cell" data-execution_count="16">
+<div id="9598f703" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>model.evaluate(x_test, y_test, verbose<span class="op">=</span><span class="dv">2</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>predict()メソッドを使って、テストデータの予測結果を確認します。この予測結果は、各ラベルに対する確率を表しています。もっとも確率の高いラベルが予測結果となります。</p>
-<div id="4345c1b7" class="cell" data-execution_count="17">
+<div id="25214a3f" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># テストデータの最初の画像の予測結果</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>model.predict(x_test[:<span class="dv">1</span>])</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -626,7 +626,7 @@ window.Quarto = {
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.argmax(model.predict(x_test[:<span class="dv">1</span>]), axis<span class="op">=-</span><span class="dv">1</span>))</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="3835b644" class="cell" data-execution_count="18">
+<div id="57aaf4b1" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># テストデータの最初の画像の正解ラベル</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>y_test[:<span class="dv">1</span>]</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

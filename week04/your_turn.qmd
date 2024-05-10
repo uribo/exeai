@@ -39,7 +39,7 @@ y = penguins_adelie["sex"]
 
 ```{python}
 X_train, X_test, y_train, y_test = train_test_split(
-  X, y, test_size=0.2, random_state=20230508
+  X, y, test_size=0.15, random_state=20230508
   )
 train_out = pd.concat([X_train, y_train], axis=1).sort_index()
 train_out = train_out[penguins_adelie.columns]
@@ -85,7 +85,7 @@ plt.show()
 
 学習データ、テストデータの特徴をもとに、テストデータに対して性別の分類を行ってみましょう。
 
-以下の表のspecies列に「雄」だと思えば`M`（Male）、「雌」だと思えば`F`(Female)を記載します。
+以下の表のsex列に「雄」だと思えば`M`（Male）、「雌」だと思えば`F`(Female)を記載します。
 
 ```{python}
 correct_df = pd.concat([X_test, y_test], axis=1)

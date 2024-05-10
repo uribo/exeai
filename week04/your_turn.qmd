@@ -7,7 +7,7 @@ execute:
 
 $\underline{学籍番号：\hspace{8em}}$, $\underline{氏名：\hspace{8em}}$
 
-学習データの特徴からテストデータの種名を予測しましょう。
+学習データの特徴からテストデータの性別を予測しましょう。
 
 ```{python}
 import matplotlib.pyplot as plt

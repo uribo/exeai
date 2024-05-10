@@ -27,12 +27,11 @@ pd.set_option("display.max_columns", None)
 penguins = sns.load_dataset("penguins")
 penguins.dropna(inplace=True)
 
-# ここのseed指定忘れ...
-penguins_small = penguins.groupby("species").apply(lambda x: x.sample(frac=0.3))
+penguins_small = penguins.groupby("sex").apply(lambda x: x.sample(frac=0.3, random_state=20240510))
 penguins_small.reset_index(drop=True, inplace=True)
 
-X = penguins_small.drop(columns="species")
-y = penguins_small["species"]
+X = penguins_small.drop(columns="sex")
+y = penguins_small["sex"]
 ```
 
 ## 学習データ
@@ -57,7 +56,7 @@ pd.read_csv("train.csv")
 ### 要約統計量
 
 ```{python}
-train_grp = train_out.groupby("species")
+train_grp = train_out.groupby("sex")
 train_grp[["bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"]].agg(["mean", "std"]).transpose()
 ```
 
@@ -65,14 +64,16 @@ train_grp[["bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"
 
 ```{python}
 #| fig-cap: 学習データのプロット
+#| warning: false
+#| message: false
 plt.figure(figsize=(5, 4))
 sns.scatterplot(
     data=train_out,
     x="bill_length_mm",
-    y="bill_depth_mm",
+    y="body_mass_g",
     # 塗り分けの変数の指定
-    hue="species",
-    style="species"
+    hue="sex",
+    style="sex"
 )
 plt.show()
 ```
@@ -81,13 +82,13 @@ plt.show()
 
 ## テストデータ
 
-学習データ、テストデータの特徴をもとに、テストデータに対して種名の分類を行ってみましょう。
+学習データ、テストデータの特徴をもとに、テストデータに対して性別の分類を行ってみましょう。
 
-以下の表のspecies列に`Adelie`（アデリーペンギン）だと思えば`A`、`Chinstrap`（ヒゲペンギン）であれば`C`、`Gentoo`（ジェンツーペンギン）であれば`G`を記載します。
+以下の表のspecies列に「雄」だと思えば`M`（Male）、「雌」だと思えば`F`(Female)を記載します。
 
 ```{python}
 correct_df = pd.concat([X_test, y_test], axis=1)
-test_out = correct_df[penguins.drop(columns=["species"]).columns]
+test_out = correct_df[penguins.drop(columns=["sex"]).columns]
 ```
 
 ```{python}
@@ -97,12 +98,12 @@ test_out.to_csv("test.csv", index=False)
 ```{python}
 # df = test_out
 df = pd.read_csv("test.csv")
-df["species"] = ""
+df["sex"] = ""
 
-df[['species', 'bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']]
+df[['sex', 'bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']]
 ```
 
-$\underline{不正解の件数：\hspace{3em}}$
+$\underline{正解の件数：\hspace{3em}}$, $\underline{不正解の件数：\hspace{3em}}$
 
 ```{python}
 #| eval: false

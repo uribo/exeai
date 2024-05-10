@@ -27,11 +27,12 @@ pd.set_option("display.max_columns", None)
 penguins = sns.load_dataset("penguins")
 penguins.dropna(inplace=True)
 
-penguins_small = penguins.groupby("sex").apply(lambda x: x.sample(frac=0.3, random_state=20240510))
-penguins_small.reset_index(drop=True, inplace=True)
+penguins_adelie = penguins[penguins["species"] == "Adelie"]
+penguins_adelie.reset_index(drop=True, inplace=True)
+penguins_adelie = penguins_adelie.drop(columns="species")
 
-X = penguins_small.drop(columns="sex")
-y = penguins_small["sex"]
+X = penguins_adelie.drop(columns="sex")
+y = penguins_adelie["sex"]
 ```
 
 ## 学習データ
@@ -41,7 +42,7 @@ X_train, X_test, y_train, y_test = train_test_split(
   X, y, test_size=0.2, random_state=20230508
   )
 train_out = pd.concat([X_train, y_train], axis=1).sort_index()
-train_out = train_out[penguins.columns]
+train_out = train_out[penguins_adelie.columns]
 ```
 
 ```{python}
@@ -88,7 +89,7 @@ plt.show()
 
 ```{python}
 correct_df = pd.concat([X_test, y_test], axis=1)
-test_out = correct_df[penguins.drop(columns=["sex"]).columns]
+test_out = correct_df[penguins_adelie.drop(columns=["sex"]).columns]
 ```
 
 ```{python}
@@ -107,5 +108,5 @@ $\underline{正解の件数：\hspace{3em}}$, $\underline{不正解の件数：\
 
 ```{python}
 #| eval: false
-correct_df[penguins.columns]
+correct_df[penguins_adelie.columns]
 ```

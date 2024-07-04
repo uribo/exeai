@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.5.53">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI総合演習 - 11&nbsp; 電気使用実績を予測するモデルの構築</title>
+<title>11&nbsp; 電気使用実績を予測するモデルの構築 – AI総合演習</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -118,10 +118,10 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="AI総合演習 - 11&nbsp; 電気使用実績を予測するモデルの構築">
+<meta property="og:title" content="11&nbsp; 電気使用実績を予測するモデルの構築 – AI総合演習">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="AI総合演習">
-<meta name="twitter:title" content="AI総合演習 - 11&nbsp; 電気使用実績を予測するモデルの構築">
+<meta name="twitter:title" content="11&nbsp; 電気使用実績を予測するモデルの構築 – AI総合演習">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://uribo.github.io/exeai/week07/img/open_graph.png">
 <meta name="twitter:creator" content="@u_ribo">
@@ -134,13 +134,13 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week07/index.html">演習1</a></li><li class="breadcrumb-item"><a href="../week07/07_exercise.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">電気使用実績を予測するモデルの構築</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -188,7 +188,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week02/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">プログラミング入門</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -211,7 +211,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week03/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習の背景・数理</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -228,7 +228,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week04/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習モデルの設計と評価</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -251,7 +251,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week05/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習の手法</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -280,7 +280,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week06/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習モデルの解釈・説明性</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -303,7 +303,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week07/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">演習1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -320,7 +320,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week08/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">深層学習の基礎</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -343,7 +343,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week09/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">実社会での応用</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -360,7 +360,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">深層生成モデル</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -381,9 +381,9 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
  <span class="menu-text">付録</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -461,7 +461,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 
 
 <p>これまでの講義内容および<a href="../appendix/ai_tools.html">AIツール</a>による補助を用いて、電気使用実績を予測するモデルを構築しましょう。</p>
-<div id="4a5c436a" class="cell" data-execution_count="1">
+<div id="c1e3518b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -501,15 +501,15 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <li>temperature_dC: 気温（摂氏）</li>
 <li>humidity_pct: 湿度（%）</li>
 </ul>
-<div id="ab44100c" class="cell" data-execution_count="2">
+<div id="d9b77f75" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_train <span class="op">=</span> pd.read_csv(p <span class="op">/</span> <span class="st">"week07/input/train.csv"</span>, parse_dates<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df_test <span class="op">=</span> pd.read_csv(p <span class="op">/</span> <span class="st">"week07/input/test.csv"</span>, parse_dates<span class="op">=</span><span class="va">False</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ece2938c" class="cell" data-execution_count="3">
+<div id="dac46de6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_train.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- knitr::kable(head(reticulate::py_to_r(df_train))) -->
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 21%">
 <col style="width: 9%">
@@ -582,7 +582,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </section>
 <section id="データの可視化" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="データの可視化"><span class="header-section-number">11.2</span> データの可視化</h2>
-<div id="f0d646e4" class="cell" data-execution_count="4">
+<div id="1feab324" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 時系列でのusage_GWの変化を確認</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_train[<span class="st">"datetime"</span>] <span class="op">=</span> pd.to_datetime(df_train[<span class="st">"datetime"</span>])</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># タイムゾーンを日本時間に変換</span></span>
@@ -608,7 +608,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <p>参考）<a href="https://github.com/uribo/exeai/blob/main/slide/04_機械学習モデルの設計と評価.pdf">第四回スライド</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../img/supervised_learning_workflow.jpeg" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="教師あり学習の流れ"><img src="../img/supervised_learning_workflow.jpeg" class="img-fluid figure-img" alt="教師あり学習の流れ"></a></p>
+<p><a href="../img/supervised_learning_workflow.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="教師あり学習の流れ"><img src="../img/supervised_learning_workflow.jpeg" class="img-fluid figure-img" alt="教師あり学習の流れ"></a></p>
 <figcaption>教師あり学習の流れ</figcaption>
 </figure>
 </div>
@@ -621,7 +621,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <p>ここでは機械学習モデルの構築例として、電気使用実績を予測するために気温と降水量を用いた重回帰モデルによるモデルを作成します。このモデルをベースラインとして、他のモデルと比較してみましょう。</p>
 <section id="データ分割" class="level3" data-number="11.4.1">
 <h3 data-number="11.4.1" class="anchored" data-anchor-id="データ分割"><span class="header-section-number">11.4.1</span> データ分割</h3>
-<div id="8f9a208d" class="cell" data-execution_count="5">
+<div id="3999423a" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 欠損値のある行を削除</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_train_baseline <span class="op">=</span> df_train.dropna()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -639,7 +639,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <h3 data-number="11.4.2" class="anchored" data-anchor-id="前処理特徴量エンジニアリング"><span class="header-section-number">11.4.2</span> 前処理・特徴量エンジニアリング</h3>
 <p>ここでは数値変数の標準化（平均0、分散1への変換）を行います。</p>
 <p>Scikit-learnを用いた前処理とモデルの管理は<code>Pipeline</code>クラスを用いると便利です。</p>
-<div id="83012fe3" class="cell" data-execution_count="6">
+<div id="656570ff" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 前処理とモデルのパイプラインを作成</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1/2 前処理を適用する変数と処理内容を指定</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>numeric_features <span class="op">=</span> [<span class="st">"temperature_dC"</span>, <span class="st">"precipitation_mm"</span>]</span>
@@ -653,7 +653,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </section>
 <section id="モデルの学習" class="level3" data-number="11.4.3">
 <h3 data-number="11.4.3" class="anchored" data-anchor-id="モデルの学習"><span class="header-section-number">11.4.3</span> モデルの学習</h3>
-<div id="462cd22c" class="cell" data-execution_count="7">
+<div id="b3d66ac2" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Pipeline(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    steps<span class="op">=</span>[(<span class="st">"preprocessor"</span>, preprocessor), (<span class="st">"regressor"</span>, LinearRegression())]</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>)</span>
@@ -663,7 +663,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </section>
 <section id="モデルの評価" class="level3" data-number="11.4.4">
 <h3 data-number="11.4.4" class="anchored" data-anchor-id="モデルの評価"><span class="header-section-number">11.4.4</span> モデルの評価</h3>
-<div id="4b1bf64e" class="cell" data-execution_count="8">
+<div id="740fd843" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># テストデータの予測値を計算</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># RMSEを計算</span></span>
@@ -689,9 +689,6 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </ul>
 
 
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">教師あり学習の流れ</span>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -874,18 +871,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -917,7 +903,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/uribo\.github\.io\/exeai\/");
@@ -925,7 +933,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1287,30 +1295,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
     }
-  });
-
-};
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
           </script>
 
 

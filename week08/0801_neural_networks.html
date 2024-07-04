@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.5.53">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI総合演習 - 12&nbsp; ニューラルネットワーク</title>
+<title>12&nbsp; ニューラルネットワーク – AI総合演習</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -117,7 +117,7 @@ gtag('js', new Date());
 gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -147,10 +147,10 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="AI総合演習 - 12&nbsp; ニューラルネットワーク">
+<meta property="og:title" content="12&nbsp; ニューラルネットワーク – AI総合演習">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="AI総合演習">
-<meta name="twitter:title" content="AI総合演習 - 12&nbsp; ニューラルネットワーク">
+<meta name="twitter:title" content="12&nbsp; ニューラルネットワーク – AI総合演習">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://uribo.github.io/exeai/week08/img/open_graph.png">
 <meta name="twitter:creator" content="@u_ribo">
@@ -163,13 +163,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week08/index.html">深層学習の基礎</a></li><li class="breadcrumb-item"><a href="../week08/0801_neural_networks.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ニューラルネットワーク</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -217,7 +217,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week02/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">プログラミング入門</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -240,7 +240,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week03/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習の背景・数理</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -257,7 +257,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week04/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習モデルの設計と評価</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -280,7 +280,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week05/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習の手法</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -309,7 +309,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week06/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習モデルの解釈・説明性</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -332,7 +332,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week07/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">演習1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -349,7 +349,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week08/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">深層学習の基礎</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -372,7 +372,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week09/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">実社会での応用</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -389,7 +389,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">深層生成モデル</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -410,9 +410,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
  <span class="menu-text">付録</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -579,7 +579,7 @@ y = \begin{cases}
 <li>OR: 2つの入力のうち1つ以上が1の場合に1を出力し、それ以外の場合に0を出力する。</li>
 <li>NAND: 2つの入力が1の場合に0を出力し、それ以外の場合に1を出力する。ANDの逆の動作をする。</li>
 </ul>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th><span class="math inline">\(x_1\)</span></th>
@@ -627,7 +627,7 @@ y = \begin{cases}
 1 &amp; (0.5x_1 + 0.5x_2 &gt; 0.7)
 \end{cases}
 \]</span></p>
-<div id="e8158b68" class="cell" data-execution_count="1">
+<div id="493f605e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>(<span class="fl">0.5</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> x2 <span class="op">&lt;=</span> <span class="fl">0.7</span>) <span class="op">&amp;</span> (<span class="fl">0.5</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> x2 <span class="op">&gt;</span> <span class="fl">0.7</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -636,7 +636,7 @@ y = \begin{cases}
 </div>
 </div>
 <p>Pythonで上記のパーセプトロンを実装すると以下のようになります。</p>
-<div id="e73d1aa9" class="cell" data-execution_count="2">
+<div id="62ce139a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> perceptron(x1, x2, theta <span class="op">=</span> <span class="fl">0.7</span>):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    w1, w2 <span class="op">=</span> <span class="fl">0.5</span>, <span class="fl">0.5</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> w1 <span class="op">*</span> x1 <span class="op">+</span> w2 <span class="op">*</span> x2</span>
@@ -657,7 +657,7 @@ y = \begin{cases}
 </div>
 </div>
 <p>Pythonで実装したパーセプトロンは、「入力と重みの積の総和が閾値を超えた場合に1を出力し、超えなかった場合に0を出力する」、という動作をしています。閾値は関数の引数として与えていましたが、この値を変えることで、パーセプトロンの出力を変えることができます。これにより、パーセプトロンをORパーセプトロンとして機能させることができます。</p>
-<div id="712e38dc" class="cell" data-execution_count="3">
+<div id="8efbdb79" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ORのパーセプトロン</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perceptron(<span class="dv">0</span>, <span class="dv">0</span>, theta <span class="op">=</span> <span class="fl">0.2</span>)) <span class="co"># 0</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perceptron(<span class="dv">1</span>, <span class="dv">0</span>, theta <span class="op">=</span> <span class="fl">0.2</span>)) <span class="co"># 1</span></span>
@@ -671,7 +671,7 @@ y = \begin{cases}
 </div>
 </div>
 <p>NANDのパーセプトロンは、ANDのパーセプトロンの重みと閾値を反転させることで実現できます。</p>
-<div id="865650ab" class="cell" data-execution_count="4">
+<div id="9bb7833a" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NANDのパーセプトロン</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> NAND_perceptron(x1, x2, theta <span class="op">=</span> <span class="op">-</span><span class="fl">0.7</span>):</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 重みと閾値を反転</span></span>
@@ -701,7 +701,7 @@ y = \begin{cases}
 \end{cases}
 \]</span></p>
 <p>ここで <span class="math inline">\(b\)</span> はバイアスです。この場合、閾値はバイアスの重みとなります。バイアスは、入力が0の場合に出力する値を決めるパラメータとして機能します。すなわちバイアスが大きいほど、入力が0の場合に出力する値は大きくなります。</p>
-<div id="50adf060" class="cell" data-execution_count="5">
+<div id="8983277b" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># バイアスを導入したANDのパーセプトロン</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> AND_perceptron(x1, x2, b <span class="op">=</span> <span class="op">-</span><span class="fl">0.7</span>):</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    w1, w2 <span class="op">=</span> <span class="fl">0.5</span>, <span class="fl">0.5</span></span>
@@ -746,7 +746,7 @@ y = \begin{cases}
 </div>
 <p>同様に、ORやNANDのパーセプトロンにもバイアスを導入することができます。</p>
 <p>パーセプトロンを用いることで、ANDやOR、NANDの論理回路を表現することができました。一方で、2つの入力が異なる場合に1を出力し、同じ場合に0を出力する論理回路であるXORは単純パーセプトロンでは表現できません。</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th><span class="math inline">\(x_1\)</span></th>
@@ -778,7 +778,7 @@ y = \begin{cases}
 </tbody>
 </table>
 <p>単純パーセプトロンがXORを表現できない理由は、単純パーセプトロンは線形分離可能な問題しか表現できないからです。線形分離可能な問題とは、2つのクラスを直線で分離できる問題のことです。XORは、2つのクラスを直線で分離するものではないため、単純パーセプトロンでは表現できない、ということになります。</p>
-<div id="f0f6b2e8" class="cell" data-execution_count="6">
+<div id="61d474d9" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># XORの入出力と線形分離不可能なことを確認する</span></span>
@@ -807,7 +807,7 @@ y = \begin{cases}
 <h4 data-number="12.3.1.2" class="anchored" data-anchor-id="多層パーセプトロン"><span class="header-section-number">12.3.1.2</span> 多層パーセプトロン</h4>
 <p>多層パーセプトロンは、複数のパーセプトロンを組み合わせることで表現することができます。これにより、単純パーセプトロンでは表現できない非線形な問題を表現することができます。</p>
 <p>バイアスを導入したANDパーセプトロンとORパーセプトロンを組み合わせることで、XORを表現することができます。これらの単純パーセプトロンを組み合わせて、XORを表現する多層パーセプトロンを作成してみましょう。</p>
-<div id="b9489502" class="cell" data-execution_count="7">
+<div id="683074f7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANDパーセプトロン</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> AND_perceptron(x1, x2, b <span class="op">=</span> <span class="op">-</span><span class="fl">0.7</span>):</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    w1, w2 <span class="op">=</span> <span class="fl">0.5</span>, <span class="fl">0.5</span></span>
@@ -884,7 +884,7 @@ y = \begin{cases}
 <li>ソフトマックス関数: 入力信号の各要素を0から1の間の連続的な実数に変換し、その出力の総和が1になるように正規化する。これにより、出力は確率分布として解釈することが可能になる。</li>
 </ul>
 <p>入力と出力の関係をグラフで表すと、以下のようになります。</p>
-<div id="a76b1c83" class="cell" data-execution_count="8">
+<div id="bb72c7f5" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ステップ関数</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step_function(x):</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(x <span class="op">&gt;</span> <span class="dv">0</span>, dtype<span class="op">=</span>np.<span class="bu">int</span>)</span>
@@ -931,7 +931,7 @@ y = \begin{cases}
 <section id="ニューラルネットワークの実装" class="level3" data-number="12.4.3">
 <h3 data-number="12.4.3" class="anchored" data-anchor-id="ニューラルネットワークの実装"><span class="header-section-number">12.4.3</span> ニューラルネットワークの実装</h3>
 <p>ニューラルネットワークの実装は、多層パーセプトロンの実装とほぼ同じです。違いは、活性化関数をシグモイド関数やReLU関数に変更することです。また、中間層が複数存在することも違いの一つです。</p>
-<div id="40b10d58" class="cell" data-execution_count="9">
+<div id="a2738eac" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># シグモイド関数</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(x):</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
@@ -1253,18 +1253,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1296,7 +1285,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/uribo\.github\.io\/exeai\/");
@@ -1304,7 +1315,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1666,30 +1677,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false,"closeEffect":"zoom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
     }
-  });
-
-};
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
           </script>
 
 

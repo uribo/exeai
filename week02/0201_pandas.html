@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.5.53">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI総合演習 - 1&nbsp; pandas基礎</title>
+<title>1&nbsp; pandas基礎 – AI総合演習</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -115,10 +115,10 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="AI総合演習 - 1&nbsp; pandas基礎">
+<meta property="og:title" content="1&nbsp; pandas基礎 – AI総合演習">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="AI総合演習">
-<meta name="twitter:title" content="AI総合演習 - 1&nbsp; pandas基礎">
+<meta name="twitter:title" content="1&nbsp; pandas基礎 – AI総合演習">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://uribo.github.io/exeai/week02/img/open_graph.png">
 <meta name="twitter:creator" content="@u_ribo">
@@ -131,13 +131,13 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week02/index.html">プログラミング入門</a></li><li class="breadcrumb-item"><a href="../week02/0201_pandas.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">pandas基礎</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -185,7 +185,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week02/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">プログラミング入門</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -208,7 +208,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week03/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習の背景・数理</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -225,7 +225,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week04/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習モデルの設計と評価</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -248,7 +248,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week05/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習の手法</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -277,7 +277,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week06/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習モデルの解釈・説明性</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -300,7 +300,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week07/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">演習1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -317,7 +317,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week08/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">深層学習の基礎</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -340,7 +340,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week09/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">実社会での応用</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -357,7 +357,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../week10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">深層生成モデル</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -378,9 +378,9 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
  <span class="menu-text">付録</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -416,7 +416,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
@@ -446,7 +446,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <div class="callout-info">
 <p>Google Colaboratoryでは、pandasおよびnumpyはデフォルトでインストールされています。 そのためインストールの必要はありません。</p>
 </div>
-<div id="8a7da71b" class="cell" data-execution_count="1">
+<div id="661845a2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandasの読み込み</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pandasパッケージが提供する機能を pd.* という形で参照できるようにします</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># pdはpandasの慣例的な別名です</span></span>
@@ -454,7 +454,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>se</p>
-<div id="ad8ecbc4" class="cell" data-execution_count="2">
+<div id="4314b867" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># seies</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sr <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sr</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -467,7 +467,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="acea847a" class="cell" data-execution_count="3">
+<div id="f51f64c4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    [</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        [<span class="fl">63.5</span>, <span class="dv">100</span>, <span class="dv">64</span>, <span class="dv">110</span>, <span class="dv">85</span>],</span>
@@ -476,7 +476,7 @@ dtype: int64</code></pre>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    ]</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>).T</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="15e32d0e" class="cell" data-execution_count="4">
+<div id="d941b330" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/uribo/tokupon_ds/main/data-raw/tokushima_zoo_animals22.csv"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
@@ -662,18 +662,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -705,7 +694,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/uribo\.github\.io\/exeai\/");
@@ -713,7 +724,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

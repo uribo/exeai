@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.5.53">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI総合演習 - 7&nbsp; サポートベクターマシン</title>
+<title>7&nbsp; サポートベクターマシン – AI総合演習</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -120,7 +120,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -150,10 +150,10 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="AI総合演習 - 7&nbsp; サポートベクターマシン">
+<meta property="og:title" content="7&nbsp; サポートベクターマシン – AI総合演習">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="AI総合演習">
-<meta name="twitter:title" content="AI総合演習 - 7&nbsp; サポートベクターマシン">
+<meta name="twitter:title" content="7&nbsp; サポートベクターマシン – AI総合演習">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://uribo.github.io/exeai/week05/img/open_graph.png">
 <meta name="twitter:creator" content="@u_ribo">
@@ -166,13 +166,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week05/index.html">機械学習の手法</a></li><li class="breadcrumb-item"><a href="../week05/0502_svm.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">サポートベクターマシン</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -220,7 +220,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week02/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">プログラミング入門</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -243,7 +243,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week03/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習の背景・数理</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -260,7 +260,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week04/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習モデルの設計と評価</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -283,7 +283,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week05/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習の手法</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -312,7 +312,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week06/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">機械学習モデルの解釈・説明性</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -335,7 +335,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week07/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">演習1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -352,7 +352,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week08/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">深層学習の基礎</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -375,7 +375,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week09/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">実社会での応用</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -392,7 +392,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">深層生成モデル</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -413,9 +413,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
  <span class="menu-text">付録</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -532,14 +532,14 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 <h2 data-number="7.3" class="anchored" data-anchor-id="scikit-learnでのサポートベクターマシンの実装"><span class="header-section-number">7.3</span> Scikit-learnでのサポートベクターマシンの実装</h2>
 <p>Scikit-learnでは、SVCクラスを用いてサポートベクターマシンを実装することができます。SVCクラスは、さきに述べたように、線形分離可能なデータに対してはロジスティック回帰モデルと同様に機能します。また、RBFなどのカーネル関数を指定することで、非線形な境界線を描くことも可能です。</p>
 <p>ここではロジスティック回帰モデルと同様に、ペンギンのデータセットを用いて、ペンギンの種名を分類するモデルをサポートベクターマシンで実装してみましょう。</p>
-<div id="5ff4b151" class="cell" data-execution_count="2">
+<div id="e40dcd68" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> StratifiedKFold, cross_validate, cross_val_score</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder, StandardScaler</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, classification_report</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ec4de964" class="cell" data-execution_count="3">
+<div id="e3005285" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># データの読み込み</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -547,7 +547,7 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 <section id="前処理特徴量エンジニアリング" class="level3" data-number="7.3.1">
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="前処理特徴量エンジニアリング"><span class="header-section-number">7.3.1</span> 前処理・特徴量エンジニアリング</h3>
 <p>前処理・特徴量エンジニアリングの工程を関数化しておきます。</p>
-<div id="ecc49751" class="cell" data-execution_count="4">
+<div id="50e76cd8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> penguins_svm_preprocess(data):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder, StandardScaler</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -573,16 +573,15 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> data_processed</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>定義した関数にペンギンデータを適用します。</p>
-<div id="e6845884" class="cell" data-execution_count="5">
+<div id="73b3a1e0" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>penguins_mod <span class="op">=</span> penguins_svm_preprocess(penguins)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>penguins_mod.head(n <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -632,18 +631,16 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 </div>
 </div>
 </div>
-</div>
-<div id="fe48698b" class="cell" data-execution_count="6">
+<div id="242c8417" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"mean"</span>: penguins_mod.mean(),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"standard_deviation"</span>: penguins_mod.std(),</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -693,12 +690,11 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="データ分割" class="level3" data-number="7.3.2">
 <h3 data-number="7.3.2" class="anchored" data-anchor-id="データ分割"><span class="header-section-number">7.3.2</span> データ分割</h3>
 <p>続いて、モデルで予測したい目的変数と、モデルの学習に用いる説明変数を分離します。</p>
-<div id="4dd00e26" class="cell" data-execution_count="7">
+<div id="e2d483f3" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 説明変数と目的変数の分離</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> penguins_mod.drop(columns<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> penguins_mod[<span class="st">"species"</span>]</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -707,19 +703,19 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 <p><span class="math inline">\(k\)</span> 分割交差検証は、データを <span class="math inline">\(k\)</span> 個のグループに分割し、<span class="math inline">\(k\)</span> 回の学習と評価を行う方法です。<span class="math inline">\(k\)</span> 回の学習のうち、<span class="math inline">\(k-1\)</span> 個のグループを訓練データとして用い、残りの1つのグループをテストデータとして用います。このようにして得られた <span class="math inline">\(k\)</span> 回の評価の平均値を、モデルの評価値とします。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../img/k-fold_cross_validation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="K分割交差検証法"><img src="../img/k-fold_cross_validation.png" class="img-fluid figure-img" alt="K分割交差検証法"></a></p>
+<p><a href="../img/k-fold_cross_validation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="K分割交差検証法"><img src="../img/k-fold_cross_validation.png" class="img-fluid figure-img" alt="K分割交差検証法"></a></p>
 <figcaption>K分割交差検証法</figcaption>
 </figure>
 </div>
 <p>データに偏りがある場合、単純にデータをランダムに分割すると、各グループのデータに偏りが生じてしまう可能性があります。交差検証法の過程においても、分割後の訓練データとテストデータの間でデータの偏りが生じてしまうと、モデルが過学習を起こす心配があります。そのため、各グループのデータの割合が同じになるように分割する層化抽出法を利用します。層化抽出法では、データを分割する際に、各クラスの割合が同じになるように分割します。</p>
 <p>今回のデータでは、目的変数のクラスの割合が同じになるようにデータを分割する必要があります。そのため、層化 <span class="math inline">\(K\)</span> 分割交差検証を行うために、<code>sklearn.model_selection</code>モジュールの<code>StratifiedKFold</code>を用いたデータ分割を行います。</p>
-<div id="43f991ae" class="cell" data-execution_count="8">
+<div id="3098a698" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 交差検証法の例: 層化 k 分割交差検証法</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n_splitで分割数（ホールド数）を指定</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># shuffleでデータをシャッフルするか指定（元のデータの並び順を保持する場合はFalse）</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>skf <span class="op">=</span> StratifiedKFold(n_splits<span class="op">=</span><span class="dv">5</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">20230515</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ee90c3b0" class="cell" data-execution_count="9">
+<div id="fd18ce3c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 各ホールドにおけるテストデータの種名の割合を確認</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> train_index, test_index <span class="kw">in</span> skf.split(X, y):</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(y.iloc[test_index].value_counts() <span class="op">/</span> <span class="bu">len</span>(y.iloc[test_index]))</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -762,13 +758,13 @@ Name: count, dtype: float64</code></pre>
 <li>kernel… カーネル関数の種類。デフォルトで利用されるRBFカーネル(<code>rbf</code>)のほか、線形カーネル(<code>linear</code>)、多項式カーネル(<code>poly</code>)などがある。</li>
 <li>gamma… カーネル関数のパラメータ。RBFカーネルのみ使用。カーネルの幅を調整する。</li>
 </ul>
-<div id="1cdefb3b" class="cell" data-execution_count="10">
+<div id="bff6081b" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># サポートベクターマシンモデルの構築</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># カーネル関数はRBFカーネルを使用（デフォルト）</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>svm <span class="op">=</span> SVC(kernel <span class="op">=</span> <span class="st">'rbf'</span>, gamma<span class="op">=</span><span class="st">'scale'</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>交差検証法を用いてモデルの評価を行うための関数として<code>cross_val_score()</code>が利用できます。この関数は、モデルとデータを引数として受け取り、交差検証法による評価値を返します。評価指標にはデフォルトではモデルの精度（accuracy）が用いられますが、<code>scoring</code>引数を用いて、他の評価指標を用いることもできます。</p>
-<div id="76e27eee" class="cell" data-execution_count="11">
+<div id="18fd1874" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> cross_val_score(svm, X, y, cv<span class="op">=</span>skf)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 各ホールドにおける正解率を平均</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average score: "</span>, scores.mean())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -776,12 +772,12 @@ Name: count, dtype: float64</code></pre>
 <pre><code>Average score:  0.9939846223428311</code></pre>
 </div>
 </div>
-<div id="75840600" class="cell" data-execution_count="12">
+<div id="697541ef" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>この出力は、各ホールドにおける評価値の平均値を表しています。今回のモデルでは、平均で約0.994の正解率が得られました。</p>
 </div>
 </div>
-<div id="f82e1def" class="cell" data-execution_count="13">
+<div id="09a823d9" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 再現率 (recall)を評価指標として用いる</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> cross_val_score(svm, X, y, cv<span class="op">=</span>skf, scoring<span class="op">=</span><span class="st">'recall_macro'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average score: "</span>, scores.mean())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -790,12 +786,12 @@ Name: count, dtype: float64</code></pre>
 </div>
 </div>
 <p><code>cross_validate()</code>関数を用いると、複数の評価指標を同時に用いることができます。この関数は<code>cross_val_score()</code>関数と同じく、モデルとデータを引数として与えると、交差検証法による評価値を返却します。一方で<code>scoring</code>引数に複数の評価指標を指定でき、同時に複数の評価指標を比較可能です。加えて、<code>return_train_score</code>引数を<code>True</code>にすることで、テストデータのほかに訓練データに対する評価値も得ることができます。</p>
-<div id="de8e6a3d" class="cell" data-execution_count="14">
+<div id="303d9b60" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 複数の評価指標（正解率、再現率）を用いる</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cross_validate(svm, X, y, cv<span class="op">=</span>skf, scoring<span class="op">=</span>[<span class="st">'accuracy'</span>, <span class="st">'recall_macro'</span>], return_train_score<span class="op">=</span><span class="va">True</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>{'fit_time': array([0.00272369, 0.00217414, 0.00214028, 0.00216866, 0.00218654]),
- 'score_time': array([0.00376749, 0.00305128, 0.00291729, 0.00288391, 0.002877  ]),
+<pre><code>{'fit_time': array([0.00253081, 0.0022707 , 0.00225115, 0.0023222 , 0.00233674]),
+ 'score_time': array([0.00414968, 0.00292063, 0.00289607, 0.00294352, 0.00296617]),
  'test_accuracy': array([0.98507463, 1.        , 1.        , 0.98484848, 1.        ]),
  'train_accuracy': array([0.9924812 , 0.9924812 , 0.9924812 , 0.99250936, 0.99625468]),
  'test_recall_macro': array([0.97435897, 1.        , 1.        , 0.97619048, 1.        ]),
@@ -804,9 +800,6 @@ Name: count, dtype: float64</code></pre>
 </div>
 
 
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">K分割交差検証法</span>
-</div>
 </section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
@@ -996,18 +989,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1039,7 +1021,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/uribo\.github\.io\/exeai\/");
@@ -1047,7 +1051,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1409,30 +1413,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom","closeEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
     }
-  });
-
-};
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
           </script>
 
 

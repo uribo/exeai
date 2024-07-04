@@ -6,9 +6,7 @@ project:
     - "slide/"
 
 lang: ja
-filters: 
-  - lightbox
-lightbox: auto
+lightbox: true
 
 book:
   title: "AI総合演習"

@@ -627,7 +627,7 @@ y = \begin{cases}
 1 &amp; (0.5x_1 + 0.5x_2 &gt; 0.7)
 \end{cases}
 \]</span></p>
-<div id="d086c4ff" class="cell" data-execution_count="1">
+<div id="8be35019" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>(<span class="fl">0.5</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> x2 <span class="op">&lt;=</span> <span class="fl">0.7</span>) <span class="op">&amp;</span> (<span class="fl">0.5</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> x2 <span class="op">&gt;</span> <span class="fl">0.7</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -636,7 +636,7 @@ y = \begin{cases}
 </div>
 </div>
 <p>Pythonで上記のパーセプトロンを実装すると以下のようになります。</p>
-<div id="b94deb05" class="cell" data-execution_count="2">
+<div id="09def061" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> perceptron(x1, x2, theta <span class="op">=</span> <span class="fl">0.7</span>):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    w1, w2 <span class="op">=</span> <span class="fl">0.5</span>, <span class="fl">0.5</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> w1 <span class="op">*</span> x1 <span class="op">+</span> w2 <span class="op">*</span> x2</span>
@@ -657,7 +657,7 @@ y = \begin{cases}
 </div>
 </div>
 <p>Pythonで実装したパーセプトロンは、「入力と重みの積の総和が閾値を超えた場合に1を出力し、超えなかった場合に0を出力する」、という動作をしています。閾値は関数の引数として与えていましたが、この値を変えることで、パーセプトロンの出力を変えることができます。これにより、パーセプトロンをORパーセプトロンとして機能させることができます。</p>
-<div id="95eb848b" class="cell" data-execution_count="3">
+<div id="1ad5907f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ORのパーセプトロン</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perceptron(<span class="dv">0</span>, <span class="dv">0</span>, theta <span class="op">=</span> <span class="fl">0.2</span>)) <span class="co"># 0</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perceptron(<span class="dv">1</span>, <span class="dv">0</span>, theta <span class="op">=</span> <span class="fl">0.2</span>)) <span class="co"># 1</span></span>
@@ -671,7 +671,7 @@ y = \begin{cases}
 </div>
 </div>
 <p>NANDのパーセプトロンは、ANDのパーセプトロンの重みと閾値を反転させることで実現できます。</p>
-<div id="82177cca" class="cell" data-execution_count="4">
+<div id="5bdaf6d4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NANDのパーセプトロン</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> NAND_perceptron(x1, x2, theta <span class="op">=</span> <span class="op">-</span><span class="fl">0.7</span>):</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 重みと閾値を反転</span></span>
@@ -701,7 +701,7 @@ y = \begin{cases}
 \end{cases}
 \]</span></p>
 <p>ここで <span class="math inline">\(b\)</span> はバイアスです。この場合、閾値はバイアスの重みとなります。バイアスは、入力が0の場合に出力する値を決めるパラメータとして機能します。すなわちバイアスが大きいほど、入力が0の場合に出力する値は大きくなります。</p>
-<div id="176319d7" class="cell" data-execution_count="5">
+<div id="68317fe4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># バイアスを導入したANDのパーセプトロン</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> AND_perceptron(x1, x2, b <span class="op">=</span> <span class="op">-</span><span class="fl">0.7</span>):</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    w1, w2 <span class="op">=</span> <span class="fl">0.5</span>, <span class="fl">0.5</span></span>
@@ -778,7 +778,7 @@ y = \begin{cases}
 </tbody>
 </table>
 <p>単純パーセプトロンがXORを表現できない理由は、単純パーセプトロンは線形分離可能な問題しか表現できないからです。線形分離可能な問題とは、2つのクラスを直線で分離できる問題のことです。XORは、2つのクラスを直線で分離するものではないため、単純パーセプトロンでは表現できない、ということになります。</p>
-<div id="ceab83fd" class="cell" data-execution_count="6">
+<div id="c0a3212c" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># XORの入出力と線形分離不可能なことを確認する</span></span>
@@ -807,7 +807,7 @@ y = \begin{cases}
 <h4 data-number="12.3.1.2" class="anchored" data-anchor-id="多層パーセプトロン"><span class="header-section-number">12.3.1.2</span> 多層パーセプトロン</h4>
 <p>多層パーセプトロンは、複数のパーセプトロンを組み合わせることで表現することができます。これにより、単純パーセプトロンでは表現できない非線形な問題を表現することができます。</p>
 <p>バイアスを導入したANDパーセプトロンとORパーセプトロンを組み合わせることで、XORを表現することができます。これらの単純パーセプトロンを組み合わせて、XORを表現する多層パーセプトロンを作成してみましょう。</p>
-<div id="66d63a82" class="cell" data-execution_count="7">
+<div id="2326447c" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANDパーセプトロン</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> AND_perceptron(x1, x2, b <span class="op">=</span> <span class="op">-</span><span class="fl">0.7</span>):</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    w1, w2 <span class="op">=</span> <span class="fl">0.5</span>, <span class="fl">0.5</span></span>
@@ -884,7 +884,7 @@ y = \begin{cases}
 <li>ソフトマックス関数: 入力信号の各要素を0から1の間の連続的な実数に変換し、その出力の総和が1になるように正規化する。これにより、出力は確率分布として解釈することが可能になる。</li>
 </ul>
 <p>入力と出力の関係をグラフで表すと、以下のようになります。</p>
-<div id="8ea48a1e" class="cell" data-execution_count="8">
+<div id="e1fae35a" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ステップ関数</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> step_function(x):</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(x <span class="op">&gt;</span> <span class="dv">0</span>, dtype<span class="op">=</span>np.<span class="bu">int</span>)</span>
@@ -931,7 +931,7 @@ y = \begin{cases}
 <section id="ニューラルネットワークの実装" class="level3" data-number="12.4.3">
 <h3 data-number="12.4.3" class="anchored" data-anchor-id="ニューラルネットワークの実装"><span class="header-section-number">12.4.3</span> ニューラルネットワークの実装</h3>
 <p>ニューラルネットワークの実装は、多層パーセプトロンの実装とほぼ同じです。違いは、活性化関数をシグモイド関数やReLU関数に変更することです。また、中間層が複数存在することも違いの一つです。</p>
-<div id="c916a2af" class="cell" data-execution_count="9">
+<div id="9bd47ba4" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># シグモイド関数</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(x):</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
@@ -1677,7 +1677,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

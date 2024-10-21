@@ -497,19 +497,19 @@ window.Quarto = {
 <p>ここでは、回帰問題の代表的なモデルである線形回帰モデルについて説明します。線形回帰モデルは、入力変数と目的変数の間の線形関係をモデル化する統計的手法です。</p>
 <p>線形回帰モデルなどの機械学習モデルの構築に必要なライブラリはScikit-learnに含まれています。ここではScikit-learnのいくつかの機能を利用して、ペンギンの体重を予測する線形回帰モデルを構築します。</p>
 <p>利用するライブラリとデータを次のコードで読み込みます。</p>
-<div id="c57c5d0a" class="cell" data-execution_count="2">
+<div id="8755d2a6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in"># japanize_matplotlibのインストール</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">!pip install -qq japanize_matplotlib</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="58e49045" class="cell" data-execution_count="3">
+<div id="0476d2dc" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> japanize_matplotlib  <span class="co"># matplotlibの日本語化</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt  <span class="co"># 作図</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  <span class="co"># 数値計算、配列の操作</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd  <span class="co"># データフレームの操作</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="754c4ac7" class="cell" data-execution_count="4">
+<div id="1808e5f2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 以下は機械学習モデル（線形回帰モデル）の構築と性能評価に用いるモジュール</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
@@ -523,7 +523,7 @@ window.Quarto = {
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>先頭行を表示します。</p>
-<div id="6d8b1d53" class="cell" data-execution_count="6">
+<div id="433bbc31" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># データの確認</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>penguins.head()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -600,7 +600,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="9c16b3c8" class="cell" data-execution_count="7">
+<div id="c8a5294d" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 列（変数）ごとの欠損値の数</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>penguins.isnull().<span class="bu">sum</span>()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -620,7 +620,7 @@ dtype: int64</code></pre>
 <section id="欠損値の削除" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="欠損値の削除"><span class="header-section-number">6.1.1</span> 欠損値の削除</h3>
 <p>ここでは欠損値の削除で、モデルに与えるデータを用意します。欠損値の削除は、pandasの<code>dropna()</code>メソッドを用いて行います。</p>
-<div id="13fe40ba" class="cell" data-execution_count="8">
+<div id="30e4c901" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 前処理: 欠損値の削除</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>penguins.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># データの確認。欠損値の削除によっていくつかの行が削除される</span></span>
@@ -634,7 +634,7 @@ dtype: int64</code></pre>
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="ラベルエンコーディングと標準化"><span class="header-section-number">6.1.2</span> ラベルエンコーディングと標準化</h3>
 <p>次にペンギンデータの変数に対する操作、特徴量エンジニアリングを行います。ここではラベルエンコーディングと標準化を行うことにしましょう。どちらの操作も、特徴量エンジニアリングの工程では変数の変換に分類されます。</p>
 <p>ラベルエンコーディングは、カテゴリ変数を数値に変換する操作です。<a href="../week04/0402_classification.html">ロジスティック回帰モデル</a>を扱った際にも適用しました。</p>
-<div id="8a9922b3" class="cell" data-execution_count="9">
+<div id="3de736f7" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 特徴量エンジニアリング: ラベルエンコーディングとスケーリング</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -644,7 +644,7 @@ dtype: int64</code></pre>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>penguins[<span class="st">"sex"</span>] <span class="op">=</span> le.fit_transform(penguins[<span class="st">"sex"</span>])</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>標準化（スケーリング）は、変数の値を平均値0、標準偏差1に変換する操作です。標準化を行うことで、変数間のスケール（単位）を揃えることができます。例えば、ペンギンデータの体の部位は<code>mm</code>で記録されますが、くちばしの長さ<code>bill_length_mm</code>はくちばしの太さ<code>bill_depth_mm</code>よりも大きい値を取ります。また、体重は<code>g</code>で記録されます。このように単位が異なる変数をそのまま利用すると、値が大きな変数の影響が大きくなってしまいます。このような問題を解決するために、標準化を行います。</p>
-<div id="b00f6d4c" class="cell" data-execution_count="10">
+<div id="c8409642" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ペンギンデータのbill_length_mmについて平均値と標準偏差を求める</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_length_mm"</span>].mean())</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_length_mm"</span>].std())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -653,7 +653,7 @@ dtype: int64</code></pre>
 5.468668342647559</code></pre>
 </div>
 </div>
-<div id="4d658cea" class="cell" data-execution_count="11">
+<div id="587dab47" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bill_depth_mmについても平均値と標準偏差を求める</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_depth_mm"</span>].mean())</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_depth_mm"</span>].std())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -676,7 +676,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>scikit-learnでの標準化は、<code>StandardScaler</code>クラスを利用します。<code>StandardScaler</code>は、平均値と標準偏差を計算し、それらの値を利用して変数の値を変換します。標準化を行うことで、変数の値が平均値を中心に分布するようになります。</p>
-<div id="72626c19" class="cell" data-execution_count="13">
+<div id="96f63b04" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># データの標準化</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># StandardScalerのインスタンスを用意</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
@@ -688,7 +688,7 @@ dtype: int64</code></pre>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>ラベルエンコーディング、標準化を適用したデータを確認しましょう。</p>
-<div id="aa5717e4" class="cell" data-execution_count="14">
+<div id="76d7075c" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>penguins.head(n<span class="op">=</span><span class="dv">3</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div>
@@ -745,7 +745,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>平均値0、標準偏差1に変換されていることが確認できます。</p>
-<div id="99914ed0" class="cell" data-execution_count="15">
+<div id="22c8158c" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ペンギンデータのbill_length_mmについて平均値と標準偏差を求める</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_length_mm"</span>].mean())</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_length_mm"</span>].std())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -754,7 +754,7 @@ dtype: int64</code></pre>
 1.0015048917468008</code></pre>
 </div>
 </div>
-<div id="d80662b7" class="cell" data-execution_count="16">
+<div id="ca09ba59" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bill_depth_mmについても平均値と標準偏差を求める</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_depth_mm"</span>].mean())</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins[<span class="st">"bill_depth_mm"</span>].std())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -787,7 +787,7 @@ dtype: int64</code></pre>
 <h2 data-number="6.2" class="anchored" data-anchor-id="関数化による工程の整理"><span class="header-section-number">6.2</span> 関数化による工程の整理</h2>
 <p>ここまでのデータの前処理・特徴量エンジニアリングの操作を整理してみましょう。具体的には一連のコードを関数として定義します。関数を作成することで、同じ処理を何度も繰り返す必要がなくなる利点があります。また、処理の流れの整理にも役立ちます。</p>
 <p>関数の定義は、以下のように<code>def</code>構文を利用します。<code>def</code>のあとに関数名を指定します。関数名は、任意の名前を付けることができますが、関数の処理内容がわかりやすい名前を付けるようにしましょう。ここではペンギンデータの前処理までを実行する関数として<code>penguins_preprocess()</code>という名前を付けます。</p>
-<div id="5ba55f0a" class="cell" data-execution_count="18">
+<div id="2555d14d" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 関数定義の例</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> penguins_preprocess(data):</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 処理内容の記述</span></span>
@@ -795,7 +795,7 @@ dtype: int64</code></pre>
 </div>
 <p>関数名の後には、括弧の中で引数を指定します。引数は、関数の実行に必要な情報を渡すためのものです。ここでは入力データを指定するために<code>data</code>という引数を指定しています。関数の処理内容は、コロンのあとにインデントを利用して記述します。関数の処理が終わったら、<code>return</code>構文を利用して関数が返却する値（戻り値）を指定します。</p>
 <p>具体的なペンギンデータへの前処理・特徴量エンジニアリングの操作を関数化したものが以下になります。</p>
-<div id="a27c0fe0" class="cell" data-execution_count="19">
+<div id="a439519e" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> penguins_preprocess(data):</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder, StandardScaler</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -821,7 +821,7 @@ dtype: int64</code></pre>
 <span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data_processed</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>定義した関数は<code>penguins_preprocess()</code>として機能します。もう一度、ペンギンデータを読み込み、<code>penguins_preprocess()</code>関数による前処理・特徴量エンジニアリングを実行してみましょう。</p>
-<div id="83d218f4" class="cell" data-execution_count="20">
+<div id="67a9cac0" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ペンギンデータの読み込み</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -829,7 +829,7 @@ dtype: int64</code></pre>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>penguins_baked <span class="op">=</span> penguins_preprocess(penguins)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>結果を確認します。関数で定義したラベルエンコーディング、標準化の処理が実行されていることがわかります。関数を利用することで複数の処理を一度に実行できるようになりました。</p>
-<div id="6457455e" class="cell" data-execution_count="21">
+<div id="d2c7f5d6" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>penguins_baked.head(n<span class="op">=</span><span class="dv">3</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <div>
@@ -889,7 +889,7 @@ dtype: int64</code></pre>
 <section id="データの分割" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="データの分割"><span class="header-section-number">6.3</span> データの分割</h2>
 <p>モデルの学習の前に、予測の対象となる変数（目的変数）とそれ以外の変数（説明変数）に分割します。今回、目的変数は<code>body_mass_g</code>、説明変数は<code>body_mass_g</code>以外の変数となります。</p>
-<div id="7598f84b" class="cell" data-execution_count="22">
+<div id="0d0cf106" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 説明変数と目的変数の設定</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Xとしてbody_mass_g以外の変数を、yとしてbody_mass_gを設定</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> penguins_baked.drop(columns<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
@@ -903,7 +903,7 @@ dtype: int64</code></pre>
 <figcaption>ホールドアウト法</figcaption>
 </figure>
 </div>
-<div id="539a197f" class="cell" data-execution_count="23">
+<div id="5079ed1f" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># データ分割</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># test_size=0.2でテストデータの割合を20%に指定</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># random_stateは乱数のシードを指定。これにより、実行するたびに同じデータ分割を行うことができる</span></span>
@@ -912,7 +912,7 @@ dtype: int64</code></pre>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">20230515</span>, stratify<span class="op">=</span>X[<span class="st">"species"</span>]</span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="52e75602" class="cell" data-execution_count="24">
+<div id="9af724e2" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>penguins_baked.groupby(<span class="st">"species"</span>).size()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>species
@@ -922,7 +922,7 @@ dtype: int64</code></pre>
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="c00a194e" class="cell" data-execution_count="25">
+<div id="a573f125" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>X_train.groupby(<span class="st">"species"</span>).size()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>species
@@ -932,7 +932,7 @@ dtype: int64</code></pre>
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="be2e0962" class="cell" data-execution_count="26">
+<div id="702bdb0f" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>X_test.groupby(<span class="st">"species"</span>).size()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>species
@@ -1031,7 +1031,7 @@ RSS = \sum_{i=1}^{n} (y_{i} - \hat{y}_{i})^2
 <span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>test_r2 <span class="op">=</span> r2_score(y_test, y_pred_test)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>出力を表形式にして見やすくします。</p>
-<div id="c509fb23" class="cell" data-execution_count="31">
+<div id="13271f7b" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>{</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"データの種類"</span>: [<span class="st">"訓練データ"</span>, <span class="st">"テストデータ"</span>],</span>
@@ -1071,18 +1071,18 @@ RSS = \sum_{i=1}^{n} (y_{i} - \hat{y}_{i})^2
 </div>
 </div>
 </div>
-<div id="34a8992c" class="cell" data-execution_count="32">
+<div id="1c9955cb" class="cell" data-execution_count="32">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>訓練データ、テストデータのRMSEはそれぞれ 17.934、18.564で、その差は0.63です。2つのデータセットの間での差はわずかで、訓練データとテストデータの両方でモデルの精度が同等であることを示しています。</p>
 </div>
 </div>
 <p>RMSEが訓練データとテストデータの両方で値が大きくなっている場合、モデルが訓練データに対して過学習していることを示しています。逆に、訓練データでのRMSEがテストデータのRMSEよりも極端に大きい場合、それはモデルが未学習である可能性を示します。</p>
-<div id="3eac77f6" class="cell" data-execution_count="33">
+<div id="069ea2ed" class="cell" data-execution_count="33">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(R^2\)</span>についても見てみましょう。訓練データ、テストデータそれぞれの値は0.846と0.78となりました。これはモデルが訓練データの分散の約0.846%を説明できているということを示します。同様にテストデータに対しても0.78%を説明することになります。</p>
 </div>
 </div>
-<div id="f58b3729" class="cell" data-execution_count="34">
+<div id="e492faf9" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 実測値と予測値をプロット</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(y_test, y_pred_test, color<span class="op">=</span><span class="st">"#284b67"</span>)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"実際の値"</span>)</span>
@@ -1712,7 +1712,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

@@ -466,7 +466,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <li>matplotlib: データの可視化</li>
 <li>pandas: データフレームへの操作</li>
 </ul>
-<div id="084f25e1" class="cell" data-execution_count="1">
+<div id="7c01e39e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -477,7 +477,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <section id="データの読み込み" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="データの読み込み"><span class="header-section-number">4.1.1</span> データの読み込み</h3>
 <p>ペンギンデータは<code>seaborn</code>ライブラリに含まれています。データを利用するには<code>load_dataset()</code>関数で読み込みます。</p>
-<div id="61417073" class="cell" data-execution_count="2">
+<div id="5ef29443" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ペンギンデータの読み込み</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -488,7 +488,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 <section id="データの確認" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="データの確認"><span class="header-section-number">4.1.2</span> データの確認</h3>
 <p>ペンギンデータの中身を確認します。データについて理解を深めるためのいくつかの処理を行ってみましょう。まずはデータフレームオブジェクトの属性の一つ、<code>shape</code>を使うと、行数と列数を確認できます。</p>
-<div id="fc50b315" class="cell" data-execution_count="3">
+<div id="d58669c5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>penguins.shape</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 以下のコードの実行はエラーとなる</span></span>
@@ -500,7 +500,7 @@ gtag('config', 'G-57R1KWZ3ZJ', { 'anonymize_ip': true});
 </div>
 </div>
 <p>以下の例では、いくつかのpandasのデータフレーム関数を使って、データの概要を確認しています。これらは関数として実行するため、末尾に括弧を付けています。</p>
-<div id="b224f746" class="cell" data-execution_count="4">
+<div id="b3fbaa61" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># データフレームの概要</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 各列（変数）の名前（Column）、欠損値の件数（Non-Null Count）、データ型(Dtype)を表示</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>penguins.info()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -523,7 +523,7 @@ memory usage: 18.9+ KB</code></pre>
 </div>
 <p>いくつの変数に欠損値があるようです。欠損値の有無は機械学習モデルを実行する際に影響を及ぼす可能性があります。ここでは欠損値への処理を行いませんが、ペンギンデータに欠損値が含まれるということを覚えておきましょう。</p>
 <p>つづいて具体的なデータの中身を確認します。<code>head()</code>関数を使うと、データの先頭から引数で指定した行数を表示できます。<code>tail()</code>関数はデータの末尾から指定した行数を表示するのに利用します。</p>
-<div id="1ba8d90f" class="cell" data-execution_count="5">
+<div id="9f212224" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 先頭5行の表示</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>penguins.head(<span class="dv">5</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -614,7 +614,7 @@ memory usage: 18.9+ KB</code></pre>
 <li><code>sex</code>: 性別。Male（オス）、Female（メス）の2種類。</li>
 </ul>
 <p>分類対象として扱うペンギンの種名について、詳しく調べます。次のコードでそれぞれの種名のデータが何件含まれるかを確認します。</p>
-<div id="dc2b803b" class="cell" data-execution_count="6">
+<div id="383d2042" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ペンギンの種類: "</span>, penguins[<span class="st">"species"</span>].unique())</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>penguins.groupby(<span class="st">"species"</span>).size().reset_index(name<span class="op">=</span><span class="st">"count"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -690,7 +690,7 @@ memory usage: 18.9+ KB</code></pre>
 <section id="統計量" class="level3" data-number="4.1.3">
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="統計量"><span class="header-section-number">4.1.3</span> 統計量</h3>
 <p>pandasの<code>describe()</code>関数を使うと、平均値や標準偏差、最小値・最大値といった複数の統計量を一度に確認できます。</p>
-<div id="d93b3972" class="cell" data-execution_count="7">
+<div id="57fdd4a4" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ペンギンデータの統計量の表示</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>penguins.describe()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -771,7 +771,7 @@ memory usage: 18.9+ KB</code></pre>
 </div>
 </div>
 <p><code>describe()</code>関数が対象とするのはデータフレームの数値データです。<code>species</code>や<code>island</code>のような文字列データは対象となりません。理由は文字列データは平均値（<code>mean</code>）や標準偏差（<code>std</code>）などの統計量に意味がないためです<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。しかし最頻値（<code>top</code>）や最頻値の出現回数（<code>freq</code>）は計算できます。<code>describe()</code>関数のデフォルトでは数値データのみが対象となりますが、引数で<code>include="all"</code>を指定することで文字列データも対象となります。</p>
-<div id="a7b0d4f6" class="cell" data-execution_count="8">
+<div id="434bb478" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 文字列の変数も含めた統計量の表示</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>penguins.describe(include<span class="op">=</span><span class="st">"all"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -911,7 +911,7 @@ memory usage: 18.9+ KB</code></pre>
 <section id="相関係数" class="level4" data-number="4.1.3.1">
 <h4 data-number="4.1.3.1" class="anchored" data-anchor-id="相関係数"><span class="header-section-number">4.1.3.1</span> 相関係数</h4>
 <p>次にペンギンデータの変数間の相関関係を<code>corr()</code>関数で確認します。相関係数は数値データに対してのみ計算されるため、カテゴリ変数である<code>species</code>や<code>island</code>は除外しておきます。さらに、相関係数は欠損値がある場合、適切な値を計算できないため、欠損値を含む行を削除しておきます。</p>
-<div id="b73d5a8e" class="cell" data-execution_count="9">
+<div id="a7151fe1" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 欠損値を含む行を削除</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>penguins_mod <span class="op">=</span> penguins.dropna()</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -980,7 +980,7 @@ memory usage: 18.9+ KB</code></pre>
 <p>さらにデータへの理解を深めるために、グラフ上にペンギンデータを表現してみます。データ可視化によって、細かな傾向や全体的な特徴を発見することにつながる可能性があります。</p>
 <section id="散布図" class="level4" data-number="4.1.4.1">
 <h4 data-number="4.1.4.1" class="anchored" data-anchor-id="散布図"><span class="header-section-number">4.1.4.1</span> 散布図</h4>
-<div id="0664064e" class="cell" data-execution_count="10">
+<div id="187609e9" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># seabornを使った散布図の作成</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>penguins,</span>
@@ -999,7 +999,7 @@ memory usage: 18.9+ KB</code></pre>
 </div>
 </div>
 <p>複数の変数の組み合わせについて散布図を作成するには、seabornの<code>pairplot()</code>関数を利用します。</p>
-<div id="30182546" class="cell" data-execution_count="11">
+<div id="cffff5d9" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sns.pairplot(penguins, hue<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1015,7 +1015,7 @@ memory usage: 18.9+ KB</code></pre>
 <section id="箱ひげ図" class="level4" data-number="4.1.4.2">
 <h4 data-number="4.1.4.2" class="anchored" data-anchor-id="箱ひげ図"><span class="header-section-number">4.1.4.2</span> 箱ひげ図</h4>
 <p>ペンギンデータの数値変数の分布を箱ひげ図を用いて確認します。箱ひげ図はseabornの<code>boxplot()</code>関数を使って作成します。</p>
-<div id="2a365916" class="cell" data-execution_count="12">
+<div id="61d32b61" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"bill_length_mm"</span>, data<span class="op">=</span>penguins, ax<span class="op">=</span>axes[<span class="dv">0</span>])</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"bill_depth_mm"</span>, data<span class="op">=</span>penguins, ax<span class="op">=</span>axes[<span class="dv">1</span>])</span>
@@ -1660,7 +1660,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false,"closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

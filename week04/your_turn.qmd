@@ -3,6 +3,7 @@ title: "ペンギンデータの分類に挑戦"
 jupyter: python3
 execute: 
   echo: false
+  eval: false
 ---
 
 $\underline{学籍番号：\hspace{8em}}$, $\underline{氏名：\hspace{8em}}$
@@ -39,7 +40,7 @@ y = penguins_adelie["sex"]
 
 ```{python}
 X_train, X_test, y_train, y_test = train_test_split(
-  X, y, test_size=0.15, random_state=20230508
+  X, y, test_size=0.15, random_state=241028
   )
 train_out = pd.concat([X_train, y_train], axis=1).sort_index()
 train_out = train_out[penguins_adelie.columns]
@@ -85,7 +86,7 @@ plt.show()
 
 学習データ、テストデータの特徴をもとに、テストデータに対して性別の分類を行ってみましょう。
 
-以下の表のsex列に「雄」だと思えば`M`（Male）、「雌」だと思えば`F`(Female)を記載します。
+以下の表のsex列に「雄」だと思えば`Male`、「雌」だと思えば`Female`を記載します。
 
 ```{python}
 correct_df = pd.concat([X_test, y_test], axis=1)
@@ -99,14 +100,73 @@ test_out.to_csv("test.csv", index=False)
 ```{python}
 # df = test_out
 df = pd.read_csv("test.csv")
-df["sex"] = ""
+
+# ダミーとして、雌と雄の繰り返しを記入しています
+df["sex"] = ['Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female']
+# 次の行に性別を記入。先頭の　# を削除して、性別を記入してください
+# df["sex"] = []
 
 df[['sex', 'bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']]
 ```
 
-$\underline{正解の件数：\hspace{3em}}$, $\underline{不正解の件数：\hspace{3em}}$
+雌(`Female`)をPositive、雄(`Male`)をNegativeとして、混同行列の作成に必要な情報を整理してみましょう。
+
+- True Positive（TP）：正のクラス（雌）を正と予測し、実際に正（雌）である場合。
+- True Negative（TN）：負のクラス（雄）を負と予測し、実際に負（雄）である場合。
+- False Positive（FP）：正のクラス（雌）を正と予測したが、実際には負（雄）である場合。
+- False Negative（FN）：負のクラス（雄）を負と予測したが、実際には正（雌）である場合。
 
 ```{python}
-#| eval: false
-correct_df[penguins_adelie.columns]
+# あなたの結果に基づき、以下の値を変更してください
+TP = 6
+TN = 7
+FP = 4
+FN = 5
+```
+
+```{python}
+# sklearn.metricsからのaccuracy_score等の読み込み
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
+```
+
+```{python}
+y_test = correct_df['sex'].values
+y_pred = df['sex'].values
+```
+
+```{python}
+# 正解率の計算
+accuracy = (TP + TN) / (TP + TN + FP + FN)
+accuracy
+```
+
+
+```{python}
+# 関数による正解率の計算（値が一致するかを確認）
+accuracy_score(y_test, y_pred)
+```
+
+```{python}
+# 適合率
+precision_score(y_test, y_pred, pos_label='Female')
+```
+
+```{python}
+# 再現率
+recall_score(y_test, y_pred, pos_label='Female')
+```
+
+```{python}
+# 混同行列
+confusion_matrix(y_test, y_pred)
+```
+
+```{python}
+# ヒートマップによる可視化
+sns.heatmap(confusion_matrix(y_test, y_pred), annot=True, cmap='Blues', fmt='d')
+```
+
+```{python}
+# まとめて出力
+classification_report(y_test, y_pred)
 ```

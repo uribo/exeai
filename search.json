@@ -44,7 +44,7 @@
     "href": "week01/guidance.html",
     "title": "ガイダンス",
     "section": "",
-    "text": "参考資料・URL",
+    "text": "参考資料・URL\nスライド（下向きにスクロールしてください）\nUnable to display PDF file. Download instead.",
     "crumbs": [
       "ガイダンス"
     ]
@@ -57,6 +57,26 @@
     "text": "小林一郎 (2008)\n谷口忠大 (2020)\n赤穂昭太郎 ほか (2023)\n岡野原大輔 (2022b)\n岡野原大輔 (2022a)\n岡谷貴之 (2022)\nAI白書編集委員会 (2022)\n\n\n\n\n\nAI白書編集委員会. 2022. AI白書2022. KADOKAWA.\n\n\n小林一郎. 2008. 人工知能の基礎. Computer science library ; 13. サイエンス社. http://id.ndl.go.jp/bib/000009788211.\n\n\n岡谷貴之. 2022. 深層学習 = Deep Learning. 改訂第2版 版. 機械学習プロフェッショナルシリーズ. 講談社. http://id.ndl.go.jp/bib/031901202.\n\n\n岡野原大輔. 2022a. ディープラーニングを支える技術. Tech×Books plus 2. 技術評論社. http://id.ndl.go.jp/bib/032086743.\n\n\n———. 2022b. ディープラーニングを支える技術 : 「正解」を導くメカニズム〈技術基礎〉. Tech×Books plus. 技術評論社. http://id.ndl.go.jp/bib/031881422.\n\n\n谷口忠大. 2020. イラストで学ぶ人工知能概論 = An Illustrated Guide to Artificial Intelligence. 改訂第2版 版. 講談社. http://id.ndl.go.jp/bib/030810109.\n\n\n赤穂昭太郎, 今泉允聡, 内田誠一, 清智也, 高野渉, 辻真吾, 原尚幸, ほか. 2023. 応用基礎としてのデータサイエンス : AI×データ活用の実践. 編集者： 北川源四郎 と 竹村彰通. データサイエンス入門シリーズ. 講談社. http://id.ndl.go.jp/bib/032637501.",
     "crumbs": [
       "ガイダンス"
+    ]
+  },
+  {
+    "objectID": "week02/index.html",
+    "href": "week02/index.html",
+    "title": "プログラミング入門",
+    "section": "",
+    "text": "この章の参考資料・URL\nスライド（下向きにスクロールしてください）\nUnable to display PDF file. Download instead.",
+    "crumbs": [
+      "プログラミング入門"
+    ]
+  },
+  {
+    "objectID": "week02/index.html#この章の参考資料url",
+    "href": "week02/index.html#この章の参考資料url",
+    "title": "プログラミング入門",
+    "section": "",
+    "text": "池内孝啓 と 片柳薫子 (2020)\n有賀友紀 と 大橋俊介 (2021)\nGrus と 菊池彰 (2020)\nSweigart と 相川愛三 (2023)\n八谷大岳 (2020)\nPython 3.10.13 ドキュメント\nゼロからのPython入門講座 / python Japan\n\n\n\n\n\nGrus, Joel, と 菊池彰. 2020. ゼロからはじめるデータサイエンス : Pythonで学ぶ基本と実践. 翻訳者： 菊池彰. 第2版 版. オライリー・ジャパン. http://id.ndl.go.jp/bib/030372878.\n\n\nSweigart, Al, と 相川愛三. 2023. 退屈なことはPythonにやらせよう : ノンプログラマーにもできる自動化処理プログラミング. 翻訳者： 相川愛三. 第2版 版. オライリー・ジャパン.\n\n\n八谷大岳. 2020. ゼロからつくるPython機械学習プログラミング入門 = Introduction to Machine Learning from Scratch with Python. 機械学習スタートアップシリーズ. 講談社. http://id.ndl.go.jp/bib/030584765.\n\n\n有賀友紀, と 大橋俊介. 2021. RとPythonで学ぶ実践的データサイエンス&機械学習. 増補改訂版. 技術評論社. http://id.ndl.go.jp/bib/031401828.\n\n\n池内孝啓, と 片柳薫子. 2020. PythonユーザのためのJupyter〈実践〉入門. 改訂版. 技術評論社. http://id.ndl.go.jp/bib/030570561.",
+    "crumbs": [
+      "プログラミング入門"
     ]
   },
   {
@@ -82,11 +102,31 @@
     ]
   },
   {
+    "objectID": "week03/index.html",
+    "href": "week03/index.html",
+    "title": "機械学習の背景・数理",
+    "section": "",
+    "text": "この章の参考資料・URL\nスライド（下向きにスクロールしてください）\nUnable to display PDF file. Download instead.",
+    "crumbs": [
+      "機械学習の背景・数理"
+    ]
+  },
+  {
+    "objectID": "week03/index.html#この章の参考資料url",
+    "href": "week03/index.html#この章の参考資料url",
+    "title": "機械学習の背景・数理",
+    "section": "",
+    "text": "石川聡彦 (2018)\n椎名洋 ほか (2019)\n八谷大岳 (2020)\n吉田拓真 と 尾原颯 (2018)\n\n\n\n\n\n八谷大岳. 2020. ゼロからつくるPython機械学習プログラミング入門 = Introduction to Machine Learning from Scratch with Python. 機械学習スタートアップシリーズ. 講談社. http://id.ndl.go.jp/bib/030584765.\n\n\n吉田拓真, と 尾原颯. 2018. 現場で使える!NumPyデータ処理入門 : 機械学習・データサイエンスで役立つ高速処理手法. 翔泳社. http://id.ndl.go.jp/bib/029316312.\n\n\n椎名洋, 姫野哲人, 保科架風, と 清水昌平. 2019. データサイエンスのための数学 = Mathematics for Data Science. 編集者： 清水昌平. データサイエンス入門シリーズ. 講談社. http://id.ndl.go.jp/bib/029903862.\n\n\n石川聡彦. 2018. 人工知能プログラミングのための数学がわかる本 = MATHEMATICS FOR AI PROGRAMMING. KADOKAWA. http://id.ndl.go.jp/bib/028819866.",
+    "crumbs": [
+      "機械学習の背景・数理"
+    ]
+  },
+  {
     "objectID": "week03/03_mathematics.html",
     "href": "week03/03_mathematics.html",
     "title": "3  機械学習で用いる数学の基礎",
     "section": "",
-    "text": "3.1 利用するライブラリの読み込み\nPython標準ライブラリおよびJupyterHub環境（hub-scipy-notebookを想定）で導入済みのライブラリを使用します。ここで扱う数学的な処理は標準ライブラリのmathと数値計算、多次元配列を扱うライブラリであるNumPyです。どちらも同様の機能を提供します。\n```{python}\n# japanize_matplotlibのインストール\n!pip install -qq japanize_matplotlib\n```\n# 利用するライブラリを読み込む\n# as で別名をつけることができる（長いライブラリ名を省略）\nimport math # 数学演算のための標準ライブラリ\nimport matplotlib.pyplot as plt # グラフ作成用\nimport japanize_matplotlib # matplotlibの日本語化\nimport numpy as np # 数値計算用",
+    "text": "3.1 利用するライブラリの読み込み\n機械学習で用いる数学について、Pythonを使って学びましょう。 基礎的なものは中学や高校で学んだ内容です。 復習をしながらPythonではどのように扱うのかを身につけましょう。\nPython標準ライブラリおよびJupyterHub環境（hub-scipy-notebookを想定）で導入済みのライブラリを使用します。ここで扱う数学的な処理は標準ライブラリのmathと数値計算、多次元配列を扱うライブラリであるNumPyです。どちらも同様の機能を提供します。\n```{python}\n# japanize_matplotlibのインストール\n!pip install -qq japanize_matplotlib\n```\n# 利用するライブラリを読み込む\n# as で別名をつけることができる（長いライブラリ名を省略）\nimport math # 数学演算のための標準ライブラリ\nimport matplotlib.pyplot as plt # グラフ作成用\nimport japanize_matplotlib # matplotlibの日本語化\nimport numpy as np # 数値計算用",
     "crumbs": [
       "機械学習の背景・数理",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>機械学習で用いる数学の基礎</span>"
@@ -181,11 +221,31 @@
     ]
   },
   {
+    "objectID": "week04/index.html",
+    "href": "week04/index.html",
+    "title": "機械学習モデルの設計と評価",
+    "section": "",
+    "text": "この章の参考資料・URL\nスライド（下向きにスクロールしてください）\nUnable to display PDF file. Download instead.",
+    "crumbs": [
+      "機械学習モデルの設計と評価"
+    ]
+  },
+  {
+    "objectID": "week04/index.html#この章の参考資料url",
+    "href": "week04/index.html#この章の参考資料url",
+    "title": "機械学習モデルの設計と評価",
+    "section": "",
+    "text": "岡野原大輔 (2022)\n門脇大輔 ほか (2019)\n八谷大岳 (2020)\nGéron, 下田倫大, と 長尾高弘 (2020)\nAlice Zheng と ホクソエム (2019)\n\n\n\n\n\nAlice Zheng, Amanda Casari, と ホクソエム. 2019. 機械学習のための特徴量エンジニアリング : その原理とPythonによる実践. 翻訳者： ホクソエム. オライリー・ジャパン. http://id.ndl.go.jp/bib/029512290.\n\n\nGéron, Aurélien, 下田倫大, と 長尾高弘. 2020. scikit-learn、Keras、TensorFlowによる実践機械学習. 翻訳者： 下田倫大 と 長尾高弘. 第2版 版. オライリー・ジャパン. http://id.ndl.go.jp/bib/030701507.\n\n\n八谷大岳. 2020. ゼロからつくるPython機械学習プログラミング入門 = Introduction to Machine Learning from Scratch with Python. 機械学習スタートアップシリーズ. 講談社. http://id.ndl.go.jp/bib/030584765.\n\n\n岡野原大輔. 2022. ディープラーニングを支える技術 : 「正解」を導くメカニズム〈技術基礎〉. Tech×Books plus. 技術評論社. http://id.ndl.go.jp/bib/031881422.\n\n\n門脇大輔, 阪田隆司, 保坂桂佑, と 平松雄司. 2019. Kaggleで勝つデータ分析の技術. 技術評論社. http://id.ndl.go.jp/bib/029976550.",
+    "crumbs": [
+      "機械学習モデルの設計と評価"
+    ]
+  },
+  {
     "objectID": "week04/0401_penguins.html",
     "href": "week04/0401_penguins.html",
     "title": "4  南極大陸に生育するペンギンの体長データ",
     "section": "",
-    "text": "4.1 ペンギンデータ\n機械学習による分類問題の例として、南極大陸に生育するペンギンの体長についての観測データを利用します。このデータを使ってペンギンの種類を分類するモデルを構築します。",
+    "text": "4.1 ペンギンデータ\n今週は教師あり学習の例として、ペンギンの種類を分類する問題を扱います。機械学習モデルの構築を行う前に対象のデータについて理解を深めることは重要です。まずはデータの読み込みから可視化までの処理を通して、データの中身を確認していきましょう。\n必要なライブラリをインポートします。ここでは次のライブラリを使用します。\n機械学習による分類問題の例として、南極大陸に生育するペンギンの体長についての観測データを利用します。このデータを使ってペンギンの種類を分類するモデルを構築します。",
     "crumbs": [
       "機械学習モデルの設計と評価",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>南極大陸に生育するペンギンの体長データ</span>"
@@ -218,7 +278,7 @@
     "href": "week04/0402_classification.html",
     "title": "5  ペンギンデータの分類に挑戦",
     "section": "",
-    "text": "5.1 scikit-learnを使った機械学習モデルの構築\nペンギンデータをロジスティック回帰モデルによって分類します。",
+    "text": "5.1 scikit-learnを使った機械学習モデルの構築\n前節では、ペンギンデータを可視化し、データの特徴を把握しました。このデータを使って、ペンギンの種類を分類する機械学習モデルを構築しましょう。\nPythonのScikit-learnライブラリには機械学習モデルの構築から評価に必要な機能が含まれています。そのため今回はScikit-learnライブラリを使ってペンギンデータを分類する機械学習モデルを構築します。\nペンギンデータをロジスティック回帰モデルによって分類します。",
     "crumbs": [
       "機械学習モデルの設計と評価",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>ペンギンデータの分類に挑戦</span>"
@@ -247,11 +307,31 @@
     ]
   },
   {
+    "objectID": "week05/index.html",
+    "href": "week05/index.html",
+    "title": "機械学習の手法",
+    "section": "",
+    "text": "この章の参考資料・URL",
+    "crumbs": [
+      "機械学習の手法"
+    ]
+  },
+  {
+    "objectID": "week05/index.html#この章の参考資料url",
+    "href": "week05/index.html#この章の参考資料url",
+    "title": "機械学習の手法",
+    "section": "",
+    "text": "竹内一郎 と 烏山昌幸 (2015)\n森下光之助 (2021)\n\n\n\n\n\n森下光之助. 2021. 機械学習を解釈する技術 = Techniques for Interpreting Machine learning : 予測力と説明力を両立する実践テクニック. 技術評論社. http://id.ndl.go.jp/bib/031576666.\n\n\n竹内一郎, と 烏山昌幸. 2015. サポートベクトルマシン = Support Vector Machine. 機械学習プロフェッショナルシリーズ. 講談社. http://id.ndl.go.jp/bib/026619227.",
+    "crumbs": [
+      "機械学習の手法"
+    ]
+  },
+  {
     "objectID": "week05/0501_regression.html",
     "href": "week05/0501_regression.html",
     "title": "6  線形回帰モデルによるペンギンの体重の予測",
     "section": "",
-    "text": "6.1 前処理・特徴量エンジニアリング\n一般的に欠損値を含むデータは、機械学習モデルに直接利用できません。そのため、欠損値の削除や欠損値の補完を行う必要があります。単純に欠損値を削除する方法がもっとも簡単な対策ですが、欠損値を削除すると、データの一部を失うことになるため、欠損値を含む行が多い場合やデータが少ない場合は注意が必要です。",
+    "text": "6.1 前処理・特徴量エンジニアリング\n教師あり学習の例として回帰問題を取り上げます。回帰問題とは、入力変数から連続値の出力変数を予測する問題です。例えば、住宅の広さや築年数などの情報から住宅の価格を予測する問題は回帰問題として扱われます。\nここでは、回帰問題の代表的なモデルである線形回帰モデルについて説明します。線形回帰モデルは、入力変数と目的変数の間の線形関係をモデル化する統計的手法です。\n線形回帰モデルなどの機械学習モデルの構築に必要なライブラリはScikit-learnに含まれています。ここではScikit-learnのいくつかの機能を利用して、ペンギンの体重を予測する線形回帰モデルを構築します。\n利用するライブラリとデータを次のコードで読み込みます。\nペンギンデータはseabornライブラリに含まれます。データを利用するには、まずはこのライブラリを読み込みます。\n先頭行を表示します。\n一般的に欠損値を含むデータは、機械学習モデルに直接利用できません。そのため、欠損値の削除や欠損値の補完を行う必要があります。単純に欠損値を削除する方法がもっとも簡単な対策ですが、欠損値を削除すると、データの一部を失うことになるため、欠損値を含む行が多い場合やデータが少ない場合は注意が必要です。",
     "crumbs": [
       "機械学習の手法",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>線形回帰モデルによるペンギンの体重の予測</span>"
@@ -317,7 +397,7 @@
     "href": "week05/0502_svm.html",
     "title": "7  サポートベクターマシン",
     "section": "",
-    "text": "7.1 カーネルトリック\nサポートベクターマシンが非線形の境界線を見つけられる背景には、カーネルトリックという特殊な機能を利用していることがあります。カーネルトリックとは、データを高次元空間に「投影」することで、直線で分けられない問題に対処する能力です。例えば、直線に分けられない2次元のデータを3次元に投影することで、直線で分けられるようになる場合があります。ただし、非線形変換によって高次元空間に投影されたデータに対して、元の特徴空間での直感的な理解とは一致しないことがある点は注意が必要です。",
+    "text": "7.1 カーネルトリック\n機械学習において、与えられたデータセットを正確に分類するための適切な決定境界を見つけることが重要です。決定境界とは、分類問題において、異なるクラスを分けるために描かれる境界線や面のことを指します。適切な決定境界を見つけ出すことによって、教師ありの学習モデルは未知の新たなデータに対しても正確な分類を行う能力を獲得します。\nサポートベクターマシン（Support Vector Machines: SVM）は、適切な決定境界を見つけるための手法を提供します。サポートベクターマシンによる境界線の探求は、境界線から最も近いデータ点（サポートベクターと呼ばれる）からの距離（マージンと呼ばれる）が最大になるように行われます。マージンの最大化の結果、分類されるデータどうしの距離が最も離れるように境界線が決定されます。また新たなデータが境界の近くに位置する場合でも、適切な分類が可能になります。\nサポートベクターマシンははじめ、2クラス分類問題に対して考案され、後に多クラス分類問題にも拡張されました。そのため、ロジスティック回帰モデルと同様に、線形分離可能なデータに対して機能します。一方、ロジスティック回帰モデルでは線形分離不可能なデータに対しては十分に機能しません。サポートベクターマシンではカーネル関数を用いることで、非線形な境界線を描くことも可能です。\nサポートベクターマシンが非線形の境界線を見つけられる背景には、カーネルトリックという特殊な機能を利用していることがあります。カーネルトリックとは、データを高次元空間に「投影」することで、直線で分けられない問題に対処する能力です。例えば、直線に分けられない2次元のデータを3次元に投影することで、直線で分けられるようになる場合があります。ただし、非線形変換によって高次元空間に投影されたデータに対して、元の特徴空間での直感的な理解とは一致しないことがある点は注意が必要です。",
     "crumbs": [
       "機械学習の手法",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>サポートベクターマシン</span>"
@@ -350,7 +430,7 @@
     "href": "week05/0502_svm.html#scikit-learnでのサポートベクターマシンの実装",
     "title": "7  サポートベクターマシン",
     "section": "7.3 Scikit-learnでのサポートベクターマシンの実装",
-    "text": "7.3 Scikit-learnでのサポートベクターマシンの実装\nScikit-learnでは、SVCクラスを用いてサポートベクターマシンを実装することができます。SVCクラスは、さきに述べたように、線形分離可能なデータに対してはロジスティック回帰モデルと同様に機能します。また、RBFなどのカーネル関数を指定することで、非線形な境界線を描くことも可能です。\nここではロジスティック回帰モデルと同様に、ペンギンのデータセットを用いて、ペンギンの種名を分類するモデルをサポートベクターマシンで実装してみましょう。\n\nimport pandas as pd\nfrom sklearn.model_selection import StratifiedKFold, cross_validate, cross_val_score\nfrom sklearn.preprocessing import LabelEncoder, StandardScaler\nfrom sklearn.svm import SVC\nfrom sklearn.metrics import accuracy_score, classification_report\n\n\nimport seaborn as sns\n# データの読み込み\npenguins = sns.load_dataset(\"penguins\")\n\n\n7.3.1 前処理・特徴量エンジニアリング\n前処理・特徴量エンジニアリングの工程を関数化しておきます。\n\ndef penguins_svm_preprocess(data):\n  from sklearn.preprocessing import LabelEncoder, StandardScaler\n  \n  # 元のデータを保持するためデータをコピー\n  data_processed = data.copy()\n  \n  # 前処理: 欠損値を含む行を削除\n  data_processed.dropna(inplace=True)\n  \n  # 特徴量エンジニアリング: ラベルラベルエンコーディング\n  le = LabelEncoder()\n  for col in [\"species\", \"island\", \"sex\"]:\n        data_processed[col] = le.fit_transform(data_processed[col])\n        \n  # 特徴量エンジニアリング: 標準化\n  scaler = StandardScaler()\n  data_processed[\n        [\"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \"body_mass_g\"]\n    ] = scaler.fit_transform(\n        data_processed[[\"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \"body_mass_g\"]]\n    )\n    \n  return data_processed\n\n定義した関数にペンギンデータを適用します。\n\npenguins_mod = penguins_svm_preprocess(penguins)\n\npenguins_mod.head(n = 3)\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\n0\n2\n-0.896042\n0.780732\n-1.426752\n-0.568475\n1\n\n\n1\n0\n2\n-0.822788\n0.119584\n-1.069474\n-0.506286\n0\n\n\n2\n0\n2\n-0.676280\n0.424729\n-0.426373\n-1.190361\n0\n\n\n\n\n\n\n\n\npd.DataFrame({\n  \"mean\": penguins_mod.mean(),\n  \"standard_deviation\": penguins_mod.std(),\n})\n\n\n\n\n\n\n\n\nmean\nstandard_deviation\n\n\n\n\nspecies\n9.189189e-01\n0.889718\n\n\nisland\n6.516517e-01\n0.714715\n\n\nbill_length_mm\n3.840772e-16\n1.001505\n\n\nbill_depth_mm\n6.401286e-16\n1.001505\n\n\nflipper_length_mm\n2.133762e-16\n1.001505\n\n\nbody_mass_g\n-1.707010e-16\n1.001505\n\n\nsex\n5.045045e-01\n0.500732\n\n\n\n\n\n\n\n\n\n7.3.2 データ分割\n続いて、モデルで予測したい目的変数と、モデルの学習に用いる説明変数を分離します。\n\n# 説明変数と目的変数の分離\nX = penguins_mod.drop(columns=\"species\")\ny = penguins_mod[\"species\"]\n\n今回のモデルでは、単純な訓練データとテストデータの分割によるホールドアウト法ではなく、交差検証法を適用してモデルの評価を行いましょう。交差検証法では、データをいくつかのセット（ホールド）に分割し、それぞれのグループをテストデータとして用いることで、モデルの汎化性能を評価します。\n\\(k\\) 分割交差検証は、データを \\(k\\) 個のグループに分割し、\\(k\\) 回の学習と評価を行う方法です。\\(k\\) 回の学習のうち、\\(k-1\\) 個のグループを訓練データとして用い、残りの1つのグループをテストデータとして用います。このようにして得られた \\(k\\) 回の評価の平均値を、モデルの評価値とします。\n\n\n\nK分割交差検証法\n\n\nデータに偏りがある場合、単純にデータをランダムに分割すると、各グループのデータに偏りが生じてしまう可能性があります。交差検証法の過程においても、分割後の訓練データとテストデータの間でデータの偏りが生じてしまうと、モデルが過学習を起こす心配があります。そのため、各グループのデータの割合が同じになるように分割する層化抽出法を利用します。層化抽出法では、データを分割する際に、各クラスの割合が同じになるように分割します。\n今回のデータでは、目的変数のクラスの割合が同じになるようにデータを分割する必要があります。そのため、層化 \\(K\\) 分割交差検証を行うために、sklearn.model_selectionモジュールのStratifiedKFoldを用いたデータ分割を行います。\n\n# 交差検証法の例: 層化 k 分割交差検証法\n# n_splitで分割数（ホールド数）を指定\n# shuffleでデータをシャッフルするか指定（元のデータの並び順を保持する場合はFalse）\nskf = StratifiedKFold(n_splits=5, shuffle=True, random_state=20230515)\n\n\n# 各ホールドにおけるテストデータの種名の割合を確認\nfor train_index, test_index in skf.split(X, y):\n    print(y.iloc[test_index].value_counts() / len(y.iloc[test_index]))\n\nspecies\n0    0.447761\n2    0.358209\n1    0.194030\nName: count, dtype: float64\nspecies\n0    0.432836\n2    0.358209\n1    0.208955\nName: count, dtype: float64\nspecies\n0    0.432836\n2    0.358209\n1    0.208955\nName: count, dtype: float64\nspecies\n0    0.439394\n2    0.348485\n1    0.212121\nName: count, dtype: float64\nspecies\n0    0.439394\n2    0.363636\n1    0.196970\nName: count, dtype: float64\n\n\n各ホールドでのテストデータの種名の割合がほぼ同じになっていることが確認できました。\n\n\n7.3.3 モデルの学習と評価\nsklearn.svmのSVC()関数を用いて、サポートベクターマシンの分類モデルを構築します。今回は、カーネル関数にRBFカーネルを利用します。SVC()関数にはいくつかの引数があり、カーネル関数の種類やハイパーパラメータの指定が可能です。\nSVC()関数の引数・ハイパーパラメータは、以下の通りです。\n\nC… ソフトマージンのためのハイパーパラメータ。マージンの大きさを調整する。\nkernel… カーネル関数の種類。デフォルトで利用されるRBFカーネル(rbf)のほか、線形カーネル(linear)、多項式カーネル(poly)などがある。\ngamma… カーネル関数のパラメータ。RBFカーネルのみ使用。カーネルの幅を調整する。\n\n\n# サポートベクターマシンモデルの構築\n# カーネル関数はRBFカーネルを使用（デフォルト）\nsvm = SVC(kernel = 'rbf', gamma='scale')\n\n交差検証法を用いてモデルの評価を行うための関数としてcross_val_score()が利用できます。この関数は、モデルとデータを引数として受け取り、交差検証法による評価値を返します。評価指標にはデフォルトではモデルの精度（accuracy）が用いられますが、scoring引数を用いて、他の評価指標を用いることもできます。\n\nscores = cross_val_score(svm, X, y, cv=skf)\n# 各ホールドにおける正解率を平均\nprint(\"Average score: \", scores.mean())\n\nAverage score:  0.9939846223428311\n\n\n\n\nこの出力は、各ホールドにおける評価値の平均値を表しています。今回のモデルでは、平均で約0.994の正解率が得られました。\n\n\n\n# 再現率 (recall)を評価指標として用いる\nscores = cross_val_score(svm, X, y, cv=skf, scoring='recall_macro')\nprint(\"Average score: \", scores.mean())\n\nAverage score:  0.9901098901098901\n\n\ncross_validate()関数を用いると、複数の評価指標を同時に用いることができます。この関数はcross_val_score()関数と同じく、モデルとデータを引数として与えると、交差検証法による評価値を返却します。一方でscoring引数に複数の評価指標を指定でき、同時に複数の評価指標を比較可能です。加えて、return_train_score引数をTrueにすることで、テストデータのほかに訓練データに対する評価値も得ることができます。\n\n# 複数の評価指標（正解率、再現率）を用いる\ncross_validate(svm, X, y, cv=skf, scoring=['accuracy', 'recall_macro'], return_train_score=True)\n\n{'fit_time': array([0.0029583 , 0.00213504, 0.00212216, 0.00211763, 0.00213122]),\n 'score_time': array([0.00385833, 0.00288057, 0.00284004, 0.00282884, 0.00286794]),\n 'test_accuracy': array([0.98507463, 1.        , 1.        , 0.98484848, 1.        ]),\n 'train_accuracy': array([0.9924812 , 0.9924812 , 0.9924812 , 0.99250936, 0.99625468]),\n 'test_recall_macro': array([0.97435897, 1.        , 1.        , 0.97619048, 1.        ]),\n 'train_recall_macro': array([0.98787879, 0.98765432, 0.98765432, 0.98765432, 0.99393939])}",
+    "text": "7.3 Scikit-learnでのサポートベクターマシンの実装\nScikit-learnでは、SVCクラスを用いてサポートベクターマシンを実装することができます。SVCクラスは、さきに述べたように、線形分離可能なデータに対してはロジスティック回帰モデルと同様に機能します。また、RBFなどのカーネル関数を指定することで、非線形な境界線を描くことも可能です。\nここではロジスティック回帰モデルと同様に、ペンギンのデータセットを用いて、ペンギンの種名を分類するモデルをサポートベクターマシンで実装してみましょう。\n\nimport pandas as pd\nfrom sklearn.model_selection import StratifiedKFold, cross_validate, cross_val_score\nfrom sklearn.preprocessing import LabelEncoder, StandardScaler\nfrom sklearn.svm import SVC\nfrom sklearn.metrics import accuracy_score, classification_report\n\n\nimport seaborn as sns\n# データの読み込み\npenguins = sns.load_dataset(\"penguins\")\n\n\n7.3.1 前処理・特徴量エンジニアリング\n前処理・特徴量エンジニアリングの工程を関数化しておきます。\n\ndef penguins_svm_preprocess(data):\n  from sklearn.preprocessing import LabelEncoder, StandardScaler\n  \n  # 元のデータを保持するためデータをコピー\n  data_processed = data.copy()\n  \n  # 前処理: 欠損値を含む行を削除\n  data_processed.dropna(inplace=True)\n  \n  # 特徴量エンジニアリング: ラベルラベルエンコーディング\n  le = LabelEncoder()\n  for col in [\"species\", \"island\", \"sex\"]:\n        data_processed[col] = le.fit_transform(data_processed[col])\n        \n  # 特徴量エンジニアリング: 標準化\n  scaler = StandardScaler()\n  data_processed[\n        [\"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \"body_mass_g\"]\n    ] = scaler.fit_transform(\n        data_processed[[\"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \"body_mass_g\"]]\n    )\n    \n  return data_processed\n\n定義した関数にペンギンデータを適用します。\n\npenguins_mod = penguins_svm_preprocess(penguins)\n\npenguins_mod.head(n = 3)\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\n0\n2\n-0.896042\n0.780732\n-1.426752\n-0.568475\n1\n\n\n1\n0\n2\n-0.822788\n0.119584\n-1.069474\n-0.506286\n0\n\n\n2\n0\n2\n-0.676280\n0.424729\n-0.426373\n-1.190361\n0\n\n\n\n\n\n\n\n\npd.DataFrame({\n  \"mean\": penguins_mod.mean(),\n  \"standard_deviation\": penguins_mod.std(),\n})\n\n\n\n\n\n\n\n\nmean\nstandard_deviation\n\n\n\n\nspecies\n9.189189e-01\n0.889718\n\n\nisland\n6.516517e-01\n0.714715\n\n\nbill_length_mm\n3.840772e-16\n1.001505\n\n\nbill_depth_mm\n6.401286e-16\n1.001505\n\n\nflipper_length_mm\n2.133762e-16\n1.001505\n\n\nbody_mass_g\n-1.707010e-16\n1.001505\n\n\nsex\n5.045045e-01\n0.500732\n\n\n\n\n\n\n\n\n\n7.3.2 データ分割\n続いて、モデルで予測したい目的変数と、モデルの学習に用いる説明変数を分離します。\n\n# 説明変数と目的変数の分離\nX = penguins_mod.drop(columns=\"species\")\ny = penguins_mod[\"species\"]\n\n今回のモデルでは、単純な訓練データとテストデータの分割によるホールドアウト法ではなく、交差検証法を適用してモデルの評価を行いましょう。交差検証法では、データをいくつかのセット（ホールド）に分割し、それぞれのグループをテストデータとして用いることで、モデルの汎化性能を評価します。\n\\(k\\) 分割交差検証は、データを \\(k\\) 個のグループに分割し、\\(k\\) 回の学習と評価を行う方法です。\\(k\\) 回の学習のうち、\\(k-1\\) 個のグループを訓練データとして用い、残りの1つのグループをテストデータとして用います。このようにして得られた \\(k\\) 回の評価の平均値を、モデルの評価値とします。\n\n\n\nK分割交差検証法\n\n\nデータに偏りがある場合、単純にデータをランダムに分割すると、各グループのデータに偏りが生じてしまう可能性があります。交差検証法の過程においても、分割後の訓練データとテストデータの間でデータの偏りが生じてしまうと、モデルが過学習を起こす心配があります。そのため、各グループのデータの割合が同じになるように分割する層化抽出法を利用します。層化抽出法では、データを分割する際に、各クラスの割合が同じになるように分割します。\n今回のデータでは、目的変数のクラスの割合が同じになるようにデータを分割する必要があります。そのため、層化 \\(K\\) 分割交差検証を行うために、sklearn.model_selectionモジュールのStratifiedKFoldを用いたデータ分割を行います。\n\n# 交差検証法の例: 層化 k 分割交差検証法\n# n_splitで分割数（ホールド数）を指定\n# shuffleでデータをシャッフルするか指定（元のデータの並び順を保持する場合はFalse）\nskf = StratifiedKFold(n_splits=5, shuffle=True, random_state=20230515)\n\n\n# 各ホールドにおけるテストデータの種名の割合を確認\nfor train_index, test_index in skf.split(X, y):\n    print(y.iloc[test_index].value_counts() / len(y.iloc[test_index]))\n\nspecies\n0    0.447761\n2    0.358209\n1    0.194030\nName: count, dtype: float64\nspecies\n0    0.432836\n2    0.358209\n1    0.208955\nName: count, dtype: float64\nspecies\n0    0.432836\n2    0.358209\n1    0.208955\nName: count, dtype: float64\nspecies\n0    0.439394\n2    0.348485\n1    0.212121\nName: count, dtype: float64\nspecies\n0    0.439394\n2    0.363636\n1    0.196970\nName: count, dtype: float64\n\n\n各ホールドでのテストデータの種名の割合がほぼ同じになっていることが確認できました。\n\n\n7.3.3 モデルの学習と評価\nsklearn.svmのSVC()関数を用いて、サポートベクターマシンの分類モデルを構築します。今回は、カーネル関数にRBFカーネルを利用します。SVC()関数にはいくつかの引数があり、カーネル関数の種類やハイパーパラメータの指定が可能です。\nSVC()関数の引数・ハイパーパラメータは、以下の通りです。\n\nC… ソフトマージンのためのハイパーパラメータ。マージンの大きさを調整する。\nkernel… カーネル関数の種類。デフォルトで利用されるRBFカーネル(rbf)のほか、線形カーネル(linear)、多項式カーネル(poly)などがある。\ngamma… カーネル関数のパラメータ。RBFカーネルのみ使用。カーネルの幅を調整する。\n\n\n# サポートベクターマシンモデルの構築\n# カーネル関数はRBFカーネルを使用（デフォルト）\nsvm = SVC(kernel = 'rbf', gamma='scale')\n\n交差検証法を用いてモデルの評価を行うための関数としてcross_val_score()が利用できます。この関数は、モデルとデータを引数として受け取り、交差検証法による評価値を返します。評価指標にはデフォルトではモデルの精度（accuracy）が用いられますが、scoring引数を用いて、他の評価指標を用いることもできます。\n\nscores = cross_val_score(svm, X, y, cv=skf)\n# 各ホールドにおける正解率を平均\nprint(\"Average score: \", scores.mean())\n\nAverage score:  0.9939846223428311\n\n\n\n\nこの出力は、各ホールドにおける評価値の平均値を表しています。今回のモデルでは、平均で約0.994の正解率が得られました。\n\n\n\n# 再現率 (recall)を評価指標として用いる\nscores = cross_val_score(svm, X, y, cv=skf, scoring='recall_macro')\nprint(\"Average score: \", scores.mean())\n\nAverage score:  0.9901098901098901\n\n\ncross_validate()関数を用いると、複数の評価指標を同時に用いることができます。この関数はcross_val_score()関数と同じく、モデルとデータを引数として与えると、交差検証法による評価値を返却します。一方でscoring引数に複数の評価指標を指定でき、同時に複数の評価指標を比較可能です。加えて、return_train_score引数をTrueにすることで、テストデータのほかに訓練データに対する評価値も得ることができます。\n\n# 複数の評価指標（正解率、再現率）を用いる\ncross_validate(svm, X, y, cv=skf, scoring=['accuracy', 'recall_macro'], return_train_score=True)\n\n{'fit_time': array([0.00302601, 0.00219798, 0.00217152, 0.00227594, 0.00226355]),\n 'score_time': array([0.00396228, 0.00291467, 0.00290108, 0.00296021, 0.00294542]),\n 'test_accuracy': array([0.98507463, 1.        , 1.        , 0.98484848, 1.        ]),\n 'train_accuracy': array([0.9924812 , 0.9924812 , 0.9924812 , 0.99250936, 0.99625468]),\n 'test_recall_macro': array([0.97435897, 1.        , 1.        , 0.97619048, 1.        ]),\n 'train_recall_macro': array([0.98787879, 0.98765432, 0.98765432, 0.98765432, 0.99393939])}",
     "crumbs": [
       "機械学習の手法",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>サポートベクターマシン</span>"
@@ -390,11 +470,31 @@
     ]
   },
   {
+    "objectID": "week06/index.html",
+    "href": "week06/index.html",
+    "title": "機械学習モデルの解釈・説明性",
+    "section": "",
+    "text": "この章の参考資料・URL",
+    "crumbs": [
+      "機械学習モデルの解釈・説明性"
+    ]
+  },
+  {
+    "objectID": "week06/index.html#この章の参考資料url",
+    "href": "week06/index.html#この章の参考資料url",
+    "title": "機械学習モデルの解釈・説明性",
+    "section": "",
+    "text": "森下光之助 (2021)\n高柳慎一, 長田怜士, と ホクソエム (2023)\n\n\n\n\n\n森下光之助. 2021. 機械学習を解釈する技術 = Techniques for Interpreting Machine learning : 予測力と説明力を両立する実践テクニック. 技術評論社. http://id.ndl.go.jp/bib/031576666.\n\n\n高柳慎一, 長田怜士, と ホクソエム. 2023. 評価指標入門 = Introduction to Evaluation Metrics : データサイエンスとビジネスをつなぐ架け橋. 技術評論社. http://id.ndl.go.jp/bib/032637452.",
+    "crumbs": [
+      "機械学習モデルの解釈・説明性"
+    ]
+  },
+  {
     "objectID": "week06/0601_interpretable_model.html",
     "href": "week06/0601_interpretable_model.html",
     "title": "9  回帰モデルの解釈",
     "section": "",
-    "text": "9.0.1 予測精度\n回帰モデルの善し悪しは、予測精度によって評価されます。予測精度にはいくつか種類がありますが、ここでは決定係数と呼ばれる指標を使って予測精度を評価します。決定係数は、実際の値と予測値の差を使って計算されます。この差を残差と呼びます。残差は、実際の値から予測値を引くことで計算されます。\n# モデルの予測値を計算\ny_pred = lr.predict(penguins[[\"flipper_length_mm\"]])\n# 残差を計算\nresidual = penguins[\"body_mass_g\"] - y_pred\n残差を使って決定係数を計算します。決定係数は以下の式で計算されます。\n\\[\nR^2 = 1 - \\frac{\\sum_{i=1}^n (y_i - \\hat{y}_i)^2}{\\sum_{i=1}^n (y_i - \\bar{y})^2}\n\\]\nここで分母の \\(\\sum_{i=1}^n (y_i - \\bar{y})^2\\) は、実際の値と平均値の差の2乗の和を表します。これは、実際の値のばらつき（分散）を表します。一方、分子の \\(\\sum_{i=1}^n (y_i - \\hat{y}_i)^2\\) は、実際の値と予測値の差（残差）のばらつきを表します。決定係数は、実際の値と予測値の差のばらつきを、実際の値のばらつきで割った値です。この値は、0から1の間の値を取ります。1に近いほど、実際の値と予測値の差のばらつきが小さいことを意味します。つまり、予測精度が高いことを意味します。\n# 決定係数を計算\n1 - np.var(residual) / np.var(penguins[\"body_mass_g\"])\n\n0.7620921573403914\n決定係数の値が意味する内容は、以下のように解釈できます。\n「ペンギンの翼の長さによって、体重を約76%の精度で予測できることを意味する。」\nscikit-learnでは、scoreメソッドを用いて、説明変数と目的変数を与えることで決定係数を計算できます。\n# 決定係数を計算\nlr.score(penguins[[\"flipper_length_mm\"]], penguins[\"body_mass_g\"])\n\n0.7620921573403914",
+    "text": "9.0.1 予測精度\n回帰モデルでは、目的変数\\(y\\)を説明変数\\(x\\)によって予測することを考えます。線形回帰モデルでは、目的変数\\(y\\)と説明変数\\(x\\)の関係を次のように仮定します。\n\\[\ny = \\beta_0 + \\beta_1 x + \\epsilon\n\\]\n一次関数によって表されるこの関係を単回帰モデルと呼びます。ここで、\\(\\beta_0\\) は切片、\\(\\beta_1\\) は傾き、\\(\\epsilon\\) は誤差を表します。誤差は誤差項と呼ばれ、モデルで説明できない部分を表します。誤差項は、平均が0で分散が均一（均一分散）の正規分布に従うと仮定します。\nこの式を使って、目的変数 \\(y\\) を説明変数 \\(x\\) によって予測することを考えます。このとき、説明変数 \\(x\\) の値が与えられたときの目的変数 \\(y\\) の期待値 \\(E[y]\\) は次のようになります。\n\\[\n\\begin{align}\nE[y] = E[\\beta_0 + \\beta_1 x + \\epsilon] \\\\\n= \\beta_0 + \\beta_1 E[x] + E[\\epsilon] \\\\\n= \\beta_0 + \\beta_1 E[x]\n\\end{align}\n\\]\n誤差項の期待値は普通、0として扱われます。この式から、単回帰モデルにおける \\(y\\) の期待値は、切片 \\(\\beta_0\\) と説明変数 \\(x\\) の期待値に、傾き \\(\\beta_1\\) を掛けた値の和となります。\n単回帰モデルの例を見てみましょう。南極大陸に生育するペンギンのデータセットを使います。ここからペンギンの翼の長さから体重を予測するモデルを作成します。\n散布図により、翼の長さと体重の関係を可視化します。この図からは翼の長さが長い個体は体重も大きい傾向が読み取れます。\n傾きと切片を確認します。傾きは係数 coef_ に、切片は切片 intercept_ に格納されています。\n切片は、翼の長さが0のときの体重を表します。翼の長さが0のときの体重は、生物学的に意味をなさないので、この値はあまり意味をなしません。一方、傾きは、翼の長さが1mm長くなると体重がどれだけ増えるかを表します。この値は、翼の長さが0のときの体重とは異なり、「翼の長さが1mm長くなると増える体重」という意味を持ちます。具体的には \\(\\beta_1\\) の値は約50であり、翼の長さが1mm長くなると体重が約50g増えることを意味します。\nモデルによる予測値は、切片と傾きを使って計算されます。すでに切片と傾きを確認したので、この値を使って予測値を計算してみましょう。\n回帰モデルの善し悪しは、予測精度によって評価されます。予測精度にはいくつか種類がありますが、ここでは決定係数と呼ばれる指標を使って予測精度を評価します。決定係数は、実際の値と予測値の差を使って計算されます。この差を残差と呼びます。残差は、実際の値から予測値を引くことで計算されます。\n# モデルの予測値を計算\ny_pred = lr.predict(penguins[[\"flipper_length_mm\"]])\n# 残差を計算\nresidual = penguins[\"body_mass_g\"] - y_pred\n残差を使って決定係数を計算します。決定係数は以下の式で計算されます。\n\\[\nR^2 = 1 - \\frac{\\sum_{i=1}^n (y_i - \\hat{y}_i)^2}{\\sum_{i=1}^n (y_i - \\bar{y})^2}\n\\]\nここで分母の \\(\\sum_{i=1}^n (y_i - \\bar{y})^2\\) は、実際の値と平均値の差の2乗の和を表します。これは、実際の値のばらつき（分散）を表します。一方、分子の \\(\\sum_{i=1}^n (y_i - \\hat{y}_i)^2\\) は、実際の値と予測値の差（残差）のばらつきを表します。決定係数は、実際の値と予測値の差のばらつきを、実際の値のばらつきで割った値です。この値は、0から1の間の値を取ります。1に近いほど、実際の値と予測値の差のばらつきが小さいことを意味します。つまり、予測精度が高いことを意味します。\n# 決定係数を計算\n1 - np.var(residual) / np.var(penguins[\"body_mass_g\"])\n\n0.7620921573403914\n決定係数の値が意味する内容は、以下のように解釈できます。\n「ペンギンの翼の長さによって、体重を約76%の精度で予測できることを意味する。」\nscikit-learnでは、scoreメソッドを用いて、説明変数と目的変数を与えることで決定係数を計算できます。\n# 決定係数を計算\nlr.score(penguins[[\"flipper_length_mm\"]], penguins[\"body_mass_g\"])\n\n0.7620921573403914",
     "crumbs": [
       "機械学習モデルの解釈・説明性",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>回帰モデルの解釈</span>"
@@ -423,11 +523,21 @@
     ]
   },
   {
+    "objectID": "week07/index.html",
+    "href": "week07/index.html",
+    "title": "演習1",
+    "section": "",
+    "text": "電気使用実績を予測するモデルの構築\nAIを活用したツール\nVisual Studio Code",
+    "crumbs": [
+      "演習1"
+    ]
+  },
+  {
     "objectID": "week07/07_exercise.html",
     "href": "week07/07_exercise.html",
     "title": "11  電気使用実績を予測するモデルの構築",
     "section": "",
-    "text": "11.1 データの概要\n2016年から2018年までの夏期（7月から9月の3ヶ月）における四国エリアの使用状況に加えて、気象庁（観測所: 高松）による気象データを収録しています。\ndf_train = pd.read_csv(p / \"week07/input/train.csv\", parse_dates=False)\ndf_test = pd.read_csv(p / \"week07/input/test.csv\", parse_dates=False)\ndf_train.head(n=5)",
+    "text": "11.1 データの概要\nこれまでの講義内容およびAIツールによる補助を用いて、電気使用実績を予測するモデルを構築しましょう。\n2016年から2018年までの夏期（7月から9月の3ヶ月）における四国エリアの使用状況に加えて、気象庁（観測所: 高松）による気象データを収録しています。\ndf_train = pd.read_csv(p / \"week07/input/train.csv\", parse_dates=False)\ndf_test = pd.read_csv(p / \"week07/input/test.csv\", parse_dates=False)\ndf_train.head(n=5)",
     "crumbs": [
       "演習1",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>電気使用実績を予測するモデルの構築</span>"
@@ -486,6 +596,26 @@
     "crumbs": [
       "演習1",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>電気使用実績を予測するモデルの構築</span>"
+    ]
+  },
+  {
+    "objectID": "week08/index.html",
+    "href": "week08/index.html",
+    "title": "深層学習の基礎",
+    "section": "",
+    "text": "この章の参考資料・URL",
+    "crumbs": [
+      "深層学習の基礎"
+    ]
+  },
+  {
+    "objectID": "week08/index.html#この章の参考資料url",
+    "href": "week08/index.html#この章の参考資料url",
+    "title": "深層学習の基礎",
+    "section": "",
+    "text": "手塚太郎 (2018)\n今泉允聡 (2021)\n瀧雅人 (2017)\n斎藤康毅 (2016)\n岡谷貴之 (2022)\n柳井啓司, 中鹿亘, と 稲葉通将 (2022)\n\n\n\n\n\n今泉允聡. 2021. 深層学習の原理に迫る : 数学の挑戦. 岩波科学ライブラリー ; 303. 岩波書店. http://id.ndl.go.jp/bib/031339770.\n\n\n岡谷貴之. 2022. 深層学習 = Deep Learning. 改訂第2版 版. 機械学習プロフェッショナルシリーズ. 講談社. http://id.ndl.go.jp/bib/031901202.\n\n\n手塚太郎. 2018. しくみがわかる深層学習 = An Introduction to Deep Learning. 朝倉書店. http://id.ndl.go.jp/bib/029043769.\n\n\n斎藤康毅. 2016. ゼロから作るDeep Learning : Pythonで学ぶディープラーニングの理論と実装. オライリー・ジャパン. http://id.ndl.go.jp/bib/027597005.\n\n\n柳井啓司, 中鹿亘, と 稲葉通将. 2022. 深層学習. IT Text. オーム社. http://id.ndl.go.jp/bib/032479806.\n\n\n瀧雅人. 2017. これならわかる深層学習入門 = Introduction to Deep Learning. 機械学習スタートアップシリーズ. 講談社. http://id.ndl.go.jp/bib/028568441.",
+    "crumbs": [
+      "深層学習の基礎"
     ]
   },
   {
@@ -581,7 +711,7 @@
     "href": "week08/0802_mnist.html",
     "title": "13  ニューラルネットワークによる手書き文字の分類",
     "section": "",
-    "text": "13.1 MNIST\n手書きによる文字（数字）の画像データセット",
+    "text": "13.1 MNIST\n機械学習ライブラリのTensorFlowを使って、ニューラルネットワークの構築と学習を行い、手書き文字の分類を行う手続きを説明します。\n手書きによる文字（数字）の画像データセット",
     "crumbs": [
       "深層学習の基礎",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>ニューラルネットワークによる手書き文字の分類</span>"
@@ -610,11 +740,31 @@
     ]
   },
   {
+    "objectID": "week09/index.html",
+    "href": "week09/index.html",
+    "title": "実社会での応用",
+    "section": "",
+    "text": "この章の参考資料・URL",
+    "crumbs": [
+      "実社会での応用"
+    ]
+  },
+  {
+    "objectID": "week09/index.html#この章の参考資料url",
+    "href": "week09/index.html#この章の参考資料url",
+    "title": "実社会での応用",
+    "section": "",
+    "text": "AI白書編集委員会 (2022)\nTunstall, Leandro von Werra, と 中山光樹 (2022)\n岡野原大輔 (2022)\n岡﨑直観 ほか (2022)\n柳井啓司, 中鹿亘, と 稲葉通将 (2022)\nM.クーケルバーク と 直江清隆 (2020)\n\n\n\n\n\nAI白書編集委員会. 2022. AI白書2022. KADOKAWA.\n\n\nM.クーケルバーク, と 直江清隆. 2020. AIの倫理学. 丸善出版. http://id.ndl.go.jp/bib/031185559.\n\n\nTunstall, Lewis, Thomas Wolf Leandro von Werra, と 中山光樹. 2022. 機械学習エンジニアのためのTransformers : 最先端の自然言語処理ライブラリによるモデル開発. オライリー・ジャパン. http://id.ndl.go.jp/bib/032288109.\n\n\n岡野原大輔. 2022. AI技術の最前線 : これからのAIを読み解く先端技術73. 日経BP. http://id.ndl.go.jp/bib/032288114.\n\n\n岡﨑直観, 荒瀬由紀, 鈴木潤, 鶴岡慶雅, と 宮尾祐介. 2022. 自然言語処理の基礎. IT Text. オーム社. http://id.ndl.go.jp/bib/032310940.\n\n\n柳井啓司, 中鹿亘, と 稲葉通将. 2022. 深層学習. IT Text. オーム社. http://id.ndl.go.jp/bib/032479806.",
+    "crumbs": [
+      "実社会での応用"
+    ]
+  },
+  {
     "objectID": "week09/09_application.html",
     "href": "week09/09_application.html",
     "title": "14  実社会での応用",
     "section": "",
-    "text": "14.1 深層学習が得意とする分野\n深層学習が得意とする分野は、従来の機械学習手法が得意とする分野とは異なります。深層学習は、高次元かつ複雑なデータに対しても効果的に学習できることが特徴です。これには、画像や動画、音声、自然言語など、実社会で頻繁に出現するデータが含まれます。深層学習の能力を活用することで、画像認識、音声認識、自然言語処理、機械翻訳など、多岐にわたる応用が可能となり、現代社会において不可欠な技術となっています。\n深層学習が複雑なデータの表現を学習できる理由の一つとして、深層学習がデータの特徴を自動的に抽出する能力があります。例えば、画像のデータを扱う場合、従来の機械学習手法では、画像の輝度やエッジなどの情報を特徴量として抽出する必要がありました。しかし、どのような特徴量を抽出すれば良いかは、データの分布によって異なります。データの分布に依存性がある場合、特徴量の抽出には専門家の知識が必要となることが多かったです。\n一方、深層学習では、データの特徴を自動的に抽出することが可能です。深層学習モデルは、複数の隠れ層から構成され、隠れ層のニューロンがデータの特徴を学習します。階層的な特徴表現を獲得することができるため、より複雑なデータの表現や異なるレベルの抽象化が可能となります。特徴抽出は、モデル自体が学習の一部として行われるため、事前の特徴量エンジニアリングが不要となります。\n深層学習では、例えば、画像データでは各ピクセルが特徴として扱われ、画像全体の情報を抽出します。また、動画データではフレームごとの情報や時間的なパターンを学習し、音声データでは音響特徴を解析します。さらに、自然言語処理では単語や文の意味を表現し、文脈を理解するためのモデル構築にも利用されます。\n深層学習が得意とする分野は、以下の通りです。\nこれらの分野で扱うデータはいずれも、高次元かつ複雑なデータです。このようなデータは、データが得られる前からある程度、どのようなデータ構造になるかが分かる構造化データに対して、非構造化データとして呼ばれます。非構造化データは、データの特徴を抽出することが難しく、従来の機械学習手法では、データの特徴を表現することが困難でした。しかし、深層学習では、データの特徴を自動的に抽出することが可能となり、非構造化データに対しても効果的に学習できるようになったことが、現在のAI社会を支えています。",
+    "text": "14.1 深層学習が得意とする分野\n実社会でAIがどのように応用されているかを紹介します。\nAIの応用は、大きく分けて以下の3つに分類できます。\nこれらの応用について、\nまずはAIが得意とする分野とその理由を解説します。\nなお、ここでAIとは、現在の機械学習領域で主流となっている深層学習を指して使います。\n深層学習が得意とする分野は、従来の機械学習手法が得意とする分野とは異なります。深層学習は、高次元かつ複雑なデータに対しても効果的に学習できることが特徴です。これには、画像や動画、音声、自然言語など、実社会で頻繁に出現するデータが含まれます。深層学習の能力を活用することで、画像認識、音声認識、自然言語処理、機械翻訳など、多岐にわたる応用が可能となり、現代社会において不可欠な技術となっています。\n深層学習が複雑なデータの表現を学習できる理由の一つとして、深層学習がデータの特徴を自動的に抽出する能力があります。例えば、画像のデータを扱う場合、従来の機械学習手法では、画像の輝度やエッジなどの情報を特徴量として抽出する必要がありました。しかし、どのような特徴量を抽出すれば良いかは、データの分布によって異なります。データの分布に依存性がある場合、特徴量の抽出には専門家の知識が必要となることが多かったです。\n一方、深層学習では、データの特徴を自動的に抽出することが可能です。深層学習モデルは、複数の隠れ層から構成され、隠れ層のニューロンがデータの特徴を学習します。階層的な特徴表現を獲得することができるため、より複雑なデータの表現や異なるレベルの抽象化が可能となります。特徴抽出は、モデル自体が学習の一部として行われるため、事前の特徴量エンジニアリングが不要となります。\n深層学習では、例えば、画像データでは各ピクセルが特徴として扱われ、画像全体の情報を抽出します。また、動画データではフレームごとの情報や時間的なパターンを学習し、音声データでは音響特徴を解析します。さらに、自然言語処理では単語や文の意味を表現し、文脈を理解するためのモデル構築にも利用されます。\n深層学習が得意とする分野は、以下の通りです。\nこれらの分野で扱うデータはいずれも、高次元かつ複雑なデータです。このようなデータは、データが得られる前からある程度、どのようなデータ構造になるかが分かる構造化データに対して、非構造化データとして呼ばれます。非構造化データは、データの特徴を抽出することが難しく、従来の機械学習手法では、データの特徴を表現することが困難でした。しかし、深層学習では、データの特徴を自動的に抽出することが可能となり、非構造化データに対しても効果的に学習できるようになったことが、現在のAI社会を支えています。",
     "crumbs": [
       "実社会での応用",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>実社会での応用</span>"
@@ -651,6 +801,26 @@
     "crumbs": [
       "実社会での応用",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>実社会での応用</span>"
+    ]
+  },
+  {
+    "objectID": "week10/index.html",
+    "href": "week10/index.html",
+    "title": "深層生成モデル",
+    "section": "",
+    "text": "この章の参考資料・URL",
+    "crumbs": [
+      "深層生成モデル"
+    ]
+  },
+  {
+    "objectID": "week10/index.html#この章の参考資料url",
+    "href": "week10/index.html#この章の参考資料url",
+    "title": "深層生成モデル",
+    "section": "",
+    "text": "手塚太郎 (2018)\nDavid Foster and 松田晃一 and 小沼千絵 (2020)\n岡谷貴之 (2022)\n柳井啓司, 中鹿亘, と 稲葉通将 (2022)\n岡野原大輔 (2022)\n\n\n\n\n\nDavid Foster and 松田晃一 and 小沼千絵. 2020. 生成Deep Learning : 絵を描き、物語や音楽を作り、ゲームをプレイする. オライリー・ジャパン. http://id.ndl.go.jp/bib/030645407.\n\n\n岡谷貴之. 2022. 深層学習 = Deep Learning. 改訂第2版 版. 機械学習プロフェッショナルシリーズ. 講談社. http://id.ndl.go.jp/bib/031901202.\n\n\n岡野原大輔. 2022. ディープラーニングを支える技術. Tech×Books plus 2. 技術評論社. http://id.ndl.go.jp/bib/032086743.\n\n\n手塚太郎. 2018. しくみがわかる深層学習 = An Introduction to Deep Learning. 朝倉書店. http://id.ndl.go.jp/bib/029043769.\n\n\n柳井啓司, 中鹿亘, と 稲葉通将. 2022. 深層学習. IT Text. オーム社. http://id.ndl.go.jp/bib/032479806.",
+    "crumbs": [
+      "深層生成モデル"
     ]
   },
   {
@@ -723,7 +893,7 @@
     "href": "appendix/jupyternotebook.html",
     "title": "付録 A — Jupyter Notebook",
     "section": "",
-    "text": "A.1 ローカル実行\n自身のコンピュータ上にPython環境を整備して実行する方法です。リモート実行環境とは異なり、自身のコンピュータ上で動作できるため、気軽に実行できる反面、環境構築に知識と手間がかかります。",
+    "text": "A.1 ローカル実行\nJupyter Notebookは、ウェブブラウザ上で実行できる対話型のプログラミング環境です。Pythonだけでなく、RやJuliaなどの言語にも対応しています。プログラムとその実行結果、さらに文章や画像などを含めたドキュメントを作成できるため、データ分析のレポート作成にも利用できます。\nJupyter Notebookを利用するには、自身のコンピュータ上に環境構築を行う方法と、リモート実行環境を利用する方法があります。リモート実行環境を利用する場合は、自身のコンピュータ上に環境構築を行う必要はありませんが、実行環境を提供するサービスのアカウントが必要な場合があります。\nここではローカル実行環境とリモート実行環境のそれぞれについて説明します。\n自身のコンピュータ上にPython環境を整備して実行する方法です。リモート実行環境とは異なり、自身のコンピュータ上で動作できるため、気軽に実行できる反面、環境構築に知識と手間がかかります。",
     "crumbs": [
       "付録",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Jupyter Notebook</span>"
@@ -778,7 +948,7 @@
     "href": "appendix/ai_tools.html",
     "title": "付録 B — AIを活用したツール",
     "section": "",
-    "text": "B.1 GitHub Copilot\nGitHub CopilotはGitHubが提供する、AIを活用したプログラミング支援のツールです。利用にはGitHubのアカウントが必要で、試用期間が終わると有料になります。ただし、GitHubへの教育機関の登録を行った場合には無料で利用できます。\nGitHub Copilotはいくつかのテキストエディタ、開発環境のアプリケーション上で動作します。Visual Studio Codeの拡張機能も提供されており、この資料の一部もGitHub Copilotの協力によって文章およびプログラムコードの記述が行われています。",
+    "text": "B.1 GitHub Copilot\nAIを活用した技術は、日々めまぐるしく移り変わっています。次から次へと新しい技術が登場し、そのたびに新しいツールが提供されています。ここでは、その中から、特にデータサイエンス、機械学習、プログラミングの分野で活用できるツールを紹介します。\nGitHub CopilotはGitHubが提供する、AIを活用したプログラミング支援のツールです。利用にはGitHubのアカウントが必要で、試用期間が終わると有料になります。ただし、GitHubへの教育機関の登録を行った場合には無料で利用できます。\nGitHub Copilotはいくつかのテキストエディタ、開発環境のアプリケーション上で動作します。Visual Studio Codeの拡張機能も提供されており、この資料の一部もGitHub Copilotの協力によって文章およびプログラムコードの記述が行われています。",
     "crumbs": [
       "付録",
       "<span class='chapter-number'>B</span>  <span class='chapter-title'>AIを活用したツール</span>"
@@ -811,7 +981,7 @@
     "href": "appendix/vscode.html",
     "title": "付録 C — Visual Studio Code",
     "section": "",
-    "text": "C.1 インストール\nVS Codeのインストールは、公式サイトからダウンロードしてインストールします。インストール方法はOSによって異なります。ここでは、Windowsの場合のインストール方法を説明します。",
+    "text": "C.1 インストール\nVisual Studio Code (VS Code) は、Microsoft社が開発したオープンソースのテキストエディタです。マルチプラットフォームで動作するため、Windows, Mac, Linux などのOSで利用できます。様々なプログラミング言語の開発、編集に対応し、拡張機能をインストールすることで、様々な機能を追加することができます。また、Jupyter Notebookで利用されるipynbファイルを開いてプログラムの実行や編集ができるためにJupyter Notebookの代替としても利用できます。ここでは、VSCodeのインストール方法と基本的な使い方について説明します。\nVS Codeのインストールは、公式サイトからダウンロードしてインストールします。インストール方法はOSによって異なります。ここでは、Windowsの場合のインストール方法を説明します。",
     "crumbs": [
       "付録",
       "<span class='chapter-number'>C</span>  <span class='chapter-title'>Visual Studio Code</span>"
@@ -899,7 +1069,7 @@
     "href": "appendix/docker.html",
     "title": "付録 D — Docker",
     "section": "",
-    "text": "D.1 Dockerとは",
+    "text": "D.1 Dockerとは\nDockerの概要とインストール方法について説明します。",
     "crumbs": [
       "付録",
       "<span class='chapter-number'>D</span>  <span class='chapter-title'>Docker</span>"
@@ -925,176 +1095,6 @@
     "crumbs": [
       "付録",
       "<span class='chapter-number'>D</span>  <span class='chapter-title'>Docker</span>"
-    ]
-  },
-  {
-    "objectID": "week05/index.html",
-    "href": "week05/index.html",
-    "title": "機械学習の手法",
-    "section": "",
-    "text": "この章の参考資料・URL",
-    "crumbs": [
-      "機械学習の手法"
-    ]
-  },
-  {
-    "objectID": "week05/index.html#この章の参考資料url",
-    "href": "week05/index.html#この章の参考資料url",
-    "title": "機械学習の手法",
-    "section": "",
-    "text": "竹内一郎 と 烏山昌幸 (2015)\n森下光之助 (2021)\n\n\n\n\n\n森下光之助. 2021. 機械学習を解釈する技術 = Techniques for Interpreting Machine learning : 予測力と説明力を両立する実践テクニック. 技術評論社. http://id.ndl.go.jp/bib/031576666.\n\n\n竹内一郎, と 烏山昌幸. 2015. サポートベクトルマシン = Support Vector Machine. 機械学習プロフェッショナルシリーズ. 講談社. http://id.ndl.go.jp/bib/026619227.",
-    "crumbs": [
-      "機械学習の手法"
-    ]
-  },
-  {
-    "objectID": "week06/index.html",
-    "href": "week06/index.html",
-    "title": "機械学習モデルの解釈・説明性",
-    "section": "",
-    "text": "この章の参考資料・URL",
-    "crumbs": [
-      "機械学習モデルの解釈・説明性"
-    ]
-  },
-  {
-    "objectID": "week06/index.html#この章の参考資料url",
-    "href": "week06/index.html#この章の参考資料url",
-    "title": "機械学習モデルの解釈・説明性",
-    "section": "",
-    "text": "森下光之助 (2021)\n高柳慎一, 長田怜士, と ホクソエム (2023)\n\n\n\n\n\n森下光之助. 2021. 機械学習を解釈する技術 = Techniques for Interpreting Machine learning : 予測力と説明力を両立する実践テクニック. 技術評論社. http://id.ndl.go.jp/bib/031576666.\n\n\n高柳慎一, 長田怜士, と ホクソエム. 2023. 評価指標入門 = Introduction to Evaluation Metrics : データサイエンスとビジネスをつなぐ架け橋. 技術評論社. http://id.ndl.go.jp/bib/032637452.",
-    "crumbs": [
-      "機械学習モデルの解釈・説明性"
-    ]
-  },
-  {
-    "objectID": "week07/index.html",
-    "href": "week07/index.html",
-    "title": "演習1",
-    "section": "",
-    "text": "電気使用実績を予測するモデルの構築\nAIを活用したツール\nVisual Studio Code",
-    "crumbs": [
-      "演習1"
-    ]
-  },
-  {
-    "objectID": "week08/index.html",
-    "href": "week08/index.html",
-    "title": "深層学習の基礎",
-    "section": "",
-    "text": "この章の参考資料・URL",
-    "crumbs": [
-      "深層学習の基礎"
-    ]
-  },
-  {
-    "objectID": "week08/index.html#この章の参考資料url",
-    "href": "week08/index.html#この章の参考資料url",
-    "title": "深層学習の基礎",
-    "section": "",
-    "text": "手塚太郎 (2018)\n今泉允聡 (2021)\n瀧雅人 (2017)\n斎藤康毅 (2016)\n岡谷貴之 (2022)\n柳井啓司, 中鹿亘, と 稲葉通将 (2022)\n\n\n\n\n\n今泉允聡. 2021. 深層学習の原理に迫る : 数学の挑戦. 岩波科学ライブラリー ; 303. 岩波書店. http://id.ndl.go.jp/bib/031339770.\n\n\n岡谷貴之. 2022. 深層学習 = Deep Learning. 改訂第2版 版. 機械学習プロフェッショナルシリーズ. 講談社. http://id.ndl.go.jp/bib/031901202.\n\n\n手塚太郎. 2018. しくみがわかる深層学習 = An Introduction to Deep Learning. 朝倉書店. http://id.ndl.go.jp/bib/029043769.\n\n\n斎藤康毅. 2016. ゼロから作るDeep Learning : Pythonで学ぶディープラーニングの理論と実装. オライリー・ジャパン. http://id.ndl.go.jp/bib/027597005.\n\n\n柳井啓司, 中鹿亘, と 稲葉通将. 2022. 深層学習. IT Text. オーム社. http://id.ndl.go.jp/bib/032479806.\n\n\n瀧雅人. 2017. これならわかる深層学習入門 = Introduction to Deep Learning. 機械学習スタートアップシリーズ. 講談社. http://id.ndl.go.jp/bib/028568441.",
-    "crumbs": [
-      "深層学習の基礎"
-    ]
-  },
-  {
-    "objectID": "week09/index.html",
-    "href": "week09/index.html",
-    "title": "実社会での応用",
-    "section": "",
-    "text": "この章の参考資料・URL",
-    "crumbs": [
-      "実社会での応用"
-    ]
-  },
-  {
-    "objectID": "week09/index.html#この章の参考資料url",
-    "href": "week09/index.html#この章の参考資料url",
-    "title": "実社会での応用",
-    "section": "",
-    "text": "AI白書編集委員会 (2022)\nTunstall, Leandro von Werra, と 中山光樹 (2022)\n岡野原大輔 (2022)\n岡﨑直観 ほか (2022)\n柳井啓司, 中鹿亘, と 稲葉通将 (2022)\nM.クーケルバーク と 直江清隆 (2020)\n\n\n\n\n\nAI白書編集委員会. 2022. AI白書2022. KADOKAWA.\n\n\nM.クーケルバーク, と 直江清隆. 2020. AIの倫理学. 丸善出版. http://id.ndl.go.jp/bib/031185559.\n\n\nTunstall, Lewis, Thomas Wolf Leandro von Werra, と 中山光樹. 2022. 機械学習エンジニアのためのTransformers : 最先端の自然言語処理ライブラリによるモデル開発. オライリー・ジャパン. http://id.ndl.go.jp/bib/032288109.\n\n\n岡野原大輔. 2022. AI技術の最前線 : これからのAIを読み解く先端技術73. 日経BP. http://id.ndl.go.jp/bib/032288114.\n\n\n岡﨑直観, 荒瀬由紀, 鈴木潤, 鶴岡慶雅, と 宮尾祐介. 2022. 自然言語処理の基礎. IT Text. オーム社. http://id.ndl.go.jp/bib/032310940.\n\n\n柳井啓司, 中鹿亘, と 稲葉通将. 2022. 深層学習. IT Text. オーム社. http://id.ndl.go.jp/bib/032479806.",
-    "crumbs": [
-      "実社会での応用"
-    ]
-  },
-  {
-    "objectID": "week10/index.html",
-    "href": "week10/index.html",
-    "title": "深層生成モデル",
-    "section": "",
-    "text": "この章の参考資料・URL",
-    "crumbs": [
-      "深層生成モデル"
-    ]
-  },
-  {
-    "objectID": "week10/index.html#この章の参考資料url",
-    "href": "week10/index.html#この章の参考資料url",
-    "title": "深層生成モデル",
-    "section": "",
-    "text": "手塚太郎 (2018)\nDavid Foster and 松田晃一 and 小沼千絵 (2020)\n岡谷貴之 (2022)\n柳井啓司, 中鹿亘, と 稲葉通将 (2022)\n岡野原大輔 (2022)\n\n\n\n\n\nDavid Foster and 松田晃一 and 小沼千絵. 2020. 生成Deep Learning : 絵を描き、物語や音楽を作り、ゲームをプレイする. オライリー・ジャパン. http://id.ndl.go.jp/bib/030645407.\n\n\n岡谷貴之. 2022. 深層学習 = Deep Learning. 改訂第2版 版. 機械学習プロフェッショナルシリーズ. 講談社. http://id.ndl.go.jp/bib/031901202.\n\n\n岡野原大輔. 2022. ディープラーニングを支える技術. Tech×Books plus 2. 技術評論社. http://id.ndl.go.jp/bib/032086743.\n\n\n手塚太郎. 2018. しくみがわかる深層学習 = An Introduction to Deep Learning. 朝倉書店. http://id.ndl.go.jp/bib/029043769.\n\n\n柳井啓司, 中鹿亘, と 稲葉通将. 2022. 深層学習. IT Text. オーム社. http://id.ndl.go.jp/bib/032479806.",
-    "crumbs": [
-      "深層生成モデル"
-    ]
-  },
-  {
-    "objectID": "week02/index.html",
-    "href": "week02/index.html",
-    "title": "プログラミング入門",
-    "section": "",
-    "text": "この章の参考資料・URL",
-    "crumbs": [
-      "プログラミング入門"
-    ]
-  },
-  {
-    "objectID": "week02/index.html#この章の参考資料url",
-    "href": "week02/index.html#この章の参考資料url",
-    "title": "プログラミング入門",
-    "section": "",
-    "text": "池内孝啓 と 片柳薫子 (2020)\n有賀友紀 と 大橋俊介 (2021)\nGrus と 菊池彰 (2020)\nSweigart と 相川愛三 (2023)\n八谷大岳 (2020)\nPython 3.10.13 ドキュメント\nゼロからのPython入門講座 / python Japan\n\n\n\n\n\nGrus, Joel, と 菊池彰. 2020. ゼロからはじめるデータサイエンス : Pythonで学ぶ基本と実践. 翻訳者： 菊池彰. 第2版 版. オライリー・ジャパン. http://id.ndl.go.jp/bib/030372878.\n\n\nSweigart, Al, と 相川愛三. 2023. 退屈なことはPythonにやらせよう : ノンプログラマーにもできる自動化処理プログラミング. 翻訳者： 相川愛三. 第2版 版. オライリー・ジャパン.\n\n\n八谷大岳. 2020. ゼロからつくるPython機械学習プログラミング入門 = Introduction to Machine Learning from Scratch with Python. 機械学習スタートアップシリーズ. 講談社. http://id.ndl.go.jp/bib/030584765.\n\n\n有賀友紀, と 大橋俊介. 2021. RとPythonで学ぶ実践的データサイエンス&機械学習. 増補改訂版. 技術評論社. http://id.ndl.go.jp/bib/031401828.\n\n\n池内孝啓, と 片柳薫子. 2020. PythonユーザのためのJupyter〈実践〉入門. 改訂版. 技術評論社. http://id.ndl.go.jp/bib/030570561.",
-    "crumbs": [
-      "プログラミング入門"
-    ]
-  },
-  {
-    "objectID": "week03/index.html",
-    "href": "week03/index.html",
-    "title": "機械学習の背景・数理",
-    "section": "",
-    "text": "この章の参考資料・URL",
-    "crumbs": [
-      "機械学習の背景・数理"
-    ]
-  },
-  {
-    "objectID": "week03/index.html#この章の参考資料url",
-    "href": "week03/index.html#この章の参考資料url",
-    "title": "機械学習の背景・数理",
-    "section": "",
-    "text": "石川聡彦 (2018)\n椎名洋 ほか (2019)\n八谷大岳 (2020)\n吉田拓真 と 尾原颯 (2018)\n\n\n\n\n\n八谷大岳. 2020. ゼロからつくるPython機械学習プログラミング入門 = Introduction to Machine Learning from Scratch with Python. 機械学習スタートアップシリーズ. 講談社. http://id.ndl.go.jp/bib/030584765.\n\n\n吉田拓真, と 尾原颯. 2018. 現場で使える!NumPyデータ処理入門 : 機械学習・データサイエンスで役立つ高速処理手法. 翔泳社. http://id.ndl.go.jp/bib/029316312.\n\n\n椎名洋, 姫野哲人, 保科架風, と 清水昌平. 2019. データサイエンスのための数学 = Mathematics for Data Science. 編集者： 清水昌平. データサイエンス入門シリーズ. 講談社. http://id.ndl.go.jp/bib/029903862.\n\n\n石川聡彦. 2018. 人工知能プログラミングのための数学がわかる本 = MATHEMATICS FOR AI PROGRAMMING. KADOKAWA. http://id.ndl.go.jp/bib/028819866.",
-    "crumbs": [
-      "機械学習の背景・数理"
-    ]
-  },
-  {
-    "objectID": "week04/index.html",
-    "href": "week04/index.html",
-    "title": "機械学習モデルの設計と評価",
-    "section": "",
-    "text": "この章の参考資料・URL",
-    "crumbs": [
-      "機械学習モデルの設計と評価"
-    ]
-  },
-  {
-    "objectID": "week04/index.html#この章の参考資料url",
-    "href": "week04/index.html#この章の参考資料url",
-    "title": "機械学習モデルの設計と評価",
-    "section": "",
-    "text": "岡野原大輔 (2022)\n門脇大輔 ほか (2019)\n八谷大岳 (2020)\nGéron, 下田倫大, と 長尾高弘 (2020)\nAlice Zheng と ホクソエム (2019)\n\n\n\n\n\nAlice Zheng, Amanda Casari, と ホクソエム. 2019. 機械学習のための特徴量エンジニアリング : その原理とPythonによる実践. 翻訳者： ホクソエム. オライリー・ジャパン. http://id.ndl.go.jp/bib/029512290.\n\n\nGéron, Aurélien, 下田倫大, と 長尾高弘. 2020. scikit-learn、Keras、TensorFlowによる実践機械学習. 翻訳者： 下田倫大 と 長尾高弘. 第2版 版. オライリー・ジャパン. http://id.ndl.go.jp/bib/030701507.\n\n\n八谷大岳. 2020. ゼロからつくるPython機械学習プログラミング入門 = Introduction to Machine Learning from Scratch with Python. 機械学習スタートアップシリーズ. 講談社. http://id.ndl.go.jp/bib/030584765.\n\n\n岡野原大輔. 2022. ディープラーニングを支える技術 : 「正解」を導くメカニズム〈技術基礎〉. Tech×Books plus. 技術評論社. http://id.ndl.go.jp/bib/031881422.\n\n\n門脇大輔, 阪田隆司, 保坂桂佑, と 平松雄司. 2019. Kaggleで勝つデータ分析の技術. 技術評論社. http://id.ndl.go.jp/bib/029976550.",
-    "crumbs": [
-      "機械学習モデルの設計と評価"
     ]
   }
 ]

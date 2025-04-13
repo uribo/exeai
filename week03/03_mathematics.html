@@ -503,13 +503,13 @@ window.Quarto = {
 <section id="利用するライブラリの読み込み" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="利用するライブラリの読み込み"><span class="header-section-number">3.1</span> 利用するライブラリの読み込み</h2>
 <p>Python標準ライブラリおよびJupyterHub環境（<code>hub-scipy-notebook</code>を想定）で導入済みのライブラリを使用します。ここで扱う数学的な処理は標準ライブラリの<code>math</code>と数値計算、多次元配列を扱うライブラリである<code>NumPy</code>です。どちらも同様の機能を提供します。</p>
-<div id="20e40048" class="cell" data-execution_count="1">
+<div id="ed87c7ac" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in"># japanize_matplotlibのインストール</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">!pip install -qq japanize_matplotlib</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="fa7d19f1" class="cell" data-execution_count="2">
+<div id="b181d566" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 利用するライブラリを読み込む</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># as で別名をつけることができる（長いライブラリ名を省略）</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math <span class="co"># 数学演算のための標準ライブラリ</span></span>
@@ -532,7 +532,7 @@ window.Quarto = {
 <li>関数: 入力と出力の関係性を表す数式。入力<span class="math inline">\(x\)</span>が決まると出力<span class="math inline">\(y\)</span>の値も決まる、一対一の関係。</li>
 </ul>
 <p>消費税率10%の店で100円のトマトを3個買うとき…</p>
-<div id="766c6716" class="cell" data-execution_count="3">
+<div id="abf370a8" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>TOMATO_PRICE <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>TAX <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">3</span></span>
@@ -543,7 +543,7 @@ window.Quarto = {
 </div>
 </div>
 <p>同じ店で同じトマトを5個買うとき…</p>
-<div id="6f295547" class="cell" data-execution_count="4">
+<div id="002ebaf3" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"金額: "</span>, (TOMATO_PRICE <span class="op">+</span> (TOMATO_PRICE<span class="op">/</span>TAX)) <span class="op">*</span> n, <span class="st">"円"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -554,7 +554,7 @@ window.Quarto = {
 <p>変わらないのはトマトの価格と消費税率（<code>TOMATO_PRICE</code>と<code>TAX</code>）… 定数<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>変わったのはトマトの個数 … 変数</p>
 <p>これらの定数と変数の関係を関数にまとめてみましょう。 Pythonでは関数の定義を<code>def</code>文を使って行います。</p>
-<div id="e61499db" class="cell" data-execution_count="5">
+<div id="12be5601" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1個100円で消費税率10%の商品に対して、</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 個数に応じていくらになるかを求める関数</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fn_tomato(n <span class="op">=</span> <span class="dv">1</span>):</span>
@@ -565,7 +565,7 @@ window.Quarto = {
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># return 文を省略すると関数は None を返す</span></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> price_in_tax <span class="op">*</span> n</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="224c6e4c" class="cell" data-execution_count="6">
+<div id="c78eb4a6" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"金額: "</span>, fn_tomato(<span class="dv">3</span>), <span class="st">"円"</span>) <span class="co"># 3個</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"金額: "</span>, fn_tomato(<span class="dv">5</span>), <span class="st">"円"</span>) <span class="co"># 5個</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -579,7 +579,7 @@ window.Quarto = {
 <h2 data-number="3.3" class="anchored" data-anchor-id="一次関数"><span class="header-section-number">3.3</span> 一次関数</h2>
 <p>一次関数<span class="math inline">\(y=ax+b\)</span>について考えます。この一次関数では2つの定数<span class="math inline">\(a\)</span>と<span class="math inline">\(b\)</span>が存在し、それぞれ傾きと切片として機能します。</p>
 <p>ここで、定数が異なる一次関数がどのようにグラフ上で変化するか確認しましょう。変数である<span class="math inline">\(x\)</span>にはNumPyの<code>linspace()</code>関数により生成した隣接する項との差が一定の等差数列を与えます。</p>
-<div id="b89d247d" class="cell" data-execution_count="7">
+<div id="1b072fc4" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2つの一次関数によるグラフを作成する</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>) <span class="co"># 0から10までの公差が2.5の等差数列を生成</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -608,7 +608,7 @@ window.Quarto = {
 <h2 data-number="3.4" class="anchored" data-anchor-id="平方根"><span class="header-section-number">3.4</span> 平方根</h2>
 <p>平方根は<code>math</code>、<code>NumPy</code>で利用方法が異なります。 それぞれのライブラリでの平方根の使い方をみましょう。</p>
 <p><span class="math inline">\(\sqrt{2}\)</span></p>
-<div id="b5fc4074" class="cell" data-execution_count="9">
+<div id="187b81ba" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>math.sqrt(<span class="dv">2</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>np.sqrt(<span class="dv">2</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -617,7 +617,7 @@ window.Quarto = {
 </div>
 </div>
 <p><span class="math inline">\(\sqrt{3}\)</span></p>
-<div id="167c5f82" class="cell" data-execution_count="10">
+<div id="da1b64ba" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>math.sqrt(<span class="dv">3</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>np.sqrt(<span class="dv">3</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -625,7 +625,7 @@ window.Quarto = {
 <pre><code>1.7320508075688772</code></pre>
 </div>
 </div>
-<div id="fe029418" class="cell" data-execution_count="11">
+<div id="2b7ac882" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 問題: 「富士山麓オウム鳴く」となる整数は？</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> x</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>np.sqrt(x)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -638,23 +638,23 @@ window.Quarto = {
 <li>mathライブラリの<code>pow()</code>関数</li>
 <li>numpyライブラリの<code>power()</code>関数</li>
 </ul>
-<div id="57a7ecf6" class="cell" data-execution_count="12">
+<div id="a2ce081e" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> <span class="dv">3</span> <span class="co"># 底</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>exponent <span class="op">=</span> <span class="dv">2</span> <span class="co"># 指数</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8d10f867" class="cell" data-execution_count="13">
+<div id="48a86ce0" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>base<span class="op">**</span>exponent</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>9</code></pre>
 </div>
 </div>
-<div id="aa03a863" class="cell" data-execution_count="14">
+<div id="2fd51466" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>math.<span class="bu">pow</span>(base, exponent)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>9.0</code></pre>
 </div>
 </div>
-<div id="b2813860" class="cell" data-execution_count="15">
+<div id="b06f9995" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np.power(base, exponent)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>9</code></pre>
@@ -666,7 +666,7 @@ window.Quarto = {
 <section id="指数関数" class="level3" data-number="3.6.1">
 <h3 data-number="3.6.1" class="anchored" data-anchor-id="指数関数"><span class="header-section-number">3.6.1</span> 指数関数</h3>
 <p>指数関数… 指数を変数とした関数</p>
-<div id="af989667" class="cell" data-execution_count="16">
+<div id="45d58e8e" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 引数として与えられた数値の指数関数の値を返す</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># e^2</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># eは自然対数の底。およそ2.71828</span></span>
@@ -678,7 +678,7 @@ window.Quarto = {
 <pre><code>7.38905609893065</code></pre>
 </div>
 </div>
-<div id="a6c4fb42" class="cell" data-execution_count="17">
+<div id="3ef602ec" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0から10まで0.1刻みの配列を生成</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="fl">0.1</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -700,14 +700,14 @@ window.Quarto = {
 </section>
 <section id="対数関数" class="level3" data-number="3.6.2">
 <h3 data-number="3.6.2" class="anchored" data-anchor-id="対数関数"><span class="header-section-number">3.6.2</span> 対数関数</h3>
-<div id="0213c9c3" class="cell" data-execution_count="19">
+<div id="7fd34bbb" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.exp(<span class="dv">2</span>)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>np.log(x)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>2.0</code></pre>
 </div>
 </div>
-<div id="d07efeec" class="cell" data-execution_count="20">
+<div id="40954491" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.1から10まで0.1刻みの配列を生成</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="fl">0.1</span>, <span class="dv">10</span>, <span class="fl">0.1</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -727,7 +727,7 @@ window.Quarto = {
 </div>
 </div>
 <p>常用対数</p>
-<div id="c0ff7a33" class="cell" data-execution_count="21">
+<div id="6e2b941d" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>np.log10(<span class="dv">10</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>1.0</code></pre>
@@ -738,7 +738,7 @@ window.Quarto = {
 <section id="ベクトル" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="ベクトル"><span class="header-section-number">3.7</span> ベクトル</h2>
 <p>リストは行ベクトルとして機能します。ただしベクトル同士の演算を行うことは難しいです。</p>
-<div id="50ab9a29" class="cell" data-execution_count="22">
+<div id="ce4400fa" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>vector <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vector)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -746,24 +746,24 @@ window.Quarto = {
 </div>
 </div>
 <p>そのためベクトル演算を実現するにはNumPyの<code>array()</code>関数を利用する方法が簡単です。なおの<code>array()</code>関数では厳密に行ベクトルまたは列ベクトルを区別せずに1次元配列を表現するために使用されます。</p>
-<div id="7b6cc05d" class="cell" data-execution_count="23">
+<div id="b62b3aca" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>vector <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="be925699" class="cell" data-execution_count="24">
+<div id="68c900c4" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ベクトルの和</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>vector <span class="op">+</span> vector</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>array([ 2,  4,  6,  8, 10])</code></pre>
 </div>
 </div>
-<div id="1e3468c0" class="cell" data-execution_count="25">
+<div id="65ee6935" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ベクトルの差</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>vector <span class="op">-</span> np.array([<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>array([ 1,  0, -1,  3,  4])</code></pre>
 </div>
 </div>
-<div id="432b0ff2" class="cell" data-execution_count="26">
+<div id="ec9f187a" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># リストによるベクトルでは+演算子を使ったベクトルの和の計算が行えない</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]<span class="op">+</span>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
@@ -771,7 +771,7 @@ window.Quarto = {
 </div>
 </div>
 <p>ベクトルの和は同じ成分の数からなるベクトル同士でないと計算できません。</p>
-<div id="9b41872e" class="cell" data-execution_count="27">
+<div id="31131cd2" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>vector2 <span class="op">=</span> np.array([<span class="dv">6</span>, <span class="dv">7</span>])</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>vector <span class="op">+</span> vector2</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -788,7 +788,7 @@ Cell <span class="ansi-green-fg">In[26], line 3</span>
 </div>
 </div>
 <p>NumPyでベクトルの要素数を知る方法は、<code>numpy.array</code>オブジェクトのsize属性を使用する、<code>len()</code>関数を用いるなどがあります。</p>
-<div id="a2b61511" class="cell" data-execution_count="28">
+<div id="ec8e0876" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numpy.arrayの要素数を確認</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>vector.size</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -802,7 +802,7 @@ Cell <span class="ansi-green-fg">In[26], line 3</span>
 </div>
 <section id="ベクトルの内積-同一次元のベクトル同士のかけ算" class="level3" data-number="3.7.1">
 <h3 data-number="3.7.1" class="anchored" data-anchor-id="ベクトルの内積-同一次元のベクトル同士のかけ算"><span class="header-section-number">3.7.1</span> ベクトルの内積: 同一次元のベクトル同士のかけ算</h3>
-<div id="34ef809f" class="cell" data-execution_count="29">
+<div id="2aa80beb" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ベクトル u と v を定義</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
@@ -815,7 +815,7 @@ Cell <span class="ansi-green-fg">In[26], line 3</span>
 <pre><code>内積: 32</code></pre>
 </div>
 </div>
-<div id="c52e1dad" class="cell" data-execution_count="30">
+<div id="6dc06ac5" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 検算</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="op">*</span> <span class="dv">4</span>) <span class="op">+</span> (<span class="dv">2</span> <span class="op">*</span> <span class="dv">5</span>) <span class="op">+</span> (<span class="dv">3</span> <span class="op">*</span> <span class="dv">6</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
@@ -823,7 +823,7 @@ Cell <span class="ansi-green-fg">In[26], line 3</span>
 </div>
 </div>
 <p>内積は次元の等しいベクトル同士でないと求められません。</p>
-<div id="ad3fc349" class="cell" data-execution_count="31">
+<div id="4bf7b0df" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>np.dot(u, np.array([<span class="dv">3</span>, <span class="dv">2</span>]))</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
@@ -843,7 +843,7 @@ File <span class="ansi-green-fg">&lt;__array_function__ internals&gt;:180</span>
 <section id="行列" class="level2" data-number="3.8">
 <h2 data-number="3.8" class="anchored" data-anchor-id="行列"><span class="header-section-number">3.8</span> 行列</h2>
 <p>行列の表現もNumPyを使うと演算（行列の加算、減算、乗算、転置、逆行列）が簡単に行えるようになります。</p>
-<div id="970e2376" class="cell" data-execution_count="32">
+<div id="769ab3fc" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>matrix <span class="op">=</span> np.array([</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
@@ -859,7 +859,7 @@ File <span class="ansi-green-fg">&lt;__array_function__ internals&gt;:180</span>
 </div>
 <section id="行列の転置" class="level3" data-number="3.8.1">
 <h3 data-number="3.8.1" class="anchored" data-anchor-id="行列の転置"><span class="header-section-number">3.8.1</span> 行列の転置</h3>
-<div id="9740b90b" class="cell" data-execution_count="33">
+<div id="2da93d51" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 行列の縦と横を入れ替える</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>matrix.T</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">

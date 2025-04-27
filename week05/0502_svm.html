@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-dc95f10abd972b9c41a78ec8992004fc.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c492eb4ab85270c802e572a85f2cdf9e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-62e8000d30b4ecb14b0c6ce63c0b0a08.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-67d38e2e51a073607e7403a0fbad63c7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-6f92130c610b5002f2f24cd98479a763.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -536,14 +536,14 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 <h2 data-number="7.3" class="anchored" data-anchor-id="scikit-learnでのサポートベクターマシンの実装"><span class="header-section-number">7.3</span> Scikit-learnでのサポートベクターマシンの実装</h2>
 <p>Scikit-learnでは、SVCクラスを用いてサポートベクターマシンを実装することができます。SVCクラスは、さきに述べたように、線形分離可能なデータに対してはロジスティック回帰モデルと同様に機能します。また、RBFなどのカーネル関数を指定することで、非線形な境界線を描くことも可能です。</p>
 <p>ここではロジスティック回帰モデルと同様に、ペンギンのデータセットを用いて、ペンギンの種名を分類するモデルをサポートベクターマシンで実装してみましょう。</p>
-<div id="ef99b9b0" class="cell" data-execution_count="2">
+<div id="a501bd32" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> StratifiedKFold, cross_validate, cross_val_score</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder, StandardScaler</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, classification_report</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d385b0d0" class="cell" data-execution_count="3">
+<div id="b581f8a6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># データの読み込み</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -551,7 +551,7 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 <section id="前処理特徴量エンジニアリング" class="level3" data-number="7.3.1">
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="前処理特徴量エンジニアリング"><span class="header-section-number">7.3.1</span> 前処理・特徴量エンジニアリング</h3>
 <p>前処理・特徴量エンジニアリングの工程を関数化しておきます。</p>
-<div id="1d0e759d" class="cell" data-execution_count="4">
+<div id="0d63789b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> penguins_svm_preprocess(data):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder, StandardScaler</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -577,7 +577,7 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> data_processed</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>定義した関数にペンギンデータを適用します。</p>
-<div id="9e5b3e3e" class="cell" data-execution_count="5">
+<div id="6f13e7bd" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>penguins_mod <span class="op">=</span> penguins_svm_preprocess(penguins)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>penguins_mod.head(n <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -635,7 +635,7 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 </div>
 </div>
 </div>
-<div id="17fda02a" class="cell" data-execution_count="6">
+<div id="8c4301d3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"mean"</span>: penguins_mod.mean(),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"standard_deviation"</span>: penguins_mod.std(),</span>
@@ -698,7 +698,7 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 <section id="データ分割" class="level3" data-number="7.3.2">
 <h3 data-number="7.3.2" class="anchored" data-anchor-id="データ分割"><span class="header-section-number">7.3.2</span> データ分割</h3>
 <p>続いて、モデルで予測したい目的変数と、モデルの学習に用いる説明変数を分離します。</p>
-<div id="f9f75c27" class="cell" data-execution_count="7">
+<div id="f084ba3a" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 説明変数と目的変数の分離</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> penguins_mod.drop(columns<span class="op">=</span><span class="st">"species"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> penguins_mod[<span class="st">"species"</span>]</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -713,13 +713,13 @@ K(x, z) = exp(-\gamma ||x - z||^2)
 </div>
 <p>データに偏りがある場合、単純にデータをランダムに分割すると、各グループのデータに偏りが生じてしまう可能性があります。交差検証法の過程においても、分割後の訓練データとテストデータの間でデータの偏りが生じてしまうと、モデルが過学習を起こす心配があります。そのため、各グループのデータの割合が同じになるように分割する層化抽出法を利用します。層化抽出法では、データを分割する際に、各クラスの割合が同じになるように分割します。</p>
 <p>今回のデータでは、目的変数のクラスの割合が同じになるようにデータを分割する必要があります。そのため、層化 <span class="math inline">\(K\)</span> 分割交差検証を行うために、<code>sklearn.model_selection</code>モジュールの<code>StratifiedKFold</code>を用いたデータ分割を行います。</p>
-<div id="d01cb88b" class="cell" data-execution_count="8">
+<div id="dea3ed47" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 交差検証法の例: 層化 k 分割交差検証法</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n_splitで分割数（ホールド数）を指定</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># shuffleでデータをシャッフルするか指定（元のデータの並び順を保持する場合はFalse）</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>skf <span class="op">=</span> StratifiedKFold(n_splits<span class="op">=</span><span class="dv">5</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">20230515</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="12a9a3d0" class="cell" data-execution_count="9">
+<div id="32bec204" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 各ホールドにおけるテストデータの種名の割合を確認</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> train_index, test_index <span class="kw">in</span> skf.split(X, y):</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(y.iloc[test_index].value_counts() <span class="op">/</span> <span class="bu">len</span>(y.iloc[test_index]))</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -762,13 +762,13 @@ Name: count, dtype: float64</code></pre>
 <li>kernel… カーネル関数の種類。デフォルトで利用されるRBFカーネル(<code>rbf</code>)のほか、線形カーネル(<code>linear</code>)、多項式カーネル(<code>poly</code>)などがある。</li>
 <li>gamma… カーネル関数のパラメータ。RBFカーネルのみ使用。カーネルの幅を調整する。</li>
 </ul>
-<div id="6a7d5350" class="cell" data-execution_count="10">
+<div id="e873368d" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># サポートベクターマシンモデルの構築</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># カーネル関数はRBFカーネルを使用（デフォルト）</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>svm <span class="op">=</span> SVC(kernel <span class="op">=</span> <span class="st">'rbf'</span>, gamma<span class="op">=</span><span class="st">'scale'</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>交差検証法を用いてモデルの評価を行うための関数として<code>cross_val_score()</code>が利用できます。この関数は、モデルとデータを引数として受け取り、交差検証法による評価値を返します。評価指標にはデフォルトではモデルの精度（accuracy）が用いられますが、<code>scoring</code>引数を用いて、他の評価指標を用いることもできます。</p>
-<div id="bcad47ad" class="cell" data-execution_count="11">
+<div id="37f73d49" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> cross_val_score(svm, X, y, cv<span class="op">=</span>skf)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 各ホールドにおける正解率を平均</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average score: "</span>, scores.mean())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -776,12 +776,12 @@ Name: count, dtype: float64</code></pre>
 <pre><code>Average score:  0.9939846223428311</code></pre>
 </div>
 </div>
-<div id="54190fc7" class="cell" data-execution_count="12">
+<div id="b9abf4c7" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>この出力は、各ホールドにおける評価値の平均値を表しています。今回のモデルでは、平均で約0.994の正解率が得られました。</p>
 </div>
 </div>
-<div id="8dd3bb3b" class="cell" data-execution_count="13">
+<div id="09a0a8e7" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 再現率 (recall)を評価指標として用いる</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> cross_val_score(svm, X, y, cv<span class="op">=</span>skf, scoring<span class="op">=</span><span class="st">'recall_macro'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average score: "</span>, scores.mean())</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -790,12 +790,12 @@ Name: count, dtype: float64</code></pre>
 </div>
 </div>
 <p><code>cross_validate()</code>関数を用いると、複数の評価指標を同時に用いることができます。この関数は<code>cross_val_score()</code>関数と同じく、モデルとデータを引数として与えると、交差検証法による評価値を返却します。一方で<code>scoring</code>引数に複数の評価指標を指定でき、同時に複数の評価指標を比較可能です。加えて、<code>return_train_score</code>引数を<code>True</code>にすることで、テストデータのほかに訓練データに対する評価値も得ることができます。</p>
-<div id="44b7d492" class="cell" data-execution_count="14">
+<div id="4aa92246" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 複数の評価指標（正解率、再現率）を用いる</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cross_validate(svm, X, y, cv<span class="op">=</span>skf, scoring<span class="op">=</span>[<span class="st">'accuracy'</span>, <span class="st">'recall_macro'</span>], return_train_score<span class="op">=</span><span class="va">True</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>{'fit_time': array([0.00342941, 0.00224638, 0.00228167, 0.00227785, 0.00221181]),
- 'score_time': array([0.00430226, 0.00321245, 0.00591898, 0.00346184, 0.00312543]),
+<pre><code>{'fit_time': array([0.00297904, 0.00232768, 0.00223875, 0.00224066, 0.00226808]),
+ 'score_time': array([0.00426745, 0.0030098 , 0.00293899, 0.00294662, 0.0030272 ]),
  'test_accuracy': array([0.98507463, 1.        , 1.        , 0.98484848, 1.        ]),
  'train_accuracy': array([0.9924812 , 0.9924812 , 0.9924812 , 0.99250936, 0.99625468]),
  'test_recall_macro': array([0.97435897, 1.        , 1.        , 0.97619048, 1.        ]),

@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-dc95f10abd972b9c41a78ec8992004fc.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c492eb4ab85270c802e572a85f2cdf9e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-62e8000d30b4ecb14b0c6ce63c0b0a08.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-67d38e2e51a073607e7403a0fbad63c7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-6f92130c610b5002f2f24cd98479a763.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -489,11 +489,11 @@ window.Quarto = {
 </header>
 
 
-<div id="35b436d3" class="cell" data-execution_count="2">
+<div id="dc4ede38" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># japanize_matplotlibのインストール</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>qq japanize_matplotlib</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="bfcdd274" class="cell" data-execution_count="3">
+<div id="882dbf51" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># このファイルのコードの実行に利用するライブラリを読み込む</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> japanize_matplotlib  <span class="co"># matplotlibの日本語化</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -505,7 +505,7 @@ window.Quarto = {
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> make_column_transformer</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a026eb45" class="cell" data-execution_count="4">
+<div id="a48740fd" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 指数表示を禁止、小数点以下5桁まで表示</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:.5f}</span><span class="st">'</span>.<span class="bu">format</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -525,13 +525,13 @@ E[y] = E[\beta_0 + \beta_1 x + \epsilon] \\
 <!-- 2つ目の等号では、期待値の性質である線形性を利用しています。 -->
 <p>誤差項の期待値は普通、0として扱われます。この式から、単回帰モデルにおける <span class="math inline">\(y\)</span> の期待値は、切片 <span class="math inline">\(\beta_0\)</span> と説明変数 <span class="math inline">\(x\)</span> の期待値に、傾き <span class="math inline">\(\beta_1\)</span> を掛けた値の和となります。</p>
 <p>単回帰モデルの例を見てみましょう。南極大陸に生育するペンギンのデータセットを使います。ここからペンギンの翼の長さから体重を予測するモデルを作成します。</p>
-<div id="5b979931" class="cell" data-execution_count="5">
+<div id="2f20b823" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">"penguins"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 欠損値を含む行を除外</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>penguins.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>散布図により、翼の長さと体重の関係を可視化します。この図からは翼の長さが長い個体は体重も大きい傾向が読み取れます。</p>
-<div id="2c0089ca" class="cell" data-execution_count="6">
+<div id="a5deeec8" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 散布図の作成</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>penguins, x<span class="op">=</span><span class="st">"flipper_length_mm"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>, color<span class="op">=</span><span class="st">"#fc5998"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"南極大陸に生育するペンギンの翼の長さと体重の関係"</span>)</span>
@@ -544,7 +544,7 @@ E[y] = E[\beta_0 + \beta_1 x + \epsilon] \\
 </div>
 </div>
 </div>
-<div id="99d56603" class="cell" data-execution_count="7">
+<div id="172481a1" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 回帰モデルの構築</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>lr.fit(</span>
@@ -555,7 +555,7 @@ E[y] = E[\beta_0 + \beta_1 x + \epsilon] \\
 </div>
 </div>
 <p>傾きと切片を確認します。傾きは係数 <code>coef_</code> に、切片は切片 <code>intercept_</code> に格納されています。</p>
-<div id="d93ed536" class="cell" data-execution_count="8">
+<div id="4288b04d" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"beta_0"</span>: lr.intercept_, <span class="co"># 切片</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"beta_1"</span>: lr.coef_ <span class="co"># 傾き</span></span>
@@ -585,7 +585,7 @@ E[y] = E[\beta_0 + \beta_1 x + \epsilon] \\
 </div>
 </div>
 <p>切片は、翼の長さが0のときの体重を表します。翼の長さが0のときの体重は、生物学的に意味をなさないので、この値はあまり意味をなしません。一方、傾きは、翼の長さが1mm長くなると体重がどれだけ増えるかを表します。この値は、翼の長さが0のときの体重とは異なり、「翼の長さが1mm長くなると増える体重」という意味を持ちます。具体的には <span class="math inline">\(\beta_1\)</span> の値は約50であり、翼の長さが1mm長くなると体重が約50g増えることを意味します。</p>
-<div id="c792c0a8" class="cell" data-execution_count="9">
+<div id="78b20488" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># モデルの予測値を計算</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1行目のデータを数値として扱う</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> penguins[[<span class="st">"flipper_length_mm"</span>]][<span class="dv">0</span>:<span class="dv">1</span>]</span>
@@ -601,7 +601,7 @@ E[y] = E[\beta_0 + \beta_1 x + \epsilon] \\
 </div>
 </div>
 <p>モデルによる予測値は、切片と傾きを使って計算されます。すでに切片と傾きを確認したので、この値を使って予測値を計算してみましょう。</p>
-<div id="9aa97121" class="cell" data-execution_count="10">
+<div id="6690e7e0" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># モデルの予測値が計算できることを確認</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>lr.intercept_ <span class="op">+</span> lr.coef_ <span class="op">*</span> x.values</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -611,7 +611,7 @@ E[y] = E[\beta_0 + \beta_1 x + \epsilon] \\
 <section id="予測精度" class="level3" data-number="9.0.1">
 <h3 data-number="9.0.1" class="anchored" data-anchor-id="予測精度"><span class="header-section-number">9.0.1</span> 予測精度</h3>
 <p>回帰モデルの善し悪しは、予測精度によって評価されます。予測精度にはいくつか種類がありますが、ここでは決定係数と呼ばれる指標を使って予測精度を評価します。決定係数は、実際の値と予測値の差を使って計算されます。この差を残差と呼びます。残差は、実際の値から予測値を引くことで計算されます。</p>
-<div id="2cccca7e" class="cell" data-execution_count="11">
+<div id="2f1deb79" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># モデルの予測値を計算</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> lr.predict(penguins[[<span class="st">"flipper_length_mm"</span>]])</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 残差を計算</span></span>
@@ -622,7 +622,7 @@ E[y] = E[\beta_0 + \beta_1 x + \epsilon] \\
 R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2}
 \]</span></p>
 <p>ここで分母の <span class="math inline">\(\sum_{i=1}^n (y_i - \bar{y})^2\)</span> は、実際の値と平均値の差の2乗の和を表します。これは、実際の値のばらつき（分散）を表します。一方、分子の <span class="math inline">\(\sum_{i=1}^n (y_i - \hat{y}_i)^2\)</span> は、実際の値と予測値の差（残差）のばらつきを表します。決定係数は、実際の値と予測値の差のばらつきを、実際の値のばらつきで割った値です。この値は、0から1の間の値を取ります。1に近いほど、実際の値と予測値の差のばらつきが小さいことを意味します。つまり、予測精度が高いことを意味します。</p>
-<div id="b246f2a8" class="cell" data-execution_count="12">
+<div id="49421c23" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 決定係数を計算</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">-</span> np.var(residual) <span class="op">/</span> np.var(penguins[<span class="st">"body_mass_g"</span>])</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -632,7 +632,7 @@ R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2
 <p>決定係数の値が意味する内容は、以下のように解釈できます。</p>
 <p>「ペンギンの翼の長さによって、体重を約76%の精度で予測できることを意味する。」</p>
 <p>scikit-learnでは、scoreメソッドを用いて、説明変数と目的変数を与えることで決定係数を計算できます。</p>
-<div id="3a7282f6" class="cell" data-execution_count="13">
+<div id="0bf850a7" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 決定係数を計算</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>lr.score(penguins[[<span class="st">"flipper_length_mm"</span>]], penguins[<span class="st">"body_mass_g"</span>])</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -648,7 +648,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k + \epsilon
 \]</span></p>
 <p>ここで、<span class="math inline">\(y\)</span> は目的変数、<span class="math inline">\(x_1, x_2, \ldots, x_k\)</span> は説明変数、<span class="math inline">\(\beta_0, \beta_1, \ldots, \beta_k\)</span> はパラメータ、<span class="math inline">\(\epsilon\)</span> は誤差を表します。</p>
 <!-- 標準化を行わない -->
-<div id="f25202aa" class="cell" data-execution_count="14">
+<div id="93333b70" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> coefficient_table(model, X_vars):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># モデルの係数を取得</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    coefs <span class="op">=</span> model.coef_</span>
@@ -667,7 +667,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k + \epsilon
 <span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df_coef</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>ペンギンデータの体重以外の変数を説明変数として、線形回帰モデルを学習させます。</p>
-<div id="5de19886" class="cell" data-execution_count="15">
+<div id="111a7225" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># カテゴリ変数についてワンホットエンコーディングを指定</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>column_trans <span class="op">=</span> make_column_transformer((OneHotEncoder(), [<span class="st">'species'</span>, <span class="st">'island'</span>, <span class="st">'sex'</span>]), remainder<span class="op">=</span><span class="st">'passthrough'</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -675,7 +675,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k + \epsilon
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 前処理・特徴量エンジニアリングとモデル（線形回帰モデル）を組み合わせる</span></span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> make_pipeline(column_trans, lr)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="6a514cb4" class="cell" data-execution_count="16">
+<div id="220e26e8" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># モデルの学習</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 体重以外の変数を説明変数として、線形回帰モデルを学習させる</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>pipe.fit(penguins.drop(columns<span class="op">=</span><span class="st">"body_mass_g"</span>), penguins[<span class="st">"body_mass_g"</span>])</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -698,7 +698,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k + \epsilon
 </div>
 </div>
 <p>重回帰モデルでも係数を元にモデルの予測値がどのように計算されたかを確認することができます。具体的には予測に使われたデータに対して係数をかけて足し合わせることで予測値を計算します。</p>
-<div id="a64767d9" class="cell" data-execution_count="17">
+<div id="3cc319d1" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1行目のデータを取得</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> penguins.drop(columns<span class="op">=</span><span class="st">"body_mass_g"</span>).iloc[[<span class="dv">0</span>]]</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -734,14 +734,14 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k + \epsilon
 </div>
 </div>
 </div>
-<div id="178e0167" class="cell" data-execution_count="18">
+<div id="246fc944" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 予測値を計算</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>pipe.predict(x)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>array([3753.16389596])</code></pre>
 </div>
 </div>
-<div id="4d8a5455" class="cell" data-execution_count="19">
+<div id="d31af290" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>transformed_data <span class="op">=</span> pipe.named_steps[<span class="st">"columntransformer"</span>].transform(penguins.drop(columns<span class="op">=</span><span class="st">"body_mass_g"</span>))</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># データフレームに変換</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>df_transformed <span class="op">=</span> pd.DataFrame(transformed_data, columns<span class="op">=</span>pipe.named_steps[<span class="st">'columntransformer'</span>].get_feature_names_out())</span>
@@ -755,7 +755,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k + \epsilon
 <p>単回帰モデル同様、切片と係数を利用してモデルの予測値を得ることができました。</p>
 <p>重回帰モデルでの係数の値は、説明変数の重要度を表します。係数の絶対値が大きいほど、その説明変数が目的変数の値の予測に対して重要であることを表します。係数の値が正のときには、説明変数が増加すると目的変数の値も増加することを表します。一方、係数の値が負のときには、説明変数が増加すると目的変数の値は減少することを表します。</p>
 <p>このことを踏まえてペンギンの体重を予測する重回帰モデルの係数を確認すると、次のことがわかります。</p>
-<div id="6164c549" class="cell" data-execution_count="20">
+<div id="b8e25be1" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 係数を確認</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>df_coef <span class="op">=</span> coefficient_table(</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  pipe.named_steps[<span class="st">'linearregression'</span>],</span>
@@ -836,7 +836,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k + \epsilon
 </div>
 </div>
 <p>まず、係数の絶対値の大きなペンギンの種類の違いが体重に影響を与えてます。ジェンツーペンギンでは係数が正ですが、他の2種は係数が負の値です。これはジェンツーペンギン、ヒゲペンギン、アデリーペンギンの順に体重が大きく、ジェンツーペンギンはアデリーペンギンよりも体重が約1000g大きいことがわかります。この傾向はグラフからも読み取ることができます。</p>
-<div id="12e28c49" class="cell" data-execution_count="21">
+<div id="cbe1e003" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 箱ひげ図を描画</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>penguins, x<span class="op">=</span><span class="st">"species"</span>, y<span class="op">=</span><span class="st">"body_mass_g"</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"体重の箱ひげ図"</span>)</span>
@@ -851,7 +851,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k + \epsilon
 </div>
 </div>
 <p>また、種類に続いて性別の違いも体重に与える影響も大きくなっています。係数の値は、性別が雄の場合は雌の場合よりも体重が約500g大きいことを意味します。</p>
-<div id="bfd9a5ba" class="cell" data-execution_count="22">
+<div id="d2b0500b" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># オスとメスそれぞれの体重の平均値を計算</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ペンギンの雄の体重の平均値</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>penguins.groupby(<span class="st">"sex"</span>)[<span class="st">"body_mass_g"</span>].mean()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -865,7 +865,7 @@ Name: body_mass_g, dtype: float64</code></pre>
 <p>その他、数値変数の中ではくちばしの太さ <code>bill_depth_mm</code> の係数が大きくなっています。<code>bill_depth_mm</code>の係数は67.5となっています。これはくちばしの太さが1mm大きくなると体重が67.5g増加することを意味します。ただし、この値は他の変数が固定されている前提で計算された値です。</p>
 <p><code>bill_length_mm</code>、<code>flipper_lenth_mm</code>については、係数の絶対値が小さくなっています。そのため、これらの変数が体重に与える影響は、くちばしの太さよりも小さいということでしょうか。こうした変数間での係数の絶対値を比較することはできません。なぜなら、係数の絶対値は説明変数の値の範囲に依存するためです。これは、説明変数の値の範囲が広い変数では、その値が一単位変化したときの目的変数の変化量が相対的に小さくなるために係数が小さくなってしまうことがあるためです。これは特に異なる単位の変数を同時に利用する場合に問題となります。</p>
 <p>具体例を見てみましょう。<code>bill_length_mm</code>、<code>bill_depth_mm</code>、<code>flipper_length_mm</code>の値の範囲を確認すると、<code>flipper_length_mm</code>の値の範囲が最も大きいことがわかります。このことから<code>flipper_length_mm</code>の値の範囲が広いために、その値が一単位変化したときの目的変数の変化量が相対的に小さくなることを意味します。</p>
-<div id="dd8f05cb" class="cell" data-execution_count="23">
+<div id="89fd5fb1" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 変数の範囲を確認</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># くちばしの長さ</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>, <span class="st">"flipper_length_mm"</span>]:</span>
@@ -880,7 +880,7 @@ flipper_length_mm 172.0 から 231.0</code></pre>
 <section id="標準化後の係数の解釈" class="level3" data-number="9.1.1">
 <h3 data-number="9.1.1" class="anchored" data-anchor-id="標準化後の係数の解釈"><span class="header-section-number">9.1.1</span> 標準化後の係数の解釈</h3>
 <p>数値変数に対して、平均0、標準偏差1となるような標準化を行います。これにより、数値変数の値の範囲を揃えることができ、変数間での比較を行えるようになります。</p>
-<div id="d4a48fa3" class="cell" data-execution_count="24">
+<div id="6c953a07" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 特定の列にOneHotEncoder()を適用</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>one_hot_cols <span class="op">=</span> [<span class="st">'species'</span>, <span class="st">'island'</span>, <span class="st">'sex'</span>]</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 特定の列にStandardScaler()を適用</span></span>
@@ -901,7 +901,7 @@ flipper_length_mm 172.0 から 231.0</code></pre>
 <span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> make_pipeline(column_trans, lr)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e5996fe9" class="cell" data-execution_count="25">
+<div id="4b15263b" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># モデルの学習</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>pipe.fit(penguins.drop(columns<span class="op">=</span><span class="st">"body_mass_g"</span>), penguins[<span class="st">"body_mass_g"</span>])</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
@@ -933,7 +933,7 @@ flipper_length_mm 172.0 から 231.0</code></pre>
                                   'flipper_length_mm'])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-11" type="checkbox"><label for="sk-estimator-id-11" class="sk-toggleable__label sk-toggleable__label-arrow">onehotencoder</label><div class="sk-toggleable__content"><pre>['species', 'island', 'sex']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-12" type="checkbox"><label for="sk-estimator-id-12" class="sk-toggleable__label sk-toggleable__label-arrow">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder()</pre></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-13" type="checkbox"><label for="sk-estimator-id-13" class="sk-toggleable__label sk-toggleable__label-arrow">standardscaler</label><div class="sk-toggleable__content"><pre>['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-14" type="checkbox"><label for="sk-estimator-id-14" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-15" type="checkbox"><label for="sk-estimator-id-15" class="sk-toggleable__label sk-toggleable__label-arrow">remainder</label><div class="sk-toggleable__content"><pre>[]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-16" type="checkbox"><label for="sk-estimator-id-16" class="sk-toggleable__label sk-toggleable__label-arrow">passthrough</label><div class="sk-toggleable__content"><pre>passthrough</pre></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-17" type="checkbox"><label for="sk-estimator-id-17" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div></div></div>
 </div>
 </div>
-<div id="6ea0fd15" class="cell" data-execution_count="26">
+<div id="5c0d26a0" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 特徴量と係数の対応を確認</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>df_coef_std <span class="op">=</span> coefficient_table(</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  pipe.named_steps[<span class="st">'linearregression'</span>],</span>
@@ -979,7 +979,7 @@ flipper_length_mm 172.0 から 231.0</code></pre>
 </div>
 <p>係数の値が大きいのは<code>flipper_length_mm</code>、<code>bill_depth_mm</code>、<code>bill_length_mm</code>の順番です。このことは3種の変数の中で体重に影響を与えるのは<code>flipper_length_mm</code>が最も大きいということです。</p>
 <p>散布図や相関係数からも、<code>flipper_length_mm</code>が体重に影響を与えることがわかります。</p>
-<div id="61cdb86c" class="cell" data-execution_count="27">
+<div id="36b565a9" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3つの図を並べて描画</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">4</span>))</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 3つの数値変数と体重の散布図を描画</span></span>
@@ -1000,7 +1000,7 @@ flipper_length_mm 172.0 から 231.0</code></pre>
 </div>
 </div>
 <p>最後に、重回帰モデルでの決定係数を計算しましょう。重回帰モデルの決定係数は、単回帰モデルの決定係数と同様に、0から1の値をとり、1に近いほど目的変数を説明できていることを意味します。</p>
-<div id="de7a9ef7" class="cell" data-execution_count="28">
+<div id="77493ad8" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 決定係数を計算</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>pipe.score(penguins.drop(columns<span class="op">=</span><span class="st">"body_mass_g"</span>), penguins[<span class="st">"body_mass_g"</span>])</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
